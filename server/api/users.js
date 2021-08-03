@@ -25,7 +25,7 @@ router.get('/:id', async (req, res, next) => {
   }
 })
 
-router.post ('/', async (req, res, next) => {
+router.post ('/create', async (req, res, next) => {
   try {
     res.send(await User.create(req.body))
   } catch (e) {
