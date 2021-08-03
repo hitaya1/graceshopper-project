@@ -22,7 +22,7 @@ const store = createStore(reducer, middleware);
 
 export default store;
 export * from './auth';
-export * from '/.singleUser';
+export * from './singleUser';
 export * from './products';
 export * from './singleProduct';
 export * from './allUsers';
