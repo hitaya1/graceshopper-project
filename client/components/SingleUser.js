@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchSingleUser } from '../store/user';
+import { fetchSingleUser } from '../store/singleUser';
 
 //import ErrorHandler from './ErrorHandler';
 //import LoadingScreen from './LoadingScreen';
@@ -41,7 +41,7 @@ class User extends React.Component {
 		//else if (!this.props.robot.id) { return <LoadingScreen />}
 
 		return (
-			//
+			// basic render for single user -sd
 			//insert cart component somewhere that makes sense
 
 			<div id='single-user'>
@@ -66,6 +66,14 @@ class User extends React.Component {
 		);
 	}
 }
+
+//Notes for later - SD
+
+// if admin can display can see "user look up/ enter id".
+// make local state in here, that says "admin looking at user". this.state.admin-something
+// going to use local state to look up the user information.
+// write to local state from store
+// admin can change state, regular user cannot and doesn't even know it's a thing.
 
 const mapState = (state) => {
 	return { user: state.user };
