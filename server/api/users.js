@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { models: { User }} = require('../db')
+const { models: { User, Cart }} = require('../db')
 module.exports = router
 
 router.get('/', async (req, res, next) => {
@@ -51,6 +51,21 @@ router.delete('/:id', async (req, res, next) => {
     } else {
       res.send("Nice try, maybe next time")
     }
+  } catch (error) {
+    next(error)
+  }
+})
+
+router.get('/:id/cart', async (req, res, next) => {
+  try {
+    const carts = await Cart.findAll({
+      include: {
+        where: {
+          userId: req.params.id
+        }
+      }
+    });
+    res.send(carts);
   } catch (error) {
     next(error)
   }
