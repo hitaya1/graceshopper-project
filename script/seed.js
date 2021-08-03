@@ -3,39 +3,86 @@
 const {
 	db,
 	models: { User },
+	models: { Product }
 } = require('../server/db');
 
 /**
  * seed - this function clears the database, updates tables to
  *      match the models, and populates the database.
  */
+
+ const users = [
+	{ username: 'cody', password: '123' },
+	{ username: 'murphy', password: '123' },
+	{ username: 'jae', password: '123' },
+	{ username: 'steph', password: '123' },
+	{ username: 'andrew', password: '123' },
+	{ username: 'taya', password: '123' },
+	{ username: 'tenzing', password: '123' },
+	{ username: 'albina', password: '123' },
+	{ username: 'mike', password: '123' },
+	{ username: 'jason', password: '123' },
+	{ username: 'sung', password: '123' },
+];
+
+const products = [{
+	name: 'cat toy',
+	price: 15.99,
+	quantity: 0,
+	category: 'toy',
+	description: 'toy for cats'
+}, {
+	name: 'cat tower',
+	price: 100.00,
+	quantity: 0,
+	category: 'furniture',
+	description: 'tower for cats'
+}, {
+	name: 'catnip',
+	price: 1000.00,
+	quantity: 0,
+	category: 'toy',
+	description: 'weed for cats'
+}, {
+	name: 'cat pan',
+	price: 10000.00,
+	quantity: 0,
+	category: 'kitchen',
+	description: 'cat shaped pan'
+}, {
+	name: 'cat toy1',
+	price: 15.99,
+	quantity: 0,
+	category: 'toy',
+	description: 'toy for cats1'
+}, {
+	name: 'cat toy2',
+	price: 19.99,
+	quantity: 0,
+	category: 'toy',
+	description: 'toy for cats2'
+}, {
+	name: 'cat toy3',
+	price: 7.99,
+	quantity: 0,
+	category: 'toy',
+	description: 'toy for cats3'
+}]
+
 async function seed() {
 	await db.sync({ force: true }); // clears db and matches models to tables
 	console.log('db synced!');
 
 	// Creating Users
-	const users = await Promise.all([
-		User.create({ username: 'cody', password: '123' }),
-		User.create({ username: 'murphy', password: '123' }),
-		User.create({ username: 'jae', password: '123' }),
-		User.create({ username: 'steph', password: '123' }),
-		User.create({ username: 'andrew', password: '123' }),
-		User.create({ username: 'taya', password: '123' }),
-		User.create({ username: 'tenzing', password: '123' }),
-		User.create({ username: 'albina', password: '123' }),
-		User.create({ username: 'mike', password: '123' }),
-		User.create({ username: 'jason', password: '123' }),
-		User.create({ username: 'sung', password: '123' }),
-	]);
 
 	console.log(`seeded ${users.length} users`);
 	console.log(`seeded successfully`);
-	return {
-		users: {
-			cody: users[0],
-			murphy: users[1],
-		},
-	};
+
+	let newUsers = await Promise.all(users.map(user => User.create(user)))
+	let newProducts = await Promise.all(products.map(product => Product.create(product)))
+
+	await Promise.all(newUsers.map(user => user.addProduct(newProducts[Math.floor(Math.random() * newProducts.length)])));
+	await Promise.all(newProducts.map(product => product.addUser(newUsers[Math.floor(Math.random() * newUsers.length)])));
 }
 
 /*
