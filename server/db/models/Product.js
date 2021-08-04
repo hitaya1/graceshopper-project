@@ -8,7 +8,7 @@ const Product = db.define('product', {
 		unique: true,
 	},
 	price: {
-		type: Sequelize.FLOAT,
+		type: Sequelize.INTEGER,
 		allowNull: false,
 	},
 	image: {
@@ -24,12 +24,16 @@ const Product = db.define('product', {
 		defaultValue: 0,
 	},
 	category: {
-		type: Sequelize.STRING,
+		type: Sequelize.INTEGER,
 		allowNull: false,
+		validate: {
+			min: 1,
+			max: 10
+		}
 	},
 	description: {
 		type: Sequelize.TEXT,
-		allowNull: false,
+		defaultValue: 'Looks like the description is missing!'
 	},
 });
 
