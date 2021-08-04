@@ -17,7 +17,7 @@ const _deleteProduct = (product) => ({ type: DELETE_PRODUCT, product });
 /**
  * THUNK CREATORS
  */
-export const fetchProducts = () => async (dispatch) => {
+export const fetchProducts = () => {
 	return async (dispatch) => {
 		try {
 			const response = await axios.get(`/api/products`);

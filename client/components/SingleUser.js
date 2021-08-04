@@ -24,7 +24,7 @@ class User extends React.Component {
 	//}
 
 	componentDidMount() {
-		this.props.getSingleUser(this.props.user.userId, this.props.user.username);
+		this.props.getSingleUser(this.props.match.params.userId);
 	}
 
 	//idk if we need this yet. - sd
@@ -39,24 +39,21 @@ class User extends React.Component {
 		const { user } = this.props;
 		//if (this.props.robot[0] === 'error') { return <ErrorHandler /> }
 		//else if (!this.props.robot.id) { return <LoadingScreen />}
-
 		return (
 			// basic render for single user -sd
 			//insert cart component somewhere that makes sense
 
 			<div id='single-user'>
-				<div key={thisUser.id} className='single-user-entry'>
+				<div key={user.id} className='single-user-entry'>
 					<h2 className='user-name'>
-						Welcome, {thisUser.name}! What a purrfect day!
+						Welcome, {user.username}! What a purrfect day!
 					</h2>
 					<h3>{user.username}</h3>
-					<h3>{user.shippingAddress}</h3>
-					<h3>{user.billingAddress}</h3>
-					<h3>{user.prevOrders}</h3>
-					<h3>{user.favProducts}</h3>
+					<h3>{user.shippingAddress || 'No shipping address on file'}</h3>
+					<h3>{user.billingAddress || 'No billing address on file'}</h3>
 					<div>
-						<Link to={`/user/edit/${thisUser.id}`}>
-							<button type='button' className='edit-button' name={thisUser.id}>
+						<Link to={`/user/edit/${user.id}`}>
+							<button type='button' className='edit-button' name={user.id}>
 								Edit Profile
 							</button>
 						</Link>
@@ -76,12 +73,12 @@ class User extends React.Component {
 // admin can change state, regular user cannot and doesn't even know it's a thing.
 
 const mapState = (state) => {
-	return { user: state.user };
+	return { user: state.singleUser };
 };
 const mapDispatch = (dispatch) => {
 	return {
-		getSingleUser: (userId, username) =>
-			dispatch(fetchSingleUser(userId, username)),
+		getSingleUser: (userId) =>
+			dispatch(fetchSingleUser(userId)),
 
 		//,
 		//edit thunk?

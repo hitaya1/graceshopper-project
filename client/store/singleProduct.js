@@ -16,7 +16,7 @@ const _editProduct = (product) => ({ type: EDIT_PRODUCT, product });
 /**
  * THUNK CREATORS
  */
-export const fetchSingleProduct = (productId) => async (dispatch) => {
+export const fetchSingleProduct = (productId) => {
 	return async (dispatch) => {
 		try {
 			const response = await axios.get(`/api/products/${productId}`);
@@ -49,7 +49,7 @@ export const editProduct = (product) => {
 export default function (state = [], action) {
 	switch (action.type) {
 		case SET_SINGLE_PRODUCT:
-			return action.products;
+			return action.singleProduct;
 		case EDIT_PRODUCT:
 			return state.map((product) =>
 				product.id === action.product.id ? action.product : product

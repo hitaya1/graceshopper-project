@@ -26,8 +26,8 @@ class Routes extends Component {
       <div>
         {isLoggedIn ? (
           <Switch>
-            <Route path="/home" component={Home} />
-            <Redirect to="/home" />
+            <Route exact path="/home" component={Home} />
+            {/* <Redirect to="/home" /> */}
           </Switch>
         ) : (
           <Switch>
@@ -40,8 +40,8 @@ class Routes extends Component {
           <Switch>
             <Route exact path="/users/:userId" component={SingleUser} />
             {/* <Route exact path="/users/edit/:userId" component={EditUser} /> */}
-            <Route exact path="/home/products" component={AllProducts} />
-            <Route exact path="/home/products/:productId" component={SingleProduct} />
+            <Route exact path="/products" component={AllProducts} />
+            <Route exact path="/products/:productId" component={SingleProduct} />
             {/* <Route exact path="/products/edit/:productId" component={EditProduct} /> */}
             {/* <Route component={ErrorHandler} /> */}
           </Switch>

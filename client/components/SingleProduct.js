@@ -5,18 +5,18 @@ import { fetchSingleProduct } from '../store/singleProduct';
 
 class SingleProduct extends React.Component {
 	componentDidMount() {
-		this.props.loadOneProduct(this.props.match.params.product.id);
+		this.props.loadOneProduct(this.props.match.params.productId);
 	}
 	render() {
 		// basic rendering for single product. just to view - sd
 		const { product } = this.props;
 		return (
 			<div>
-				<h3>{product.category}</h3>
-				<h3>{product.name}</h3>
-				<h3>{product.image}</h3>
-				<h3>{product.price}</h3>
-				<h3>{product.description}</h3>
+			<h3>{product.name}</h3>
+			<h3>{product.category}</h3>
+			<img src={'http://localhost:8080' + product.image} />
+			<h3>{product.price}</h3>
+			<h3>{product.description}</h3>
 			</div>
 		);
 	}

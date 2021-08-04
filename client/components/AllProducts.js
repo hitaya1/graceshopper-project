@@ -9,6 +9,7 @@ class AllProducts extends React.Component {
 	}
 
 	render() {
+		console.log(this.props)
 		const { products } = this.props;
 		return (
 			<div>
@@ -22,7 +23,9 @@ class AllProducts extends React.Component {
 										<Link to={`/products/${product.id}`}>
 											<img className='product-image' src={product.imageUrl} />
 										</Link>
+										<Link to={`/products/${product.id}`}>
 										<p>{product.name}</p>
+										</Link>
 										<p>
 											{/* <button
 												className='remove'
