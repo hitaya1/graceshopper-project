@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { models: { User, Cart }} = require('../db')
+const { models: { User, ProdOrder, Order }} = require('../db')
 module.exports = router
 
 router.get('/', async (req, res, next) => {
@@ -56,16 +56,51 @@ router.delete('/:id', async (req, res, next) => {
   }
 })
 
-router.get('/:id/cart', async (req, res, next) => {
+router.get('/:id/order', async (req, res, next) => {
   try {
-    const carts = await Cart.findAll({
+    const orders = await Order.findAll({
+      include: {
+        where: {
+            userId: req.params.id}
+        }
+      });
+    res.send(orders);
+  } catch (error) {
+    next(error)
+  }
+})
+
+router.get('/:id/order/:orderId', async (req, res, next) => {
+  // console.log(req.params)
+  try {
+    const order = await Order.findByPk(req.params, {
       include: {
         where: {
           userId: req.params.id
+          }
+        },
+        where: {
+          id: req.params.orderId
         }
-      }
-    });
-    res.send(carts);
+      });
+    res.send(order);
+  } catch (error) {
+    next(error)
+  }
+})
+
+router.get('/:id/order-history', async (req, res, next) => {
+  try {
+    const orderHistory = await ProdOrder.findAll({
+      include: {
+        where: {
+          orderId: {
+            userId: req.params.id
+            }
+          }
+        }
+      });
+    res.send(orderHistory);
   } catch (error) {
     next(error)
   }

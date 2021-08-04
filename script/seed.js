@@ -27,45 +27,45 @@ const {
 
 const products = [{
 	name: 'cat toy',
-	price: 15.99,
+	price: 15,
 	quantity: 0,
-	category: 'toy',
+	category: 1,
 	description: 'toy for cats'
 }, {
 	name: 'cat tower',
 	price: 100.00,
 	quantity: 0,
-	category: 'furniture',
+	category: 1,
 	description: 'tower for cats'
 }, {
 	name: 'catnip',
 	price: 1000.00,
 	quantity: 0,
-	category: 'toy',
+	category: 3,
 	description: 'weed for cats'
 }, {
-	name: 'cat pan',
+	name: 'frying pan for cats',
 	price: 10000.00,
 	quantity: 0,
-	category: 'kitchen',
+	category: 6,
 	description: 'cat shaped pan'
 }, {
 	name: 'cat toy1',
-	price: 15.99,
+	price: 15,
 	quantity: 0,
-	category: 'toy',
+	category: 1,
 	description: 'toy for cats1'
 }, {
 	name: 'cat toy2',
-	price: 19.99,
+	price: 19,
 	quantity: 0,
-	category: 'toy',
+	category: 1,
 	description: 'toy for cats2'
 }, {
 	name: 'cat toy3',
-	price: 7.99,
+	price: 7,
 	quantity: 0,
-	category: 'toy',
+	category: 1,
 	description: 'toy for cats3'
 }]
 
@@ -78,11 +78,11 @@ async function seed() {
 	console.log(`seeded ${users.length} users`);
 	console.log(`seeded successfully`);
 
-	let newUsers = await Promise.all(users.map(user => User.create(user)))
-	let newProducts = await Promise.all(products.map(product => Product.create(product)))
+	// let newUsers = await Promise.all(users.map(user => User.create(user)))
+	// let newProducts = await Promise.all(products.map(product => Product.create(product)))
 
-	await Promise.all(newUsers.map(user => user.addProduct(newProducts[Math.floor(Math.random() * newProducts.length)])));
-	await Promise.all(newProducts.map(product => product.addUser(newUsers[Math.floor(Math.random() * newUsers.length)])));
+	// await Promise.all(newUsers.map(user => user.addOrder(newProducts[Math.floor(Math.random() * newProducts.length)])));
+	// await Promise.all(newProducts.map(product => product.addUser(newUsers[Math.floor(Math.random() * newUsers.length)])));
 }
 
 /*

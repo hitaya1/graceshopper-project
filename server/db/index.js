@@ -4,18 +4,26 @@ const db = require('./db');
 
 const User = require('./models/User');
 const Product = require('./models/Product');
-const Cart = require('./models/Cart');
+const Order = require('./models/Order');
+const ProdOrder = require('./models/ProductOrder');
 
 //associations could go here!
 
-Product.belongsToMany(User, { through: Cart });
-User.belongsToMany(Product, { through: Cart });
+User.hasMany(Order)
+Order.belongsTo(User)
+Product.belongsToMany(Order, {through: ProdOrder})
+Order.belongsToMany(Product, {through: ProdOrder})
+
+console.log('this is USERS MAGIC METHOD', Object.keys(User.prototype))
+
+
 
 module.exports = {
 	db,
 	models: {
 		User,
 		Product,
-		Cart,
+		ProdOrder,
+		Order
 	},
 };
