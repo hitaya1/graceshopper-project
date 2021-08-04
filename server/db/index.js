@@ -14,10 +14,6 @@ Order.belongsTo(User)
 Product.belongsToMany(Order, {through: ProdOrder})
 Order.belongsToMany(Product, {through: ProdOrder})
 
-console.log('this is USERS MAGIC METHOD', Object.keys(User.prototype))
-
-
-
 module.exports = {
 	db,
 	models: {

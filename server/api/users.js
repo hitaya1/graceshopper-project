@@ -107,20 +107,21 @@ router.get('/:id/order-history', async (req, res, next) => {
   }
 })
 
-// router.get('/:id/order-history/:ProdOrderId', async (req, res, next) => {
-//   try {
-//     const orderHistory = await ProdOrder.findAll({
-//       include: {
-//         where: {
-//           orderId: {
-//             userId: req.params.id
-//             }
-//           }
-//         }
-//       });
-//     res.send(orderHistory);
-//   } catch (error) {
-//     next(error)
-//   }
-// })
+router.get('/:id/order-history/:ProdOrderId', async (req, res, next) => {
+  try {
+    const orderHistory = await ProdOrder.findOne({
+      include: {
+        where: {
+          orderId: {
+            userId: req.params.id
+            },
+            id: req.params.ProdOrderId
+          }
+        },
+      });
+    res.send(orderHistory);
+  } catch (error) {
+    next(error)
+  }
+})
 
