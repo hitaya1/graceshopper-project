@@ -48,7 +48,7 @@ export const editProduct = (product) => {
  */
 export default function (state = [], action) {
 	switch (action.type) {
-		case SET_PRODUCTS:
+		case SET_SINGLE_PRODUCT:
 			return action.products;
 		case EDIT_PRODUCT:
 			return state.map((product) =>
