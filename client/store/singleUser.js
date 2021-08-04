@@ -15,14 +15,14 @@ const _editUser = (user) => ({ type: EDIT_USER, user });
 /**
  * THUNK CREATORS
  */
-export const fetchSingleUser = (userId, username) => {
+export const fetchSingleUser = (userId) => {
 	return async (dispatch) => {
 		try {
-			const response = await axios.get(`/api/users`);
+			const response = await axios.get(`/api/users/` + userId);
 
 			dispatch(setUser(response.data));
 		} catch (e) {
-			dispatch(errorRobot());
+			//dispatch(errorRobot());
 			console.error("You don't exist. Sorry.");
 			console.error(e);
 		}
