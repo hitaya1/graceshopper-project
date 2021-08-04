@@ -10,10 +10,11 @@ const Product = db.define('product', {
 	price: {
 		type: Sequelize.INTEGER,
 		allowNull: false,
+		//add minimum
 	},
 	image: {
 		type: Sequelize.STRING,
-		defaultValue: './public/pics/download.png',
+		defaultValue: '/pics/download.png',
 	},
 	quantity: {
 		type: Sequelize.INTEGER,
@@ -28,12 +29,12 @@ const Product = db.define('product', {
 		allowNull: false,
 		validate: {
 			min: 1,
-			max: 10
-		}
+			max: 10,
+		},
 	},
 	description: {
 		type: Sequelize.TEXT,
-		defaultValue: 'Looks like the description is missing!'
+		defaultValue: 'Looks like the description is missing!',
 	},
 });
 
