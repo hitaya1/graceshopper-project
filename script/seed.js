@@ -11,8 +11,8 @@ const {
  *      match the models, and populates the database.
  */
 
- const users = [
-	{ username: 'cody', password: '123' },
+const users = [
+	{ username: 'cody', password: '123',  shippingAddress: '456 fake st' },
 	{ username: 'murphy', password: '123' },
 	{ username: 'jae', password: '123' },
 	{ username: 'steph', password: '123' },
@@ -27,43 +27,43 @@ const {
 
 const products = [{
 	name: 'cat toy',
-	price: 15.99,
+	price: 1500,
 	quantity: 0,
 	category: 'toy',
 	description: 'toy for cats'
 }, {
 	name: 'cat tower',
-	price: 100.00,
+	price: 10000,
 	quantity: 0,
 	category: 'furniture',
 	description: 'tower for cats'
 }, {
 	name: 'catnip',
-	price: 1000.00,
+	price: 100000,
 	quantity: 0,
 	category: 'toy',
 	description: 'weed for cats'
 }, {
 	name: 'cat pan',
-	price: 10000.00,
+	price: 1000000,
 	quantity: 0,
 	category: 'kitchen',
 	description: 'cat shaped pan'
 }, {
 	name: 'cat toy1',
-	price: 15.99,
+	price: 1599,
 	quantity: 0,
 	category: 'toy',
 	description: 'toy for cats1'
 }, {
 	name: 'cat toy2',
-	price: 19.99,
+	price: 1999,
 	quantity: 0,
 	category: 'toy',
 	description: 'toy for cats2'
 }, {
 	name: 'cat toy3',
-	price: 7.99,
+	price: 799,
 	quantity: 0,
 	category: 'toy',
 	description: 'toy for cats3'

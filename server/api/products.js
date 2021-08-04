@@ -20,7 +20,7 @@ router.get('/:id', async (req, res, next) => {
   }
 })
 
-router.post ('/create', async (req, res, next) => {
+router.post ('/', async (req, res, next) => {
   try {
     // WE NEED TO CHECK IF THE USER IS AN ADMIN TO CREATE NEW PRODUCTS!!!
     res.send(await Product.create(req.body))

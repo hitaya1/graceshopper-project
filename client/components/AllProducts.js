@@ -20,16 +20,11 @@ class AllProducts extends React.Component {
 								return (
 									<div key={product.id}>
 										<Link to={`/products/${product.id}`}>
-											<img className='product-image' src={product.imageUrl} />
+											<img className="product-image" src={product.imageUrl} />
 										</Link>
-										<p>{product.name}</p>
-										<p>
-											{/* <button
-												className='remove'
-												onClick={() => this.props.deleteRobot(robot.id)}>
-												delete
-											</button> */}
-										</p>
+										<Link to={`/products/${product.id}`}>
+											<p>{product.name}</p>
+										</Link>
 									</div>
 								);
 							})}
@@ -38,6 +33,11 @@ class AllProducts extends React.Component {
 						<div>Cats destroyed everything, run for your life!</div>
 					)}
 				</div>
+				<p>
+					<Link to={`/products/create`}>
+						<button className="product">create product</button>
+					</Link>
+				</p>
 			</div>
 		);
 	}
