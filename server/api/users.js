@@ -89,6 +89,7 @@ router.get('/:id/order/:orderId', async (req, res, next) => {
   }
 })
 
+//NEED TO REVIEW THIS LOGIC IN THE CODE
 router.get('/:id/order-history', async (req, res, next) => {
   try {
     const orderHistory = await ProdOrder.findAll({
