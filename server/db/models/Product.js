@@ -26,7 +26,7 @@ const Product = db.define('product', {
 	},
 	category: {
 		//ridiculous scale/INTEGER or enums
-		type: Sequelize.STRING,
+		type: Sequelize.INTEGER,
 		allowNull: false,
 	},
 	description: {
