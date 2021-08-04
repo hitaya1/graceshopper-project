@@ -8,8 +8,9 @@ const Product = db.define('product', {
 		unique: true,
 	},
 	price: {
-		type: Sequelize.FLOAT,
+		type: Sequelize.INTEGER,
 		allowNull: false,
+		//add minimum
 	},
 	image: {
 		type: Sequelize.STRING,
@@ -24,12 +25,14 @@ const Product = db.define('product', {
 		defaultValue: 0,
 	},
 	category: {
+		//ridiculous scale/INTEGER or enums
 		type: Sequelize.STRING,
 		allowNull: false,
 	},
 	description: {
 		type: Sequelize.TEXT,
 		allowNull: false,
+		//description
 	},
 });
 
