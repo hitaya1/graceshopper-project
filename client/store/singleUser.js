@@ -15,7 +15,7 @@ const _editUser = (user) => ({ type: EDIT_USER, user });
 /**
  * THUNK CREATORS
  */
-export const fetchUser = (userId, username) => {
+export const fetchSingleUser = (userId, username) => {
 	return async (dispatch) => {
 		try {
 			const response = await axios.get(`/api/users`);

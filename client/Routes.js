@@ -3,12 +3,12 @@ import {connect} from 'react-redux'
 import {withRouter, Route, Switch, Redirect} from 'react-router-dom'
 import { Login, Signup } from './components/AuthForm';
 import Home from './components/Home';
-import AllProducts from './AllProducts';
-import SingleUser from './SingleUser';
-import SingleProduct from './SingleProduct';
-import EditUser from './EditUser';
-import EditProduct from './EditProduct';
-//import ErrorHandler from './ErrorHandler';
+import AllProducts from './components/AllProducts';
+import SingleUser from './components/SingleUser';
+import SingleProduct from './components/SingleProduct';
+import EditUser from './components/EditUser';
+//import EditProduct from './components/EditProduct';
+//import ErrorHandler from './components/ErrorHandler';
 import {me} from './store'
 
 /**
@@ -36,17 +36,16 @@ class Routes extends Component {
             <Route path="/signup" component={Signup} />
           </Switch>
         )}
-        <main>
+        {/* <main> */}
           <Switch>
-            <Route exact path="/" component={Home} />
             <Route exact path="/users/:userId" component={SingleUser} />
-            <Route exact path="/users/edit/:userId" component={EditUser} />
-            <Route exact path="/products" component={AllProducts} />
-            <Route exact path="/products/:productId" component={SingleProduct} />
-            <Route exact path="/products/edit/:productId" component={EditProduct} />
+            {/* <Route exact path="/users/edit/:userId" component={EditUser} /> */}
+            <Route exact path="/home/products" component={AllProducts} />
+            <Route exact path="/home/products/:productId" component={SingleProduct} />
+            {/* <Route exact path="/products/edit/:productId" component={EditProduct} /> */}
             {/* <Route component={ErrorHandler} /> */}
           </Switch>
-        </main>
+        {/* </main> */}
       </div>
     )
   }
