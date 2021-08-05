@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { addToCart } from '../store/cart';
 import { fetchSingleProduct } from '../store/singleProduct';
 
 class SingleProduct extends React.Component {
@@ -9,7 +10,7 @@ class SingleProduct extends React.Component {
 	}
 	render() {
 		// basic rendering for single product. just to view - sd
-		const { product } = this.props;
+		const { product, addToCart } = this.props;
 		return (
 			<div>
 				<h3>{product.name}</h3>
@@ -19,6 +20,12 @@ class SingleProduct extends React.Component {
 				<h3>{product.description}</h3>
 				<button type="submit">
 					<Link to={`/products/edit/${product.id}`}>Edit</Link>
+				</button>
+				<button
+					type="submit"
+					onClick={() => addToCart(product.id, product.name, product.image)}
+				>
+					Add to Cart
 				</button>
 			</div>
 		);
@@ -31,6 +38,7 @@ const mapState = (state) => ({
 
 const mapDispatch = (dispatch) => ({
 	loadOneProduct: (id) => dispatch(fetchSingleProduct(id)),
+	addToCart: (id, name, image) => dispatch(addToCart(id, name, image)),
 });
 
 export default connect(mapState, mapDispatch)(SingleProduct);
