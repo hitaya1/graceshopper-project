@@ -4,7 +4,6 @@
 
 // //prodorder going to be userId/order/orderId/prodorder cus its going to be prevOrder that longer exists
 
-
 // router.get('/', async (req, res, next) => {
 //   try {
 //     const allOrders = await ProdOrder.findAll()
@@ -13,5 +12,3 @@
 //     next(error)
 //   }
 // })
-
-
