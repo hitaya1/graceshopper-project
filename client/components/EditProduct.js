@@ -28,7 +28,7 @@ class EditProduct extends Component {
 	}
 
 	componentDidUpdate(prevProp) {
-		if (prevProp.product.id !== this.props.product.id) {
+		if (prevProp.product.productId !== this.props.product.productId) {
 			this.setState({
 				name: this.props.product.name || '',
 				price: this.props.product.price || 0,
@@ -86,8 +86,8 @@ class EditProduct extends Component {
 	}
 }
 
-const mapStateToProps = ({ product }) => ({
-	product,
+const mapStateToProps = (state) => ({
+	product: state.singleProduct
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -51,9 +51,7 @@ export default function (state = [], action) {
 		case SET_SINGLE_PRODUCT:
 			return action.singleProduct;
 		case EDIT_PRODUCT:
-			return state.map((product) =>
-				product.id === action.product.id ? action.product : product
-			);
+			return action.product
 		default:
 			return state;
 	}
