@@ -20,8 +20,8 @@ class EditProduct extends Component {
 
 	componentDidMount() {
 		try {
-			const { id } = this.props.match.params;
-			this.props.getProduct(id);
+			const { productId } = this.props.match.params;
+			this.props.getProduct(productId);
 		} catch (error) {
 			console.log(error);
 		}
@@ -91,7 +91,7 @@ const mapStateToProps = ({ product }) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-	editProduct: (project) => dispatch(editProduct(project)),
+	editProduct: (product) => dispatch(editProduct(product)),
 	getProduct: (id) => dispatch(fetchSingleProduct(id)),
 });
 

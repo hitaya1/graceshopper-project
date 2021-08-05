@@ -27,7 +27,7 @@ export const fetchProducts = () => {
 			//error page:
 			//dispatch(errorProduct());
 			console.error(
-				'I think the cats have eaten, broken, or otherwise disabled the products.'
+				'I think the cats have EATEN, broken, or otherwise disabled the products.'
 			);
 			console.error(e);
 		}
