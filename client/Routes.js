@@ -5,6 +5,8 @@ import { Login, Signup } from './components/AuthForm';
 import Home from './components/Home';
 import AllProducts from './components/AllProducts';
 import SingleUser from './components/SingleUser';
+import AllUsers from './components/AllUsers';
+import CreateUser from './components/CreateUser';
 import SingleProduct from './components/SingleProduct';
 import CreateProduct from './components/CreateProduct';
 import EditUser from './components/EditUser';
@@ -42,10 +44,12 @@ class Routes extends Component {
 				<Switch>
 					<Route exact path="/products/create" component={CreateProduct} />
 					<Route exact path="/products/edit/:productId" component={EditProduct} />
-					<Route exact path="/users/:userId" component={SingleUser} />
 					<Route exact path="/products/:productId" component={SingleProduct} />
-					{/* <Route exact path="/users/edit/:userId" component={EditUser} /> */}
 					<Route exact path="/products" component={AllProducts} />
+					<Route exact path="/users/create" component={CreateUser} />
+					<Route exact path="/users/edit/:userId" component={EditUser} />
+					<Route exact path="/users/:userId" component={SingleUser} />
+					<Route exact path="/users" component={AllUsers} />
 					{/* <Route component={ErrorHandler} /> */}
 				</Switch>
 				{/* </main> */}

@@ -36,7 +36,18 @@ class User extends React.Component {
 	// }
 
 	render() {
-		const { user } = this.props;
+		const { user, currentUser } = this.props;
+
+		let editUserButton = null;
+
+		if (currentUser.isAdmin){
+			editUserButton = (
+				<Link to={`/users/edit/${user.id}`}>
+					<button type="button" className='edit-button' name={user.id}>Edit Cat...</button>
+				</Link>
+			);
+		}
+
 		//if (this.props.robot[0] === 'error') { return <ErrorHandler /> }
 		//else if (!this.props.robot.id) { return <LoadingScreen />}
 		return (
@@ -51,13 +62,7 @@ class User extends React.Component {
 					<h3>{user.username}</h3>
 					<h3>{user.shippingAddress || 'No shipping address on file'}</h3>
 					<h3>{user.billingAddress || 'No billing address on file'}</h3>
-					<div>
-						<Link to={`/user/edit/${user.id}`}>
-							<button type='button' className='edit-button' name={user.id}>
-								Edit Profile
-							</button>
-						</Link>
-					</div>
+						{editUserButton}
 				</div>
 			</div>
 		);
@@ -72,9 +77,10 @@ class User extends React.Component {
 // write to local state from store
 // admin can change state, regular user cannot and doesn't even know it's a thing.
 
-const mapState = (state) => {
-	return { user: state.singleUser };
-};
+const mapState = (state) => ({
+	user: state.singleUser,
+	currentUser: state.auth
+});
 const mapDispatch = (dispatch) => {
 	return {
 		getSingleUser: (userId) =>

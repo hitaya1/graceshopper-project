@@ -30,7 +30,6 @@ class CreateProduct extends Component {
 	}
 
 	render() {
-    console.log(this.props)
 		const { name, price, image, quantity, category, description } = this.state;
 		const { handleSubmit, handleChange } = this;
 

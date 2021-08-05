@@ -9,7 +9,26 @@ class AllProducts extends React.Component {
 		this.props.getProducts();
 	}
 	render() {
-		const { products, deleteProduct, getProducts } = this.props;
+		const { products, deleteProduct, getProducts, currentUser } = this.props;
+
+		let deleteButton = null;
+		let createButton = null;
+
+		if (currentUser.isAdmin){
+			deleteButton = (
+				<button type="submit" onClick={ async () => {
+					await deleteProduct(product.id);
+					getProducts();
+				}}> Remove from CATalogue </button>
+			);
+
+			createButton = (
+				<Link to={`/products/create`}>
+					<button className="product">Add to CATalogue</button>
+				</Link>
+			);
+		}
+
 		return (
 			<div>
 				<h1>SHOP MEOW!</h1>
@@ -29,13 +48,7 @@ class AllProducts extends React.Component {
 											/>
 											<p>{product.name}</p>
 										</Link>
-										<button type="submit" onClick={ async () => {
-												await deleteProduct(product.id);
-												getProducts();
-											}}
-										>
-											X
-										</button>
+										{deleteButton}
 									</div>
 								);
 							})}
@@ -44,11 +57,7 @@ class AllProducts extends React.Component {
 						<div>Cats destroyed everything, run for your life!</div>
 					)}
 				</div>
-				<p>
-					<Link to={`/products/create`}>
-						<button className="product">create product</button>
-					</Link>
-				</p>
+				{createButton}
 			</div>
 		);
 	}
@@ -56,6 +65,7 @@ class AllProducts extends React.Component {
 
 const mapState = (state) => ({
 	products: state.products,
+	currentUser: state.auth
 });
 
 const mapDispatch = (dispatch) => ({

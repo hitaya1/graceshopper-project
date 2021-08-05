@@ -3,10 +3,12 @@ import axios from 'axios';
 //action type
 const CREATE_USER = 'CREATE_USER';
 const DELETE_USER = 'DELETE_USER';
+const GET_ALL_USERS = 'GET_ALL_USERS';
 
 //action creator
 const makeUser = (user) => ({ type: CREATE_USER, user });
 const _deleteUser = (user) => ({ type: DELETE_USER, user });
+const fetchAllUsers = (users) => ({ type: GET_ALL_USERS, users })
 
 //thunks
 export const createUser = (user) => {
@@ -23,6 +25,13 @@ export const deleteUser = (id) => {
 	};
 };
 
+export const getAllUsers = () =>{
+	return async (dispatch) =>{
+		const { data: users } = await axios.get(`/api/users`);
+		dispatch(fetchAllUsers(users));
+	}
+}
+
 //initialstate
 const initialState = [];
 
@@ -33,6 +42,8 @@ export default function (state = initialState, action) {
 			return [...state, action.user];
 		case DELETE_USER:
 			return state.filter((user) => user.id !== action.user.id);
+		case GET_ALL_USERS:
+			return action.users;
 		default:
 			return state;
 	}

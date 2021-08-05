@@ -6,12 +6,12 @@ class EditProduct extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			name: '',
-			price: 0,
-			image: '',
-			quantity: 0,
-			category: '1',
-			description: '',
+			name: product.name || '',
+			price: product.price || 0,
+			image: product.image || '',
+			quantity: product.quantity || 0,
+			category: product.category || '1',
+			description: product.description || ''
 		};
 
 		this.handleChange = this.handleChange.bind(this);
