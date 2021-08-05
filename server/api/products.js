@@ -42,12 +42,14 @@ router.delete('/:id', async (req, res, next) => {
   try {
      // WE NEED TO CHECK IF THE USER IS AN ADMIN TO DELETE PRODUCTS!!!
     const product = await Product.findByPk(req.params.id);
-    if (product.isAdmin === true) {
-      await product.destroy();
+    // if (product.isAdmin === true) {
+    //   await product.destroy();
+    //   res.send(product)
+    // } else {
+    //   res.send("Nice try, maybe next time")
+    // }
+    await product.destroy();
       res.send(product)
-    } else {
-      res.send("Nice try, maybe next time")
-    }
   } catch (error) {
     next(error)
   }

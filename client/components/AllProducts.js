@@ -1,30 +1,44 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchProducts } from '../store/products';
+import { deleteProduct, fetchProducts } from '../store/products';
+import axios from 'axios';
 
 class AllProducts extends React.Component {
 	componentDidMount() {
 		this.props.getProducts();
 	}
-
 	render() {
-		const { products } = this.props;
+		console.log(this.props);
+		const { products, deleteProduct, getProducts } = this.props;
 		return (
 			<div>
 				<h1>SHOP MEOW!</h1>
 				<div>
-					{products.length > 0 ? (
+					{products && products.length ? (
 						<div>
 							{products.map((product) => {
 								return (
-									<div key={product.id}>
+									<div key={product.id} className="products">
 										<Link to={`/products/${product.id}`}>
-											<img className="product-image" src={product.imageUrl} />
-										</Link>
-										<Link to={`/products/${product.id}`}>
+											<img
+												className="product-image"
+												src={
+													product.imageUrl ||
+													'http://localhost:8080/pics/download.png'
+												}
+											/>
 											<p>{product.name}</p>
 										</Link>
+										<button
+											type="submit"
+											onClick={() => {
+												deleteProduct(product.id);
+												getProducts();
+											}}
+										>
+											X
+										</button>
 									</div>
 								);
 							})}
@@ -49,6 +63,7 @@ const mapState = (state) => ({
 
 const mapDispatch = (dispatch) => ({
 	getProducts: () => dispatch(fetchProducts()),
+	deleteProduct: (id) => dispatch(deleteProduct(id)),
 });
 
 export default connect(mapState, mapDispatch)(AllProducts);

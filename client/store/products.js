@@ -34,17 +34,17 @@ export const fetchProducts = () => {
 	};
 };
 
-export const createProduct = (product) => {
+export const createProduct = (product, history) => {
 	return async (dispatch) => {
 		const { data: created } = await axios.post('/api/products', product);
-		console.log(created);
 		dispatch(makeProduct(created));
+		history.push('/products');
 	};
 };
 export const deleteProduct = (id) => {
 	return async (dispatch) => {
-		const { data: product } = await axios.delete(`/api/products/${id}`);
-		dispatch(_deleteProduct(product));
+		const { data} = await axios.delete(`/api/products/${id}`);
+		dispatch(_deleteProduct(data));
 	};
 };
 
@@ -58,7 +58,9 @@ export default function (state = [], action) {
 		case CREATE_PRODUCT:
 			return [...state, action.product];
 		case DELETE_PRODUCT:
-			return state.filter((product) => product.id !== action.product.id);
+			return state.filter(
+				(product) => product.productId !== action.product.productId
+			);
 		default:
 			return state;
 	}

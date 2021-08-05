@@ -90,8 +90,8 @@ const mapStateToProps = (state) => ({
 	product: state.singleProduct
 });
 
-const mapDispatchToProps = (dispatch) => ({
-	editProduct: (product) => dispatch(editProduct(product)),
+const mapDispatchToProps = (dispatch, {history}) => ({
+	editProduct: (product) => dispatch(editProduct(product, history)),
 	getProduct: (id) => dispatch(fetchSingleProduct(id)),
 });
 

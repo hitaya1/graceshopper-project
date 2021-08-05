@@ -60,8 +60,8 @@ class CreateProduct extends Component {
 	}
 }
 
-const mapDispatchToProps = (dispatch) => ({
-	createProduct: (product) => dispatch(createProduct(product)),
+const mapDispatchToProps = (dispatch, {history}) => ({
+	createProduct: (product) => dispatch(createProduct(product, history)),
 });
 
 export default connect(null, mapDispatchToProps)(CreateProduct);

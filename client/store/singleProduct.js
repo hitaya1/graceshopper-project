@@ -20,7 +20,6 @@ export const fetchSingleProduct = (productId) => {
 	return async (dispatch) => {
 		try {
 			const response = await axios.get(`/api/products/${productId}`);
-
 			dispatch(setSingleProduct(response.data));
 		} catch (e) {
 			//error page:
@@ -33,13 +32,14 @@ export const fetchSingleProduct = (productId) => {
 	};
 };
 
-export const editProduct = (product) => {
+export const editProduct = (product, history) => {
 	return async (dispatch) => {
 		const { data: edited } = await axios.put(
 			`/api/products/${product.id}`,
 			product
 		);
 		dispatch(_editProduct(edited));
+		history.push(`/products/${product.id}`)
 	};
 };
 
