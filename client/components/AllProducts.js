@@ -9,7 +9,6 @@ class AllProducts extends React.Component {
 		this.props.getProducts();
 	}
 	render() {
-		console.log(this.props);
 		const { products, deleteProduct, getProducts } = this.props;
 		return (
 			<div>
@@ -30,10 +29,8 @@ class AllProducts extends React.Component {
 											/>
 											<p>{product.name}</p>
 										</Link>
-										<button
-											type="submit"
-											onClick={() => {
-												deleteProduct(product.id);
+										<button type="submit" onClick={ async () => {
+												await deleteProduct(product.id);
 												getProducts();
 											}}
 										>
