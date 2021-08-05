@@ -40,17 +40,12 @@ class Routes extends Component {
 				)}
 				{/* <main> */}
 				<Switch>
-					<Route
-						exact
-						path="/products/edit/:productId"
-						component={EditProduct}
-					/>
-					<Route exact path="/users/:userId" component={SingleUser} />
-					{/* <Route exact path="/users/edit/:userId" component={EditUser} /> */}
-
-					<Route exact path="/products" component={AllProducts} />
 					<Route exact path="/products/create" component={CreateProduct} />
+					<Route exact path="/products/edit/:productId" component={EditProduct} />
+					<Route exact path="/users/:userId" component={SingleUser} />
 					<Route exact path="/products/:productId" component={SingleProduct} />
+					{/* <Route exact path="/users/edit/:userId" component={EditUser} /> */}
+					<Route exact path="/products" component={AllProducts} />
 					{/* <Route component={ErrorHandler} /> */}
 				</Switch>
 				{/* </main> */}
