@@ -93,13 +93,16 @@ router.get('/:id/order/:orderId', async (req, res, next) => {
 router.get('/:id/order-history', async (req, res, next) => {
   try {
     const orderHistory = await ProdOrder.findAll({
-      include: {
+      // include: {
+      //   where: {
+      //     orderId: {
+      //       userId: req.params.id
+      //       }
+      //     }
+      //   }
         where: {
-          orderId: {
-            userId: req.params.id
-            }
+          orderId: req.params.id
           }
-        }
       });
     res.send(orderHistory);
   } catch (error) {
@@ -110,14 +113,18 @@ router.get('/:id/order-history', async (req, res, next) => {
 router.get('/:id/order-history/:ProdOrderId', async (req, res, next) => {
   try {
     const orderHistory = await ProdOrder.findOne({
-      include: {
+      // include: {
+      //   where: {
+      //     orderId: {
+      //       userId: req.params.id
+      //       },
+      //       id: req.params.ProdOrderId
+      //     }
+      //   },
         where: {
-          orderId: {
-            userId: req.params.id
-            },
-            id: req.params.ProdOrderId
+          orderId: req.params.id,
+          productId: req.params.ProdOrderId
           }
-        },
       });
     res.send(orderHistory);
   } catch (error) {
