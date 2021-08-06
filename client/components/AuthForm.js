@@ -1,6 +1,6 @@
-import React from 'react'
-import {connect} from 'react-redux'
-import {authenticate} from '../store'
+import React from 'react';
+import { connect } from 'react-redux';
+import { authenticate } from '../store';
 
 /**
  * COMPONENT
@@ -55,21 +55,21 @@ class AuthForm extends React.Component{
  *   function, and share the same Component. This is a good example of how we
  *   can stay DRY with interfaces that are very similar to each other!
  */
-const mapLogin = state => {
-  return {
-    name: 'login',
-    displayName: 'Login',
-    error: state.auth.error
-  }
-}
+const mapLogin = (state) => {
+	return {
+		name: 'login',
+		displayName: 'Login',
+		error: state.auth.error,
+	};
+};
 
-const mapSignup = state => {
-  return {
-    name: 'signup',
-    displayName: 'Sign Up',
-    error: state.auth.error
-  }
-}
+const mapSignup = (state) => {
+	return {
+		name: 'signup',
+		displayName: 'Sign Up',
+		error: state.auth.error,
+	};
+};
 
 const mapDispatch = dispatch => {
   return {
@@ -97,5 +97,5 @@ const mapDispatch = dispatch => {
   }
 }
 
-export const Login = connect(mapLogin, mapDispatch)(AuthForm)
-export const Signup = connect(mapSignup, mapDispatch)(AuthForm)
+export const Login = connect(mapLogin, mapDispatch)(AuthForm);
+export const Signup = connect(mapSignup, mapDispatch)(AuthForm);

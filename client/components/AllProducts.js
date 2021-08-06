@@ -33,23 +33,22 @@ class AllProducts extends React.Component {
 
 			createButton = (
 				<Link to={`/products/create`}>
-					<button className="product">Add to CATalogue</button>
+					<button>Add to CATalogue</button>
 				</Link>
 			);
 		}
 
 		return (
 			<div>
-				<h1>SHOP MEOW!</h1>
 				<div>
 					{products && products.length ? (
-						<div>
+						<div className='products'>
 							{products.map((product) => {
 								return (
-									<div key={product.id} className="products">
+									<div key={product.id} className='product'>
 										<Link to={`/products/${product.id}`}>
-											<img className="product-image" src={product.image || 'http://localhost:8080/pics/download.png'} />
-											<p>{product.name}</p>
+											<img className="product-image" src={product.image || 'https://apluspetsitting.com/wp-content/uploads/2016/03/cats-150x150.jpg'} />
+											<div>{product.name}</div>
 										</Link>
 										{currentUser.isAdmin ? (
 											<button type="button" className="delete-button" name={product.id} onClick={this.clickDelete}>Remove from CATalogue</button>

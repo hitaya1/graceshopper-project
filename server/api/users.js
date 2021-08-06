@@ -55,13 +55,12 @@ router.delete('/:id', async (req, res, next) => {
 	}
 });
 
+//doesn't register order
 router.get('/:id/order', async (req, res, next) => {
 	try {
 		const orders = await Order.findAll({
-			include: {
-				where: {
-					userId: req.params.id,
-				},
+			where: {
+				userId: req.params.id,
 			},
 		});
 		res.send(orders);
@@ -73,12 +72,8 @@ router.get('/:id/order', async (req, res, next) => {
 router.get('/:id/order/:orderId', async (req, res, next) => {
 	try {
 		const order = await Order.findByPk(req.params, {
-			include: {
-				where: {
-					userId: req.params.id,
-				},
-			},
 			where: {
+				userId: req.params.id,
 				id: req.params.orderId,
 			},
 		});
@@ -130,3 +125,5 @@ router.get('/:id/order-history/:ProdOrderId', async (req, res, next) => {
 		next(error);
 	}
 });
+
+module.exports = router;
