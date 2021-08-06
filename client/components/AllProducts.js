@@ -12,16 +12,15 @@ class AllProducts extends React.Component {
 		const { products, deleteProduct, getProducts } = this.props;
 		return (
 			<div>
-				<h1>SHOP MEOW!</h1>
 				<div>
 					{products && products.length ? (
 						<div>
 							{products.map((product) => {
 								return (
-									<div key={product.id} className="products">
+									<div key={product.id} className='products'>
 										<Link to={`/products/${product.id}`}>
 											<img
-												className="product-image"
+												className='product-image'
 												src={
 													product.imageUrl ||
 													'http://localhost:8080/pics/download.png'
@@ -29,11 +28,12 @@ class AllProducts extends React.Component {
 											/>
 											<p>{product.name}</p>
 										</Link>
-										<button type="submit" onClick={ async () => {
+										<button
+											type='submit'
+											onClick={async () => {
 												await deleteProduct(product.id);
 												getProducts();
-											}}
-										>
+											}}>
 											X
 										</button>
 									</div>
@@ -46,7 +46,7 @@ class AllProducts extends React.Component {
 				</div>
 				<p>
 					<Link to={`/products/create`}>
-						<button className="product">create product</button>
+						<button className='product'>create product</button>
 					</Link>
 				</p>
 			</div>
