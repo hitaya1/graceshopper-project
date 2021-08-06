@@ -2,14 +2,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchSingleProduct } from '../store/singleProduct';
+import { fetchProducts } from '../store/products';
+import { addToCart } from '../store/cart';
 
 class SingleProduct extends React.Component {
 	componentDidMount() {
+		this.props.getProducts();
 		this.props.loadOneProduct(this.props.match.params.productId);
 	}
 	render() {
 		// basic rendering for single product. just to view - sd
-		const { product, currentUser } = this.props;
+		const { product, currentUser, addToCart, getProducts } = this.props;
 
 
 		let editButton = null;
@@ -38,6 +41,16 @@ class SingleProduct extends React.Component {
 				<h3>{product.price}</h3>
 				<h3>{product.description}</h3>
 				{editButton}
+
+				<button
+					type="submit"
+					onClick={async () => {
+						await getProducts();
+						addToCart(product.id, product.name, product.image);
+					}}
+				>
+					Add to Cart
+				</button>
 			</div>
 		);
 	}
@@ -45,11 +58,14 @@ class SingleProduct extends React.Component {
 
 const mapState = (state) => ({
 	product: state.singleProduct,
-	currentUser: state.auth
+	currentUser: state.auth,
+	products: state.products
 });
 
 const mapDispatch = (dispatch) => ({
 	loadOneProduct: (id) => dispatch(fetchSingleProduct(id)),
+	addToCart: (id, name, image) => dispatch(addToCart(id, name, image)),
+	getProducts: () => dispatch(fetchProducts())
 });
 
 export default connect(mapState, mapDispatch)(SingleProduct);

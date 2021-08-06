@@ -40,6 +40,9 @@ class Navbar extends React.Component{
         </div>
       )}
       <Link to="/products">Products</Link>
+      <Link to="/cart">
+				<img src="/pics/cart.png" id="catCart"></img>
+			</Link>
     </nav>
     <hr />
   </div>

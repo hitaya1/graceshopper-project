@@ -14,6 +14,7 @@ import EditUser from './components/EditUser';
 //import ErrorHandler from './components/ErrorHandler';
 import { me } from './store';
 import EditProduct from './components/EditProduct';
+import Cart from './components/Cart';
 
 /**
  * COMPONENT
@@ -50,6 +51,7 @@ class Routes extends Component {
 					<Route exact path="/users/edit/:userId" component={EditUser} />
 					<Route exact path="/users/:userId" component={SingleUser} />
 					<Route exact path="/users" component={AllUsers} />
+					<Route exact path="/cart" component={Cart} />
 					{/* <Route component={ErrorHandler} /> */}
 				</Switch>
 				{/* </main> */}
