@@ -47,12 +47,8 @@ router.put('/:id', async (req, res, next) => {
 router.delete('/:id', async (req, res, next) => {
 	try {
 		const user = await User.findByPk(req.params.id);
-		if (user.isAdmin === true) {
 			await user.destroy();
 			res.send(user);
-		} else {
-			res.send('Nice try, maybe next time');
-		}
 	} catch (error) {
 		next(error);
 	}

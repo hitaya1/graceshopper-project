@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {authenticate} from '../store'
 import { createUser } from '../store/allUsers';
 
 class CreateUser extends Component {
@@ -25,13 +26,20 @@ class CreateUser extends Component {
 		});
 	}
 
-	handleSubmit(evt) {
+	async handleSubmit(evt) {
 		evt.preventDefault();
-		this.props.createUser({ ...this.state });
+    const username = evt.target.username.value;
+    const password = evt.target.password.value;
+    try{
+      await dispatch(authenticate(username, password));
+      this.props.createUser({ ...this.state });
+    } catch(e){
+      console.error('improper input')
+    }
 	}
 
 	render() {
-		const { username, email, password, cc, shippingAdress, billingAdress, isAdmin } = this.state;
+		const { username, email, password, cc, shippingAddress, billingAddress, isAdmin } = this.state;
 		const { handleSubmit, handleChange } = this;
 
 		return (

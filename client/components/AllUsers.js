@@ -5,22 +5,32 @@ import { deleteUser, getAllUsers } from '../store/allUsers';
 import axios from 'axios';
 
 class AllUsers extends React.Component {
+  constructor(){
+    super();
+    this.clickDelete = this.clickDelete.bind(this);
+  }
 	componentDidMount() {
 		this.props.getUsers();
 	}
-	render() {
-		const { allUsers, deleteUser, getUsers, currentUser } = this.props;
 
-		let deleteUserButton = null;
+	async clickDelete(event) {
+		console.log(event.target.name)
+    await this.props.deleteUser(event.target.name);
+    this.props.getUsers();
+  }
+
+	render() {
+		const { allUsers, currentUser } = this.props;
+
 		let createUserButton = null;
 
 		if (currentUser.isAdmin){
-			deleteUserButton = (
-				<button type="submit" onClick={ async () => {
-					await deleteUser(user.id);
-					getUsers();
-				}}> Curtail Cat </button>
-			);
+			// deleteUserButton = (
+			// 	<button type="submit" onClick={ async () => {
+			// 		await deleteUser(element.id);
+			// 		getUsers();
+			// 	}}> Curtail Cat </button>
+			// );
 
 			createUserButton = (
 				<Link to={`/users/create`}>
@@ -36,14 +46,12 @@ class AllUsers extends React.Component {
 					{allUsers && allUsers.length ? (
 						<div>
 							{allUsers.map((element) => {
-		{console.log(allUsers)}
-		{console.log(element)}
 								return (
 									<div key={element.id} className="users">
 										<Link to={`/users/${element.id}`}>
 											<p>{element.username}</p>
 										</Link>
-										{deleteUserButton}
+										<button type="button" className="delete-button" name={element.id} onClick={this.clickDelete}>Curtail Cat</button>
 									</div>
 								);
 							})}

@@ -12,17 +12,17 @@ const {
  */
 
 const users = [
-	{ username: 'cody', password: '123', shippingAddress: '456 fake st' },
-	{ username: 'murphy', password: '123' },
-	{ username: 'jae', password: '123' },
-	{ username: 'steph', password: '123' },
-	{ username: 'andrew', password: '123' },
-	{ username: 'taya', password: '123' },
-	{ username: 'tenzing', password: '123' },
-	{ username: 'albina', password: '123' },
-	{ username: 'mike', password: '123' },
-	{ username: 'jason', password: '123' },
-	{ username: 'sung', password: '123' },
+	{ username: 'cody', password: '123', shippingAddress: '456 fake st', isAdmin: true, email: 'fake1@fake.com' },
+	{ username: 'murphy', password: '123', email: 'fake2@fake.com' },
+	{ username: 'jae', password: '123', email: 'fake3@fake.com' },
+	{ username: 'steph', password: '123', email: 'fake4@fake.com' },
+	{ username: 'andrew', password: '123', email: 'fake5@fake.com' },
+	{ username: 'taya', password: '123', email: 'fake6@fake.com' },
+	{ username: 'tenzing', password: '123', email: 'fake7@fake.com' },
+	{ username: 'albina', password: '123', email: 'fake8@fake.com' },
+	{ username: 'mike', password: '123', email: 'fake9@fake.com' },
+	{ username: 'jason', password: '123', email: 'fake10@fake.com' },
+	{ username: 'sung', password: '123', email: 'fake11@fake.com' },
 ];
 
 const products = [

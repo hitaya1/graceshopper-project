@@ -6,13 +6,13 @@ class EditUser extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-      username: user.username || '',
-			email: user.email || '',
-      password: user.password || '',
-      cc: user.cc || 0,
-      shippingAdress: user.shippingAdress || '',
-      billingAdress: user.billingAdress || '',
-      isAdmin: user.isAdmin || false
+      username: this.props.user.username || '',
+			email: this.props.user.email || '',
+      password: this.props.user.password || '',
+      cc: this.props.user.cc || 0,
+      shippingAdress: this.props.user.shippingAdress || '',
+      billingAdress: this.props.user.billingAdress || '',
+      isAdmin: this.props.user.isAdmin || false
 		};
 
 		this.handleChange = this.handleChange.bind(this);
@@ -54,7 +54,7 @@ class EditUser extends Component {
 	}
 
 	render() {
-		const { username, email, password, cc, shippingAdress, billingAdress, isAdmin } = this.state;
+		const { username, email, password, cc, shippingAddress, billingAddress, isAdmin } = this.state;
 		const { handleSubmit, handleChange } = this;
 		return (
 			<div className="editUser">
