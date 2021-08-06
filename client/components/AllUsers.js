@@ -10,12 +10,11 @@ class AllUsers extends React.Component {
     this.clickDelete = this.clickDelete.bind(this);
   }
 	componentDidMount() {
-		this.props.getUsers();
+		this.props.getUsers(this.props.currentUser);
 	}
 
 	async clickDelete(event) {
-		console.log(event.target.name)
-    await this.props.deleteUser(event.target.name);
+    await this.props.deleteUser(event.target.name, this.props.currentUser);
     this.props.getUsers();
   }
 
@@ -72,8 +71,8 @@ const mapState = (state) => ({
 });
 
 const mapDispatch = (dispatch) => ({
-	getUsers: () => dispatch(getAllUsers()),
-	deleteUser: (id) => dispatch(deleteUser(id)),
+	getUsers: (user) => dispatch(getAllUsers(user)),
+	deleteUser: (id, user) => dispatch(deleteUser(id, user)),
 });
 
 export default connect(mapState, mapDispatch)(AllUsers);

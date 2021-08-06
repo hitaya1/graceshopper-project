@@ -6,6 +6,7 @@ class EditUser extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			id: this.props.user.id,
       username: this.props.user.username || '',
 			email: this.props.user.email || '',
       password: this.props.user.password || '',
@@ -31,6 +32,7 @@ class EditUser extends Component {
 	componentDidUpdate(prevProp) {
 		if (prevProp.user.userId !== this.props.user.userId) {
 			this.setState({
+        id: this.props.user.id,
 				username: this.props.user.username || '',
 				email: this.props.user.email || '',
 				password: this.props.user.password || '',
@@ -50,7 +52,7 @@ class EditUser extends Component {
 
 	handleSubmit(evt) {
 		evt.preventDefault();
-		this.props.editUser({ ...this.props.user, ...this.state });
+		this.props.editUser({ ...this.props.user, ...this.state }, this.props.currentUser);
 	}
 
 	render() {
@@ -92,11 +94,12 @@ class EditUser extends Component {
 }
 
 const mapStateToProps = (state) => ({
-	user: state.singleUser
+	user: state.singleUser,
+	currentUser: state.auth
 });
 
 const mapDispatchToProps = (dispatch) => ({
-	editUser: (user) => dispatch(editUser(user)),
+	editUser: (editting, user) => dispatch(editUser(editting, user)),
 	getUser: (id) => dispatch(fetchSingleUser(id)),
 });
 

@@ -5,7 +5,7 @@ const {
 const { requireToken, requireAdmin, userIsUser } = require('./gatekeepingMiddleware');
 module.exports = router;
 
-router.get('/', requireToken, requireAdmin, async (req, res, next) => {
+router.get('/', async (req, res, next) => {
 	try {
 		const users = await User.findAll({
 			// explicitly select only the id and username fields - even though
@@ -19,7 +19,7 @@ router.get('/', requireToken, requireAdmin, async (req, res, next) => {
 	}
 });
 
-router.get('/:id', requireToken, userIsUser, async (req, res, next) => {
+router.get('/:id', async (req, res, next) => {
 	try {
 		const user = await User.findByPk(req.params.id);
 		res.send(user);
@@ -36,7 +36,7 @@ router.get('/:id', requireToken, userIsUser, async (req, res, next) => {
 //   }
 // })
 
-router.put('/:id', requireToken, userIsUser, async (req, res, next) => {
+router.put('/:id', async (req, res, next) => {
 	try {
 		const updateUser = await User.findByPk(req.params.id);
 		res.send(await updateUser.update(req.body));
@@ -45,7 +45,7 @@ router.put('/:id', requireToken, userIsUser, async (req, res, next) => {
 	}
 });
 
-router.delete('/:id', requireToken, userIsUser, async (req, res, next) => {
+router.delete('/:id', async (req, res, next) => {
 	try {
 		const user = await User.findByPk(req.params.id);
 			await user.destroy();
@@ -55,7 +55,7 @@ router.delete('/:id', requireToken, userIsUser, async (req, res, next) => {
 	}
 });
 
-router.get('/:id/order', requireToken, userIsUser, async (req, res, next) => {
+router.get('/:id/order', async (req, res, next) => {
 	try {
 		const orders = await Order.findAll({
 			include: {
@@ -70,7 +70,7 @@ router.get('/:id/order', requireToken, userIsUser, async (req, res, next) => {
 	}
 });
 
-router.get('/:id/order/:orderId', requireToken, userIsUser, async (req, res, next) => {
+router.get('/:id/order/:orderId', async (req, res, next) => {
 	try {
 		const order = await Order.findByPk(req.params, {
 			include: {
@@ -89,7 +89,7 @@ router.get('/:id/order/:orderId', requireToken, userIsUser, async (req, res, nex
 });
 
 //NEED TO REVIEW THIS LOGIC IN THE CODE
-router.get('/:id/order-history', requireToken, userIsUser, async (req, res, next) => {
+router.get('/:id/order-history', async (req, res, next) => {
 	try {
 		const orderHistory = await ProdOrder.findAll({
 			// include: {
@@ -109,7 +109,7 @@ router.get('/:id/order-history', requireToken, userIsUser, async (req, res, next
 	}
 });
 
-router.get('/:id/order-history/:ProdOrderId', requireToken, userIsUser, async (req, res, next) => {
+router.get('/:id/order-history/:ProdOrderId', async (req, res, next) => {
 	try {
 		const orderHistory = await ProdOrder.findOne({
 			// include: {

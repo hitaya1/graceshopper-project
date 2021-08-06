@@ -5,22 +5,31 @@ import { deleteProduct, fetchProducts } from '../store/products';
 import axios from 'axios';
 
 class AllProducts extends React.Component {
+  constructor(){
+    super();
+    this.clickDelete = this.clickDelete.bind(this);
+  }
 	componentDidMount() {
 		this.props.getProducts();
 	}
-	render() {
-		const { products, deleteProduct, getProducts, currentUser } = this.props;
 
-		let deleteButton = null;
+	async clickDelete(event) {
+    await this.props.deleteProduct(event.target.name, this.props.currentUser);
+    this.props.getProducts();
+  }
+
+	render() {
+		const { products, currentUser } = this.props;
+
 		let createButton = null;
 
 		if (currentUser.isAdmin){
-			deleteButton = (
-				<button type="submit" onClick={ async () => {
-					await deleteProduct(product.id);
-					getProducts();
-				}}> Remove from CATalogue </button>
-			);
+			// deleteButton = (
+			// 	<button type="submit" onClick={ async () => {
+			// 		await deleteProduct(product.id);
+			// 		getProducts();
+			// 	}}> Remove from CATalogue </button>
+			// );
 
 			createButton = (
 				<Link to={`/products/create`}>
@@ -39,16 +48,16 @@ class AllProducts extends React.Component {
 								return (
 									<div key={product.id} className="products">
 										<Link to={`/products/${product.id}`}>
-											<img
-												className="product-image"
-												src={
-													product.imageUrl ||
-													'http://localhost:8080/pics/download.png'
-												}
-											/>
+											<img className="product-image" src={product.image || 'http://localhost:8080/pics/download.png'} />
 											<p>{product.name}</p>
 										</Link>
-										{deleteButton}
+										{currentUser.isAdmin ? (
+											<button type="button" className="delete-button" name={product.id} onClick={this.clickDelete}>Remove from CATalogue</button>
+										) :
+										(
+											<p></p>
+										)}
+
 									</div>
 								);
 							})}
@@ -70,7 +79,7 @@ const mapState = (state) => ({
 
 const mapDispatch = (dispatch) => ({
 	getProducts: () => dispatch(fetchProducts()),
-	deleteProduct: (id) => dispatch(deleteProduct(id)),
+	deleteProduct: (id, user) => dispatch(deleteProduct(id, user)),
 });
 
 export default connect(mapState, mapDispatch)(AllProducts);

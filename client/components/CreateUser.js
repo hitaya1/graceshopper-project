@@ -32,7 +32,7 @@ class CreateUser extends Component {
     const password = evt.target.password.value;
     try{
       await dispatch(authenticate(username, password));
-      this.props.createUser({ ...this.state });
+      this.props.createUser({ ...this.state }, this.props.currentUser);
     } catch(e){
       console.error('improper input')
     }
@@ -74,8 +74,12 @@ class CreateUser extends Component {
 	}
 }
 
+const mapState = (state) => ({
+	currentUser: state.auth
+});
+
 const mapDispatchToProps = (dispatch) => ({
 	createUser: (user) => dispatch(createUser(user))
 });
 
-export default connect(null, mapDispatchToProps)(CreateUser);
+export default connect(mapState, mapDispatchToProps)(CreateUser);
