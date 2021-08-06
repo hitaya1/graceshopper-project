@@ -14,6 +14,7 @@ import EditUser from './components/EditUser';
 //import ErrorHandler from './components/ErrorHandler';
 import { me } from './store';
 import EditProduct from './components/EditProduct';
+import Cart from './components/Cart';
 
 /**
  * COMPONENT

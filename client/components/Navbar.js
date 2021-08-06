@@ -1,7 +1,6 @@
-import React from 'react'
-import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
-import {logout} from '../store'
+import React from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 
 class Navbar extends React.Component{
@@ -23,6 +22,7 @@ class Navbar extends React.Component{
       <div>
     <h1>Welcome to Catsco!</h1>
     <nav>
+      {/* possibly need to copy to home component */}
       {isLoggedIn ? (
         <div>
           {/* The navbar will show these links after you log in */}
@@ -57,12 +57,4 @@ const mapState = state => {
   }
 }
 
-const mapDispatch = dispatch => {
-  return {
-    handleClick() {
-      dispatch(logout())
-    }
-  }
-}
-
-export default connect(mapState, mapDispatch)(Navbar)
+export default connect(mapState)(Navbar);

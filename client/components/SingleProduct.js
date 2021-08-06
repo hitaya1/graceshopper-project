@@ -1,10 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { addToCart } from '../store/cart';
 import { fetchSingleProduct } from '../store/singleProduct';
+import { fetchProducts } from '../store/products';
 
 class SingleProduct extends React.Component {
 	componentDidMount() {
+		this.props.getProducts();
 		this.props.loadOneProduct(this.props.match.params.productId);
 	}
 	render() {
@@ -21,8 +24,6 @@ class SingleProduct extends React.Component {
 				</Link>
 			);
 		}
-
-
 
 		return (
 			<div>
@@ -50,6 +51,8 @@ const mapState = (state) => ({
 
 const mapDispatch = (dispatch) => ({
 	loadOneProduct: (id) => dispatch(fetchSingleProduct(id)),
+	addToCart: (id, name, image) => dispatch(addToCart(id, name, image)),
+	getProducts: () => dispatch(fetchProducts()),
 });
 
 export default connect(mapState, mapDispatch)(SingleProduct);
