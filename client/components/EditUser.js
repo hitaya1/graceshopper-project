@@ -23,7 +23,7 @@ class EditUser extends Component {
 	componentDidMount() {
 		try {
 			const { userId } = this.props.match.params;
-			this.props.getUser(userId);
+			this.props.getUser(userId, this.props.currentUser);
 		} catch (error) {
 			console.log(error);
 		}
@@ -100,7 +100,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch, { history }) => ({
 	editUser: (editting, user) => dispatch(editUser(editting, user, history)),
-	getUser: (id) => dispatch(fetchSingleUser(id)),
+	getUser: (id, user) => dispatch(fetchSingleUser(id, user, history)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditUser);

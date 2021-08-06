@@ -8,7 +8,7 @@ import { fetchSingleUser } from '../store/singleUser';
 
 class User extends React.Component {
 	componentDidMount() {
-		this.props.getSingleUser(this.props.match.params.userId, this.props.currentUser);
+		if (this.props.currentUser) {this.props.getSingleUser(this.props.match.params.userId, this.props.currentUser);}
 	}
 
 	render() {
