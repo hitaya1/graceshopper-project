@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 export class Cart extends React.Component {
 	render() {
 		let index = 0;
-		// console.log(this.props);
+		console.log(this.props.cart);
 		const { cart } = this.props;
 		return (
 			<div>
@@ -15,7 +15,8 @@ export class Cart extends React.Component {
 							index++;
 							return (
 								<div key={index} className="cartProducts">
-									{product.name}hi
+									{product.name}
+									<img src={product.image} />
 								</div>
 							);
 						})}
@@ -30,9 +31,10 @@ export class Cart extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-	console.log(state);
+	console.log(state)
 	return {
 		cart: state.cart.cart,
+		products: state.products
 	};
 };
 export default connect(mapStateToProps)(Cart);

@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { deleteProduct, fetchProducts } from '../store/products';
-import axios from 'axios';
 
 class AllProducts extends React.Component {
 	componentDidMount() {
@@ -13,6 +12,9 @@ class AllProducts extends React.Component {
 		return (
 			<div>
 				<h1>SHOP MEOW!</h1>
+				<Link to={`/products/create`}>
+						<button className="product">create product</button>
+					</Link>
 				<div>
 					{products && products.length ? (
 						<div>
@@ -29,7 +31,7 @@ class AllProducts extends React.Component {
 											/>
 											<p>{product.name}</p>
 										</Link>
-										<button type="submit" onClick={ async () => {
+										<button type="submit" className='delete' onClick={ async () => {
 												await deleteProduct(product.id);
 												getProducts();
 											}}
@@ -45,9 +47,6 @@ class AllProducts extends React.Component {
 					)}
 				</div>
 				<p>
-					<Link to={`/products/create`}>
-						<button className="product">create product</button>
-					</Link>
 				</p>
 			</div>
 		);
