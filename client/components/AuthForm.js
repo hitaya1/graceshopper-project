@@ -17,7 +17,7 @@ class AuthForm extends React.Component{
           <label htmlFor="email">
             <small>Email:</small>
           </label>
-          <input name="email" type="text" />
+          <input name="email" type="email" />
         </div>
       )
     }
@@ -78,7 +78,9 @@ const mapDispatch = dispatch => {
       const formName = evt.target.name
       const username = evt.target.username.value
       const password = evt.target.password.value
-      const email = evt.target.email.value;
+      let email = null;
+
+      if (evt.target.email) { email = evt.target.email.value; }
 
       let allowDispatch = true;
 
