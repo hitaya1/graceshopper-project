@@ -9,7 +9,21 @@ class SingleProduct extends React.Component {
 	}
 	render() {
 		// basic rendering for single product. just to view - sd
-		const { product } = this.props;
+		const { product, currentUser } = this.props;
+
+
+		let editButton = null;
+
+		if (currentUser.isAdmin){
+			editButton = (
+				<Link to={`/products/edit/${product.id}`}>
+					<button type="submit">Make ModifiCATion...</button>
+				</Link>
+			);
+		}
+
+
+
 		return (
 			<div>
 				<h3>{product.name}</h3>
@@ -23,9 +37,7 @@ class SingleProduct extends React.Component {
 				</div>
 				<h3>{product.price}</h3>
 				<h3>{product.description}</h3>
-				<button type='submit'>
-					<Link to={`/products/edit/${product.id}`}>Edit</Link>
-				</button>
+				{editButton}
 			</div>
 		);
 	}
@@ -33,6 +45,7 @@ class SingleProduct extends React.Component {
 
 const mapState = (state) => ({
 	product: state.singleProduct,
+	currentUser: state.auth
 });
 
 const mapDispatch = (dispatch) => ({
