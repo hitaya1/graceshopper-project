@@ -1,5 +1,10 @@
 body {
 	font-family: sans-serif;
+	box-sizing: border-box;
+	border: 10px solid rgb(221, 193, 152);
+	min-width: 500px;
+	height: 100vh;
+	overflow-y: auto;
 }
 
 header {
@@ -16,12 +21,12 @@ header .banner img {
 	height: 150px;
 }
 a {
+	display: flex;
 	text-decoration: none;
 	border-radius: 25px;
 	margin: 5px;
 	align-items: center;
 	color: #ffce8d;
-	display: flex;
 	height: 20px;
 	padding: 10px;
 	font-size: 16px;
@@ -56,29 +61,64 @@ div form {
 	color: black;
 }
 
-img {
-	width: 10px;
-	height: 10px;
-}
-
 .products {
-	margin: 45px;
-	display: inline-grid;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
+	align-content: center;
+	/* flex-wrap: wrap; */
+	/* margin: 20px; */
+	/* display: inline-grid;
 	justify-content: space-between;
 	grid-auto-columns: auto auto auto auto;
 	grid-auto-flow: dense;
 	grid-auto-rows: minmax(100px, auto);
 	grid-gap: 50px;
-	grid-template: repeat(4, 1fr);
-	height: 100px;
-	width: 100px;
-	padding: 35px;
+	grid-template: repeat(4, 1fr);*/
+	height: 50px;
+	width: 50px;
+	/* margin-top: 90px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 20px; */
 	border: 3px solid #8db7ff;
 }
 
+img {
+	/* display: flex;
+	justify-content: space-between;
+	align-items: center; */
+	width: 100%;
+	height: fixed;
+}
 button[type='submit'] {
 	border-radius: 15px;
 	width: 20px;
 	height: 15px;
 	font-size: 10px;
+}
+/* div {
+	display: block;
+} */
+
+/* Designing for scroll-bar */
+::-webkit-scrollbar {
+	width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: gainsboro;
+	border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: black;
+	border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
 }

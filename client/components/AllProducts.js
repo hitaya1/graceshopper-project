@@ -26,7 +26,8 @@ class AllProducts extends React.Component {
 													'http://localhost:8080/pics/download.png'
 												}
 											/>
-											<p>{product.name}</p>
+
+											<div>{product.name}</div>
 										</Link>
 										<button
 											type='submit'
