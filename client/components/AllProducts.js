@@ -14,21 +14,20 @@ class AllProducts extends React.Component {
 			<div>
 				<div>
 					{products && products.length ? (
-						<div>
+						<div className='products'>
 							{products.map((product) => {
 								return (
-									<div key={product.id} className='products'>
+									<div key={product.id} className='product'>
 										<Link to={`/products/${product.id}`}>
 											<img
 												className='product-image'
 												src={
 													product.imageUrl ||
-													'http://localhost:8080/pics/download.png'
+													'https://apluspetsitting.com/wp-content/uploads/2016/03/cats-150x150.jpg'
 												}
 											/>
-
-											<div>{product.name}</div>
 										</Link>
+										<div>{product.name}</div>
 										<button
 											type='submit'
 											onClick={async () => {
@@ -45,11 +44,11 @@ class AllProducts extends React.Component {
 						<div>Cats destroyed everything, run for your life!</div>
 					)}
 				</div>
-				<p>
+				<div>
 					<Link to={`/products/create`}>
-						<button className='product'>create product</button>
+						<button>create product</button>
 					</Link>
-				</p>
+				</div>
 			</div>
 		);
 	}
