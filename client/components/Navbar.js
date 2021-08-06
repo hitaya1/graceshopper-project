@@ -3,9 +3,25 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
 
-const Navbar = ({handleClick, isLoggedIn}) => (
-  <div>
-    <h1>FS-App-Template</h1>
+
+class Navbar extends React.Component{
+
+  render(){
+    const { handleClick, isLoggedIn, currentUser } = this.props;
+
+    let allUsersButton = null;
+
+    if (currentUser.isAdmin){
+			allUsersButton = (
+				<button type="submit">
+					<Link to={`/users`}>All Users</Link>
+				</button>
+			);
+		}
+
+    return(
+      <div>
+    <h1>Welcome to Catsco!</h1>
     <nav>
       {isLoggedIn ? (
         <div>
@@ -14,6 +30,7 @@ const Navbar = ({handleClick, isLoggedIn}) => (
           <a href="#" onClick={handleClick}>
             Logout
           </a>
+          {allUsersButton}
         </div>
       ) : (
         <div>
@@ -26,14 +43,17 @@ const Navbar = ({handleClick, isLoggedIn}) => (
     </nav>
     <hr />
   </div>
-)
+    );
+  }
+}
 
 /**
  * CONTAINER
  */
 const mapState = state => {
   return {
-    isLoggedIn: !!state.auth.id
+    isLoggedIn: !!state.auth.id,
+    currentUser: state.auth
   }
 }
 

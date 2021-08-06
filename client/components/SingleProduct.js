@@ -9,17 +9,35 @@ class SingleProduct extends React.Component {
 	}
 	render() {
 		// basic rendering for single product. just to view - sd
-		const { product } = this.props;
+		const { product, currentUser } = this.props;
+
+
+		let editButton = null;
+
+		if (currentUser.isAdmin){
+			editButton = (
+				<Link to={`/products/edit/${product.id}`}>
+					<button type="submit">Make ModifiCATion...</button>
+				</Link>
+			);
+		}
+
+
+
 		return (
 			<div>
 				<h3>{product.name}</h3>
 				<h3>{product.category}</h3>
-				<img src={'http://localhost:8080' + product.image} />
+				<div id='singlecat'>
+					<img
+						src={
+							'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScsJAUX7QSaaVUy8NMJh-HmxKHF-bmsJnLZg&usqp=CAU'
+						}
+					/>
+				</div>
 				<h3>{product.price}</h3>
 				<h3>{product.description}</h3>
-				<button type="submit">
-					<Link to={`/products/edit/${product.id}`}>Edit</Link>
-				</button>
+				{editButton}
 			</div>
 		);
 	}
@@ -27,6 +45,7 @@ class SingleProduct extends React.Component {
 
 const mapState = (state) => ({
 	product: state.singleProduct,
+	currentUser: state.auth
 });
 
 const mapDispatch = (dispatch) => ({

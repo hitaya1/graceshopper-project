@@ -27,24 +27,34 @@ export const fetchProducts = () => {
 			//error page:
 			//dispatch(errorProduct());
 			console.error(
-				'I think the cats have eaten, broken, or otherwise disabled the products.'
+				'I think the cats have EATEN, broken, or otherwise disabled the products.'
 			);
 			console.error(e);
 		}
 	};
 };
 
-export const createProduct = (product) => {
+export const createProduct = (product, user) => {
 	return async (dispatch) => {
-		const { data: created } = await axios.post('/api/products', product);
-		console.log(created)
+		if (user.isAdmin){
+			const { data: created } = await axios.post('/api/products', product);
 		dispatch(makeProduct(created));
+		//history.push('/products');
+		} else{
+			console.error('add product failed. admin required.');
+		}
 	};
 };
-export const deleteProduct = (id) => {
+export const deleteProduct = (id, user) => {
 	return async (dispatch) => {
-		const { data: product } = await axios.delete(`/api/products/${id}`);
-		dispatch(_deleteProduct(product));
+		if (user.isAdmin){
+			const { data } = await axios.delete(`/api/products/${id}`);
+			dispatch(_deleteProduct(data));
+		} else{
+			console.error('delete failed. admin required.');
+		}
+
+
 	};
 };
 
@@ -58,7 +68,9 @@ export default function (state = [], action) {
 		case CREATE_PRODUCT:
 			return [...state, action.product];
 		case DELETE_PRODUCT:
-			return state.filter((product) => product.id !== action.product.id);
+			return state.filter(
+				(product) => product.productId !== action.product.productId
+			);
 		default:
 			return state;
 	}

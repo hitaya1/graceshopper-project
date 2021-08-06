@@ -15,7 +15,7 @@ const _editUser = (user) => ({ type: EDIT_USER, user });
 /**
  * THUNK CREATORS
  */
-export const fetchSingleUser = (userId) => {
+export const fetchSingleUser = (userId, user) => {
 	return async (dispatch) => {
 		try {
 			const response = await axios.get(`/api/users/` + userId);
@@ -29,10 +29,15 @@ export const fetchSingleUser = (userId) => {
 	};
 };
 
-export const editUser = (user) => {
+export const editUser = (editting, user) => {
 	return async (dispatch) => {
-		const { data: edited } = await axios.put(`/api/users/${users.id}`, user);
-		dispatch(_editUser(edited));
+		if (user.isAdmin){
+			const { data: edited } = await axios.put(`/api/users/${users.id}`, editting);
+			dispatch(_editUser(edited));
+		}else{
+			console.error('edit user failed. admin required.');
+		}
+
 	};
 };
 

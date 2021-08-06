@@ -25,14 +25,16 @@ const Product = db.define('product', {
 		defaultValue: 0,
 	},
 	category: {
-		//ridiculous scale/INTEGER or enums
 		type: Sequelize.INTEGER,
 		allowNull: false,
+		validate: {
+			min: 1,
+			max: 10,
+		},
 	},
 	description: {
 		type: Sequelize.TEXT,
-		allowNull: false,
-		//description
+		defaultValue: 'Looks like the description is missing!',
 	},
 });
 
