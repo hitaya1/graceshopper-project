@@ -6,12 +6,13 @@ class EditProduct extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			name: '',
-			price: 0,
-			image: '',
-			quantity: 0,
-			category: '1',
-			description: '',
+			id: this.props.product.id,
+			name: this.props.product.name || '',
+			price: this.props.product.price || 0,
+			image: this.props.product.image || '',
+			quantity: this.props.product.quantity || 0,
+			category: this.props.product.category || '1',
+			description: this.props.product.description || ''
 		};
 
 		this.handleChange = this.handleChange.bind(this);
@@ -30,6 +31,7 @@ class EditProduct extends Component {
 	componentDidUpdate(prevProp) {
 		if (prevProp.product.productId !== this.props.product.productId) {
 			this.setState({
+				id: this.props.product.id,
 				name: this.props.product.name || '',
 				price: this.props.product.price || 0,
 				image: this.props.product.image || '',
@@ -48,7 +50,7 @@ class EditProduct extends Component {
 
 	handleSubmit(evt) {
 		evt.preventDefault();
-		this.props.editProduct({ ...this.props.product, ...this.state });
+		this.props.editProduct({ ...this.state }, this.props.currentUser);
 	}
 
 	render() {
@@ -87,11 +89,12 @@ class EditProduct extends Component {
 }
 
 const mapStateToProps = (state) => ({
-	product: state.singleProduct
+	product: state.singleProduct,
+	currentUser: state.auth
 });
 
-const mapDispatchToProps = (dispatch, {history}) => ({
-	editProduct: (product) => dispatch(editProduct(product, history)),
+const mapDispatchToProps = (dispatch) => ({
+	editProduct: (product, user) => dispatch(editProduct(product, user)),
 	getProduct: (id) => dispatch(fetchSingleProduct(id)),
 });
 

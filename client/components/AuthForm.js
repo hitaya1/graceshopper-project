@@ -5,31 +5,47 @@ import {authenticate} from '../store'
 /**
  * COMPONENT
  */
-const AuthForm = props => {
-  const {name, displayName, handleSubmit, error} = props
+class AuthForm extends React.Component{
+  render(){
+    const {name, displayName, handleSubmit, error} = this.props;
 
-  return (
-    <div>
-      <form onSubmit={handleSubmit} name={name}>
+    let emailField = null;
+
+    if (name === 'signup'){
+      emailField = (
         <div>
-          <label htmlFor="username">
-            <small>Username</small>
+          <label htmlFor="email">
+            <small>Email:</small>
           </label>
-          <input name="username" type="text" />
+          <input name="email" type="email" />
         </div>
-        <div>
-          <label htmlFor="password">
-            <small>Password</small>
-          </label>
-          <input name="password" type="password" />
-        </div>
-        <div>
-          <button type="submit">{displayName}</button>
-        </div>
-        {error && error.response && <div> {error.response.data} </div>}
-      </form>
-    </div>
-  )
+      )
+    }
+
+    return (
+      <div>
+        <form onSubmit={handleSubmit} name={name}>
+          <div>
+            <label htmlFor="username">
+              <small>Username</small>
+            </label>
+            <input name="username" type="text" />
+          </div>
+          {emailField}
+          <div>
+            <label htmlFor="password">
+              <small>Password</small>
+            </label>
+            <input name="password" type="password" />
+          </div>
+          <div>
+            <button type="submit">{displayName}</button>
+          </div>
+          {error && error.response && <div> {error.response.data} </div>}
+        </form>
+      </div>
+    )
+  }
 }
 
 /**
@@ -62,7 +78,21 @@ const mapDispatch = dispatch => {
       const formName = evt.target.name
       const username = evt.target.username.value
       const password = evt.target.password.value
-      dispatch(authenticate(username, password, formName))
+      let email = null;
+
+      if (evt.target.email) { email = evt.target.email.value; }
+
+      let allowDispatch = true;
+
+      if(!username || !password){
+        window.alert('Paws a moment to fill out all fields');
+        allowDispatch = false;
+      }
+      if(formName === 'signup' && !email){
+        window.alert('Paws a moment to fill out all fields');
+        allowDispatch = false;
+      }
+      if (allowDispatch) { dispatch(authenticate(username, password, email, formName)); }
     }
   }
 }
