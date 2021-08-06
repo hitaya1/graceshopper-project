@@ -98,8 +98,8 @@ const mapStateToProps = (state) => ({
 	currentUser: state.auth
 });
 
-const mapDispatchToProps = (dispatch) => ({
-	editUser: (editting, user) => dispatch(editUser(editting, user)),
+const mapDispatchToProps = (dispatch, { history }) => ({
+	editUser: (editting, user) => dispatch(editUser(editting, user, history)),
 	getUser: (id) => dispatch(fetchSingleUser(id)),
 });
 

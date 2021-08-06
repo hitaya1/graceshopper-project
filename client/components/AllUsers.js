@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { deleteUser, getAllUsers } from '../store/allUsers';
-import axios from 'axios';
 
 class AllUsers extends React.Component {
   constructor(){
@@ -15,7 +14,7 @@ class AllUsers extends React.Component {
 
 	async clickDelete(event) {
     await this.props.deleteUser(event.target.name, this.props.currentUser);
-    this.props.getUsers();
+    this.props.getUsers(this.props.currentUser);
   }
 
 	render() {
@@ -70,9 +69,9 @@ const mapState = (state) => ({
 	currentUser: state.auth
 });
 
-const mapDispatch = (dispatch) => ({
-	getUsers: (user) => dispatch(getAllUsers(user)),
-	deleteUser: (id, user) => dispatch(deleteUser(id, user)),
+const mapDispatch = (dispatch, { history }) => ({
+	getUsers: (user) => dispatch(getAllUsers(user, history)),
+	deleteUser: (id, user) => dispatch(deleteUser(id, user, history)),
 });
 
 export default connect(mapState, mapDispatch)(AllUsers);

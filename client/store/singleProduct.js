@@ -32,16 +32,16 @@ export const fetchSingleProduct = (productId) => {
 	};
 };
 
-export const editProduct = (product, user) => {
+export const editProduct = (product, user, history) => {
 	return async (dispatch) => {
 		if (user.isAdmin){
 			const { data: edited } = await axios.put(`/api/products/${product.id}`, product);
 			dispatch(_editProduct(edited));
-			//history.push(`/products/${product.id}`)
+			history.push(`/products/${product.id}`)
 		}else{
+			history.push('/error');
 			console.error('edit product failed. admin required.');
 		}
-
 	};
 };
 

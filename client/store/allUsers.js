@@ -11,39 +11,40 @@ const _deleteUser = (user) => ({ type: DELETE_USER, user });
 const fetchAllUsers = (users) => ({ type: GET_ALL_USERS, users })
 
 //thunks
-export const createUser = (adding, user) => {
+export const createUser = (adding, user, history) => {
 	return async (dispatch) => {
 		if (user.isAdmin){
 			const { data: created } = await axios.post('/api/users', adding);
 			dispatch(makeUser(created));
+			history.push('/users');
 		} else{
+			history.push('/error');
 			console.error('create user failed. admin required.');
 		}
-
 	};
 };
 
-export const deleteUser = (id, user) => {
+export const deleteUser = (id, user, history) => {
 	return async (dispatch) => {
 		if (user.isAdmin || user.id === id){
 			const { data: deleted } = await axios.delete(`/api/users/${id}`);
 			dispatch(_deleteUser(deleted));
 		} else{
+			history.push('/error');
 			console.error('delete user failed. admin required.');
 		}
-
 	};
 };
 
-export const getAllUsers = (user) =>{
+export const getAllUsers = (user, history) =>{
 	return async (dispatch) =>{
 		if (user.isAdmin){
 			const { data: users } = await axios.get(`/api/users`);
 		dispatch(fetchAllUsers(users));
 		} else{
+			history.push('/error');
 			console.error('see users failed. admin required.');
 		}
-
 	}
 }
 

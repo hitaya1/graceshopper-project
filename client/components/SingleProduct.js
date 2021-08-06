@@ -11,7 +11,6 @@ class SingleProduct extends React.Component {
 		this.props.loadOneProduct(this.props.match.params.productId);
 	}
 	render() {
-		// basic rendering for single product. just to view - sd
 		const { product, currentUser, addToCart, getProducts } = this.props;
 
 

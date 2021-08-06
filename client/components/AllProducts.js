@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { deleteProduct, fetchProducts } from '../store/products';
-import axios from 'axios';
 
 class AllProducts extends React.Component {
   constructor(){
@@ -76,9 +75,9 @@ const mapState = (state) => ({
 	currentUser: state.auth
 });
 
-const mapDispatch = (dispatch) => ({
+const mapDispatch = (dispatch, { history }) => ({
 	getProducts: () => dispatch(fetchProducts()),
-	deleteProduct: (id, user) => dispatch(deleteProduct(id, user)),
+	deleteProduct: (id, user) => dispatch(deleteProduct(id, user, history)),
 });
 
 export default connect(mapState, mapDispatch)(AllProducts);
