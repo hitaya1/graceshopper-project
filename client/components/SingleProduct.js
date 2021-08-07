@@ -15,7 +15,6 @@ export const AddToCart = (props) => {
 			let carts = [...cart];
 			let {id} = product
 			let currProdInCart = carts.find(product => product.id === id)
-
 			if (currProdInCart) {
 				currProdInCart.quantity++
 			} else {

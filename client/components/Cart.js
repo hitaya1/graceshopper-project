@@ -1,13 +1,63 @@
 import React, {useState, useEffect} from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import cartReducer from '../store/cart';
 
 export const Cart = (props) => {
-	console.log('this is inside CART COMPONENET',props)
-	const [cart, setCart] = useState([]);
+	console.log('this is inside CART COMPONENET', props)
+	let [cart, setCart] = useState([]);
 	let localCart = localStorage.getItem('cart');
 
+	const removeFromCart = (productId) => {
+		let copyCart = [...cart];
+		copyCart = copyCart.filter(product => product.id !== productId);
+		setCart(copyCart)
+
+		let cartString = JSON.stringify(copyCart)
+		localStorage.setItem('cart', cartString)
+	}
 	console.log('CART INSIDE CART COMPONENET', cart)
+
+	const inputAmount = (productId, amount) => {
+		let copyCart = [...cart];
+		let exisitingProd = copyCart.find(product => product.id === productId);
+		if(!exisitingProd) return;
+		exisitingProd.quantity += amount
+
+		if(exisitingProd.quantity <= 0) {
+			copyCart = copyCart.filter(product => product.id !== productId)
+		}
+
+		setCart(copyCart)
+		let cartString = JSON.stringify(copyCart);
+		localStorage.setItem('cart', cartString)
+	}
+
+	const plusButton = (productId) => {
+		let copyCart = [...cart];
+		let exisitingProd = copyCart.find(product => product.id === productId);
+		if(!exisitingProd) return;
+		exisitingProd.quantity++
+
+		setCart(copyCart)
+		let cartString = JSON.stringify(copyCart);
+		localStorage.setItem('cart', cartString)
+	}
+
+	const minusButton = (productId) => {
+		let copyCart = [...cart];
+		let exisitingProd = copyCart.find(product => product.id === productId);
+		if(!exisitingProd) return;
+		exisitingProd.quantity--
+
+		if(exisitingProd.quantity <= 0) {
+			copyCart = copyCart.filter(product => product.id !== productId)
+		}
+
+		setCart(copyCart)
+		let cartString = JSON.stringify(copyCart);
+		localStorage.setItem('cart', cartString)
+	}
 
 	useEffect (() => {
 		localCart = JSON.parse(localCart);
@@ -26,6 +76,17 @@ export const Cart = (props) => {
 								{product.name}
 								<img src={product.image} />
 								{product.quantity}
+								<button onClick={() => {removeFromCart(product.id)}}>
+									remove
+								</button>
+								<button onClick={() => {plusButton(product.id)}}>
+									+
+								</button>
+								<input type='number' onClick={() => {inputAmount(product.id, amount)}}>
+								</input>
+								<button onClick={() => {minusButton(product.id)}}>
+									-
+								</button>
 							</div>
 						);
 					})}
@@ -35,29 +96,7 @@ export const Cart = (props) => {
 				<div>Cats destroyed everything, run for your life!</div>
 			)}
 		</div>)
-		}
-
-// return (
-// 			<div>
-// 				{cart && cart.length ? (
-// 					<div>
-// 						{cart.map((product) => {
-// 							index++;
-// 							return (
-// 								<div key={index} className="cartProducts">
-// 									{product.name}
-// 									<img src={product.image} />
-// 								</div>
-// 							);
-// 						})}
-
-// 					</div>
-// 				) : (
-// 					<div>Cats destroyed everything, run for your life!</div>
-// 				)}
-// 			</div>
-// )
-// }
+}
 
 const mapStateToProps = (state) => {
 	console.log(state)
