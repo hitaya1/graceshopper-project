@@ -2,6 +2,7 @@ const router = require('express').Router();
 const {
 	models: { User, ProdOrder, Order },
 } = require('../db');
+const { requireToken, requireAdmin, userIsUser } = require('./gatekeepingMiddleware');
 module.exports = router;
 
 router.get('/', async (req, res, next) => {
@@ -47,24 +48,19 @@ router.put('/:id', async (req, res, next) => {
 router.delete('/:id', async (req, res, next) => {
 	try {
 		const user = await User.findByPk(req.params.id);
-		if (user.isAdmin === true) {
 			await user.destroy();
 			res.send(user);
-		} else {
-			res.send('Nice try, maybe next time');
-		}
 	} catch (error) {
 		next(error);
 	}
 });
 
+//doesn't register order
 router.get('/:id/order', async (req, res, next) => {
 	try {
 		const orders = await Order.findAll({
-			include: {
-				where: {
-					userId: req.params.id,
-				},
+			where: {
+				userId: req.params.id,
 			},
 		});
 		res.send(orders);
@@ -74,15 +70,10 @@ router.get('/:id/order', async (req, res, next) => {
 });
 
 router.get('/:id/order/:orderId', async (req, res, next) => {
-	// console.log(req.params)
 	try {
 		const order = await Order.findByPk(req.params, {
-			include: {
-				where: {
-					userId: req.params.id,
-				},
-			},
 			where: {
+				userId: req.params.id,
 				id: req.params.orderId,
 			},
 		});
@@ -134,3 +125,5 @@ router.get('/:id/order-history/:ProdOrderId', async (req, res, next) => {
 		next(error);
 	}
 });
+
+module.exports = router;

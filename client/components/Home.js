@@ -11,12 +11,6 @@ export const Home = (props) => {
 	return (
 		<div>
 			<h3>Welcome, {username}</h3>
-			<h1>SHOP MEOW!</h1>
-			{isLoggedIn && (
-				<a href="#" onClick={handleClick}>
-					Logout
-				</a>
-			)}
 		</div>
 	);
 };

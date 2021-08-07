@@ -5,11 +5,12 @@ import { Login, Signup } from './components/AuthForm';
 import Home from './components/Home';
 import AllProducts from './components/AllProducts';
 import SingleUser from './components/SingleUser';
+import AllUsers from './components/AllUsers';
+import CreateUser from './components/CreateUser';
 import SingleProduct from './components/SingleProduct';
 import CreateProduct from './components/CreateProduct';
 import EditUser from './components/EditUser';
-//import EditProduct from './components/EditProduct';
-//import ErrorHandler from './components/ErrorHandler';
+import ErrorHandler from './components/ErrorHandler';
 import { me } from './store';
 import EditProduct from './components/EditProduct';
 import Cart from './components/Cart';
@@ -44,13 +45,20 @@ class Routes extends Component {
 				<Switch>
 					<Route exact path="/products/create" component={CreateProduct} />
 					<Route exact path="/products/edit/:productId" component={EditProduct} />
-					<Route exact path="/users/:userId" component={SingleUser} />
 					<Route exact path="/products/:productId" component={SingleProduct} />
-					{/* <Route exact path="/users/edit/:userId" component={EditUser} /> */}
 					<Route exact path="/products" component={AllProducts} />
+<<<<<<< HEAD
 					<Route path="/cart" component={Cart} />
 					<Route path="/checkout" component={Checkout} />
 					{/* <Route component={ErrorHandler} /> */}
+=======
+					<Route exact path="/users/create" component={CreateUser} />
+					<Route exact path="/users/edit/:userId" component={EditUser} />
+					<Route exact path="/users/:userId" component={SingleUser} />
+					<Route exact path="/users" component={AllUsers} />
+					<Route exact path="/cart" component={Cart} />
+					<Route exact path="/error" component={ErrorHandler} />
+>>>>>>> 9e9f127bbd11862202025a5324717bfd9845b528
 				</Switch>
 				{/* </main> */}
 			</div>

@@ -31,7 +31,7 @@ export const AddToCart = (props) => {
 			if(localCart) {
 				setCart(localCart)
 			}}, [])
-		
+
 	return (
 	<div>
 		<button
@@ -53,19 +53,46 @@ class SingleProduct extends React.Component {
 		this.props.loadOneProduct(this.props.match.params.productId);
 	}
 	render() {
-		// basic rendering for single product. just to view - sd
-		const { product, addToCart, getProducts } = this.props;
+		const { product, currentUser, addToCart, getProducts } = this.props;
+
+
+		let editButton = null;
+
+		if (currentUser.isAdmin){
+			editButton = (
+				<Link to={`/products/edit/${product.id}`}>
+					<button type="submit">Make ModifiCATion...</button>
+				</Link>
+			);
+		}
+
+
+
 		return (
 			<div>
 				<h3>{product.name}</h3>
 				<h3>{product.category}</h3>
-				<img src={'http://localhost:8080' + product.image} />
+				<div id='singlecat'>
+					<img
+						src={
+							'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScsJAUX7QSaaVUy8NMJh-HmxKHF-bmsJnLZg&usqp=CAU'
+						}
+					/>
+				</div>
 				<h3>{product.price}</h3>
 				<h3>{product.description}</h3>
-				<button type="submit">
-					<Link to={`/products/edit/${product.id}`}>Edit</Link>
+				{editButton}
+
+				<button
+					type="submit"
+					onClick={async () => {
+						await getProducts();
+						addToCart(product.id, product.name, product.image);
+					}}
+				>
+					Add to Cart
 				</button>
-				
+
 				<AddToCart product={product} addToCart={addToCart} />
 			</div>
 		);
@@ -74,6 +101,7 @@ class SingleProduct extends React.Component {
 
 const mapState = (state) => ({
 	product: state.singleProduct,
+	currentUser: state.auth,
 	products: state.products
 });
 

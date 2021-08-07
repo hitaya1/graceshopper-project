@@ -3,25 +3,50 @@ import axios from 'axios';
 //action type
 const CREATE_USER = 'CREATE_USER';
 const DELETE_USER = 'DELETE_USER';
+const GET_ALL_USERS = 'GET_ALL_USERS';
 
 //action creator
 const makeUser = (user) => ({ type: CREATE_USER, user });
 const _deleteUser = (user) => ({ type: DELETE_USER, user });
+const fetchAllUsers = (users) => ({ type: GET_ALL_USERS, users })
 
 //thunks
-export const createUser = (user) => {
+export const createUser = (adding, user, history) => {
 	return async (dispatch) => {
-		const { data: created } = await axios.post('/api/users', user);
-		dispatch(makeUser(created));
+		if (user.isAdmin){
+			const { data: created } = await axios.post('/api/users', adding);
+			dispatch(makeUser(created));
+			history.push('/users');
+		} else{
+			history.push('/error');
+			console.error('create user failed. admin required.');
+		}
 	};
 };
 
-export const deleteUser = (id) => {
+export const deleteUser = (id, user, history) => {
 	return async (dispatch) => {
-		const { data: user } = await axios.delete(`/api/users/${id}`);
-		dispatch(_deleteUser(user));
+		if (user.isAdmin || user.id === id){
+			const { data: deleted } = await axios.delete(`/api/users/${id}`);
+			dispatch(_deleteUser(deleted));
+		} else{
+			history.push('/error');
+			console.error('delete user failed. admin required.');
+		}
 	};
 };
+
+export const getAllUsers = (user, history) =>{
+	return async (dispatch) =>{
+		if (user.isAdmin){
+			const { data: users } = await axios.get(`/api/users`);
+		dispatch(fetchAllUsers(users));
+		} else{
+			history.push('/error');
+			console.error('see users failed. admin required.');
+		}
+	}
+}
 
 //initialstate
 const initialState = [];
@@ -33,6 +58,8 @@ export default function (state = initialState, action) {
 			return [...state, action.user];
 		case DELETE_USER:
 			return state.filter((user) => user.id !== action.user.id);
+		case GET_ALL_USERS:
+			return action.users;
 		default:
 			return state;
 	}

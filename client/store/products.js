@@ -34,17 +34,29 @@ export const fetchProducts = () => {
 	};
 };
 
-export const createProduct = (product, history) => {
+export const createProduct = (product, user, history) => {
 	return async (dispatch) => {
-		const { data: created } = await axios.post('/api/products', product);
-		dispatch(makeProduct(created));
-		history.push('/products');
+		if (user.isAdmin){
+			const { data: created } = await axios.post('/api/products', product);
+			dispatch(makeProduct(created));
+			history.push('/products');
+		} else{
+			history.push('/error');
+			console.error('add product failed. admin required.');
+		}
 	};
 };
-export const deleteProduct = (id) => {
+export const deleteProduct = (id, user, history) => {
 	return async (dispatch) => {
-		const { data} = await axios.delete(`/api/products/${id}`);
-		dispatch(_deleteProduct(data));
+		if (user.isAdmin){
+			const { data } = await axios.delete(`/api/products/${id}`);
+			dispatch(_deleteProduct(data));
+		} else{
+			history.push('/error');
+			console.error('delete failed. admin required.');
+		}
+
+
 	};
 };
 
