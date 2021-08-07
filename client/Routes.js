@@ -13,6 +13,7 @@ import EditUser from './components/EditUser';
 import { me } from './store';
 import EditProduct from './components/EditProduct';
 import Cart from './components/Cart';
+import Checkout from './components/Checkout'
 
 /**
  * COMPONENT
@@ -48,6 +49,7 @@ class Routes extends Component {
 					{/* <Route exact path="/users/edit/:userId" component={EditUser} /> */}
 					<Route exact path="/products" component={AllProducts} />
 					<Route path="/cart" component={Cart} />
+					<Route path="/checkout" component={Checkout} />
 					{/* <Route component={ErrorHandler} /> */}
 				</Switch>
 				{/* </main> */}
