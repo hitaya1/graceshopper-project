@@ -8,19 +8,24 @@ export class Checkout extends React.Component {
 	}
 	render() {
 		const { products } = this.props;
-		console.log(products);
-		let localCart = localStorage.getItem('cart');
-		// console.log(localCart);
-		localCart = JSON.parse(localCart);
-		// console.log(localCart);
+		let localCart = JSON.parse(localStorage.getItem('cart'));
+		let idOfCart = localCart.map((product) => {return product.id})
+		console.log('trying to grab id', idOfCart)
 		return products && products.length ? (
 			<div className="products">
 				{products.map((product) => {
-					return (
-						<div key={product.id} className="product">
-						kitty</div>
-					);
-				})}
+					console.log('inside the map', idOfCart);
+					for(let i = 0; i < idOfCart.length; i++) {
+						if(product.id === idOfCart[i]) {
+							return (<div key={product.id} className="product">
+							{product.name}
+							<div>
+								Quantity: {product.quantity}
+							</div>
+						</div>)
+						}
+					}
+		})}
 			</div>
 		) : (
 			<div>hi</div>
