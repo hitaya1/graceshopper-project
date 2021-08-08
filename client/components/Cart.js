@@ -16,7 +16,7 @@ export const Cart = (props) => {
 		let cartString = JSON.stringify(copyCart);
 		localStorage.setItem('cart', cartString);
 	};
-	console.log('CART INSIDE CART COMPONENET', cart);
+	// console.log('CART INSIDE CART COMPONENET', cart);
 
 	// const inputAmount = (productId, amount) => {
 	// 	let copyCart = [...cart];

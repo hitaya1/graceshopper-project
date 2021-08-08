@@ -34,17 +34,34 @@ export const fetchSingleProduct = (productId) => {
 
 export const editProduct = (product, user, history) => {
 	return async (dispatch) => {
-		if (user.isAdmin){
-			const { data: edited } = await axios.put(`/api/products/${product.id}`, product);
+		if (user.isAdmin) {
+			const { data: edited } = await axios.put(
+				`/api/products/${product.id}`,
+				product
+			);
 			dispatch(_editProduct(edited));
-			history.push(`/products/${product.id}`)
-		}else{
+				history.push(`/products/${product.id}`);
+		} else {
 			history.push('/error');
 			console.error('edit product failed. admin required.');
 		}
 	};
 };
 
+export const updateProduct = (product, user,) => {
+	return async (dispatch) => {
+		if (user.isAdmin) {
+			const { data: edited } = await axios.put(
+				`/api/products/${product.id}`,
+				product
+			);
+			dispatch(_editProduct(edited));
+		} else {
+			history.push('/error');
+			console.error('edit product failed. admin required.');
+		}
+	};
+};
 /**
  * REDUCER
  */
@@ -53,7 +70,7 @@ export default function (state = [], action) {
 		case SET_SINGLE_PRODUCT:
 			return action.singleProduct;
 		case EDIT_PRODUCT:
-			return action.product
+			return action.product;
 		default:
 			return state;
 	}
