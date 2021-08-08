@@ -6,12 +6,12 @@ import { fetchSingleProduct } from '../store/singleProduct';
 import { fetchProducts } from '../store/products';
 
 export const AddToCart = (props) => {
-	console.log('this is from AddToCart', props)
+	// console.log('this is from AddToCart', props)
 	const [cart, setCart] = useState([]);
 	let localCart = localStorage.getItem('cart');
 
 	const addProduct = (product) => {
-		console.log('this is inside ADDPRODUCT FUNCTION', product)
+		// console.log('this is inside ADDPRODUCT FUNCTION', product)
 			let carts = [...cart];
 			let {id} = product
 			let currProdInCart = carts.find(product => product.id === id)
@@ -83,7 +83,7 @@ class SingleProduct extends React.Component {
 				<h3>{product.description}</h3>
 				{editButton}
 
-				<button
+				{/* <button
 					type="submit"
 					onClick={async () => {
 						await getProducts();
@@ -91,7 +91,7 @@ class SingleProduct extends React.Component {
 					}}
 				>
 					Add to Cart
-				</button>
+				</button> */}
 
 				<AddToCart product={product} addToCart={addToCart} />
 			</div>
@@ -102,7 +102,7 @@ class SingleProduct extends React.Component {
 const mapState = (state) => ({
 	product: state.singleProduct,
 	currentUser: state.auth,
-	products: state.products
+	// products: state.products
 });
 
 const mapDispatch = (dispatch) => ({
