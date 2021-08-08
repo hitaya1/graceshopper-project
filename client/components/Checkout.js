@@ -13,14 +13,9 @@ export class Checkout extends React.Component {
 	componentDidMount() {
 		this.props.getProducts();
 	}
-	checkoutHandler() {
+	async checkoutHandler() {
 		let localCart = JSON.parse(localStorage.getItem('cart'));
-		// let idOfCart = localCart.map((product) => {
-		// 	return product.id;
-		// });
 		this.props.products.map((product) => {
-			//product.quantity update
-			//wheres the amount of product we got??
 			for (let i = 0; i < localCart.length; i++) {
 				if (product.id === localCart[i].id && localCart[i].quantity > 0) {
 					product.inventory -= localCart[i].quantity;
@@ -28,14 +23,15 @@ export class Checkout extends React.Component {
 				}
 			}
 		});
+		localStorage.setItem('cart', '[]');
 	}
 
 	// let cartString = JSON.stringify(newCart);
-	// localStorage.setItem('cart', cartString);
+
 	//subtract each items quantity from each items inventory
 	//history.push to a page that says everything about ur order (name,email,order)
 	render() {
-    console.log(this.props)
+		//update our orders db with status completed=false
 		const { products } = this.props;
 		const { checkoutHandler } = this;
 		let localCart = JSON.parse(localStorage.getItem('cart'));
@@ -98,8 +94,7 @@ const mapState = (state) => ({
 const mapDispatch = (dispatch) => {
 	return {
 		getProducts: () => dispatch(fetchProducts()),
-		updateProduct: (product, user) =>
-			dispatch(updateProduct(product, user)),
+		updateProduct: (product, user) => dispatch(updateProduct(product, user)),
 	};
 };
 
