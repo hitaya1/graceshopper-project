@@ -120,11 +120,12 @@ export const Cart = (props) => {
 					}, 0)}
 				</div>
 			) : (
-				<div>Cats destroyed everything, run for your life!</div>
+				<div>Your cart is empty!</div>
 			)}
-			<Link to="/checkout">
+			{cart && cart.length ? <Link to="/checkout">
 				<button>Checkout</button>
-			</Link>
+			</Link> : <div></div>}
+
 		</div>
 	);
 };

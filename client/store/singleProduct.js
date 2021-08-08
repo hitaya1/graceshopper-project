@@ -40,7 +40,7 @@ export const editProduct = (product, user, history) => {
 				product
 			);
 			dispatch(_editProduct(edited));
-				history.push(`/products/${product.id}`);
+				// history.push(`/products/${product.id}`);
 		} else {
 			history.push('/error');
 			console.error('edit product failed. admin required.');
