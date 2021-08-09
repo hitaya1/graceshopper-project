@@ -18,7 +18,7 @@ const _editUser = (user) => ({ type: EDIT_USER, user });
 export const fetchSingleUser = (userId, user, history) => {
 	return async (dispatch) => {
 		try {
-			if (user.isAdmin || user.id === id) {
+			if (user.isAdmin || parseInt(user.id) === parseInt(userId)) {
 				const response = await axios.get(`/api/users/` + userId);
 
 				dispatch(setUser(response.data));
@@ -36,7 +36,7 @@ export const fetchSingleUser = (userId, user, history) => {
 
 export const editUser = (editting, user, history) => {
 	return async (dispatch) => {
-		if (user.isAdmin) {
+		if (user.isAdmin || parseInt(user.id) === parseInt(editting.id)) {
 			const { data: edited } = await axios.put(
 				`/api/users/${editting.id}`,
 				editting

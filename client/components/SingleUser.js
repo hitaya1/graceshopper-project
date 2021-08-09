@@ -16,7 +16,7 @@ class User extends React.Component {
 
 		let editUserButton = null;
 
-		if (currentUser.isAdmin){
+		if (currentUser.isAdmin || currentUser.id === user.id){
 			editUserButton = (
 				<Link to={`/users/edit/${user.id}`}>
 					<button type="button" className='edit-button' name={user.id}>Edit Cat...</button>
