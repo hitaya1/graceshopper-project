@@ -12,24 +12,92 @@ const {
  */
 
 const users = [
-	{ username: 'cody', password: '123', shippingAddress: '456 fake st', isAdmin: true, email: 'fake1@fake.com' },
-	{ username: 'murphy', password: '123', email: 'fake2@fake.com' },
-	{ username: 'jae', password: '123', email: 'fake3@fake.com' },
-	{ username: 'steph', password: '123', email: 'fake4@fake.com' },
-	{ username: 'andrew', password: '123', email: 'fake5@fake.com' },
-	{ username: 'taya', password: '123', email: 'fake6@fake.com' },
-	{ username: 'tenzing', password: '123', email: 'fake7@fake.com' },
-	{ username: 'albina', password: '123', email: 'fake8@fake.com' },
-	{ username: 'mike', password: '123', email: 'fake9@fake.com' },
-	{ username: 'jason', password: '123', email: 'fake10@fake.com' },
-	{ username: 'sung', password: '123', email: 'fake11@fake.com' },
+	{
+		username: 'cody',
+		password: '123',
+		shippingAddress: '456 fake st',
+		isAdmin: true,
+		email: 'fake1@fake.com',
+		firstName: 'Cody',
+		lastName: 'The Pup',
+	},
+	{
+		username: 'murphy',
+		password: '123',
+		email: 'fake2@fake.com',
+		firstName: 'Murphy',
+		lastName: 'H',
+	},
+	{
+		username: 'jae',
+		password: '123',
+		email: 'fake3@fake.com',
+		firstName: 'Jae',
+		lastName: 'Jung',
+	},
+	{
+		username: 'steph',
+		password: '123',
+		email: 'fake4@fake.com',
+		firstName: 'Steph',
+		lastName: 'Durino',
+	},
+	{
+		username: 'andrew',
+		password: '123',
+		email: 'fake5@fake.com',
+		firstName: 'Andrew',
+		lastName: 'Kerr',
+	},
+	{
+		username: 'taya',
+		password: '123',
+		email: 'fake6@fake.com',
+		firstName: 'Taya',
+		lastName: 'Ugay',
+	},
+	{
+		username: 'tenzing',
+		password: '123',
+		email: 'fake7@fake.com',
+		firstName: 'Tenzing',
+		lastName: 'O',
+	},
+	{
+		username: 'albina',
+		password: '123',
+		email: 'fake8@fake.com',
+		firstName: 'Albina',
+		lastName: 'Usmanova',
+	},
+	{
+		username: 'mike',
+		password: '123',
+		email: 'fake9@fake.com',
+		firstName: 'Mike',
+		lastName: 'Alessi',
+	},
+	{
+		username: 'jason',
+		password: '123',
+		email: 'fake10@fake.com',
+		firstName: 'Jason',
+		lastName: 'N',
+	},
+	{
+		username: 'sung',
+		password: '123',
+		email: 'fake11@fake.com',
+		firstName: 'Sung',
+		lastName: 'Paik',
+	},
 ];
 
 const products = [
 	{
 		name: 'Catnip - 3oz',
 		price: 637,
-		quantity: 1000,
+		inventory: 1000,
 		category: 1,
 		description:
 			"-100% NATURAL: pure, potent, and without chemicals, pesticides or fillers\n-PREMIUM: Planted, grown, and harvested at the highest peak of season\n-SAFE: Non-toxic, healthy way to play\n\n Bat and claw at your servants' toes until they give you some today!",
@@ -37,7 +105,7 @@ const products = [
 	{
 		name: 'Cat Condo',
 		price: 2499,
-		quantity: 100,
+		inventory: 100,
 		category: 1,
 		description:
 			'COMFORTABLE & FUN\n\nThis multi-level unit is perfect for both sleep and play. Require your servants to place one in every room!',
@@ -45,7 +113,7 @@ const products = [
 	{
 		name: 'Cat Claw Clippers',
 		price: 700,
-		quantity: 1500,
+		inventory: 1500,
 		category: 3,
 		description:
 			'Tired of your servants grabbing you and ruthlessly hacking away at your extremities only to make them feel better about serving you treats afterward? Paw at your servants until they see and order you this life-altering product allowing YOU to clip your own claws! No more will your obvious power hierarchy be shamelessly disregarded.',
@@ -53,7 +121,7 @@ const products = [
 	{
 		name: 'Cat Can Opener',
 		price: 2399,
-		quantity: 500,
+		inventory: 500,
 		category: 3,
 		description:
 			'Open your cans of food by yourself and no longer be at the whims of your slothful servants. There is no need to sit at your food dish and look adorable while you wait to be fed when you can just do it yourself!',
@@ -61,7 +129,7 @@ const products = [
 	{
 		name: 'Cat Nail Polish',
 		price: 599,
-		quantity: 100,
+		inventory: 100,
 		category: 3,
 		description:
 			"Whether you're going out for a night at the club or just want to look fancy at home, this easy claw-coloring polish will make you the center of attention -- not that you need it!",
@@ -69,7 +137,7 @@ const products = [
 	{
 		name: 'Cat Hat',
 		price: 999,
-		quantity: 1000,
+		inventory: 1000,
 		category: 2,
 		description:
 			'This 100% wool cap will keep you warm during those cold winter nights patrolling your land. Show pride in your territory by donning this Cat Hat for Cats!',
@@ -77,7 +145,7 @@ const products = [
 	{
 		name: 'Cat Pen & Paper set',
 		price: 1199,
-		quantity: 200,
+		inventory: 200,
 		category: 4,
 		description:
 			'Whether you need to jot down some thoughts on what your servant has been up to for the past hour while you sat and stared or you need to catalogue a dream you just had during the 18 hours you sleep in a day, pen and paper is a must-have for any cat who fancies himself a scholar. Each set comes with a 500 page binder and 3 pens.',
@@ -85,7 +153,7 @@ const products = [
 	{
 		name: 'Cat Basketball Court',
 		price: 24999,
-		quantity: 50,
+		inventory: 50,
 		category: 5,
 		description:
 			'Tired of chasing the little baby toys your servants throw for you? Challenge them to a basketball game! Set comes with 2 hoops, a cement court, 2 side benches, and a basketball. Assembly required.',
@@ -93,7 +161,7 @@ const products = [
 	{
 		name: 'Cat All-In-One Power Tool Set',
 		price: 12599,
-		quantity: 100,
+		inventory: 100,
 		category: 5,
 		description:
 			'A compact and effective set of tools for the cat on the go. Never be caught with your tail down when at the edge of your territory and the need arises to build a wall.',
@@ -101,7 +169,7 @@ const products = [
 	{
 		name: 'Cat Scooter',
 		price: 14967,
-		quantity: 70,
+		inventory: 70,
 		category: 6,
 		description:
 			'-Innovative Power Core Technology\n-Rechargeable 12V sealed lead-acid battery provides an extended ride time of up to 80 minutes of continuous use\n-Rear-wheel drive delivers balance control and traction\n-Features a lightweight, all-steel frame and fork and flat-free, airless rear tire\n-Additional features include hand-operated, front brake and retractable kickstand',
@@ -109,7 +177,7 @@ const products = [
 	{
 		name: 'Cat Wok',
 		price: 4999,
-		quantity: 100,
+		inventory: 100,
 		category: 6,
 		description:
 			'Hand-hammered by Siamese professionals, this wok is specially balanced for meats rather than vegetables. Insulated handle will not burn when you stir fry over high heat. Blast your beef and salmon to a delicious sear while maintaining a healthy medium-rare inside.',
@@ -117,14 +185,14 @@ const products = [
 	{
 		name: 'Cat Car',
 		price: 2999598,
-		quantity: 20,
+		inventory: 20,
 		category: 7,
 		description: 'Not a clown car',
 	},
 	{
 		name: 'Adopt-a-Baby',
 		price: 89999,
-		quantity: 3,
+		inventory: 3,
 		category: 10,
 		//does anyone care if I site my source or not? Adapted from https://go-solutions.com/en-us/7-reasons-to-adopt-a-cat
 		description:

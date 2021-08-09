@@ -78,8 +78,8 @@ const mapState = (state) => ({
 	currentUser: state.auth
 });
 
-const mapDispatchToProps = (dispatch) => ({
-	createUser: (user) => dispatch(createUser(user))
+const mapDispatchToProps = (dispatch, { history }) => ({
+	createUser: (adding, user) => dispatch(createUser(adding, user, history))
 });
 
 export default connect(mapState, mapDispatchToProps)(CreateUser);

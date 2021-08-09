@@ -16,9 +16,15 @@ class Navbar extends React.Component {
 				</button>
 			);
 		}
-
+		const howManyItemsInTheCart = JSON.parse(
+			localStorage.getItem('cart')
+		).reduce((total, product) => {
+			total += product.quantity;
+			return total;
+		}, 0);
 		return (
 			<div>
+				<h1>Welcome to Catsco!</h1>
 				<nav>
 					{isLoggedIn ? (
 						<div>
@@ -37,7 +43,16 @@ class Navbar extends React.Component {
 						</div>
 					)}
 					<Link to='/products'>Products</Link>
+					<Link to='/cart'>
+						<img src='/pics/cart.png' id='catCart'></img>
+						{isLoggedIn && howManyItemsInTheCart ? (
+							<h2>You have {howManyItemsInTheCart} items in your cart</h2>
+						) : (
+							''
+						)}
+					</Link>
 				</nav>
+				<hr />
 			</div>
 		);
 	}
@@ -52,7 +67,6 @@ const mapState = (state) => {
 		currentUser: state.auth,
 	};
 };
-
 const mapDispatch = (dispatch) => {
 	return {
 		handleClick() {

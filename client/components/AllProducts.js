@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { deleteProduct, fetchProducts } from '../store/products';
-import axios from 'axios';
 
 class AllProducts extends React.Component {
 	constructor() {
@@ -40,6 +39,10 @@ class AllProducts extends React.Component {
 
 		return (
 			<div>
+				<h1>SHOP MEOW!</h1>
+				<Link to={`/products/create`}>
+						<button className="product">create product</button>
+					</Link>
 				<div>
 					{products && products.length ? (
 						<div className='products'>
@@ -50,6 +53,13 @@ class AllProducts extends React.Component {
 											<img className='product-image' src={product.image} />
 											<div>{product.name}</div>
 										</Link>
+										{/* <button type="submit" className='delete' onClick={ async () => {
+												await deleteProduct(product.id);
+												getProducts();
+											}}
+										>
+											X
+										</button> */}
 										{currentUser.isAdmin ? (
 											<button
 												type='button'
@@ -80,9 +90,9 @@ const mapState = (state) => ({
 	currentUser: state.auth,
 });
 
-const mapDispatch = (dispatch) => ({
+const mapDispatch = (dispatch, { history }) => ({
 	getProducts: () => dispatch(fetchProducts()),
-	deleteProduct: (id, user) => dispatch(deleteProduct(id, user)),
+	deleteProduct: (id, user) => dispatch(deleteProduct(id, user, history)),
 });
 
 export default connect(mapState, mapDispatch)(AllProducts);

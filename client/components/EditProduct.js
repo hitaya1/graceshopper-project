@@ -93,9 +93,9 @@ const mapStateToProps = (state) => ({
 	currentUser: state.auth
 });
 
-const mapDispatchToProps = (dispatch) => ({
-	editProduct: (product, user) => dispatch(editProduct(product, user)),
-	getProduct: (id) => dispatch(fetchSingleProduct(id)),
+const mapDispatchToProps = (dispatch, { history }) => ({
+	editProduct: (product, user) => dispatch(editProduct(product, user, history)),
+	getProduct: (id) => dispatch(fetchSingleProduct(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditProduct);

@@ -22,6 +22,14 @@ const Product = db.define('product', {
 		validate: {
 			min: 0,
 		},
+		defaultValue: 1,
+	},
+	inventory: {
+		type: Sequelize.INTEGER,
+		allowNull: false,
+		validate: {
+			min: 0,
+		},
 		defaultValue: 0,
 	},
 	category: {

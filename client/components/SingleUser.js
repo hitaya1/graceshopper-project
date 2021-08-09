@@ -8,7 +8,7 @@ import { fetchSingleUser } from '../store/singleUser';
 
 class User extends React.Component {
 	componentDidMount() {
-		this.props.getSingleUser(this.props.match.params.userId, this.props.currentUser);
+		if (this.props.currentUser) {this.props.getSingleUser(this.props.match.params.userId, this.props.currentUser);}
 	}
 
 	render() {
@@ -50,21 +50,13 @@ class User extends React.Component {
 	}
 }
 
-//Notes for later - SD
-
-// if admin can display can see "user look up/ enter id".
-// make local state in here, that says "admin looking at user". this.state.admin-something
-// going to use local state to look up the user information.
-// write to local state from store
-// admin can change state, regular user cannot and doesn't even know it's a thing.
-
 const mapState = (state) => ({
 	user: state.singleUser,
 	currentUser: state.auth
 });
-const mapDispatch = (dispatch) => {
+const mapDispatch = (dispatch, { history }) => {
 	return {
-		getSingleUser: (userId, user) => dispatch(fetchSingleUser(userId, user))
+		getSingleUser: (userId, user) => dispatch(fetchSingleUser(userId, user, history))
 	};
 };
 

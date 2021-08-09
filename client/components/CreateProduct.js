@@ -62,8 +62,8 @@ class CreateProduct extends Component {
 const mapState = (state) => ({
 	currentUser: state.auth
 });
-const mapDispatchToProps = (dispatch) => ({
-	createProduct: (product, user) => dispatch(createProduct(product, user))
+const mapDispatchToProps = (dispatch, { history }) => ({
+	createProduct: (product, user) => dispatch(createProduct(product, user, history))
 });
 
 export default connect(mapState, mapDispatchToProps)(CreateProduct);

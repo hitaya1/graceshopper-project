@@ -14,6 +14,8 @@ Order.belongsTo(User)
 Product.belongsToMany(Order, {through: ProdOrder})
 Order.belongsToMany(Product, {through: ProdOrder})
 
+// console.log(Object.keys(Order.prototype))
+
 module.exports = {
 	db,
 	models: {
