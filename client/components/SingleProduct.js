@@ -66,21 +66,28 @@ class SingleProduct extends React.Component {
 			);
 		}
 
+		let ridiculousScale = '';
+
+		if (product.category === 1) { ridiculousScale = "realistic"; }
+		else if (product.category === 2) { ridiculousScale = "silly"; }
+		else if (product.category === 3) { ridiculousScale = "nonsensical"; }
+		else if (product.category === 4) { ridiculousScale = "ridiculous"; }
+		else if (product.category === 5) { ridiculousScale = "ludicrous"; }
+
 
 
 		return (
 			<div>
-				<h3>{product.name}</h3>
-				<h3>{product.category}</h3>
+				<h2>{product.name}</h2>
+				<h5>A {ridiculousScale} product</h5>
 				<div id='singlecat'>
 					<img
-						src={
-							'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScsJAUX7QSaaVUy8NMJh-HmxKHF-bmsJnLZg&usqp=CAU'
-						}
+						// src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScsJAUX7QSaaVUy8NMJh-HmxKHF-bmsJnLZg&usqp=CAU'}
+						src={product.image}
 					/>
 				</div>
-				<h3>{product.price}</h3>
-				<h3>{product.description}</h3>
+				<h2>${product.price / 100}</h2>
+				<h4>{product.description}</h4>
 				{editButton}
 
 				{/* <button

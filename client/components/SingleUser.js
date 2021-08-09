@@ -25,6 +25,12 @@ class User extends React.Component {
 		}
 
 		let ifUser = <div>The cats are free! Run for your lives!</div>;
+		let cardStars = 'No credit card on file';
+		let fullName = user.firstName;
+		if (user.firstName) { fullName += ' '; }
+		fullName += user.lastName;
+
+		if (user.cc) { cardStars = '****-****-****-****'; }
 
 		if (user.id === currentUser.id || currentUser.isAdmin){
 			ifUser = (
@@ -33,9 +39,10 @@ class User extends React.Component {
 				<h2 className='user-name'>
 					Welcome, {user.username}! What a purrfect day!
 				</h2>
-				<h3>{user.username}</h3>
-				<h3>{user.shippingAddress || 'No shipping address on file'}</h3>
-				<h3>{user.billingAddress || 'No billing address on file'}</h3>
+				<h4>Name: {fullName || 'No name on file'}</h4>
+				<h4>Shipping Address: {user.shippingAddress || 'No shipping address on file'}</h4>
+				<h4>Billing Address: {user.billingAddress || 'No billing address on file'}</h4>
+				<h4>Credit Card: {cardStars}</h4>
 					{editUserButton}
 			</div>
 		</div>

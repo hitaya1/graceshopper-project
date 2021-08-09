@@ -5,7 +5,6 @@ import { logout } from '../store';
  * COMPONENT
  */
 export const Home = (props) => {
-	console.log(props);
 	const { username, isLoggedIn, handleClick } = props;
 
 	return (

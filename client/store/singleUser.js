@@ -58,9 +58,7 @@ export default function (state = {}, action) {
 		case SET_USER:
 			return action.user;
 		case EDIT_USER:
-			return state.map((user) =>
-				user.id === action.user.id ? action.user : user
-			);
+			return action.user;
 		default:
 			return state;
 	}
