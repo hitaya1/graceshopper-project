@@ -43,7 +43,8 @@ export class Checkout extends React.Component {
 		// console.log('trying to grab', localCart);
 		return (
 			<div>
-				<UserCheckout />
+				{currentUser && currentUser.id ? <UserCheckout /> : null}
+
 				<div>
 					{products && products.length ? (
 						<div>
@@ -76,7 +77,10 @@ export class Checkout extends React.Component {
 									</button>
 								</Link>
 							) : (
-								<div><br/>Please log in in order to check out!</div>
+								<div>
+									<br />
+									Please log in in order to check out!
+								</div>
 							)}
 						</div>
 					) : (
