@@ -39,6 +39,10 @@ class AllProducts extends React.Component {
 
 		return (
 			<div>
+				<h1>SHOP MEOW!</h1>
+				<Link to={`/products/create`}>
+						<button className="product">create product</button>
+					</Link>
 				<div>
 					{products && products.length ? (
 						<div className='products'>
@@ -49,6 +53,13 @@ class AllProducts extends React.Component {
 											<img className="product-image" src={product.image || 'https://apluspetsitting.com/wp-content/uploads/2016/03/cats-150x150.jpg'} />
 											<div>{product.name}</div>
 										</Link>
+										{/* <button type="submit" className='delete' onClick={ async () => {
+												await deleteProduct(product.id);
+												getProducts();
+											}}
+										>
+											X
+										</button> */}
 										{currentUser.isAdmin ? (
 											<button type="button" className="delete-button" name={product.id} onClick={this.clickDelete}>Remove from CATalogue</button>
 										) :

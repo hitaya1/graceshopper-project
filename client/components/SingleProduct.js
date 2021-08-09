@@ -1,9 +1,51 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { addToCart } from '../store/cart';
 import { fetchSingleProduct } from '../store/singleProduct';
 import { fetchProducts } from '../store/products';
-import { addToCart } from '../store/cart';
+
+export const AddToCart = (props) => {
+	// console.log('this is from AddToCart', props)
+	const [cart, setCart] = useState([]);
+	let localCart = localStorage.getItem('cart');
+
+	const addProduct = (product) => {
+		// console.log('this is inside ADDPRODUCT FUNCTION', product)
+			let carts = [...cart];
+			let {id} = product
+			let currProdInCart = carts.find(product => product.id === id)
+			if (currProdInCart) {
+				currProdInCart.quantity++
+			} else {
+				carts.push(product)
+			}
+
+			setCart(carts)
+			let stringCart = JSON.stringify(carts);
+			localStorage.setItem('cart', stringCart)
+		}
+
+	useEffect (() => {
+		localCart = JSON.parse(localCart);
+			if(localCart) {
+				setCart(localCart)
+			}}, [])
+
+	return (
+	<div>
+		<button
+					type="submit"
+					onClick={() => {
+						addProduct(props.product);
+					}}
+				>
+					Add to Cart
+				</button>
+	</div>
+	)
+	}
+
 
 class SingleProduct extends React.Component {
 	componentDidMount() {
@@ -41,7 +83,7 @@ class SingleProduct extends React.Component {
 				<h3>{product.description}</h3>
 				{editButton}
 
-				<button
+				{/* <button
 					type="submit"
 					onClick={async () => {
 						await getProducts();
@@ -49,7 +91,9 @@ class SingleProduct extends React.Component {
 					}}
 				>
 					Add to Cart
-				</button>
+				</button> */}
+
+				<AddToCart product={product} addToCart={addToCart} />
 			</div>
 		);
 	}
@@ -58,13 +102,13 @@ class SingleProduct extends React.Component {
 const mapState = (state) => ({
 	product: state.singleProduct,
 	currentUser: state.auth,
-	products: state.products
+	// products: state.products
 });
 
 const mapDispatch = (dispatch) => ({
 	loadOneProduct: (id) => dispatch(fetchSingleProduct(id)),
-	addToCart: (id, name, image) => dispatch(addToCart(id, name, image)),
-	getProducts: () => dispatch(fetchProducts())
+	addToCart: (id, name, image, quantity) => dispatch(addToCart(id, name, image, quantity)),
+	getProducts: () => dispatch(fetchProducts()),
 });
 
 export default connect(mapState, mapDispatch)(SingleProduct);

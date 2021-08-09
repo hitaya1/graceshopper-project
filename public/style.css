@@ -35,9 +35,9 @@ a {
 	font-size: 16px;
 }
 
-/* label {
+label {
 	display: block;
-} */
+}
 
 /*nav bar*/
 nav {
@@ -76,7 +76,7 @@ div form {
 	flex-wrap: wrap;
 	background-color: red;
 	align-items: center;
-	
+
 	 */
 	/* margin: 20px;
 	display: inline-grid;
@@ -86,7 +86,7 @@ div form {
 	grid-auto-rows: minmax(100px, auto);
 	grid-gap: 50px;
 	grid-template: repeat(4, 1fr);
-	
+
 	margin-top: 90px;
 	margin-left: auto;
 	margin-right: auto;
