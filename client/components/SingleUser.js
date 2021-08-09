@@ -30,7 +30,7 @@ class User extends React.Component {
 		if (user.firstName) { fullName += ' '; }
 		fullName += user.lastName;
 
-		if (user.cc) { cardStars = '****-****-****-****'; }
+		if (user.cc) { cardStars = '**** - **** - **** - ****'; }
 
 		if (user.id === currentUser.id || currentUser.isAdmin){
 			ifUser = (

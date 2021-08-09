@@ -41,6 +41,7 @@ class AllUsers extends React.Component {
 			<div>
 				<h1>SHOP MEOW!</h1>
 				<div>
+				{createUserButton}
 					{allUsers && allUsers.length ? (
 						<div>
 							{allUsers.map((element) => {
@@ -58,7 +59,6 @@ class AllUsers extends React.Component {
 						<div>Cats destroyed everything, run for your life!</div>
 					)}
 				</div>
-				{createUserButton}
 			</div>
 		);
 	}
