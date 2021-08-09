@@ -80,7 +80,6 @@ export const Cart = (props) => {
 								<h2>{product.name}</h2>
 								<img src={product.image} />
 								<h3>Price: ${product.price /100}</h3>
-								<h3>Item Total: ${(product.quantity * product.price) /100}</h3>
 								<div>Quantity:
 								<button
 									onClick={() => {
@@ -109,7 +108,9 @@ export const Cart = (props) => {
 									}}
 								>
 									remove
-								</button></div>
+								</button>
+								<h3>Item Total: ${(product.quantity * product.price) /100}</h3>
+								</div>
 							</div>
 						);
 					})}
