@@ -57,7 +57,7 @@ export const updateProduct = (product, user,) => {
 			);
 			dispatch(_editProduct(edited));
 		} else {
-			history.push('/error');
+			// history.push('/error');
 			console.error('edit product failed. admin required.');
 		}
 	};

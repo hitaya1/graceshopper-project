@@ -31,8 +31,9 @@ export class Checkout extends React.Component {
 	//subtract each items quantity from each items inventory
 	//history.push to a page that says everything about ur order (name,email,order)
 	render() {
+		console.log(this.props);
 		//update our orders db with status completed=false
-		const { products } = this.props;
+		const { products, currentUser } = this.props;
 		const { checkoutHandler } = this;
 		let localCart = JSON.parse(localStorage.getItem('cart'));
 		let idOfCart = localCart.map((product) => {
@@ -67,11 +68,16 @@ export class Checkout extends React.Component {
 									return total;
 								}, 0)}
 							</div>
-							<Link to="/placeOrder">
-								<button type="submit" onClick={() => checkoutHandler()}>
-									Place Order
-								</button>
-							</Link>
+
+							{currentUser && currentUser.id ? (
+								<Link to="/placeOrder">
+									<button type="submit" onClick={() => checkoutHandler()}>
+										Place Order
+									</button>
+								</Link>
+							) : (
+								<div><br/>Please log in in order to check out!</div>
+							)}
 						</div>
 					) : (
 						<div>Oops! You haven`t added anything to the cart yet!</div>
