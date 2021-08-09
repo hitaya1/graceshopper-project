@@ -11,20 +11,19 @@ class Navbar extends React.Component {
 
 		if (currentUser.isAdmin) {
 			allUsersButton = (
-				<button type='submit'>
+				<button type='submit' id='all-users'>
 					<Link to={`/users`}>All Users</Link>
 				</button>
 			);
 		}
-		const howManyItemsInTheCart = JSON.parse(
-			localStorage.getItem('cart')
-		).reduce((total, product) => {
-			total += product.quantity;
-			return total;
-		}, 0);
+		// const howManyItemsInTheCart = JSON.parse(
+		// 	localStorage.getItem('cart')
+		// ).reduce((total, product) => {
+		// 	total += product.quantity;
+		// 	return total;
+		// }, 0);
 		return (
 			<div>
-				<h1>Welcome to Catsco!</h1>
 				<nav>
 					{isLoggedIn ? (
 						<div>
@@ -44,15 +43,14 @@ class Navbar extends React.Component {
 					)}
 					<Link to='/products'>Products</Link>
 					<Link to='/cart'>
-						<img src='/pics/cart.png' id='catCart'></img>
-						{isLoggedIn && howManyItemsInTheCart ? (
+						<img src='/pics/catcart.png' id='catCart'></img>
+						{/* {isLoggedIn && howManyItemsInTheCart ? (
 							<h2>You have {howManyItemsInTheCart} items in your cart</h2>
 						) : (
 							''
-						)}
+						)} */}
 					</Link>
 				</nav>
-				<hr />
 			</div>
 		);
 	}

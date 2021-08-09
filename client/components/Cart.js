@@ -71,46 +71,52 @@ export const Cart = (props) => {
 	return (
 		<div>
 			{cart && cart.length ? (
-				<div>
+				<div className='cartProducts'>
 					{cart.map((product) => {
 						// console.log(product);
 						index++;
 						return (
-							<div key={index} className="cartProducts">
-								{product.name}
-								<img src={product.image} />
-								Price: {product.price}
-								Total: {product.quantity * product.price}
-								Quantity:
-								<button
-									onClick={() => {
-										minusButton(product.id);
-									}}
-								>
-									-
-								</button>
-								{/* <input
+							<tbody>
+								{' '}
+								<div key={index}>
+									<td className='prodImage'>
+										<img src={product.image} />
+									</td>
+									<td className='prodName'>{product.name}</td>
+									<td className='prodPrice'>Price: {product.price}</td>
+									<td className='prodTotal'>
+										Total: {product.quantity * product.price}
+									</td>
+									<td className='prodQuant'>
+										Quantity:
+										<button
+											onClick={() => {
+												minusButton(product.id);
+											}}>
+											-
+										</button>
+										{/* <input
 									type="number"
 									onClick={() => {
 										inputAmount(product.id, product.amount);
 									}}
 								></input> */}
-								{product.quantity}
-								<button
-									onClick={() => {
-										plusButton(product.id);
-									}}
-								>
-									+
-								</button>
-								<button
-									onClick={() => {
-										removeFromCart(product.id);
-									}}
-								>
-									remove
-								</button>
-							</div>
+										{product.quantity}
+										<button
+											onClick={() => {
+												plusButton(product.id);
+											}}>
+											+
+										</button>
+										<button
+											onClick={() => {
+												removeFromCart(product.id);
+											}}>
+											remove
+										</button>
+									</td>
+								</div>
+							</tbody>
 						);
 					})}
 					Cart Total:
@@ -122,10 +128,13 @@ export const Cart = (props) => {
 			) : (
 				<div>Your cart is empty!</div>
 			)}
-			{cart && cart.length ? <Link to="/checkout">
-				<button>Checkout</button>
-			</Link> : <div></div>}
-
+			{cart && cart.length ? (
+				<Link to='/checkout'>
+					<button id='check-out'>Checkout</button>
+				</Link>
+			) : (
+				<div></div>
+			)}
 		</div>
 	);
 };

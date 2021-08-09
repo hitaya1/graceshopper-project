@@ -1,11 +1,10 @@
 body {
-	font-family: sans-serif;
+	font-family: Comfortaa, Tahoma;
 	box-sizing: border-box;
 	border: 10px solid rgb(221, 193, 152);
 	min-width: 500px;
-	height: 115vh;
+	height: 135vh;
 	overflow-y: auto;
-	/*overflow: scroll;*/
 	background-image: url('https://ih1.redbubble.net/image.778228192.6145/st,small,845x845-pad,1000x1000,f8f8f8.u1.jpg');
 	background-color: rgba(250, 250, 250, 0.945);
 	background-repeat: no-repeat;
@@ -26,6 +25,18 @@ header .banner img {
 	height: 150px;
 }
 
+h3 {
+	text-align: center;
+	font-size: x-large;
+}
+
+/*all users page*/
+.users {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
 /*all text*/
 a {
 	display: flex;
@@ -37,10 +48,6 @@ a {
 	height: 20px;
 	padding: 10px;
 	font-size: 16px;
-}
-
-label {
-	display: block;
 }
 
 /*nav bar*/
@@ -63,10 +70,16 @@ nav a:hover {
 }
 
 /*trying to move username and password*/
-div form {
-	float: right;
+form {
 	background-color: #ddd;
 	color: black;
+}
+
+form,
+label {
+	display: inline-flex;
+	flex-direction: row;
+	justify-content: space-between;
 }
 
 /*all products*/
@@ -88,31 +101,55 @@ div form {
 	font-family: fantasy;
 }
 
-a:link {
-	object-fit: scale-down;
-}
-
 .product-image {
 	/* display: flex;
 	justify-content: space-between;
 	align-items: center; */
 
 	/* object-position: 150px 80px; */
-	width: 120px;
-	height: 120px;
+	width: 50px;
+	height: 50px;
 }
 
 /*buttons*/
-button[type='submit'] {
+button[id='log-in'] {
 	border-radius: 15px;
-	width: 20px;
+	width: 45px;
 	height: 15px;
 	font-size: 10px;
-	background-image: url('https://i.etsystatic.com/16699183/c/478/380/118/151/il/4295cb/2121621744/il_75x75.2121621744_ay2d.jpg');
+	background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBe3sAtDvb2OH_wXbXJYVlheNrgEA8AEFtGw&usqp=CAU');
 }
-/* div {
-	display: block;
+
+button[id='all-users'] {
+	background-color: #333;
+	color: #f2f2f2;
+}
+
+/* button[className='delete-bitton'] {
+	width: 45px;
+	height: 15px;
 } */
+
+#catCart {
+	width: 40px;
+	height: 30px;
+}
+
+/*cart*/
+
+.cartProducts {
+	border-bottom: 1px solid #d8d8d8;
+	display: grid;
+	grid-template: 1fr auto auto auto;
+	padding: 20px 0;
+}
+
+/*error handler*/
+
+div #error img {
+	width: 500px;
+	height: 315px;
+}
 
 /* Designing for scroll-bar */
 ::-webkit-scrollbar {

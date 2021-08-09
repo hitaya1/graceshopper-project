@@ -39,10 +39,9 @@ class AllProducts extends React.Component {
 
 		return (
 			<div>
-				<h1>SHOP MEOW!</h1>
 				<Link to={`/products/create`}>
-						<button className="product">create product</button>
-					</Link>
+					<button className='product'>create product</button>
+				</Link>
 				<div>
 					{products && products.length ? (
 						<div className='products'>

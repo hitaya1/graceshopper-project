@@ -4,25 +4,25 @@ import { Link } from 'react-router-dom';
 import { deleteUser, getAllUsers } from '../store/allUsers';
 
 class AllUsers extends React.Component {
-  constructor(){
-    super();
-    this.clickDelete = this.clickDelete.bind(this);
-  }
+	constructor() {
+		super();
+		this.clickDelete = this.clickDelete.bind(this);
+	}
 	componentDidMount() {
 		this.props.getUsers(this.props.currentUser);
 	}
 
 	async clickDelete(event) {
-    await this.props.deleteUser(event.target.name, this.props.currentUser);
-    this.props.getUsers(this.props.currentUser);
-  }
+		await this.props.deleteUser(event.target.name, this.props.currentUser);
+		this.props.getUsers(this.props.currentUser);
+	}
 
 	render() {
 		const { allUsers, currentUser } = this.props;
 
 		let createUserButton = null;
 
-		if (currentUser.isAdmin){
+		if (currentUser.isAdmin) {
 			// deleteUserButton = (
 			// 	<button type="submit" onClick={ async () => {
 			// 		await deleteUser(element.id);
@@ -32,7 +32,7 @@ class AllUsers extends React.Component {
 
 			createUserButton = (
 				<Link to={`/users/create`}>
-					<button>Add More Cats...</button>
+					<button id='create'>Add More Cats...</button>
 				</Link>
 			);
 		}
@@ -42,14 +42,20 @@ class AllUsers extends React.Component {
 				<h1>SHOP MEOW!</h1>
 				<div>
 					{allUsers && allUsers.length ? (
-						<div>
+						<div className='users'>
 							{allUsers.map((element) => {
 								return (
-									<div key={element.id} className="users">
+									<div key={element.id}>
 										<Link to={`/users/${element.id}`}>
 											<p>{element.username}</p>
 										</Link>
-										<button type="button" className="delete-button" name={element.id} onClick={this.clickDelete}>Curtail Cat</button>
+										<button
+											type='button'
+											className='delete-button'
+											name={element.id}
+											onClick={this.clickDelete}>
+											Curtail Cat
+										</button>
 									</div>
 								);
 							})}
@@ -66,7 +72,7 @@ class AllUsers extends React.Component {
 
 const mapState = (state) => ({
 	allUsers: state.allUsers,
-	currentUser: state.auth
+	currentUser: state.auth,
 });
 
 const mapDispatch = (dispatch, { history }) => ({
