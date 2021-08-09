@@ -5,25 +5,25 @@ import { deleteProduct, fetchProducts } from '../store/products';
 import axios from 'axios';
 
 class AllProducts extends React.Component {
-  constructor(){
-    super();
-    this.clickDelete = this.clickDelete.bind(this);
-  }
+	constructor() {
+		super();
+		this.clickDelete = this.clickDelete.bind(this);
+	}
 	componentDidMount() {
 		this.props.getProducts();
 	}
 
 	async clickDelete(event) {
-    await this.props.deleteProduct(event.target.name, this.props.currentUser);
-    this.props.getProducts();
-  }
+		await this.props.deleteProduct(event.target.name, this.props.currentUser);
+		this.props.getProducts();
+	}
 
 	render() {
 		const { products, currentUser } = this.props;
 
 		let createButton = null;
 
-		if (currentUser.isAdmin){
+		if (currentUser.isAdmin) {
 			// deleteButton = (
 			// 	<button type="submit" onClick={ async () => {
 			// 		await deleteProduct(product.id);
@@ -45,18 +45,22 @@ class AllProducts extends React.Component {
 						<div className='products'>
 							{products.map((product) => {
 								return (
-									<div key={product.id} className='product'>
+									<div key={product.id} id='product'>
 										<Link to={`/products/${product.id}`}>
-											<img className="product-image" src={product.image || 'https://apluspetsitting.com/wp-content/uploads/2016/03/cats-150x150.jpg'} />
+											<img className='product-image' src={product.image} />
 											<div>{product.name}</div>
 										</Link>
 										{currentUser.isAdmin ? (
-											<button type="button" className="delete-button" name={product.id} onClick={this.clickDelete}>Remove from CATalogue</button>
-										) :
-										(
+											<button
+												type='button'
+												className='delete-button'
+												name={product.id}
+												onClick={this.clickDelete}>
+												Remove from CATalogue
+											</button>
+										) : (
 											<p></p>
 										)}
-
 									</div>
 								);
 							})}
@@ -73,7 +77,7 @@ class AllProducts extends React.Component {
 
 const mapState = (state) => ({
 	products: state.products,
-	currentUser: state.auth
+	currentUser: state.auth,
 });
 
 const mapDispatch = (dispatch) => ({

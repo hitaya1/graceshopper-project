@@ -5,7 +5,11 @@ body {
 	min-width: 500px;
 	height: 115vh;
 	overflow-y: auto;
+	/*overflow: scroll;*/
 	background-image: url('https://ih1.redbubble.net/image.778228192.6145/st,small,845x845-pad,1000x1000,f8f8f8.u1.jpg');
+	background-color: rgba(250, 250, 250, 0.945);
+	background-repeat: no-repeat;
+	background-position: center;
 }
 
 header {
@@ -71,30 +75,9 @@ div form {
 	flex-wrap: wrap;
 	justify-content: space-around;
 	height: 584px;
-	/* display: flex;
-	justify-content: space-around;
-	flex-wrap: wrap;
-	background-color: red;
-	align-items: center;
-	
-	 */
-	/* margin: 20px;
-	display: inline-grid;
-	justify-content: space-between;
-	grid-auto-columns: auto auto auto auto;
-	grid-auto-flow: dense;
-	grid-auto-rows: minmax(100px, auto);
-	grid-gap: 50px;
-	grid-template: repeat(4, 1fr);
-	
-	margin-top: 90px;
-	margin-left: auto;
-	margin-right: auto;
-	padding: 20px;
-	 */
 }
 
-.product {
+#product {
 	background-image: url('https://apluspetsitting.com/wp-content/uploads/2016/03/cats-150x150.jpg');
 	height: 150px;
 	width: 150px;
@@ -105,12 +88,18 @@ div form {
 	font-family: fantasy;
 }
 
-img {
+a:link {
+	object-fit: scale-down;
+}
+
+.product-image {
 	/* display: flex;
 	justify-content: space-between;
 	align-items: center; */
-	width: 50px;
-	height: 50px;
+
+	/* object-position: 150px 80px; */
+	width: 120px;
+	height: 120px;
 }
 
 /*buttons*/
@@ -145,4 +134,10 @@ button[type='submit'] {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
 	background: #555;
+}
+
+.scrolldown {
+	width: 400px;
+	table-layout: fixed;
+	border-collapse: collapse;
 }
