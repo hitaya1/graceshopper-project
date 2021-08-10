@@ -42,12 +42,12 @@ export class Checkout extends React.Component {
 		// console.log(localCart);
 		// console.log('trying to grab', localCart);
 		return (
-			<div>
+			<div id='user-checkout'>
 				{currentUser && currentUser.id ? <UserCheckout /> : null}
 
 				<div>
 					{products && products.length ? (
-						<div>
+						<div className='user-checkout'>
 							{products.map((product) => {
 								for (let i = 0; i < idOfCart.length; i++) {
 									if (product.id === idOfCart[i]) {
@@ -71,8 +71,8 @@ export class Checkout extends React.Component {
 							</div>
 
 							{currentUser && currentUser.id ? (
-								<Link to="/placeOrder">
-									<button type="submit" onClick={() => checkoutHandler()}>
+								<Link to='/placeOrder'>
+									<button type='submit' onClick={() => checkoutHandler()}>
 										Place Order
 									</button>
 								</Link>
