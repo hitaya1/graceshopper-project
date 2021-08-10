@@ -40,7 +40,7 @@ class AllProducts extends React.Component {
       const response = await axios.get(`/api/products`);
       this.setState({ totalProducts: response.data.length })
     } catch (e) {
-      console.error('Danger! Danger! Inoperable request detected! Self-destruct initiated!');
+      console.error('get product total failed');
       console.error(e);
     }
   }
@@ -55,8 +55,8 @@ practicalityOrder(){
 	const reoRay = [];
 	const theseProducts = this.props.products;
 
-	if (this.state.arrange !== 'practicality descending'){
-		this.setState({ arrange: 'practicality descending' });
+	if (this.state.arrange !== 'Practicality (descending)'){
+		this.setState({ arrange: 'Practicality (descending)' });
 		for (let i = 1; i < 6; i++){
 			for (let j = 0; j < theseProducts.length; j++){
 				if (theseProducts[j].category === i){ reoRay.push(theseProducts[j]); }
@@ -64,7 +64,7 @@ practicalityOrder(){
 		}
 	}
 	else {
-		this.setState({ arrange: 'practicality ascending' });
+		this.setState({ arrange: 'Practicality (ascending)' });
 		for (let i = 5; i > 0; i--){
 			for (let j = 0; j < theseProducts.length; j++){
 				if (theseProducts[j].category === i){ reoRay.push(theseProducts[j]); }
@@ -85,11 +85,11 @@ priceOrder(){
 	let nextDue = -1;
 	const theseProducts = this.props.products;
 
-	if (this.state.arrange !== 'price ascending'){
-		this.setState({ arrange: 'price ascending' });
+	if (this.state.arrange !== 'Price (descending)'){
+		this.setState({ arrange: 'Price (descending)' });
 	}
 	else {
-		this.setState({ arrange: 'price descending' });
+		this.setState({ arrange: 'Price (ascending)' });
 	}
 
 	for (let i = 0; i < theseProducts.length; i++){
@@ -97,7 +97,7 @@ priceOrder(){
 		priceRayCopy.push(theseProducts[i].price);
 	}
 	for (let i = 0; i < priceRay.length; i++){
-		if (this.state.arrange === 'price descending') { nextDue = Math.min(...priceRayCopy); }
+		if (this.state.arrange === 'Price (descending)') { nextDue = Math.min(...priceRayCopy); }
 		else { nextDue = Math.max(...priceRayCopy); }
 
 		minDex = priceRay.indexOf(nextDue);
@@ -239,7 +239,7 @@ updateActiveFilters(){
 						<button type="button" className="arrange-button" onClick={this.priceOrder}>Price</button>
 					</div>
 					<div className="filter">
-
+					<h2>Sorted by: {this.state.arrange}</h2>
 					<form id="filter-practicality-form">
 						<label htmlFor="Practicality">Practicality:</label>
 						<select name="Practicality" onChange={this.handlePracticalityChange}>
