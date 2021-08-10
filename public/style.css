@@ -24,15 +24,15 @@ header .banner img {
 
 /*all text*/
 a {
-  display: flex;
-  text-decoration: none;
-  border-radius: 25px;
-  margin: 5px;
-  align-items: center;
-  color: #ffce8d;
-  height: 20px;
-  padding: 10px;
-  font-size: 16px;
+	display: flex;
+	text-decoration: none;
+	border-radius: 25px;
+	margin: 5px;
+	align-items: center;
+	color: #ffce8d;
+	height: 20px;
+	padding: 10px;
+	font-size: 16px;
 }
 
 label {
@@ -46,12 +46,12 @@ nav {
   border-radius: 15px;
 }
 nav a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 10px 12px;
-  text-decoration: none;
+	float: left;
+	display: block;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 10px 12px;
+	text-decoration: none;
 }
 nav a:hover {
   background-color: #ddd;
@@ -144,5 +144,5 @@ button[type="submit"] {
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+	background: #555;
 }

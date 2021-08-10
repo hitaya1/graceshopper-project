@@ -7,16 +7,17 @@ const ADD_TO_CART = 'ADD_TO_CART';
 
 const initialState = {
 	products: [],
-	cart: [{ name: 'banana', id: '111', image: '/pics/download.png' }],
+	cart: [{ name: 'banana', id: '111', image: '/pics/download.png', quantity: 0}],
 	currItem: null,
 };
 
-export const addToCart = (id, name, image) => {
+export const addToCart = (id, name, image, quantity) => {
 	return {
 		type: ADD_TO_CART,
 		id,
 		name,
 		image,
+		quantity
 	};
 };
 
@@ -59,7 +60,7 @@ const cartReducer = (state = initialState, action) => {
 							item.id === action.id
 								? {
 										...item,
-										qty: item.qty + 1,
+										quantity: item.quantity + 1,
 										name: action.name,
 										image: action.image,
 								  }
@@ -67,7 +68,7 @@ const cartReducer = (state = initialState, action) => {
 					  )
 					: [
 							...state.cart,
-							{ ...item, qty: 1, name: action.name, image: action.image },
+							{ ...item, quantity: 1, name: action.name, image: action.image },
 					  ],
 			};
 		}

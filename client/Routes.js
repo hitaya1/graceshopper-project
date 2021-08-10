@@ -10,11 +10,11 @@ import CreateUser from './components/CreateUser';
 import SingleProduct from './components/SingleProduct';
 import CreateProduct from './components/CreateProduct';
 import EditUser from './components/EditUser';
-//import EditProduct from './components/EditProduct';
-//import ErrorHandler from './components/ErrorHandler';
+import ErrorHandler from './components/ErrorHandler';
 import { me } from './store';
 import EditProduct from './components/EditProduct';
 import Cart from './components/Cart';
+import Checkout from './components/Checkout'
 
 /**
  * COMPONENT
@@ -47,11 +47,15 @@ class Routes extends Component {
 					<Route exact path="/products/edit/:productId" component={EditProduct} />
 					<Route exact path="/products/:productId" component={SingleProduct} />
 					<Route exact path="/products" component={AllProducts} />
+					<Route path="/cart" component={Cart} />
+					<Route path="/checkout" component={Checkout} />
+					{/* <Route component={ErrorHandler} /> */}
 					<Route exact path="/users/create" component={CreateUser} />
 					<Route exact path="/users/edit/:userId" component={EditUser} />
 					<Route exact path="/users/:userId" component={SingleUser} />
 					<Route exact path="/users" component={AllUsers} />
-					{/* <Route component={ErrorHandler} /> */}
+					<Route exact path="/cart" component={Cart} />
+					<Route exact path="/error" component={ErrorHandler} />
 				</Switch>
 				{/* </main> */}
 			</div>
