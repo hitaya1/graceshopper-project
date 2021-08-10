@@ -6,6 +6,7 @@ import axios from 'axios';
 const SET_PRODUCTS = 'SET_PRODUCTS';
 const DELETE_PRODUCT = 'DELETE_PRODUCT';
 const CREATE_PRODUCT = 'CREATE_PRODUCT';
+const ORGANIZE_PRODUCTS = 'ORGANIZE_PRODUCTS';
 
 /**
  * ACTION CREATORS
@@ -13,6 +14,7 @@ const CREATE_PRODUCT = 'CREATE_PRODUCT';
 const setProducts = (products) => ({ type: SET_PRODUCTS, products });
 const makeProduct = (product) => ({ type: CREATE_PRODUCT, product });
 const _deleteProduct = (product) => ({ type: DELETE_PRODUCT, product });
+const organizeProducts = (products) => ({ type: ORGANIZE_PRODUCTS, products });
 
 /**
  * THUNK CREATORS
@@ -55,11 +57,19 @@ export const deleteProduct = (id, user, history) => {
 			history.push('/error');
 			console.error('delete failed. admin required.');
 		}
-
-
 	};
 };
 
+export const rearrangeProducts = (products) => {
+  return (dispatch) => {
+    try {
+      dispatch(organizeProducts(products));
+    } catch (e) {
+      console.error('rearrange failed');
+      console.error(e);
+    }
+  };
+};
 /**
  * REDUCER
  */
@@ -69,6 +79,8 @@ export default function (state = [], action) {
 			return action.products;
 		case CREATE_PRODUCT:
 			return [...state, action.product];
+		case ORGANIZE_PRODUCTS:
+			return action.products;
 		case DELETE_PRODUCT:
 			return state.filter(
 				(product) => product.productId !== action.product.productId

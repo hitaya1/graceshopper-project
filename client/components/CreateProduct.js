@@ -8,10 +8,10 @@ class CreateProduct extends Component {
 		this.state = {
 			name: '',
 			price: 0,
-      image: '',
-      quantity: 0,
-      category: '1',
-      description: ''
+			image: '',
+			quantity: 0,
+			category: '1',
+			description: '',
 		};
 
 		this.handleChange = this.handleChange.bind(this);
@@ -34,36 +34,37 @@ class CreateProduct extends Component {
 		const { handleSubmit, handleChange } = this;
 
 		return (
-			<form id="product-form" onSubmit={handleSubmit}>
-				<label htmlFor="name">Product:</label>
-				<input name="name" onChange={handleChange} value={name} />
+			<form id='product-form' onSubmit={handleSubmit}>
+				<label htmlFor='name'>Product:</label>
+				<input name='name' onChange={handleChange} value={name} />
 
-				<label htmlFor="price"> Price:</label>
-				<input name="price" onChange={handleChange} value={price} />
+				<label htmlFor='price'> Price:</label>
+				<input name='price' onChange={handleChange} value={price} />
 
-				<label htmlFor="image"> Image:</label>
-				<input name="image" onChange={handleChange} value={image} />
+				<label htmlFor='image'> Image:</label>
+				<input name='image' onChange={handleChange} value={image} />
 
-        <label htmlFor="quantity"> Quantity:</label>
-				<input name="quantity" onChange={handleChange} value={quantity} />
+				<label htmlFor='quantity'> Quantity:</label>
+				<input name='quantity' onChange={handleChange} value={quantity} />
 
-        <label htmlFor="category"> Category:</label>
-				<input name="category" onChange={handleChange} value={category} />
+				<label htmlFor='category'> Category:</label>
+				<input name='category' onChange={handleChange} value={category} />
 
-        <label htmlFor="description"> Description:</label>
-				<input name="description" onChange={handleChange} value={description} />
+				<label htmlFor='description'> Description:</label>
+				<input name='description' onChange={handleChange} value={description} />
 
-				<button type="submit">Submit</button>
+				<button type='submit'>Submit</button>
 			</form>
 		);
 	}
 }
 
 const mapState = (state) => ({
-	currentUser: state.auth
+	currentUser: state.auth,
 });
 const mapDispatchToProps = (dispatch, { history }) => ({
-	createProduct: (product, user) => dispatch(createProduct(product, user, history))
+	createProduct: (product, user) =>
+		dispatch(createProduct(product, user, history)),
 });
 
 export default connect(mapState, mapDispatchToProps)(CreateProduct);

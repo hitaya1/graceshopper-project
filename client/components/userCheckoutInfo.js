@@ -11,7 +11,7 @@ export class UserCheckout extends React.Component {
 			billingAddress: this.props.currentUser.billingAddress || '',
 			cardholdersName:
 				this.props.currentUser.firstName + ' ' + this.props.currentUser.lastName ||
-				'',
+				' ',
 		};
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);

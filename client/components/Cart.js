@@ -71,61 +71,67 @@ export const Cart = (props) => {
 	return (
 		<div>
 			{cart && cart.length ? (
-				<div>
+				<div className='cartProducts'>
 					{cart.map((product) => {
 						// console.log(product);
 						index++;
 						return (
-							<div key={index} className="cartProducts">
-								{product.name}
+							<div key={index} className='cartProducts'>
+								<h2>{product.name}</h2>
 								<img src={product.image} />
-								Price: {product.price}
-								Total: {product.quantity * product.price}
-								Quantity:
-								<button
-									onClick={() => {
-										minusButton(product.id);
-									}}
-								>
-									-
-								</button>
-								{/* <input
+								<h3>Price: ${product.price / 100}</h3>
+								<div>
+									Quantity:
+									<button
+										onClick={() => {
+											minusButton(product.id);
+										}}>
+										-
+									</button>
+									{/* <input
 									type="number"
 									onClick={() => {
 										inputAmount(product.id, product.amount);
 									}}
 								></input> */}
-								{product.quantity}
-								<button
-									onClick={() => {
-										plusButton(product.id);
-									}}
-								>
-									+
-								</button>
-								<button
-									onClick={() => {
-										removeFromCart(product.id);
-									}}
-								>
-									remove
-								</button>
+									{product.quantity}
+									<button
+										onClick={() => {
+											plusButton(product.id);
+										}}>
+										+
+									</button>
+									<button
+										onClick={() => {
+											removeFromCart(product.id);
+										}}>
+										remove
+									</button>
+									<h3>
+										Item Total: ${(product.quantity * product.price) / 100}
+									</h3>
+								</div>
 							</div>
 						);
 					})}
-					Cart Total:
-					{cart.reduce((total, curr) => {
-						total += curr.price * curr.quantity;
-						return total;
-					}, 0)}
+					<h1>
+						Cart Total: $
+						{cart.reduce((total, curr) => {
+							total += curr.price * curr.quantity;
+							return total;
+						}, 0) / 100}
+					</h1>
 				</div>
 			) : (
 				<div>Your cart is empty!</div>
 			)}
-			{cart && cart.length ? <Link to="/checkout">
-				<button>Checkout</button>
-			</Link> : <div></div>}
-
+			{cart && cart.length ? (
+				<Link to='/checkout'>
+					<button id='check-out'>Checkout</button>
+				</Link>
+			) : (
+				<div></div>
+			)}
 		</div>
 	);
 };

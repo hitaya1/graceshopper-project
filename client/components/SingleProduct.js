@@ -108,8 +108,7 @@ class SingleProduct extends React.Component {
 
 const mapState = (state) => ({
 	product: state.singleProduct,
-	currentUser: state.auth,
-	// products: state.products
+	currentUser: state.auth
 });
 
 const mapDispatch = (dispatch) => ({
