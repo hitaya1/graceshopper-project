@@ -42,7 +42,7 @@ const Product = db.define('product', {
 	},
 	description: {
 		type: Sequelize.TEXT,
-		defaultValue: 'No description? Cat got your tongue?',
+		defaultValue: 'No description? Perhaps cat got your tongue?',
 	},
 });
 

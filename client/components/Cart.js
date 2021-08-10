@@ -77,11 +77,10 @@ export const Cart = (props) => {
 						index++;
 						return (
 							<div key={index} className="cartProducts">
-								{product.name}
+								<h2>{product.name}</h2>
 								<img src={product.image} />
-								Price: {product.price}
-								Total: {product.quantity * product.price}
-								Quantity:
+								<h3>Price: ${product.price /100}</h3>
+								<div>Quantity:
 								<button
 									onClick={() => {
 										minusButton(product.id);
@@ -110,14 +109,16 @@ export const Cart = (props) => {
 								>
 									remove
 								</button>
+								<h3>Item Total: ${(product.quantity * product.price) /100}</h3>
+								</div>
 							</div>
 						);
 					})}
-					Cart Total:
+					<h1>Cart Total: $
 					{cart.reduce((total, curr) => {
 						total += curr.price * curr.quantity;
 						return total;
-					}, 0)}
+					}, 0) /100}</h1>
 				</div>
 			) : (
 				<div>Your cart is empty!</div>
