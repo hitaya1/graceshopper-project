@@ -31,7 +31,7 @@ class CreateUser extends Component {
 		const username = evt.target.username.value;
 		const password = evt.target.password.value;
 		try {
-			await dispatch(authenticate(username, password));
+			//await dispatch(authenticate(username, password));
 			this.props.createUser({ ...this.state }, this.props.currentUser);
 		} catch (e) {
 			console.error('improper input');
@@ -51,7 +51,7 @@ class CreateUser extends Component {
 		const { handleSubmit, handleChange } = this;
 
 		return (
-			<form id='create-user-form' onSubmit={handleSubmit}>
+			<form className='user-form' id='create-user-form' onSubmit={handleSubmit}>
 				<label htmlFor='username'>Username:</label>
 				<input name='username' onChange={handleChange} value={username} />
 

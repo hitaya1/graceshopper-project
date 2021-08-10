@@ -7,6 +7,8 @@ class EditUser extends Component {
 		super(props);
 		this.state = {
 			id: this.props.user.id,
+			firstName: this.props.user.firstName || '',
+			lastName: this.props.user.lastName || '',
       username: this.props.user.username || '',
 			email: this.props.user.email || '',
       password: this.props.user.password || '',
@@ -56,11 +58,32 @@ class EditUser extends Component {
 	}
 
 	render() {
-		const { username, email, password, cc, shippingAddress, billingAddress, isAdmin } = this.state;
+		const { firstName, lastName, username, email, password, cc, shippingAddress, billingAddress, isAdmin } = this.state;
 		const { handleSubmit, handleChange } = this;
+
+		let adminSelect = null;
+
+		if (this.props.currentUser.isAdmin){
+			adminSelect = (
+				<div>
+					<label htmlFor="isAdmin">isAdmin:</label>
+					<select name="isAdmin" onChange={handleChange}>
+						<option value={false}>False</option>
+						<option value={true}>True</option>
+					</select>
+				</div>
+			);
+		}
+
 		return (
 			<div className="editUser">
 				<form id="edit-user-form" onSubmit={handleSubmit}>
+        <label htmlFor="firstName">First Name:</label>
+				<input name="firstName" onChange={handleChange} value={firstName} />
+
+        <label htmlFor="lastName">Last Name:</label>
+				<input name="lastName" onChange={handleChange} value={lastName} />
+
         <label htmlFor="username">Username:</label>
 				<input name="username" onChange={handleChange} value={username} />
 
@@ -79,11 +102,7 @@ class EditUser extends Component {
         <label htmlFor="billingAddress"> Billing Address:</label>
 				<input name="billingAddress" onChange={handleChange} value={billingAddress} />
 
-        <label htmlFor="isAdmin">isAdmin:</label>
-        <select name="isAdmin" onChange={handleChange}>
-          <option value={false}>False</option>
-          <option value={true}>True</option>
-        </select>
+        {adminSelect}
 
 					<button type="submit">Submit</button>
 				</form>

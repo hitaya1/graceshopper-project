@@ -37,12 +37,12 @@ const Product = db.define('product', {
 		allowNull: false,
 		validate: {
 			min: 1,
-			max: 10,
+			max: 5
 		},
 	},
 	description: {
 		type: Sequelize.TEXT,
-		defaultValue: 'Looks like the description is missing!',
+		defaultValue: 'No description? Perhaps cat got your tongue?',
 	},
 });
 

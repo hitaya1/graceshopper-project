@@ -76,54 +76,51 @@ export const Cart = (props) => {
 						// console.log(product);
 						index++;
 						return (
-							<tbody>
-								{' '}
-								<div key={index}>
-									<td className='prodImage'>
-										<img src={product.image} />
-									</td>
-									<td className='prodName'>{product.name}</td>
-									<td className='prodPrice'>Price: {product.price}</td>
-									<td className='prodTotal'>
-										Total: {product.quantity * product.price}
-									</td>
-									<td className='prodQuant'>
-										Quantity:
-										<button
-											onClick={() => {
-												minusButton(product.id);
-											}}>
-											-
-										</button>
-										{/* <input
+							<div key={index} className='cartProducts'>
+								<h2>{product.name}</h2>
+								<img src={product.image} />
+								<h3>Price: ${product.price / 100}</h3>
+								<div>
+									Quantity:
+									<button
+										onClick={() => {
+											minusButton(product.id);
+										}}>
+										-
+									</button>
+									{/* <input
 									type="number"
 									onClick={() => {
 										inputAmount(product.id, product.amount);
 									}}
 								></input> */}
-										{product.quantity}
-										<button
-											onClick={() => {
-												plusButton(product.id);
-											}}>
-											+
-										</button>
-										<button
-											onClick={() => {
-												removeFromCart(product.id);
-											}}>
-											remove
-										</button>
-									</td>
+									{product.quantity}
+									<button
+										onClick={() => {
+											plusButton(product.id);
+										}}>
+										+
+									</button>
+									<button
+										onClick={() => {
+											removeFromCart(product.id);
+										}}>
+										remove
+									</button>
+									<h3>
+										Item Total: ${(product.quantity * product.price) / 100}
+									</h3>
 								</div>
-							</tbody>
+							</div>
 						);
 					})}
-					Cart Total:
-					{cart.reduce((total, curr) => {
-						total += curr.price * curr.quantity;
-						return total;
-					}, 0)}
+					<h1>
+						Cart Total: $
+						{cart.reduce((total, curr) => {
+							total += curr.price * curr.quantity;
+							return total;
+						}, 0) / 100}
+					</h1>
 				</div>
 			) : (
 				<div>Your cart is empty!</div>

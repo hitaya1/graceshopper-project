@@ -34,9 +34,9 @@ const User = db.define('user', {
 	},
 	cc: {
 		type: Sequelize.INTEGER,
-		validate: {
-			isCreditCard: true,
-		},
+		// validate: {
+		// 	isCreditCard: true,
+		// },
 	},
 	shippingAddress: {
 		type: Sequelize.STRING,
