@@ -50,11 +50,16 @@ export const editProduct = (product, user, history) => {
 
 export const updateProduct = (product) => {
 	return async (dispatch) => {
-		const { data: edited } = await axios.put(
-			`/api/products/${product.id}`,
-			product
-		);
-		dispatch(_editProduct(edited));
+		if (user.isAdmin) {
+			const { data: edited } = await axios.put(
+				`/api/products/${product.id}`,
+				product
+			);
+			dispatch(_editProduct(edited));
+		} else {
+			// history.push('/error');
+			console.error('edit product failed. admin required.');
+		}
 	};
 };
 /**
