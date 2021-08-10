@@ -32,3 +32,11 @@ router.get('/me', async (req, res, next) => {
 		next(ex);
 	}
 });
+
+router.get('/seedProducts', async (req, res, next) => {
+	try {
+		res.send(await User.findByToken(req.headers.authorization));
+	} catch (ex) {
+		next(ex);
+	}
+});

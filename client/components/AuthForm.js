@@ -92,7 +92,7 @@ const mapDispatch = dispatch => {
         window.alert('Paws a moment to fill out all fields');
         allowDispatch = false;
       }
-      if (allowDispatch) { dispatch(authenticate(username, password, email, formName)); }
+      if (allowDispatch){ dispatch(authenticate(username, password, email, formName)); }
     }
   }
 }
