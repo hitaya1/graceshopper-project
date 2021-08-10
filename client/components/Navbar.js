@@ -11,7 +11,7 @@ class Navbar extends React.Component {
 
 		if (currentUser.isAdmin) {
 			allUsersButton = (
-				<button type="submit">
+				<button type='submit' id='all-users'>
 					<Link to={`/users`}>All Users</Link>
 				</button>
 			);
@@ -24,13 +24,12 @@ class Navbar extends React.Component {
 		// }, 0);
 		return (
 			<div>
-				<h1>Welcome to Catsco!</h1>
 				<nav>
 					{isLoggedIn ? (
 						<div>
 							{/* The navbar will show these links after you log in */}
-							<Link to="/home">Home</Link>
-							<a href="#" onClick={handleClick}>
+							<Link to='/home'>Home</Link>
+							<a href='#' onClick={handleClick}>
 								Logout
 							</a>
 							{allUsersButton}
@@ -38,19 +37,18 @@ class Navbar extends React.Component {
 					) : (
 						<div>
 							{/* The navbar will show these links before you log in */}
-							<Link to="/login">Login</Link>
-							<Link to="/signup">Sign Up</Link>
+							<Link to='/login'>Login</Link>
+							<Link to='/signup'>Sign Up</Link>
 						</div>
 					)}
-					<Link to="/products">Products</Link>
-					<Link to="/cart">
-						<img src="/pics/cart.png" id="catCart"></img>
+					<Link to='/products'>Products</Link>
+					<Link to='/cart'>
+						<img src='/pics/cart.png' id='catCart'></img>
 						{/* {isLoggedIn && howManyItemsInTheCart  ?(
 							<h2>You have {howManyItemsInTheCart} items in your cart</h2>
 						) : ''} */}
 					</Link>
 				</nav>
-				<hr />
 			</div>
 		);
 	}
