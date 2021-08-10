@@ -32,7 +32,7 @@ class AllProducts extends React.Component {
 
 			createButton = (
 				<Link to={`/products/create`}>
-					<button>Add to CATalogue</button>
+					<button className="product">Add to CATalogue</button>
 				</Link>
 			);
 		}
@@ -40,9 +40,7 @@ class AllProducts extends React.Component {
 		return (
 			<div>
 				<h1>SHOP MEOW!</h1>
-				<Link to={`/products/create`}>
-						<button className="product">create product</button>
-					</Link>
+				{createButton}
 				<div>
 					{products && products.length ? (
 						<div className='products'>
@@ -75,7 +73,6 @@ class AllProducts extends React.Component {
 						<div>Cats destroyed everything, run for your life!</div>
 					)}
 				</div>
-				{createButton}
 			</div>
 		);
 	}

@@ -58,6 +58,21 @@ class EditUser extends Component {
 	render() {
 		const { username, email, password, cc, shippingAddress, billingAddress, isAdmin } = this.state;
 		const { handleSubmit, handleChange } = this;
+
+		let adminSelect = null;
+
+		if (this.props.currentUser.isAdmin){
+			adminSelect = (
+				<div>
+					<label htmlFor="isAdmin">isAdmin:</label>
+					<select name="isAdmin" onChange={handleChange}>
+						<option value={false}>False</option>
+						<option value={true}>True</option>
+					</select>
+				</div>
+			);
+		}
+
 		return (
 			<div className="editUser">
 				<form id="edit-user-form" onSubmit={handleSubmit}>
@@ -79,11 +94,7 @@ class EditUser extends Component {
         <label htmlFor="billingAddress"> Billing Address:</label>
 				<input name="billingAddress" onChange={handleChange} value={billingAddress} />
 
-        <label htmlFor="isAdmin">isAdmin:</label>
-        <select name="isAdmin" onChange={handleChange}>
-          <option value={false}>False</option>
-          <option value={true}>True</option>
-        </select>
+        {adminSelect}
 
 					<button type="submit">Submit</button>
 				</form>
