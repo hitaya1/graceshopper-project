@@ -2,8 +2,9 @@ body {
 	font-family: Comfortaa, Tahoma;
 	box-sizing: border-box;
 	border: 10px solid rgb(221, 193, 152);
-	min-width: 500px;
-	height: 135vh;
+	height: 145vh;
+	margin: 0;
+	padding: 0;
 	overflow-y: auto;
 	background-image: url('https://ih1.redbubble.net/image.778228192.6145/st,small,845x845-pad,1000x1000,f8f8f8.u1.jpg');
 	background-color: rgba(250, 250, 250, 0.945);
@@ -32,21 +33,23 @@ h3 {
 
 /*all users page*/
 .users {
+	border-radius: 15px;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-around;
+	height: 584px;
 }
 
 /*all text*/
 a {
-	display: flex;
 	text-decoration: none;
+	display: table-cell;
+	font-weight: bold;
 	border-radius: 25px;
-	margin: 5px;
-	align-items: center;
+	margin: 15px;
 	color: #ffce8d;
 	height: 20px;
-	padding: 10px;
+	padding: 5px;
 	font-size: 16px;
 }
 
@@ -69,21 +72,37 @@ nav a:hover {
 	color: black;
 }
 
-/*trying to move username and password*/
+/*username and password*/
 form {
-	background-color: #ddd;
+	background-color: rgb(221, 221, 221, 0.3);
 	color: black;
 }
 
 form,
 label {
-	display: inline-flex;
-	flex-direction: row;
-	justify-content: space-between;
+	text-align: center;
+	font-weight: bold;
+}
+
+/* create new user (admin)*/
+#create-user-form {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	align-content: center;
+}
+
+/*create new product (admin)*/
+#product-form {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	align-content: center;
 }
 
 /*all products*/
 .products {
+	border-radius: 15px;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-around;
@@ -91,33 +110,27 @@ label {
 }
 
 #product {
-	background-image: url('https://apluspetsitting.com/wp-content/uploads/2016/03/cats-150x150.jpg');
+	border-radius: 15px;
 	height: 150px;
 	width: 150px;
-	border: 3px solid #8db7ff;
-	margin: 8px;
-	color: black;
-	font-size: 20px;
-	font-family: fantasy;
+	border: 1px solid #333;
+	margin: 10px;
 }
 
-.product-image {
-	/* display: flex;
-	justify-content: space-between;
-	align-items: center; */
-
-	/* object-position: 150px 80px; */
-	width: 50px;
-	height: 50px;
+#product .product-image {
+	border-radius: 15px;
+	display: flex;
+	margin-inline: auto;
+	width: 100px;
+	height: 100px;
 }
 
 /*buttons*/
 button[id='log-in'] {
 	border-radius: 15px;
-	width: 45px;
+	width: 60px;
 	height: 15px;
 	font-size: 10px;
-	background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBe3sAtDvb2OH_wXbXJYVlheNrgEA8AEFtGw&usqp=CAU');
 }
 
 button[id='all-users'] {
@@ -125,10 +138,19 @@ button[id='all-users'] {
 	color: #f2f2f2;
 }
 
-/* button[className='delete-bitton'] {
-	width: 45px;
-	height: 15px;
-} */
+button[id='delete-button'] {
+	border-radius: 15px;
+	align-self: flex-end;
+	width: 75px;
+	height: 20px;
+	font-size: 10px;
+}
+
+button[id='create-button'] {
+	display: flex;
+	align-items: flex-end;
+	border-radius: 15px;
+}
 
 #catCart {
 	width: 40px;
@@ -178,3 +200,5 @@ div #error img {
 	table-layout: fixed;
 	border-collapse: collapse;
 }
+
+/*https://apluspetsitting.com/wp-content/uploads/2016/03/cats-150x150.jpg*/

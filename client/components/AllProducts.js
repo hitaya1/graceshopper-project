@@ -32,7 +32,7 @@ class AllProducts extends React.Component {
 
 			createButton = (
 				<Link to={`/products/create`}>
-					<button>Add to CATalogue</button>
+					<button id='create-button'>Add to CATalogue</button>
 				</Link>
 			);
 		}
@@ -48,9 +48,9 @@ class AllProducts extends React.Component {
 							{products.map((product) => {
 								return (
 									<div key={product.id} id='product'>
+										<img className='product-image' src={product.image} />
 										<Link to={`/products/${product.id}`}>
-											<img className='product-image' src={product.image} />
-											<div>{product.name}</div>
+											<div id='productName'>{product.name}</div>
 										</Link>
 										{/* <button type="submit" className='delete' onClick={ async () => {
 												await deleteProduct(product.id);
@@ -60,13 +60,16 @@ class AllProducts extends React.Component {
 											X
 										</button> */}
 										{currentUser.isAdmin ? (
-											<button
-												type='button'
-												className='delete-button'
-												name={product.id}
-												onClick={this.clickDelete}>
-												Remove from CATalogue
-											</button>
+											<div>
+												{' '}
+												<button
+													type='submit'
+													id='delete-button'
+													name={product.id}
+													onClick={this.clickDelete}>
+													Remove
+												</button>
+											</div>
 										) : (
 											<p></p>
 										)}
