@@ -86,20 +86,18 @@ const mapDispatch = (dispatch) => {
 
 			let allowDispatch = true;
 
-			if (!username || !password) {
-				window.alert('Paws a moment to fill out all fields');
-				allowDispatch = false;
-			}
-			if (formName === 'signup' && !email) {
-				window.alert('Paws a moment to fill out all fields');
-				allowDispatch = false;
-			}
-			if (allowDispatch) {
-				dispatch(authenticate(username, password, email, formName));
-			}
-		},
-	};
-};
+      if(!username || !password){
+        window.alert('Paws a moment to fill out all fields');
+        allowDispatch = false;
+      }
+      if(formName === 'signup' && !email){
+        window.alert('Paws a moment to fill out all fields');
+        allowDispatch = false;
+      }
+      if (allowDispatch){ dispatch(authenticate(username, password, email, formName)); }
+    }
+  }
+}
 
 export const Login = connect(mapLogin, mapDispatch)(AuthForm);
 export const Signup = connect(mapSignup, mapDispatch)(AuthForm);
