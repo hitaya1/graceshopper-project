@@ -24,7 +24,6 @@ export const me = () => async dispatch => {
         authorization: token
       }
     })
-		localStorage.setItem('cart', '[]');
     if (res.data.firstName === 'Wilson'){
         const allProds = [{
           name: 'Catnip - 3oz',
@@ -159,17 +158,15 @@ export const me = () => async dispatch => {
         const randoSeed = [];
         for (let i = 0; i < Math.ceil((Math.random() * 10)); i++){
           const product = allProds[Math.floor((Math.random() * 13))];
-          let {id} = product;
-          let currProdInCart = allProds.find(product => product.id === id)
+          let prodName = product.name;
+          let currProdInCart = randoSeed.find(product => product.name === prodName)
           if (currProdInCart) {
             currProdInCart.quantity++;
           } else {
             randoSeed.push(product);
           }
-          console.log(randoSeed)
         }
-        //let stringCart = JSON.stringify(randoSeed);
-        let stringCart = JSON.stringify(allProds);
+        let stringCart = JSON.stringify(randoSeed);
         localStorage.setItem('cart', stringCart)
     }
 
@@ -191,6 +188,7 @@ export const authenticate = (username, password, email, method) => async dispatc
 
 export const logout = () => {
   window.localStorage.removeItem(TOKEN)
+  localStorage.setItem('cart', '[]');
   history.push('/login')
   return {
     type: SET_AUTH,
