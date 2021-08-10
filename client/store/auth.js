@@ -33,6 +33,7 @@ export const authenticate = (username, password, email, method) => async dispatc
     const res = await axios.post(`/auth/${method}`, {username, password, email})
     window.localStorage.setItem(TOKEN, res.data.token)
     dispatch(me())
+    window.location.assign("/home");
   } catch (authError) {
     return dispatch(setAuth({error: authError}))
   }

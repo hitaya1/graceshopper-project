@@ -48,7 +48,7 @@ export const editProduct = (product, user, history) => {
 	};
 };
 
-export const updateProduct = (product, user,) => {
+export const updateProduct = (product) => {
 	return async (dispatch) => {
 		if (user.isAdmin) {
 			const { data: edited } = await axios.put(
