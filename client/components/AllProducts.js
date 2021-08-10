@@ -132,22 +132,15 @@ class AllProducts extends React.Component {
 		const currentFilters = this.state.filter;
 		this.setState({ practicalityFilter: event.target.value }, () => {
 			if (
-				this.state.practicalityFilter > 0 &&
-				this.state.practicalityFilter <= 5
-			) {
+				this.state.practicalityFilter > 0 && this.state.practicalityFilter <= 5 ) {
 				if (!currentFilters.includes('Practicality')) {
 					this.setState({ filter: [...currentFilters, 'Practicality'] }, () =>
 						this.updateActiveFilters()
 					);
 				}
 			} else {
-				this.setState(
-					{
-						filter: currentFilters.filter(
-							(element) => element !== 'Practicality'
-						),
-					},
-					() => this.updateActiveFilters()
+				this.setState({ filter: currentFilters.filter((element) => element !== 'Practicality'), }, () =>
+					this.updateActiveFilters()
 				);
 			}
 		});
@@ -227,12 +220,12 @@ class AllProducts extends React.Component {
 		}
 		if (this.state.priceFilterMin > 0) {
 			mutaRay = mutaRay.filter(
-				(element) => element.price >= this.state.priceFilterMin
+				(element) => (element.price / 100) >= this.state.priceFilterMin
 			);
 		}
 		if (this.state.priceFilterMax > 0) {
 			mutaRay = mutaRay.filter(
-				(element) => element.price <= this.state.priceFilterMax
+				(element) => (element.price / 100) <= this.state.priceFilterMax
 			);
 		}
 
