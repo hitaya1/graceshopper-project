@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import cartReducer from '../store/cart';
+import cartReducer, { getCart, updateCart, removeFromCart, cartCheckout } from '../store/cart';
 
 export const Cart = (props) => {
-	// console.log('this is inside CART COMPONENET', props);
 	let [cart, setCart] = useState([]);
 	let localCart = localStorage.getItem('cart');
+	console.log('this is FUNCTIONAL COMPONENT CART', props)
 
 	const removeFromCart = (productId) => {
 		let copyCart = [...cart];
@@ -16,23 +16,6 @@ export const Cart = (props) => {
 		let cartString = JSON.stringify(copyCart);
 		localStorage.setItem('cart', cartString);
 	};
-	// console.log('CART INSIDE CART COMPONENET', cart);
-
-	// const inputAmount = (productId, amount) => {
-	// 	let copyCart = [...cart];
-	// 	let exisitingProd = copyCart.find((product) => product.id === productId);
-	// 	if (!exisitingProd) return;
-	// 	if(!amount) return;
-	// 	exisitingProd.quantity += amount;
-
-	// 	if (exisitingProd.quantity <= 0) {
-	// 		copyCart = copyCart.filter((product) => product.id !== productId);
-	// 	}
-
-	// 	setCart(copyCart);
-	// 	let cartString = JSON.stringify(copyCart);
-	// 	localStorage.setItem('cart', cartString);
-	// };
 
 	const plusButton = (productId) => {
 		let copyCart = [...cart];
@@ -66,6 +49,7 @@ export const Cart = (props) => {
 			setCart(localCart);
 		}
 	}, []);
+	console.log('FROM MAPSTATE IN CART COMPONENt', props.state)
 
 	let index = 0;
 	return (
@@ -73,7 +57,6 @@ export const Cart = (props) => {
 			{cart && cart.length ? (
 				<div>
 					{cart.map((product) => {
-						// console.log(product);
 						index++;
 						return (
 							<div key={index} className="cartProducts">
@@ -89,12 +72,6 @@ export const Cart = (props) => {
 								>
 									-
 								</button>
-								{/* <input
-									type="number"
-									onClick={() => {
-										inputAmount(product.id, product.amount);
-									}}
-								></input> */}
 								{product.quantity}
 								<button
 									onClick={() => {
@@ -130,10 +107,60 @@ export const Cart = (props) => {
 	);
 };
 
-const mapStateToProps = (state) => {
+class Carts extends React.Component {
+	constructor(props) {
+		super(props)
+		// this.handleClick = this.handleAdd.bind(this)
+	}
+	componentDidMount() 
+	{
+		console.log('THIS IS CARTS', this.props)
+		this.props.getCart(this.props.match.params.userId)
+	}
+
+	// handleAdd() {
+	// 	this.props.
+	// }
+
+
+	render() {
+		console.log('CART INSIDE CART RENDER', this.props)
+		const {cart} = this.props;
+		let index = 0;
+		if(cart.cart && cart.cart.length === 0) {
+			return <div>Your Cart Is Empty</div>
+		}
+		if(cart.cart && cart.cart.length > 0) {
+			return(
+				<div>
+					{cart.cart.map((product) => {
+						index++;
+						return (
+							<div key={index} className="cartProducts">
+								{product.name}
+								<img src={product.image} />
+								Price: {product.price}
+								Total: {product.quantity * product.price}
+							</div>)})}
+				</div>
+			)
+		}
+		return <div>Your Cart Is Empty</div>
+	}
+}
+
+const mapState = (state) => {
 	return {
-		cart: state.cart.cart,
+		cart: state.cartReducer,
 		products: state.products,
 	};
 };
-export default connect(mapStateToProps)(Cart);
+
+const mapDispatch = (dispatch) => ({
+	getCart: (id) => dispatch(getCart(id)),
+	updateCart: (userId, productId, quantity) => dispatch(updateCart(userId, productId, quantity)),
+	removeFromCart: (userId, productId) => dispatch(removeFromCart(userId, productId)),
+	cartCheckout: (userId, orderId) => dispatch(cartCheckout(userId, orderId))
+})
+
+export default connect(mapState, mapDispatch)(Carts);

@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const {
-	models: { User, ProdOrder, Order },
+	models: { User, ProdOrder, Order, Product },
 } = require('../db');
 const { requireToken, requireAdmin, userIsUser } = require('./gatekeepingMiddleware');
 
@@ -55,47 +55,49 @@ router.delete('/:id', async (req, res, next) => {
 });
 
 //doesn't register order
-router.get('/:id/order', async (req, res, next) => {
+router.get('/:id/cart', async (req, res, next) => {
 	try {
-		const orders = await Order.findAll({
+		const cart = await Order.findOne({
 			where: {
 				userId: req.params.id,
+				isCompleted: false
 			},
+			include: {
+				model: ProdOrder,
+				include: [Product]
+			}
 		});
-		res.send(orders);
+		res.send(cart);
 	} catch (error) {
 		next(error);
 	}
 });
 
-router.get('/:id/order/:orderId', async (req, res, next) => {
+router.post('/:id/cart', async (req, res, next) => {
 	try {
-		const order = await Order.findByPk(req.params, {
-			where: {
-				userId: req.params.id,
-				id: req.params.orderId,
-			},
-		});
-		res.send(order);
+		console.log('THIS IS REQ.BODY FROM API', req.body)
+		const product = await Product.findByPk(req.body.productId)
+		res.send(product)
 	} catch (error) {
-		next(error);
+		next(error)
 	}
-});
+})
 
-//NEED TO REVIEW THIS LOGIC IN THE CODE
+// router.delete('/:id/cart', userIsUser, async (req, res, next) => {
+// 	try {
+// 	} catch (error) {
+// 		next(error)
+// 	}
+// })
+
+
 router.get('/:id/order-history', async (req, res, next) => {
 	try {
-		const orderHistory = await ProdOrder.findAll({
-			// include: {
-			//   where: {
-			//     orderId: {
-			//       userId: req.params.id
-			//       }
-			//     }
-			//   }
+		const orderHistory = await Order.findAll({
 			where: {
-				orderId: req.params.id,
-			},
+				userId: req.params.id,
+				isCompleted: true
+			}
 		});
 		res.send(orderHistory);
 	} catch (error) {
@@ -103,26 +105,47 @@ router.get('/:id/order-history', async (req, res, next) => {
 	}
 });
 
-router.get('/:id/order-history/:ProdOrderId', async (req, res, next) => {
-	try {
-		const orderHistory = await ProdOrder.findOne({
-			// include: {
-			//   where: {
-			//     orderId: {
-			//       userId: req.params.id
-			//       },
-			//       id: req.params.ProdOrderId
-			//     }
-			//   },
-			where: {
-				orderId: req.params.id,
-				productId: req.params.ProdOrderId,
-			},
-		});
-		res.send(orderHistory);
-	} catch (error) {
-		next(error);
-	}
-});
+// //NEED TO REVIEW THIS LOGIC IN THE CODE
+// router.get('/:id/order-history', async (req, res, next) => {
+// 	try {
+// 		const orderHistory = await ProdOrder.findAll({
+// 			// include: {
+// 			//   where: {
+// 			//     orderId: {
+// 			//       userId: req.params.id
+// 			//       }
+// 			//     }
+// 			//   }
+// 			where: {
+// 				orderId: req.params.id,
+// 			},
+// 		});
+// 		res.send(orderHistory);
+// 	} catch (error) {
+// 		next(error);
+// 	}
+// });
+
+// router.get('/:id/order-history/:ProdOrderId', async (req, res, next) => {
+// 	try {
+// 		const orderHistory = await ProductOrder.findOne({
+// 			// include: {
+// 			//   where: {
+// 			//     orderId: {
+// 			//       userId: req.params.id
+// 			//       },
+// 			//       id: req.params.ProdOrderId
+// 			//     }
+// 			//   },
+// 			where: {
+// 				orderId: req.params.id,
+// 				productId: req.params.ProdOrderId,
+// 			},
+// 		});
+// 		res.send(orderHistory);
+// 	} catch (error) {
+// 		next(error);
+// 	}
+// });
 
 module.exports = router;

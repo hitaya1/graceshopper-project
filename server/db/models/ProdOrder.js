@@ -7,12 +7,9 @@ const ProdOrder = db.define('ProdOrder', {
 		defaultValue: 0,
 		allowNull: false,
 	},
-	price: {
+	totalPrice: {
 		type: Sequelize.INTEGER,
 		allowNull: false,
-		validate: {
-			min: 0
-		}
 	}
 });
 

@@ -13,6 +13,7 @@ export class Checkout extends React.Component {
 	componentDidMount() {
 		this.props.getProducts();
 	}
+	
 	async checkoutHandler() {
 		let localCart = JSON.parse(localStorage.getItem('cart'));
 		this.props.products.map((product) => {
@@ -26,9 +27,6 @@ export class Checkout extends React.Component {
 		localStorage.setItem('cart', '[]');
 	}
 
-	// let cartString = JSON.stringify(newCart);
-
-	//subtract each items quantity from each items inventory
 	//history.push to a page that says everything about ur order (name,email,order)
 	render() {
 		//update our orders db with status completed=false
@@ -38,8 +36,6 @@ export class Checkout extends React.Component {
 		let idOfCart = localCart.map((product) => {
 			return product.id;
 		});
-		// console.log(localCart);
-		// console.log('trying to grab', localCart);
 		return (
 			<div>
 				<UserCheckout />

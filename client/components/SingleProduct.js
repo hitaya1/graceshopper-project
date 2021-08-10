@@ -6,21 +6,20 @@ import { fetchSingleProduct } from '../store/singleProduct';
 import { fetchProducts } from '../store/products';
 
 export const AddToCart = (props) => {
-	// console.log('this is from AddToCart', props)
 	const [cart, setCart] = useState([]);
 	let localCart = localStorage.getItem('cart');
-
+	let isLoggedIn = props.isLoggedIn
+console.log('props from SINGLEPRODUCT INSIDE HOOK', props)
 	const addProduct = (product) => {
-		// console.log('this is inside ADDPRODUCT FUNCTION', product)
 			let carts = [...cart];
 			let {id} = product
 			let currProdInCart = carts.find(product => product.id === id)
+
 			if (currProdInCart) {
 				currProdInCart.quantity++
 			} else {
 				carts.push(product)
 			}
-
 			setCart(carts)
 			let stringCart = JSON.stringify(carts);
 			localStorage.setItem('cart', stringCart)
@@ -53,7 +52,8 @@ class SingleProduct extends React.Component {
 		this.props.loadOneProduct(this.props.match.params.productId);
 	}
 	render() {
-		const { product, currentUser, addToCart, getProducts } = this.props;
+		const { product, currentUser, addToCart, isLoggedIn } = this.props;
+		console.log(this.props)
 
 
 		let editButton = null;
@@ -65,8 +65,6 @@ class SingleProduct extends React.Component {
 				</Link>
 			);
 		}
-
-
 
 		return (
 			<div>
@@ -83,17 +81,18 @@ class SingleProduct extends React.Component {
 				<h3>{product.description}</h3>
 				{editButton}
 
-				{/* <button
+				<div>
+		<button
 					type="submit"
-					onClick={async () => {
-						await getProducts();
-						addToCart(product.id, product.name, product.image);
+					onClick={() => {
+						addToCart(currentUser.id, product.id);
 					}}
 				>
 					Add to Cart
-				</button> */}
+				</button>
+	</div>
 
-				<AddToCart product={product} addToCart={addToCart} />
+				{/* <AddToCart state = {this.state} product={product} addToCart={addToCart} isLoggedIn={isLoggedIn} /> */}
 			</div>
 		);
 	}
@@ -102,12 +101,13 @@ class SingleProduct extends React.Component {
 const mapState = (state) => ({
 	product: state.singleProduct,
 	currentUser: state.auth,
+	isLoggedIn: !!state.auth.id
 	// products: state.products
 });
 
 const mapDispatch = (dispatch) => ({
 	loadOneProduct: (id) => dispatch(fetchSingleProduct(id)),
-	addToCart: (id, name, image, quantity) => dispatch(addToCart(id, name, image, quantity)),
+	addToCart: (userId, productId) => dispatch(addToCart(userId, productId)),
 	getProducts: () => dispatch(fetchProducts()),
 });
 

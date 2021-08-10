@@ -5,8 +5,8 @@ import { logout } from '../store';
 
 class Navbar extends React.Component {
 	render() {
-		const { handleClick, isLoggedIn, currentUser } = this.props;
-
+		console.log(this.props)
+		const { handleClick, isLoggedIn, currentUser} = this.props;
 		let allUsersButton = null;
 
 		if (currentUser.isAdmin) {
@@ -16,12 +16,12 @@ class Navbar extends React.Component {
 				</button>
 			);
 		}
-		const howManyItemsInTheCart = JSON.parse(
-			localStorage.getItem('cart')
-		).reduce((total, product) => {
-			total += product.quantity;
-			return total;
-		}, 0);
+		// const howManyItemsInTheCart = JSON.parse(
+		// 	localStorage.getItem('cart')
+		// ).reduce((total, product) => {
+		// 	total += product.quantity;
+		// 	return total;
+		// }, 0);
 		return (
 			<div>
 				<h1>Welcome to Catsco!</h1>
@@ -43,11 +43,11 @@ class Navbar extends React.Component {
 						</div>
 					)}
 					<Link to="/products">Products</Link>
-					<Link to="/cart">
+					<Link to={`/users/${currentUser.id}/cart`}>
 						<img src="/pics/cart.png" id="catCart"></img>
-						{isLoggedIn && howManyItemsInTheCart  ?(
+						{/* {isLoggedIn && howManyItemsInTheCart  ?(
 							<h2>You have {howManyItemsInTheCart} items in your cart</h2>
-						) : ''}
+						) : ''} */}
 					</Link>
 				</nav>
 				<hr />
