@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addToCart } from '../store/cart';
@@ -12,40 +12,39 @@ export const AddToCart = (props) => {
 
 	const addProduct = (product) => {
 		// console.log('this is inside ADDPRODUCT FUNCTION', product)
-			let carts = [...cart];
-			let {id} = product
-			let currProdInCart = carts.find(product => product.id === id)
-			if (currProdInCart) {
-				currProdInCart.quantity++
-			} else {
-				carts.push(product)
-			}
-
-			setCart(carts)
-			let stringCart = JSON.stringify(carts);
-			localStorage.setItem('cart', stringCart)
+		let carts = [...cart];
+		let { id } = product;
+		let currProdInCart = carts.find((product) => product.id === id);
+		if (currProdInCart) {
+			currProdInCart.quantity++;
+		} else {
+			carts.push(product);
 		}
 
-	useEffect (() => {
+		setCart(carts);
+		let stringCart = JSON.stringify(carts);
+		localStorage.setItem('cart', stringCart);
+	};
+
+	useEffect(() => {
 		localCart = JSON.parse(localCart);
-			if(localCart) {
-				setCart(localCart)
-			}}, [])
+		if (localCart) {
+			setCart(localCart);
+		}
+	}, []);
 
 	return (
-	<div>
-		<button
-					type="submit"
-					onClick={() => {
-						addProduct(props.product);
-					}}
-				>
-					Add to Cart
-				</button>
-	</div>
-	)
-	}
-
+		<div>
+			<button
+				type='submit'
+				onClick={() => {
+					addProduct(props.product);
+				}}>
+				Add to Cart
+			</button>
+		</div>
+	);
+};
 
 class SingleProduct extends React.Component {
 	componentDidMount() {
@@ -55,42 +54,48 @@ class SingleProduct extends React.Component {
 	render() {
 		const { product, currentUser, addToCart, getProducts } = this.props;
 
-
 		let editButton = null;
 
-		if (currentUser.isAdmin){
+		if (currentUser.isAdmin) {
 			editButton = (
 				<Link to={`/products/edit/${product.id}`}>
-					<button type="submit">Make ModifiCATion...</button>
+					<button type='submit' id='edit'>
+						Make ModifiCATion...
+					</button>
 				</Link>
 			);
 		}
 
 		let ridiculousScale = '';
 
-		if (product.category === 1) { ridiculousScale = "realistic"; }
-		else if (product.category === 2) { ridiculousScale = "silly"; }
-		else if (product.category === 3) { ridiculousScale = "nonsensical"; }
-		else if (product.category === 4) { ridiculousScale = "ridiculous"; }
-		else if (product.category === 5) { ridiculousScale = "ludicrous"; }
-
-
+		if (product.category === 1) {
+			ridiculousScale = 'realistic';
+		} else if (product.category === 2) {
+			ridiculousScale = 'silly';
+		} else if (product.category === 3) {
+			ridiculousScale = 'nonsensical';
+		} else if (product.category === 4) {
+			ridiculousScale = 'ridiculous';
+		} else if (product.category === 5) {
+			ridiculousScale = 'ludicrous';
+		}
 
 		return (
 			<div>
-				<h2>{product.name}</h2>
 				<h5>A {ridiculousScale} product</h5>
 				<div id='singlecat'>
-					<img
-						// src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScsJAUX7QSaaVUy8NMJh-HmxKHF-bmsJnLZg&usqp=CAU'}
-						src={product.image}
-					/>
-				</div>
-				<h2>${product.price / 100}</h2>
-				<h4>{product.description}</h4>
-				{editButton}
+					<div>
+						<img
+							// src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScsJAUX7QSaaVUy8NMJh-HmxKHF-bmsJnLZg&usqp=CAU'}
+							src={product.image}
+						/>
+						<div id='single-product-view'>{product.name}</div>
+					</div>
+					<div id='single-product-view-price'>${product.price / 100}</div>
+					<h4 id='description'>{product.description}</h4>
+					{editButton}
 
-				{/* <button
+					{/* <button
 					type="submit"
 					onClick={async () => {
 						await getProducts();
@@ -99,7 +104,7 @@ class SingleProduct extends React.Component {
 				>
 					Add to Cart
 				</button> */}
-
+				</div>
 				<AddToCart product={product} addToCart={addToCart} />
 			</div>
 		);
@@ -108,12 +113,13 @@ class SingleProduct extends React.Component {
 
 const mapState = (state) => ({
 	product: state.singleProduct,
-	currentUser: state.auth
+	currentUser: state.auth,
 });
 
 const mapDispatch = (dispatch) => ({
 	loadOneProduct: (id) => dispatch(fetchSingleProduct(id)),
-	addToCart: (id, name, image, quantity) => dispatch(addToCart(id, name, image, quantity)),
+	addToCart: (id, name, image, quantity) =>
+		dispatch(addToCart(id, name, image, quantity)),
 	getProducts: () => dispatch(fetchProducts()),
 });
 

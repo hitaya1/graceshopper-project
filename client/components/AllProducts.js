@@ -272,84 +272,85 @@ class AllProducts extends React.Component {
 
 		return (
 			<div>
-				<h1>SHOP MEOW!</h1>
 				{createButton}
+				<div>
+					<div className='sort-and-filter'>
+						<div className='sort'>
+							<h2 id='sort'>Sort by:</h2>
+							<button
+								type='button'
+								id='arrange-button'
+								onClick={this.practicalityOrder}>
+								Practicality
+							</button>
+							<button
+								type='button'
+								id='arrange-button'
+								onClick={this.priceOrder}>
+								Price
+							</button>
+						</div>
+						<div className='filter'>
+							<h2>Sorted by: {this.state.arrange}</h2>
+							<form id='filter-practicality-form'>
+								<label htmlFor='Practicality'>Practicality:</label>
+								<select
+									id='select-bar'
+									name='Practicality'
+									onChange={this.handlePracticalityChange}>
+									<option value={0}>Show All</option>
+									<option value={1}>1: Realistic</option>
+									<option value={2}>2: Silly</option>
+									<option value={3}>3: Nonsensical</option>
+									<option value={4}>4: Ridiculous</option>
+									<option value={5}>5: Ludicrous</option>
+								</select>
+							</form>
 
-				<div className='sort-and-filter'>
-					<div className='sort'>
-						<h2>Sort by:</h2>
+							<form id='filter-price-min-form'>
+								<label htmlFor='priceFilterMin' className='filter-input-label'>
+									Price min:
+								</label>
+								<input
+									name='priceFilterMin'
+									className='filter-input-box'
+									onChange={this.handlePriceMinChange}
+									value={this.state.priceFilterMin || 0}
+								/>
+							</form>
+							<form id='filter-price-max-form'>
+								<label htmlFor='priceFilterMax' className='filter-input-label'>
+									Price max:
+								</label>
+								<input
+									name='priceFilterMax'
+									className='filter-input-box'
+									onChange={this.handlePriceMaxChange}
+									value={this.state.priceFilterMax || 0}
+								/>
+							</form>
+						</div>
+					</div>
+					<div className='page-turn'>
 						<button
 							type='button'
-							className='arrange-button'
-							onClick={this.practicalityOrder}>
-							Practicality
+							id='page-button'
+							name='down'
+							onClick={this.pageDown}>
+							{turnDown}
 						</button>
+						<div className='page-label'>
+							Page: {this.state.currentPage} /{' '}
+							{Math.ceil(this.state.totalProducts / 10)}
+						</div>
 						<button
 							type='button'
-							className='arrange-button'
-							onClick={this.priceOrder}>
-							Price
+							id='page-button'
+							name='up'
+							onClick={this.pageUp}>
+							{turnUp}
 						</button>
-					</div>
-					<div className='filter'>
-						<h2>Sorted by: {this.state.arrange}</h2>
-						<form id='filter-practicality-form'>
-							<label htmlFor='Practicality'>Practicality:</label>
-							<select
-								name='Practicality'
-								onChange={this.handlePracticalityChange}>
-								<option value={0}>Show All</option>
-								<option value={1}>1: Realistic</option>
-								<option value={2}>2: Silly</option>
-								<option value={3}>3: Nonsensical</option>
-								<option value={4}>4: Ridiculous</option>
-								<option value={5}>5: Ludicrous</option>
-							</select>
-						</form>
-
-						<form id='filter-price-min-form'>
-							<label htmlFor='priceFilterMin' className='filter-input-label'>
-								Price min:
-							</label>
-							<input
-								name='priceFilterMin'
-								className='filter-input-box'
-								onChange={this.handlePriceMinChange}
-								value={this.state.priceFilterMin || 0}
-							/>
-						</form>
-						<form id='filter-price-max-form'>
-							<label htmlFor='priceFilterMax' className='filter-input-label'>
-								Price max:
-							</label>
-							<input
-								name='priceFilterMax'
-								className='filter-input-box'
-								onChange={this.handlePriceMaxChange}
-								value={this.state.priceFilterMax || 0}
-							/>
-						</form>
-					</div>
-				</div>
-				<div className='page-turn'>
-					<button
-						type='button'
-						className='page-button'
-						name='down'
-						onClick={this.pageDown}>
-						{turnDown}
-					</button>
-					<h3 className='page-label'>
-						Page: {this.state.currentPage} /{' '}
-						{Math.ceil(this.state.totalProducts / 10)}
-					</h3>
-					<button
-						type='button'
-						className='page-button'
-						name='up'
-						onClick={this.pageUp}>
-						{turnUp}
-					</button>
+					</div>{' '}
 				</div>
 
 				<div>
@@ -374,10 +375,12 @@ class AllProducts extends React.Component {
 												</button>
 											</div>
 										) : (
-											<p></p>
+											<div></div>
 										)}
-										<div>${product.price / 100}</div>
-										<h5>Praticatily Rating: {product.category}</h5>
+										<div id='product-price'>${product.price / 100}</div>
+										<h5 id='praticatily-rating'>
+											Praticatily Rating: {product.category}
+										</h5>
 									</div>
 								);
 							})}

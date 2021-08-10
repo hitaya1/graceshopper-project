@@ -60,7 +60,6 @@ class AllUsers extends React.Component {
 
 		return (
 			<div>
-				<h1>SHOP MEOW!</h1>
 				<div>
 					{createUserButton}
 
@@ -81,13 +80,13 @@ class AllUsers extends React.Component {
 						<div className='users'>
 							{this.search(allUsers).map((element) => {
 								return (
-									<div key={element.id}>
+									<div key={element.id} id='user'>
 										<Link to={`/users/${element.id}`}>
 											<p>{element.username}</p>
 										</Link>
 										<button
 											type='button'
-											className='delete-button'
+											id='delete-user'
 											name={element.id}
 											onClick={this.clickDelete}>
 											Curtail Cat
