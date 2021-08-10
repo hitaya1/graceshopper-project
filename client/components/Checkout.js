@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { fetchProducts } from '../store/products';
 import { updateProduct } from '../store/singleProduct';
 import UserCheckout from './userCheckoutInfo';
-import createCart from '../store/cart';
+import { createCart } from '../store/cart';
 
 export class Checkout extends React.Component {
 	constructor() {
@@ -30,12 +30,16 @@ export class Checkout extends React.Component {
 	//subtract each items quantity from each items inventory
 	//history.push to a page that says everything about ur order (name,email,order)
 	render() {
-		console.log(this.props)
+		// console.log(this.props);
 		//update our orders db with status completed=false
-		this.props.createCart(
-			this.props.currentUser.id,
-			JSON.parse(localStorage.getItem('cart'))
-		);
+		let cartFromLocal = JSON.parse(localStorage.getItem('cart'));
+		// console.log('cart', cartFromLocal);
+		// console.log('id', this.props.currentUser.id);
+		{
+			this.props.currentUser && this.props.currentUser.id
+				? this.props.createCart(this.props.currentUser.id, cartFromLocal)
+				: null;
+		}
 		const { products, currentUser } = this.props;
 		const { checkoutHandler } = this;
 		let localCart = JSON.parse(localStorage.getItem('cart'));

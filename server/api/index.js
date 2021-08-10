@@ -4,7 +4,7 @@ module.exports = router;
 const Order = require('../db/models/Order');
 const User = require('../db/models/User');
 
-console.log(Object.keys(Order.prototype))
+// console.log(Object.keys(Order.prototype))
 // console.log(Object.keys(User.prototype));
 router.use('/users', require('./users'));
 router.use('/products', require('./products'));
@@ -17,11 +17,19 @@ router.use('/products', require('./products'));
 //   }
 // } )
 
+
 router.post('/checkout', async (req, res, next) => {
 	try {
-		console.log(req.body)
+		console.log('cart', req.body.cart)
 		const user = await User.findByPk(req.body.userId);
-		const order = await user.createOrder(req.body.cart);
+		const order = await Order.create();
+		order.setUser(user);
+		const product = req.body.cart[0]
+		order.setProducts(product)
+		// const ok = req.body.cart.forEach((product) => {
+		// 	order.addProduct(product)
+		// })
+		// console.log(ok)
 		res.send(order)
 	} catch (error) {
 		next(error);

@@ -63,7 +63,7 @@ export const createCart = (userId, cart) => {
 			//grab user by user id
 			//create order(auto id, auto iscompleted='false')
 			//assign order to the user
-			const obj = {userId, cart}
+			let obj = {userId, cart}
 			// const user = await axios.get(`/api/users/${userId}`);
 			const newOrder = await axios.post('/api/checkout', obj);
 			dispatch(_createCart(newOrder));
@@ -75,9 +75,8 @@ export const createCart = (userId, cart) => {
 
 const cartReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case CREATE_CART: {
+		case CREATE_CART:
 			return { ...state, cart: action.cart };
-		}
 		// case ADD_TO_CART: {
 		// 	const item = state.products.find((product) => product.id === action.id);
 
