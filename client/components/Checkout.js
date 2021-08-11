@@ -40,12 +40,12 @@ export class Checkout extends React.Component {
 		});
 
 		return (
-			<div>
+			<div id='user-checkout'>
 				{currentUser && currentUser.id ? <UserCheckout /> : null}
 
 				<div>
 					{products && products.length ? (
-						<div>
+						<div className='user-checkout'>
 							{products.map((product) => {
 								for (let i = 0; i < idOfCart.length; i++) {
 									if (product.id === idOfCart[i]) {
@@ -53,24 +53,25 @@ export class Checkout extends React.Component {
 											<div key={product.id}>
 												{product.name}
 												{'   '}Quantity: {localCart[i].quantity}
-												{'   '}Total:
-												{localCart[i].quantity * localCart[i].price}
+												{'   '}Total: $
+												{(localCart[i].quantity * localCart[i].price) /100}
 											</div>
 										);
 									}
 								}
 							})}
 							<div>
-								Total:
-								{localCart.reduce((total, product) => {
+								<h5>(+ Cat Tax)</h5>
+								Grand Total: $
+								{Math.floor((localCart.reduce((total, product) => {
 									total += product.price * product.quantity;
 									return total;
-								}, 0)}
+								}, 0)) *1.08) /100}
 							</div>
 
 							{currentUser && currentUser.id ? (
-								<Link to="/placeOrder">
-									<button type="submit" onClick={() => checkoutHandler()}>
+								<Link to='/placeOrder'>
+									<button type='submit' onClick={() => checkoutHandler()}>
 										Place Order
 									</button>
 								</Link>

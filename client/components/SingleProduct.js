@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchSingleProduct } from '../store/singleProduct';
@@ -18,31 +18,30 @@ export const AddToCart = (props) => {
 				carts.push(product)
 			}
 
-			setCart(carts)
-			let stringCart = JSON.stringify(carts);
-			localStorage.setItem('cart', stringCart)
-		}
+		setCart(carts);
+		let stringCart = JSON.stringify(carts);
+		localStorage.setItem('cart', stringCart);
+	};
 
-	useEffect (() => {
+	useEffect(() => {
 		localCart = JSON.parse(localCart);
-			if(localCart) {
-				setCart(localCart)
-			}}, [])
+		if (localCart) {
+			setCart(localCart);
+		}
+	}, []);
 
 	return (
-	<div>
-		<button
-					type="submit"
-					onClick={() => {
-						addProduct(props.product);
-					}}
-				>
-					Add to Cart
-				</button>
-	</div>
-	)
-	}
-
+		<div>
+			<button
+				type='submit'
+				onClick={() => {
+					addProduct(props.product);
+				}}>
+				Add to Cart
+			</button>
+		</div>
+	);
+};
 
 class SingleProduct extends React.Component {
 	componentDidMount() {
@@ -52,30 +51,34 @@ class SingleProduct extends React.Component {
 	render() {
 		const { product, currentUser, addToCart } = this.props;
 
-
 		let editButton = null;
 
-		if (currentUser.isAdmin){
+		if (currentUser.isAdmin) {
 			editButton = (
 				<Link to={`/products/edit/${product.id}`}>
-					<button type="submit">Make ModifiCATion...</button>
+					<button type='submit' id='edit'>
+						Make ModifiCATion...
+					</button>
 				</Link>
 			);
 		}
 
 		let ridiculousScale = '';
 
-		if (product.category === 1) { ridiculousScale = "realistic"; }
-		else if (product.category === 2) { ridiculousScale = "silly"; }
-		else if (product.category === 3) { ridiculousScale = "nonsensical"; }
-		else if (product.category === 4) { ridiculousScale = "ridiculous"; }
-		else if (product.category === 5) { ridiculousScale = "ludicrous"; }
-
-
+		if (product.category === 1) {
+			ridiculousScale = 'realistic';
+		} else if (product.category === 2) {
+			ridiculousScale = 'silly';
+		} else if (product.category === 3) {
+			ridiculousScale = 'nonsensical';
+		} else if (product.category === 4) {
+			ridiculousScale = 'ridiculous';
+		} else if (product.category === 5) {
+			ridiculousScale = 'ludicrous';
+		}
 
 		return (
 			<div>
-				<h2>{product.name}</h2>
 				<h5>A {ridiculousScale} product</h5>
 				<div id='singlecat'>
 					<img
@@ -95,7 +98,7 @@ class SingleProduct extends React.Component {
 
 const mapState = (state) => ({
 	product: state.singleProduct,
-	currentUser: state.auth
+	currentUser: state.auth,
 });
 
 const mapDispatch = (dispatch) => ({

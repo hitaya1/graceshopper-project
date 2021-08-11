@@ -57,13 +57,14 @@ export const Cart = (props) => {
 					{cart.map((product) => {
 						index++;
 						return (
-							<div key={index} className='cartProducts'>
-								<h2>{product.name}</h2>
+							<div key={index} id='cartProducts'>
 								<img src={product.image} />
-								<h3>Price: ${product.price / 100}</h3>
-								<div>
+								<div id='name'>{product.name}</div>
+								<div className='price'>Price: ${product.price / 100}</div>
+								<div id='quantity'>
 									Quantity:
 									<button
+										id='quantity'
 										onClick={() => {
 											minusButton(product.id);
 										}}>
@@ -71,20 +72,22 @@ export const Cart = (props) => {
 									</button>
 									{product.quantity}
 									<button
+										id='quantity'
 										onClick={() => {
 											plusButton(product.id);
 										}}>
 										+
 									</button>
 									<button
+										id='quantity'
 										onClick={() => {
 											removeFromCart(product.id);
 										}}>
 										remove
 									</button>
-									<h3>
+									<div id='item-total'>
 										Item Total: ${(product.quantity * product.price) / 100}
-									</h3>
+									</div>
 								</div>
 							</div>
 						);

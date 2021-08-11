@@ -14,7 +14,7 @@ class AllUsers extends React.Component {
 		this.handleSearchChange = this.handleSearchChange.bind(this);
 	}
 	componentDidMount() {
-		this.props.getUsers(this.props.currentUser);
+		this.props.getUsers();
 	}
 
 	handleSearchChange(event) {
@@ -34,8 +34,8 @@ class AllUsers extends React.Component {
 	}
 
 	async clickDelete(event) {
-		await this.props.deleteUser(event.target.name, this.props.currentUser);
-		this.props.getUsers(this.props.currentUser);
+		await this.props.deleteUser(event.target.name);
+		this.props.getUsers();
 	}
 
 	render() {
@@ -44,13 +44,6 @@ class AllUsers extends React.Component {
 		let createUserButton = null;
 
 		if (currentUser.isAdmin) {
-			// deleteUserButton = (
-			// 	<button type="submit" onClick={ async () => {
-			// 		await deleteUser(element.id);
-			// 		getUsers();
-			// 	}}> Curtail Cat </button>
-			// );
-
 			createUserButton = (
 				<Link to={`/users/create`}>
 					<button id='create'>Add More Cats...</button>
@@ -60,7 +53,6 @@ class AllUsers extends React.Component {
 
 		return (
 			<div>
-				<h1>SHOP MEOW!</h1>
 				<div>
 					{createUserButton}
 
@@ -81,13 +73,13 @@ class AllUsers extends React.Component {
 						<div className='users'>
 							{this.search(allUsers).map((element) => {
 								return (
-									<div key={element.id}>
+									<div key={element.id} id='user'>
 										<Link to={`/users/${element.id}`}>
 											<p>{element.username}</p>
 										</Link>
 										<button
 											type='button'
-											className='delete-button'
+											id='delete-user'
 											name={element.id}
 											onClick={this.clickDelete}>
 											Curtail Cat
@@ -107,12 +99,12 @@ class AllUsers extends React.Component {
 
 const mapState = (state) => ({
 	allUsers: state.allUsers,
-	currentUser: state.auth,
+	currentUser: state.auth
 });
 
 const mapDispatch = (dispatch, { history }) => ({
-	getUsers: (user) => dispatch(getAllUsers(user, history)),
-	deleteUser: (id, user) => dispatch(deleteUser(id, user, history)),
+	getUsers: () => dispatch(getAllUsers(history)),
+	deleteUser: (id) => dispatch(deleteUser(id, history)),
 });
 
 export default connect(mapState, mapDispatch)(AllUsers);

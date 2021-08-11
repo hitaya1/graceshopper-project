@@ -21,7 +21,7 @@ router.get('/:id', async (req, res, next) => {
   }
 })
 
-router.post ('/', async (req, res, next) => {
+router.post ('/', requireToken, requireAdmin, async (req, res, next) => {
   try {
     res.send(await Product.create(req.body))
   } catch (e) {
@@ -29,7 +29,7 @@ router.post ('/', async (req, res, next) => {
   }
 })
 
-router.put('/:id', async (req, res, next) => {
+router.put('/:id', requireToken, requireAdmin, async (req, res, next) => {
   try {
     const updateproduct = await Product.findByPk(req.params.id);
     res.send(await updateproduct.update(req.body))
@@ -38,7 +38,7 @@ router.put('/:id', async (req, res, next) => {
   }
 })
 
-router.delete('/:id', async (req, res, next) => {
+router.delete('/:id', requireToken, requireAdmin, async (req, res, next) => {
   try {
     const product = await Product.findByPk(req.params.id);
     await product.destroy();

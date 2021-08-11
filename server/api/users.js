@@ -4,7 +4,7 @@ const {
 } = require('../db');
 const { requireToken, requireAdmin, userIsUser } = require('./gatekeepingMiddleware');
 
-router.get('/', async (req, res, next) => {
+router.get('/', requireToken, requireAdmin, async (req, res, next) => {
 	try {
 		const users = await User.findAll({
 			// explicitly select only the id and username fields - even though
@@ -18,7 +18,7 @@ router.get('/', async (req, res, next) => {
 	}
 });
 
-router.get('/:id', async (req, res, next) => {
+router.get('/:id', requireToken, userIsUser, async (req, res, next) => {
 	try {
 		const user = await User.findByPk(req.params.id);
 		res.send(user);
@@ -27,7 +27,7 @@ router.get('/:id', async (req, res, next) => {
 	}
 });
 
-router.post ('/', async (req, res, next) => {
+router.post ('/', requireToken, requireAdmin, async (req, res, next) => {
   try {
     res.send(await User.create(req.body));
   } catch (e) {
@@ -35,7 +35,7 @@ router.post ('/', async (req, res, next) => {
   }
 })
 
-router.put('/:id', async (req, res, next) => {
+router.put('/:id', requireToken, userIsUser, async (req, res, next) => {
 	try {
 		const updateUser = await User.findByPk(req.params.id);
 		res.send(await updateUser.update(req.body));
@@ -44,7 +44,7 @@ router.put('/:id', async (req, res, next) => {
 	}
 });
 
-router.delete('/:id', async (req, res, next) => {
+router.delete('/:id', requireToken, userIsUser, async (req, res, next) => {
 	try {
 		const user = await User.findByPk(req.params.id);
 			await user.destroy();

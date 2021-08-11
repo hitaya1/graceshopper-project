@@ -14,7 +14,7 @@ const Product = db.define('product', {
 	},
 	image: {
 		type: Sequelize.STRING,
-		defaultValue: '/pics/download.png',
+		defaultValue: '/pics/evilkitty.jpg',
 	},
 	quantity: {
 		type: Sequelize.INTEGER,
@@ -37,7 +37,7 @@ const Product = db.define('product', {
 		allowNull: false,
 		validate: {
 			min: 1,
-			max: 5
+			max: 5,
 		},
 	},
 	description: {
