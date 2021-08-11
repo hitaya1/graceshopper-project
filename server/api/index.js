@@ -3,25 +3,28 @@ module.exports = router;
 
 const Order = require('../db/models/Order');
 const User = require('../db/models/User');
+const Product = require('../db/models/Product')
+const ProdOrder = require('../db/models/ProductOrder')
+
 
 router.use('/users', require('./users'));
 router.use('/products', require('./products'));
-// router.get('/cart', (req, res, next) => {
-//   try {
-//     const order = Order.findAll()[0];
-//     res.send(order)
-//   } catch (error) {
-//     next(error)
-//   }
-// } )
 
-router.post(':id/checkout', async (req, res, next) => {
+router.post('/checkout', async (req, res, next) => {
 	try {
+		const user = await User.findByPk(req.body.userId);
 		const order = await Order.create();
-		// const user = await User.findByPk(req.params.id);
-		// await user.createOrder(order);
-		// res.send(user);
-    res.send
+		order.setUser(user)
+
+		const newProdOrder = req.body.cart.map(product => {
+			ProdOrder.create({
+				productId: product.id,
+				orderId: order.id,
+				quantity: product.quantity,
+				price: product.price
+			})
+		})
+		res.send(newProdOrder)
 	} catch (error) {
 		next(error);
 	}

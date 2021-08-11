@@ -328,8 +328,6 @@ async function seed() {
 	await Promise.all(users.map((user) => User.create(user)));
 	await Promise.all(products.map((product) => Product.create(product)));
 
-	// await Promise.all(newUsers.map(user => user.addOrder(newProducts[Math.floor(Math.random() * newProducts.length)])));
-	// await Promise.all(newProducts.map(product => product.addUser(newUsers[Math.floor(Math.random() * newUsers.length)])));
 }
 
 /*

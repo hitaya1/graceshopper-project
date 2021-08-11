@@ -3,17 +3,9 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchSingleUser } from '../store/singleUser';
 
-//import ErrorHandler from './ErrorHandler';
-//import LoadingScreen from './LoadingScreen';
-
 class User extends React.Component {
 	componentDidMount() {
-		if (this.props.currentUser) {
-			this.props.getSingleUser(
-				this.props.match.params.userId,
-				this.props.currentUser
-			);
-		}
+		this.props.getSingleUser(this.props.match.params.userId);
 	}
 
 	render() {
@@ -65,9 +57,6 @@ class User extends React.Component {
 				</div>
 			);
 		}
-
-		//if (this.props.robot[0] === 'error') { return <ErrorHandler /> }
-		//else if (!this.props.robot.id) { return <LoadingScreen />}
 		return ifUser;
 	}
 }
@@ -78,8 +67,7 @@ const mapState = (state) => ({
 });
 const mapDispatch = (dispatch, { history }) => {
 	return {
-		getSingleUser: (userId, user) =>
-			dispatch(fetchSingleUser(userId, user, history)),
+		getSingleUser: (userId) => dispatch(fetchSingleUser(userId, history)),
 	};
 };
 

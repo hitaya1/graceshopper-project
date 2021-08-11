@@ -19,43 +19,54 @@ const organizeProducts = (products) => ({ type: ORGANIZE_PRODUCTS, products });
 /**
  * THUNK CREATORS
  */
-export const fetchProducts = () => {
+export const fetchProducts = (history) => {
 	return async (dispatch) => {
 		try {
-			const response = await axios.get(`/api/products`);
+			const token = window.localStorage.getItem('token');
+			const response = await axios.get(`/api/products`, {
+				headers: {
+					authorization: token
+				}
+			});
 
 			dispatch(setProducts(response.data));
 		} catch (e) {
-			//error page:
-			//dispatch(errorProduct());
-			console.error(
-				'I think the cats have EATEN, broken, or otherwise disabled the products.'
-			);
+			window.location.replace('/error');
 			console.error(e);
 		}
 	};
 };
 
-export const createProduct = (product, user, history) => {
+export const createProduct = (product, history) => {
 	return async (dispatch) => {
-		if (user.isAdmin){
-			const { data: created } = await axios.post('/api/products', product);
+		try{
+			const token = window.localStorage.getItem('token');
+			const { data: created } = await axios.post('/api/products', product, {
+				headers: {
+					authorization: token
+				}
+			});
 			dispatch(makeProduct(created));
 			history.push('/products');
-		} else{
-			history.push('/error');
-			console.error('add product failed. admin required.');
+		} catch(e){
+			window.location.replace('/error');
+			console.error(e);
 		}
 	};
 };
-export const deleteProduct = (id, user, history) => {
+export const deleteProduct = (id, history) => {
 	return async (dispatch) => {
-		if (user.isAdmin){
-			const { data } = await axios.delete(`/api/products/${id}`);
+		try{
+			const token = window.localStorage.getItem('token');
+			const { data } = await axios.delete(`/api/products/${id}`, {
+				headers: {
+					authorization: token
+				}
+			});
 			dispatch(_deleteProduct(data));
-		} else{
-			history.push('/error');
-			console.error('delete failed. admin required.');
+		} catch(e){
+			window.location.replace('/error');
+			console.error(e);
 		}
 	};
 };

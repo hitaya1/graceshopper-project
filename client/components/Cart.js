@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import cartReducer from '../store/cart';
 
 export const Cart = (props) => {
-	// console.log('this is inside CART COMPONENET', props);
 	let [cart, setCart] = useState([]);
 	let localCart = localStorage.getItem('cart');
 
@@ -16,23 +15,6 @@ export const Cart = (props) => {
 		let cartString = JSON.stringify(copyCart);
 		localStorage.setItem('cart', cartString);
 	};
-	// console.log('CART INSIDE CART COMPONENET', cart);
-
-	// const inputAmount = (productId, amount) => {
-	// 	let copyCart = [...cart];
-	// 	let exisitingProd = copyCart.find((product) => product.id === productId);
-	// 	if (!exisitingProd) return;
-	// 	if(!amount) return;
-	// 	exisitingProd.quantity += amount;
-
-	// 	if (exisitingProd.quantity <= 0) {
-	// 		copyCart = copyCart.filter((product) => product.id !== productId);
-	// 	}
-
-	// 	setCart(copyCart);
-	// 	let cartString = JSON.stringify(copyCart);
-	// 	localStorage.setItem('cart', cartString);
-	// };
 
 	const plusButton = (productId) => {
 		let copyCart = [...cart];
@@ -73,13 +55,11 @@ export const Cart = (props) => {
 			{cart && cart.length ? (
 				<div className='cartProducts'>
 					{cart.map((product) => {
-						// console.log(product);
 						index++;
 						return (
 							<div id='cart-info'>
 								<div key={index} id='cartProducts'>
 									<img src={product.image} />
-
 									<div id='name'>{product.name}</div>
 									<div className='price'>Price: ${product.price / 100}</div>
 									<div id='quantity'>
@@ -91,12 +71,6 @@ export const Cart = (props) => {
 											}}>
 											-
 										</button>
-										{/* <input
-									type="number"
-									onClick={() => {
-										inputAmount(product.id, product.amount);
-									}}
-								></input> */}
 										{product.quantity}
 										<button
 											id='quantity'
@@ -112,9 +86,9 @@ export const Cart = (props) => {
 											}}>
 											remove
 										</button>
-									</div>
-									<div id='item-total'>
-										Item Total: ${(product.quantity * product.price) / 100}
+										<div id='item-total'>
+											Item Total: ${(product.quantity * product.price) / 100}
+										</div>
 									</div>
 								</div>
 							</div>

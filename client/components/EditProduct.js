@@ -50,7 +50,7 @@ class EditProduct extends Component {
 
 	handleSubmit(evt) {
 		evt.preventDefault();
-		this.props.editProduct({ ...this.state }, this.props.currentUser);
+		this.props.editProduct({ ...this.state });
 	}
 
 	render() {
@@ -94,8 +94,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch, { history }) => ({
-	editProduct: (product, user) => dispatch(editProduct(product, user, history)),
-	getProduct: (id) => dispatch(fetchSingleProduct(id))
+	editProduct: (product) => dispatch(editProduct(product, history)),
+	getProduct: (id) => dispatch(fetchSingleProduct(id, history))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditProduct);

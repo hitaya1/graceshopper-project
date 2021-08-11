@@ -50,7 +50,7 @@ class AllProducts extends React.Component {
 	}
 
 	async clickDelete(event) {
-		await this.props.deleteProduct(event.target.name, this.props.currentUser);
+		await this.props.deleteProduct(event.target.name);
 		this.props.getProducts();
 		this.getProductTotal();
 	}
@@ -132,22 +132,15 @@ class AllProducts extends React.Component {
 		const currentFilters = this.state.filter;
 		this.setState({ practicalityFilter: event.target.value }, () => {
 			if (
-				this.state.practicalityFilter > 0 &&
-				this.state.practicalityFilter <= 5
-			) {
+				this.state.practicalityFilter > 0 && this.state.practicalityFilter <= 5 ) {
 				if (!currentFilters.includes('Practicality')) {
 					this.setState({ filter: [...currentFilters, 'Practicality'] }, () =>
 						this.updateActiveFilters()
 					);
 				}
 			} else {
-				this.setState(
-					{
-						filter: currentFilters.filter(
-							(element) => element !== 'Practicality'
-						),
-					},
-					() => this.updateActiveFilters()
+				this.setState({ filter: currentFilters.filter((element) => element !== 'Practicality'), }, () =>
+					this.updateActiveFilters()
 				);
 			}
 		});
@@ -216,10 +209,7 @@ class AllProducts extends React.Component {
 	filter(origiRay) {
 		let mutaRay = [...origiRay];
 
-		if (
-			this.state.practicalityFilter > 0 &&
-			this.state.practicalityFilter <= 5
-		) {
+		if (this.state.practicalityFilter > 0 && this.state.practicalityFilter <= 5) {
 			mutaRay = mutaRay.filter(
 				(element) =>
 					element.category === parseInt(this.state.practicalityFilter)
@@ -227,12 +217,12 @@ class AllProducts extends React.Component {
 		}
 		if (this.state.priceFilterMin > 0) {
 			mutaRay = mutaRay.filter(
-				(element) => element.price >= this.state.priceFilterMin
+				(element) => (element.price / 100) >= this.state.priceFilterMin
 			);
 		}
 		if (this.state.priceFilterMax > 0) {
 			mutaRay = mutaRay.filter(
-				(element) => element.price <= this.state.priceFilterMax
+				(element) => (element.price / 100) <= this.state.priceFilterMax
 			);
 		}
 
@@ -415,10 +405,9 @@ const mapState = (state) => ({
 });
 
 const mapDispatch = (dispatch, { history }) => ({
-	getProducts: () => dispatch(fetchProducts()),
-	deleteProduct: (id, user) => dispatch(deleteProduct(id, user, history)),
-	arrangeProducts: (orderedProducts) =>
-		dispatch(rearrangeProducts(orderedProducts)),
+	getProducts: () => dispatch(fetchProducts(history)),
+	deleteProduct: (id) => dispatch(deleteProduct(id, history)),
+	arrangeProducts: (orderedProducts) => dispatch(rearrangeProducts(orderedProducts)),
 });
 
 export default connect(mapState, mapDispatch)(AllProducts);

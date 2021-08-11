@@ -11,40 +11,60 @@ const _deleteUser = (user) => ({ type: DELETE_USER, user });
 const fetchAllUsers = (users) => ({ type: GET_ALL_USERS, users })
 
 //thunks
-export const createUser = (adding, user, history) => {
+export const createUser = (adding, history) => {
 	return async (dispatch) => {
-		if (user.isAdmin){
-			const { data: created } = await axios.post('/api/users', adding);
+		try{
+			const token = window.localStorage.getItem('token');
+			const { data: created } = await axios.post('/api/users', adding, {
+				headers: {
+					authorization: token
+				}
+			});
 			dispatch(makeUser(created));
 			history.push('/users');
-		} else{
-			history.push('/error');
+		} catch(e){
+			window.location.replace('/error');
 			console.error('create user failed. admin required.');
 		}
 	};
 };
 
-export const deleteUser = (id, user, history) => {
+export const deleteUser = (id, history) => {
 	return async (dispatch) => {
-		if (user.isAdmin || user.id === id){
-			const { data: deleted } = await axios.delete(`/api/users/${id}`);
-			dispatch(_deleteUser(deleted));
-		} else{
-			history.push('/error');
-			console.error('delete user failed. admin required.');
+		try{
+			const token = window.localStorage.getItem('token');
+			if (token){
+				const { data: deleted } = await axios.delete(`/api/users/${id}`, {
+					headers: {
+						authorization: token
+					}
+				});
+				dispatch(_deleteUser(deleted));
+			}
+		}catch(e){
+			window.location.replace('/error');
+			console.error(e)
 		}
 	};
 };
 
-export const getAllUsers = (user, history) =>{
+export const getAllUsers = (history) =>{
 	return async (dispatch) =>{
-		if (user.isAdmin){
-			const { data: users } = await axios.get(`/api/users`);
-		dispatch(fetchAllUsers(users));
-		} else{
-			history.push('/error');
-			console.error('see users failed. admin required.');
+		try{
+			const token = window.localStorage.getItem('token');
+			if (token){
+				const { data: users } = await axios.get(`/api/users`, {
+					headers: {
+						authorization: token
+					}
+				});
+				dispatch(fetchAllUsers(users));
+			}
+		}catch(e){
+			window.location.replace('/error');
+			console.error(e)
 		}
+
 	}
 }
 

@@ -19,46 +19,51 @@ const _editProduct = (product) => ({ type: EDIT_PRODUCT, product });
 export const fetchSingleProduct = (productId) => {
 	return async (dispatch) => {
 		try {
-			const response = await axios.get(`/api/products/${productId}`);
+			const token = window.localStorage.getItem('token');
+			const response = await axios.get(`/api/products/${productId}`, {
+				headers: {
+					authorization: token
+				}
+			});
 			dispatch(setSingleProduct(response.data));
 		} catch (e) {
-			//error page:
-			//dispatch(errorProduct());
-			console.error(
-				'I think the cats have single productly eaten, broken, or otherwise disabled this product.'
-			);
+			window.location.replace('/error');
 			console.error(e);
 		}
 	};
 };
 
-export const editProduct = (product, user, history) => {
+export const editProduct = (product, history) => {
 	return async (dispatch) => {
-		if (user.isAdmin) {
-			const { data: edited } = await axios.put(
-				`/api/products/${product.id}`,
-				product
-			);
+		try{
+			const token = window.localStorage.getItem('token');
+			const { data: edited } = await axios.put( `/api/products/${product.id}`, product, {
+				headers: {
+					authorization: token
+				}
+			});
 			dispatch(_editProduct(edited));
-				// history.push(`/products/${product.id}`);
-		} else {
-			history.push('/error');
-			console.error('edit product failed. admin required.');
+			history.push(`/products/${product.id}`);
+		} catch(e) {
+			window.location.replace('/error');
+			console.error(e);
 		}
 	};
 };
 
 export const updateProduct = (product) => {
 	return async (dispatch) => {
-		if (user.isAdmin) {
-			const { data: edited } = await axios.put(
-				`/api/products/${product.id}`,
-				product
-			);
+		try{
+			const token = window.localStorage.getItem('token');
+			const { data: edited } = await axios.put( `/api/products/${product.id}/checkout`, product, {
+					headers: {
+						authorization: token
+					}
+				});
 			dispatch(_editProduct(edited));
-		} else {
-			// history.push('/error');
-			console.error('edit product failed. admin required.');
+		} catch(e) {
+			window.location.replace('/error');
+			console.error(e);
 		}
 	};
 };

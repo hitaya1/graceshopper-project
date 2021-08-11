@@ -25,7 +25,7 @@ class EditUser extends Component {
 	componentDidMount() {
 		try {
 			const { userId } = this.props.match.params;
-			this.props.getUser(userId, this.props.currentUser);
+			this.props.getUser(userId);
 		} catch (error) {
 			console.log(error);
 		}
@@ -54,7 +54,7 @@ class EditUser extends Component {
 
 	handleSubmit(evt) {
 		evt.preventDefault();
-		this.props.editUser({ ...this.props.user, ...this.state }, this.props.currentUser);
+		this.props.editUser({ ...this.props.user, ...this.state });
 	}
 
 	render() {
@@ -118,8 +118,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch, { history }) => ({
-	editUser: (editting, user) => dispatch(editUser(editting, user, history)),
-	getUser: (id, user) => dispatch(fetchSingleUser(id, user, history)),
+	editUser: (editting) => dispatch(editUser(editting, history)),
+	getUser: (id) => dispatch(fetchSingleUser(id, history)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditUser);

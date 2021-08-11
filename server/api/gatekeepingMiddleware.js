@@ -3,7 +3,6 @@ const { models: { User } } = require('../db')
 const requireToken = async (req, res, next) =>{
   try{
     const token = req.headers.authorization;
-    console.log(token)
     const user = await User.findByToken(token);
 
     req.user = user;
@@ -19,7 +18,7 @@ const requireAdmin = (req, res, next) =>{
 }
 
 const userIsUser = (req, res, next) =>{
-  if (req.user.id !== req.params.id && !req.user.isAdmin){ return res.status(403).send('CATastrophy! Wrong litter!');}
+  if (parseInt(req.user.id) !== parseInt(req.params.id) && !req.user.isAdmin){ return res.status(403).send('CATastrophy! Wrong litter!');}
   else{ next(); }
 }
 
