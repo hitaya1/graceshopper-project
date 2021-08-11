@@ -116,11 +116,10 @@ const mapState = (state) => ({
 	currentUser: state.auth,
 });
 
-const mapDispatch = (dispatch) => ({
-	loadOneProduct: (id) => dispatch(fetchSingleProduct(id)),
-	addToCart: (id, name, image, quantity) =>
-		dispatch(addToCart(id, name, image, quantity)),
-	getProducts: () => dispatch(fetchProducts()),
+const mapDispatch = (dispatch, { history }) => ({
+	loadOneProduct: (id) => dispatch(fetchSingleProduct(id, history)),
+	addToCart: (id, name, image, quantity) => dispatch(addToCart(id, name, image, quantity)),
+	getProducts: () => dispatch(fetchProducts(history))
 });
 
 export default connect(mapState, mapDispatch)(SingleProduct);

@@ -50,7 +50,7 @@ class AllProducts extends React.Component {
 	}
 
 	async clickDelete(event) {
-		await this.props.deleteProduct(event.target.name, this.props.currentUser);
+		await this.props.deleteProduct(event.target.name);
 		this.props.getProducts();
 		this.getProductTotal();
 	}
@@ -209,10 +209,7 @@ class AllProducts extends React.Component {
 	filter(origiRay) {
 		let mutaRay = [...origiRay];
 
-		if (
-			this.state.practicalityFilter > 0 &&
-			this.state.practicalityFilter <= 5
-		) {
+		if (this.state.practicalityFilter > 0 && this.state.practicalityFilter <= 5) {
 			mutaRay = mutaRay.filter(
 				(element) =>
 					element.category === parseInt(this.state.practicalityFilter)
@@ -400,10 +397,9 @@ const mapState = (state) => ({
 });
 
 const mapDispatch = (dispatch, { history }) => ({
-	getProducts: () => dispatch(fetchProducts()),
-	deleteProduct: (id, user) => dispatch(deleteProduct(id, user, history)),
-	arrangeProducts: (orderedProducts) =>
-		dispatch(rearrangeProducts(orderedProducts)),
+	getProducts: () => dispatch(fetchProducts(history)),
+	deleteProduct: (id) => dispatch(deleteProduct(id, history)),
+	arrangeProducts: (orderedProducts) => dispatch(rearrangeProducts(orderedProducts)),
 });
 
 export default connect(mapState, mapDispatch)(AllProducts);
