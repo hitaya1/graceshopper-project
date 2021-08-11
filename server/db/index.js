@@ -18,8 +18,6 @@ Order.hasMany(ProdOrder)
 ProdOrder.belongsTo(Product)
 ProdOrder.belongsTo(Order)
 
-// console.log(Object.keys(Order.prototype))
-
 module.exports = {
 	db,
 	models: {

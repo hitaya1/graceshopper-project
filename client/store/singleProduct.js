@@ -22,8 +22,6 @@ export const fetchSingleProduct = (productId) => {
 			const response = await axios.get(`/api/products/${productId}`);
 			dispatch(setSingleProduct(response.data));
 		} catch (e) {
-			//error page:
-			//dispatch(errorProduct());
 			console.error(
 				'I think the cats have single productly eaten, broken, or otherwise disabled this product.'
 			);
@@ -40,7 +38,6 @@ export const editProduct = (product, user, history) => {
 				product
 			);
 			dispatch(_editProduct(edited));
-				// history.push(`/products/${product.id}`);
 		} else {
 			history.push('/error');
 			console.error('edit product failed. admin required.');
@@ -57,7 +54,6 @@ export const updateProduct = (product) => {
 			);
 			dispatch(_editProduct(edited));
 		} catch(error) {
-			// history.push('/error');
 			console.error('edit product failed. admin required.');
 		}
 	};

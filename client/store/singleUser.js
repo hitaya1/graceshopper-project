@@ -27,7 +27,6 @@ export const fetchSingleUser = (userId, user, history) => {
 				console.error('get user failed. admin required.');
 			}
 		} catch (e) {
-			//dispatch(errorRobot());
 			console.error("You don't exist. Sorry.");
 			console.error(e);
 		}

@@ -1,10 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { fetchSingleUser } from '../store/singleUser';
-
-//import ErrorHandler from './ErrorHandler';
-//import LoadingScreen from './LoadingScreen';
 
 class User extends React.Component {
 	componentDidMount() {
@@ -48,9 +44,6 @@ class User extends React.Component {
 		</div>
 			)
 		}
-
-		//if (this.props.robot[0] === 'error') { return <ErrorHandler /> }
-		//else if (!this.props.robot.id) { return <LoadingScreen />}
 		return (
 			ifUser
 		);

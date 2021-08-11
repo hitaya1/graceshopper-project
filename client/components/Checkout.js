@@ -31,26 +31,13 @@ export class Checkout extends React.Component {
 		localStorage.setItem('cart', '[]');
 	}
 
-	//subtract each items quantity from each items inventory
-	//history.push to a page that says everything about ur order (name,email,order)
 	render() {
-		// console.log(this.props);
-		//update our orders db with status completed=false
-		// let cartFromLocal = JSON.parse(localStorage.getItem('cart'));
-		// console.log('cart', cartFromLocal);
-		// console.log('id', this.props.currentUser.id);
-		// {
-		// 	this.props.currentUser && this.props.currentUser.id
-		// 		? this.props.createCart(this.props.currentUser.id, cartFromLocal)
-		// 		: null;
-		// }
 		const { products, currentUser } = this.props;
 		const { checkoutHandler } = this;
 		let localCart = JSON.parse(localStorage.getItem('cart'));
 		let idOfCart = localCart.map((product) => {
 			return product.id;
 		});
-		console.log(this.props);
 
 		return (
 			<div>
@@ -100,10 +87,6 @@ export class Checkout extends React.Component {
 				</div>
 			</div>
 		);
-		//(compare localStorage cart with our products)  --- maybe array.filter +
-		//only display items inside of cart +
-		//button - 'finalize' type='submit' &&
-		//update inventory, cc, address
 	}
 }
 

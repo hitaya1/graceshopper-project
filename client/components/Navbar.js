@@ -16,12 +16,6 @@ class Navbar extends React.Component {
 				</button>
 			);
 		}
-		// const howManyItemsInTheCart = JSON.parse(
-		// 	localStorage.getItem('cart')
-		// ).reduce((total, product) => {
-		// 	total += product.quantity;
-		// 	return total;
-		// }, 0);
 		return (
 			<div>
 				<nav>
@@ -44,9 +38,6 @@ class Navbar extends React.Component {
 					<Link to='/products'>Products</Link>
 					<Link to='/cart'>
 						<img src='/pics/cart.png' id='catCart'></img>
-						{/* {isLoggedIn && howManyItemsInTheCart  ?(
-							<h2>You have {howManyItemsInTheCart} items in your cart</h2>
-						) : ''} */}
 					</Link>
 				</nav>
 			</div>

@@ -26,8 +26,6 @@ export const fetchProducts = () => {
 
 			dispatch(setProducts(response.data));
 		} catch (e) {
-			//error page:
-			//dispatch(errorProduct());
 			console.error(
 				'I think the cats have EATEN, broken, or otherwise disabled the products.'
 			);
