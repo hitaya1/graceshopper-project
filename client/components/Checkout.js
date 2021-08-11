@@ -13,6 +13,10 @@ export class Checkout extends React.Component {
 	}
 	componentDidMount() {
 		this.props.getProducts();
+
+		this.props.currentUser && this.props.currentUser.id
+				? this.props.createCart(this.props.currentUser.id, JSON.parse(localStorage.getItem('cart')))
+				: null;
 	}
 	async checkoutHandler() {
 		let localCart = JSON.parse(localStorage.getItem('cart'));
@@ -32,14 +36,14 @@ export class Checkout extends React.Component {
 	render() {
 		// console.log(this.props);
 		//update our orders db with status completed=false
-		let cartFromLocal = JSON.parse(localStorage.getItem('cart'));
+		// let cartFromLocal = JSON.parse(localStorage.getItem('cart'));
 		// console.log('cart', cartFromLocal);
 		// console.log('id', this.props.currentUser.id);
-		{
-			this.props.currentUser && this.props.currentUser.id
-				? this.props.createCart(this.props.currentUser.id, cartFromLocal)
-				: null;
-		}
+		// {
+		// 	this.props.currentUser && this.props.currentUser.id
+		// 		? this.props.createCart(this.props.currentUser.id, cartFromLocal)
+		// 		: null;
+		// }
 		const { products, currentUser } = this.props;
 		const { checkoutHandler } = this;
 		let localCart = JSON.parse(localStorage.getItem('cart'));

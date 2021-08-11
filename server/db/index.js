@@ -13,6 +13,10 @@ User.hasMany(Order)
 Order.belongsTo(User)
 Product.belongsToMany(Order, {through: ProdOrder})
 Order.belongsToMany(Product, {through: ProdOrder})
+Product.hasMany(ProdOrder)
+Order.hasMany(ProdOrder)
+ProdOrder.belongsTo(Product)
+ProdOrder.belongsTo(Order)
 
 // console.log(Object.keys(Order.prototype))
 
