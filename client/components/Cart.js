@@ -76,40 +76,43 @@ export const Cart = (props) => {
 						// console.log(product);
 						index++;
 						return (
-							<div key={index} id='cartProducts'>
-								<img src={product.image} />
-								<div id='name'>{product.name}</div>
-								<div className='price'>Price: ${product.price / 100}</div>
-								<div id='quantity'>
-									Quantity:
-									<button
-										id='quantity'
-										onClick={() => {
-											minusButton(product.id);
-										}}>
-										-
-									</button>
-									{/* <input
+							<div id='cart-info'>
+								<div key={index} id='cartProducts'>
+									<img src={product.image} />
+
+									<div id='name'>{product.name}</div>
+									<div className='price'>Price: ${product.price / 100}</div>
+									<div id='quantity'>
+										Quantity:
+										<button
+											id='quantity'
+											onClick={() => {
+												minusButton(product.id);
+											}}>
+											-
+										</button>
+										{/* <input
 									type="number"
 									onClick={() => {
 										inputAmount(product.id, product.amount);
 									}}
 								></input> */}
-									{product.quantity}
-									<button
-										id='quantity'
-										onClick={() => {
-											plusButton(product.id);
-										}}>
-										+
-									</button>
-									<button
-										id='quantity'
-										onClick={() => {
-											removeFromCart(product.id);
-										}}>
-										remove
-									</button>
+										{product.quantity}
+										<button
+											id='quantity'
+											onClick={() => {
+												plusButton(product.id);
+											}}>
+											+
+										</button>
+										<button
+											id='quantity'
+											onClick={() => {
+												removeFromCart(product.id);
+											}}>
+											remove
+										</button>
+									</div>
 									<div id='item-total'>
 										Item Total: ${(product.quantity * product.price) / 100}
 									</div>

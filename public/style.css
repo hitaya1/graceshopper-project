@@ -113,9 +113,10 @@ label {
 	font-weight: bold;
 }
 
-input[id='logging-in'],
-#log-in-form {
+#log-in-form,
+input[id='logging-in'] {
 	display: inline-flex;
+	justify-content: flex-start;
 	margin: 5px;
 	flex-flow: row;
 	width: 50px;
@@ -430,6 +431,21 @@ button[id='checkout'] {
 	height: 30px;
 	align-items: flex-end;
 }
+
+button[id='check-out'] {
+	background-color: #555;
+	color: #ddd;
+	border-radius: 4px;
+	border: none;
+	padding: 15px px;
+	text-align: initial;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 13px;
+	margin: 4px 4px;
+	height: 30px;
+	align-items: flex-end;
+}
 #catCart {
 	width: 40px;
 	height: 30px;
@@ -449,6 +465,20 @@ button[id='add-to'] {
 	height: 30px;
 	align-items: flex-end;
 }
+
+button[id='quantity'] {
+	background-color: #555;
+	color: #ddd;
+	border-radius: 4px;
+	border: none;
+	padding: 15px px;
+	text-align: initial;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 9px;
+	margin: 4px 4px;
+	height: 15px;
+}
 /*cart*/
 
 .cartProducts {
@@ -459,8 +489,8 @@ button[id='add-to'] {
 }
 
 #cartProducts img {
-	height: 220px;
-	width: 440px;
+	height: 200px;
+	width: 340px;
 	border-radius: 15px;
 }
 

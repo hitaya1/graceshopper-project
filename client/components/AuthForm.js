@@ -23,8 +23,8 @@ class AuthForm extends React.Component {
 		}
 
 		return (
-			<div>
-				<form id='log-in-form' onSubmit={handleSubmit} name={name}>
+			<div id='log-in-form'>
+				<form onSubmit={handleSubmit} name={name}>
 					<div>
 						<label htmlFor='username'>
 							<small>Username: </small>
