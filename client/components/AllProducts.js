@@ -273,7 +273,7 @@ class AllProducts extends React.Component {
 				<div>
 					<div className='sort-and-filter'>
 						<div className='sort'>
-							<h2 id='sort'>Sort by:</h2>
+							<div id='sort'></div>
 							<button
 								type='button'
 								id='arrange-button'
@@ -286,46 +286,54 @@ class AllProducts extends React.Component {
 								onClick={this.priceOrder}>
 								Price
 							</button>
-						</div>
-						<div className='filter'>
-							<h2>Sorted by: {this.state.arrange}</h2>
-							<form id='filter-practicality-form'>
-								<label htmlFor='Practicality'>Practicality:</label>
-								<select
-									id='select-bar'
-									name='Practicality'
-									onChange={this.handlePracticalityChange}>
-									<option value={0}>Show All</option>
-									<option value={1}>1: Realistic</option>
-									<option value={2}>2: Silly</option>
-									<option value={3}>3: Nonsensical</option>
-									<option value={4}>4: Ridiculous</option>
-									<option value={5}>5: Ludicrous</option>
-								</select>
-							</form>
+							<div className='filter'>
+								<h2>Sorted by: {this.state.arrange}</h2>
+								<form id='filter-practicality-form'>
+									<label htmlFor='Practicality'>Practicality:</label>
+									<select
+										id='select-bar'
+										name='Practicality'
+										onChange={this.handlePracticalityChange}>
+										<option value={0}>Show All</option>
+										<option value={1}>1: Realistic</option>
+										<option value={2}>2: Silly</option>
+										<option value={3}>3: Nonsensical</option>
+										<option value={4}>4: Ridiculous</option>
+										<option value={5}>5: Ludicrous</option>
+									</select>
+								</form>
 
-							<form id='filter-price-min-form'>
-								<label htmlFor='priceFilterMin' className='filter-input-label'>
-									Price min:
-								</label>
-								<input
-									name='priceFilterMin'
-									className='filter-input-box'
-									onChange={this.handlePriceMinChange}
-									value={this.state.priceFilterMin || 0}
-								/>
-							</form>
-							<form id='filter-price-max-form'>
-								<label htmlFor='priceFilterMax' className='filter-input-label'>
-									Price max:
-								</label>
-								<input
-									name='priceFilterMax'
-									className='filter-input-box'
-									onChange={this.handlePriceMaxChange}
-									value={this.state.priceFilterMax || 0}
-								/>
-							</form>
+								<form id='filter-price-min-form'>
+									<label
+										htmlFor='priceFilterMin'
+										className='filter-input-label'>
+										Price min:
+									</label>
+									<input
+										id='product-filter'
+										type='text'
+										name='priceFilterMin'
+										className='filter-input-box'
+										onChange={this.handlePriceMinChange}
+										value={this.state.priceFilterMin || 0}
+									/>
+								</form>
+								<form id='filter-price-max-form'>
+									<label
+										htmlFor='priceFilterMax'
+										className='filter-input-label'>
+										Price max:
+									</label>
+									<input
+										id='product-filter'
+										type='text'
+										name='priceFilterMax'
+										className='filter-input-box'
+										onChange={this.handlePriceMaxChange}
+										value={this.state.priceFilterMax || 0}
+									/>
+								</form>
+							</div>{' '}
 						</div>
 					</div>
 					<div className='page-turn'>
@@ -375,9 +383,9 @@ class AllProducts extends React.Component {
 											<div></div>
 										)}
 										<div id='product-price'>${product.price / 100}</div>
-										<h5 id='praticatily-rating'>
+										<div id='praticatily-rating'>
 											Praticatily Rating: {product.category}
-										</h5>
+										</div>
 									</div>
 								);
 							})}

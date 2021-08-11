@@ -33,6 +33,7 @@ export const AddToCart = (props) => {
 	return (
 		<div>
 			<button
+				id='add-to'
 				type='submit'
 				onClick={() => {
 					addProduct(props.product);

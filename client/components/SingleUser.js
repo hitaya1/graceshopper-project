@@ -5,7 +5,7 @@ import { fetchSingleUser } from '../store/singleUser';
 
 class User extends React.Component {
 	componentDidMount() {
-		this.props.getSingleUser(this.props.match.params.userId)
+		this.props.getSingleUser(this.props.match.params.userId);
 	}
 
 	render() {
@@ -13,10 +13,12 @@ class User extends React.Component {
 
 		let editUserButton = null;
 
-		if (currentUser.isAdmin || currentUser.id === user.id){
+		if (currentUser.isAdmin || currentUser.id === user.id) {
 			editUserButton = (
 				<Link to={`/users/edit/${user.id}`}>
-					<button type="button" className='edit-button' name={user.id}>Edit Cat...</button>
+					<button type='button' id='edit-button' name={user.id}>
+						Edit Cat...
+					</button>
 				</Link>
 			);
 		}
@@ -24,40 +26,48 @@ class User extends React.Component {
 		let ifUser = <div>The cats are free! Run for your lives!</div>;
 		let cardStars = 'No credit card on file';
 		let fullName = user.firstName;
-		if (user.firstName) { fullName += ' '; }
+		if (user.firstName) {
+			fullName += ' ';
+		}
 		fullName += user.lastName;
 
-		if (user.cc) { cardStars = '**** - **** - **** - ****'; }
-
-		if (user.id === currentUser.id || currentUser.isAdmin){
-			ifUser = (
-			<div id='single-user'>
-			<div key={user.id} className='single-user-entry'>
-				<h2 className='user-name'>
-					Welcome, {user.username}! What a purrfect day!
-				</h2>
-				<h4>Name: {fullName || 'No name on file'}</h4>
-				<h4>Shipping Address: {user.shippingAddress || 'No shipping address on file'}</h4>
-				<h4>Billing Address: {user.billingAddress || 'No billing address on file'}</h4>
-				<h4>Credit Card: {cardStars}</h4>
-					{editUserButton}
-			</div>
-		</div>
-			)
+		if (user.cc) {
+			cardStars = '**** - **** - **** - ****';
 		}
-		return (
-			ifUser
-		);
+
+		if (user.id === currentUser.id || currentUser.isAdmin) {
+			ifUser = (
+				<div className='single-user-entry'>
+					<div key={user.id}>
+						<h2 className='single-user'>
+							Welcome, {user.username}! What a purrfect day!
+						</h2>
+						<h4>Name: {fullName || 'No name on file'}</h4>
+						<h4>
+							Shipping Address:{' '}
+							{user.shippingAddress || 'No shipping address on file'}
+						</h4>
+						<h4>
+							Billing Address:{' '}
+							{user.billingAddress || 'No billing address on file'}
+						</h4>
+						<h4>Credit Card: {cardStars}</h4>
+						{editUserButton}
+					</div>
+				</div>
+			);
+		}
+		return ifUser;
 	}
 }
 
 const mapState = (state) => ({
 	user: state.singleUser,
-	currentUser: state.auth
+	currentUser: state.auth,
 });
 const mapDispatch = (dispatch, { history }) => {
 	return {
-		getSingleUser: (userId) => dispatch(fetchSingleUser(userId, history))
+		getSingleUser: (userId) => dispatch(fetchSingleUser(userId, history)),
 	};
 };
 

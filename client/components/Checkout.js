@@ -5,7 +5,6 @@ import { fetchProducts } from '../store/products';
 import { updateProduct } from '../store/singleProduct';
 import UserCheckout from './userCheckoutInfo';
 import { createCart } from '../store/cart';
-
 export class Checkout extends React.Component {
 	constructor() {
 		super();
@@ -13,10 +12,12 @@ export class Checkout extends React.Component {
 	}
 	componentDidMount() {
 		this.props.getProducts();
-
 		this.props.currentUser && this.props.currentUser.id
-				? this.props.createCart(this.props.currentUser.id, JSON.parse(localStorage.getItem('cart')))
-				: null;
+			? this.props.createCart(
+					this.props.currentUser.id,
+					JSON.parse(localStorage.getItem('cart'))
+			  )
+			: null;
 	}
 	async checkoutHandler() {
 		let localCart = JSON.parse(localStorage.getItem('cart'));
@@ -30,7 +31,6 @@ export class Checkout extends React.Component {
 		});
 		localStorage.setItem('cart', '[]');
 	}
-
 	render() {
 		const { products, currentUser } = this.props;
 		const { checkoutHandler } = this;
@@ -38,11 +38,9 @@ export class Checkout extends React.Component {
 		let idOfCart = localCart.map((product) => {
 			return product.id;
 		});
-
 		return (
-			<div id='user-checkout'>
+			<div>
 				{currentUser && currentUser.id ? <UserCheckout /> : null}
-
 				<div>
 					{products && products.length ? (
 						<div className='user-checkout'>
@@ -50,11 +48,11 @@ export class Checkout extends React.Component {
 								for (let i = 0; i < idOfCart.length; i++) {
 									if (product.id === idOfCart[i]) {
 										return (
-											<div key={product.id}>
+											<div key={product.id} id='user-checkout'>
 												{product.name}
-												{'   '}Quantity: {localCart[i].quantity}
-												{'   '}Total: $
-												{(localCart[i].quantity * localCart[i].price) /100}
+												{'  '}Quantity: {localCart[i].quantity}
+												{'  '}Total: $
+												{(localCart[i].quantity * localCart[i].price) / 100}
 											</div>
 										);
 									}
@@ -63,15 +61,19 @@ export class Checkout extends React.Component {
 							<div>
 								<h5>(+ Cat Tax)</h5>
 								Grand Total: $
-								{Math.floor((localCart.reduce((total, product) => {
-									total += product.price * product.quantity;
-									return total;
-								}, 0)) *1.08) /100}
+								{Math.floor(
+									localCart.reduce((total, product) => {
+										total += product.price * product.quantity;
+										return total;
+									}, 0) * 1.08
+								) / 100}
 							</div>
-
 							{currentUser && currentUser.id ? (
 								<Link to='/placeOrder'>
-									<button type='submit' onClick={() => checkoutHandler()}>
+									<button
+										id='checkout'
+										type='submit'
+										onClick={() => checkoutHandler()}>
 										Place Order
 									</button>
 								</Link>
@@ -90,12 +92,10 @@ export class Checkout extends React.Component {
 		);
 	}
 }
-
 const mapState = (state) => ({
 	products: state.products,
 	currentUser: state.auth,
 });
-
 const mapDispatch = (dispatch) => {
 	return {
 		createCart: (userId, cart) => dispatch(createCart(userId, cart)),
@@ -103,5 +103,4 @@ const mapDispatch = (dispatch) => {
 		updateProduct: (product, user) => dispatch(updateProduct(product, user)),
 	};
 };
-
 export default connect(mapState, mapDispatch)(Checkout);
