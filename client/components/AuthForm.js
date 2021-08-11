@@ -24,22 +24,24 @@ class AuthForm extends React.Component {
 
 		return (
 			<div>
-				<form onSubmit={handleSubmit} name={name}>
+				<form id='log-in-form' onSubmit={handleSubmit} name={name}>
 					<div>
 						<label htmlFor='username'>
 							<small>Username: </small>
 						</label>
-						<input name='username' type='text' />
+						<input id='logging-in' name='username' type='text' />
 					</div>
 					{emailField}
 					<div>
 						<label htmlFor='password'>
 							<small>Password: </small>
 						</label>
-						<input name='password' type='password' />
+						<input id='logging-in' name='password' type='password' />
 					</div>
 					<div>
-						<button type='submit' id="log-in">{displayName}</button>
+						<button type='submit' id='log-in'>
+							{displayName}
+						</button>
 					</div>
 					{error && error.response && <div> {error.response.data} </div>}
 				</form>

@@ -65,10 +65,10 @@ class AllUsers extends React.Component {
 
 					<div className='search'>
 						<form id='search-form'>
-							<label htmlFor='search' className='search-input-label'>
-								Search...
-							</label>
+							<label htmlFor='search' className='search-input-label'></label>
 							<input
+								id='search-bar'
+								type='text'
 								name='search'
 								className='search-input-box'
 								onChange={this.handleSearchChange}

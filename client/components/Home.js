@@ -10,10 +10,18 @@ export const Home = (props) => {
 
 	return (
 		<div>
-			<h3>Welcome, {username}</h3>
-			<Link to={`/users/${userId}`}>
-					<button type="button">Full Profile</button>
-				</Link>
+			<div>
+				<div id='welcome'>
+					{' '}
+					Welcome, {username}
+					<img src='/pics/cat-eric-the-cat.gif' className='welcome-cat' />
+					<Link to={`/users/${userId}`}>
+						<button id='full-prof' type='button'>
+							Full Profile
+						</button>
+					</Link>
+				</div>
+			</div>
 		</div>
 	);
 };

@@ -42,50 +42,54 @@ export class Checkout extends React.Component {
 		// console.log(localCart);
 		// console.log('trying to grab', localCart);
 		return (
-			<div id='user-checkout'>
+			<div>
 				{currentUser && currentUser.id ? <UserCheckout /> : null}
-
 				<div>
-					{products && products.length ? (
-						<div className='user-checkout'>
-							{products.map((product) => {
-								for (let i = 0; i < idOfCart.length; i++) {
-									if (product.id === idOfCart[i]) {
-										return (
-											<div key={product.id}>
-												{product.name}
-												{'   '}Quantity: {localCart[i].quantity}
-												{'   '}Total:
-												{localCart[i].quantity * localCart[i].price}
-											</div>
-										);
-									}
-								}
-							})}
+					<div className='user-checkout'>
+						{products && products.length ? (
 							<div>
-								Total:
-								{localCart.reduce((total, product) => {
-									total += product.price * product.quantity;
-									return total;
-								}, 0)}
-							</div>
-
-							{currentUser && currentUser.id ? (
-								<Link to='/placeOrder'>
-									<button type='submit' onClick={() => checkoutHandler()}>
-										Place Order
-									</button>
-								</Link>
-							) : (
-								<div>
-									<br />
-									Please log in in order to check out!
+								{products.map((product) => {
+									for (let i = 0; i < idOfCart.length; i++) {
+										if (product.id === idOfCart[i]) {
+											return (
+												<div key={product.id} id='user-checkout'>
+													{product.name}
+													{'   '}Quantity: {localCart[i].quantity}
+													{'   '}Total:
+													{localCart[i].quantity * localCart[i].price}
+												</div>
+											);
+										}
+									}
+								})}
+								<div id='user-checkout-2'>
+									Total:
+									{localCart.reduce((total, product) => {
+										total += product.price * product.quantity;
+										return total;
+									}, 0)}
 								</div>
-							)}
-						</div>
-					) : (
-						<div>Oops! You haven`t added anything to the cart yet!</div>
-					)}
+
+								{currentUser && currentUser.id ? (
+									<Link to='/placeOrder'>
+										<button
+											type='submit'
+											id='checkout'
+											onClick={() => checkoutHandler()}>
+											Place Order
+										</button>
+									</Link>
+								) : (
+									<div>
+										<br />
+										Please log in in order to check out!
+									</div>
+								)}
+							</div>
+						) : (
+							<div>Oops! You haven`t added anything to the cart yet!</div>
+						)}
+					</div>{' '}
 				</div>
 			</div>
 		);
