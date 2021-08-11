@@ -77,7 +77,7 @@ class EditUser extends Component {
 			adminSelect = (
 				<div>
 					<label htmlFor='isAdmin'>isAdmin:</label>
-					<select name='isAdmin' onChange={handleChange}>
+					<select id='admin-select' name='isAdmin' onChange={handleChange}>
 						<option value={false}>False</option>
 						<option value={true}>True</option>
 					</select>
