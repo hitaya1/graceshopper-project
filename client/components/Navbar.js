@@ -19,26 +19,31 @@ class Navbar extends React.Component {
 		return (
 			<div>
 				<nav>
-					{isLoggedIn ? (
-						<div>
-							{/* The navbar will show these links after you log in */}
-							<Link to='/home'>Home</Link>
-							<a href='#' onClick={handleClick}>
-								Logout
-							</a>
-							{allUsersButton}
-						</div>
-					) : (
-						<div>
-							{/* The navbar will show these links before you log in */}
-							<Link to='/login'>Login</Link>
-							<Link to='/signup'>Sign Up</Link>
-						</div>
-					)}
-					<Link to='/products'>Products</Link>
-					<Link to='/cart'>
-						<img src='/pics/cart.png' id='catCart'></img>
-					</Link>
+					<div id='banner'>
+						<img src='pics/catsco_2x.png' />
+					</div>
+					<div id='nav-items'>
+						{isLoggedIn ? (
+							<div>
+								{/* The navbar will show these links after you log in */}
+								<Link to='/home'>Home</Link>
+								<a href='#' onClick={handleClick}>
+									Logout
+								</a>
+								{allUsersButton}
+							</div>
+						) : (
+							<div>
+								{/* The navbar will show these links before you log in */}
+								<Link to='/login'>Login</Link>
+								<Link to='/signup'>Sign Up</Link>
+							</div>
+						)}
+						<Link to='/products'>Products</Link>
+						<Link to='/cart'>
+							<img src='/pics/catcart.png' id='catCart'></img>
+						</Link>
+					</div>
 				</nav>
 			</div>
 		);

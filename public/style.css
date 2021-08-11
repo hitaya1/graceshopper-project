@@ -35,11 +35,11 @@ nav a:hover {
 	color: black;
 }
 
-nav #banner img {
+#banner img {
 	display: flex;
 	justify-content: flex-end;
 	border-radius: 15px;
-	width: 550px;
+	width: 250px;
 	height: 140px;
 }
 
@@ -55,7 +55,7 @@ nav #nav-items {
 	font-weight: bolder;
 	align-items: center;
 	display: inline-grid;
-	margin: 0px 455px;
+	margin: 0px 555px;
 }
 .welcome-cat {
 	opacity: 0.7;
@@ -99,6 +99,40 @@ input[id='search-bar'] {
 	float: inline-start;
 	width: 33.33%;
 	padding: 15px;
+}
+
+/*edit-user*/
+
+#edit-user-form,
+input[id='user-edit-form'],
+textarea {
+	width: 100%;
+	padding: 12px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	resize: vertical;
+}
+
+#edit-user-form,
+label {
+	display: inline-block;
+}
+.editUser {
+	border-radius: 5px;
+
+	padding: 20px;
+}
+.dit-column {
+	float: left;
+	width: 25%;
+	margin-top: 6px;
+}
+
+input[id='user-edit-form'] {
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	resize: vertical;
+	width: 250px;
 }
 
 /*username and password*/

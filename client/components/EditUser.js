@@ -9,13 +9,13 @@ class EditUser extends Component {
 			id: this.props.user.id,
 			firstName: this.props.user.firstName || '',
 			lastName: this.props.user.lastName || '',
-      username: this.props.user.username || '',
+			username: this.props.user.username || '',
 			email: this.props.user.email || '',
-      password: this.props.user.password || '',
-      cc: this.props.user.cc || 0,
-      shippingAdress: this.props.user.shippingAdress || '',
-      billingAdress: this.props.user.billingAdress || '',
-      isAdmin: this.props.user.isAdmin || false
+			password: this.props.user.password || '',
+			cc: this.props.user.cc || 0,
+			shippingAdress: this.props.user.shippingAdress || '',
+			billingAdress: this.props.user.billingAdress || '',
+			isAdmin: this.props.user.isAdmin || false,
 		};
 
 		this.handleChange = this.handleChange.bind(this);
@@ -34,14 +34,14 @@ class EditUser extends Component {
 	componentDidUpdate(prevProp) {
 		if (prevProp.user.userId !== this.props.user.userId) {
 			this.setState({
-        id: this.props.user.id,
+				id: this.props.user.id,
 				username: this.props.user.username || '',
 				email: this.props.user.email || '',
 				password: this.props.user.password || '',
 				cc: this.props.user.cc || 0,
 				shippingAdress: this.props.user.shippingAdress || '',
 				billingAdress: this.props.user.billingAdress || '',
-				isAdmin: this.props.user.isAdmin || false
+				isAdmin: this.props.user.isAdmin || false,
 			});
 		}
 	}
@@ -58,16 +58,26 @@ class EditUser extends Component {
 	}
 
 	render() {
-		const { firstName, lastName, username, email, password, cc, shippingAddress, billingAddress, isAdmin } = this.state;
+		const {
+			firstName,
+			lastName,
+			username,
+			email,
+			password,
+			cc,
+			shippingAddress,
+			billingAddress,
+			isAdmin,
+		} = this.state;
 		const { handleSubmit, handleChange } = this;
 
 		let adminSelect = null;
 
-		if (this.props.currentUser.isAdmin){
+		if (this.props.currentUser.isAdmin) {
 			adminSelect = (
 				<div>
-					<label htmlFor="isAdmin">isAdmin:</label>
-					<select name="isAdmin" onChange={handleChange}>
+					<label htmlFor='isAdmin'>isAdmin:</label>
+					<select name='isAdmin' onChange={handleChange}>
 						<option value={false}>False</option>
 						<option value={true}>True</option>
 					</select>
@@ -76,35 +86,110 @@ class EditUser extends Component {
 		}
 
 		return (
-			<div className="editUser">
-				<form id="edit-user-form" onSubmit={handleSubmit}>
-        <label htmlFor="firstName">First Name:</label>
-				<input name="firstName" onChange={handleChange} value={firstName} />
+			<div className='editUser'>
+				<form id='edit-user-form' onSubmit={handleSubmit}>
+					<div className='edit-column'>
+						<label htmlFor='firstName'>First Name:</label>
+					</div>
+					<div className='edit-column-2'>
+						<input
+							id='user-edit-form'
+							type='text'
+							name='firstName'
+							onChange={handleChange}
+							value={firstName}
+						/>
+					</div>
+					<div className='edit-column'>
+						<label htmlFor='lastName'>Last Name:</label>
+					</div>
+					<div className='edit-column-2'>
+						<input
+							id='user-edit-form'
+							type='text'
+							name='lastName'
+							onChange={handleChange}
+							value={lastName}
+						/>
+					</div>
+					<div className='edit-column'>
+						<label htmlFor='username'>Username:</label>
+					</div>
+					<div className='edit-column-2'>
+						<input
+							id='user-edit-form'
+							type='text'
+							name='username'
+							onChange={handleChange}
+							value={username}
+						/>
+					</div>
+					<div className='edit-column'>
+						<label htmlFor='email'> Email:</label>
+					</div>
+					<div className='edit-column-2'>
+						<input
+							id='user-edit-form'
+							type='text'
+							name='email'
+							onChange={handleChange}
+							value={email}
+						/>
+					</div>
+					<div className='edit-column'>
+						<label htmlFor='password'> Password:</label>
+					</div>
+					<div className='edit-column-2'>
+						<input
+							id='user-edit-form'
+							type='text'
+							name='password'
+							onChange={handleChange}
+							value={password}
+						/>
+					</div>
+					<div className='edit-column'>
+						<label htmlFor='cc'> Credit Card #:</label>
+					</div>
+					<div className='edit-column-2'>
+						<input
+							id='user-edit-form'
+							type='text'
+							name='cc'
+							onChange={handleChange}
+							value={cc}
+						/>
+					</div>
+					<div className='edit-column'>
+						<label htmlFor='shippingAddress'> Shipping Address:</label>
+					</div>
+					<div className='edit-column-2'>
+						<input
+							id='user-edit-form'
+							type='text'
+							name='shippingAddress'
+							onChange={handleChange}
+							value={shippingAddress}
+						/>
+					</div>
+					<div className='edit-column'>
+						<label htmlFor='billingAddress'> Billing Address:</label>
+					</div>
+					<div className='edit-column-2'>
+						<input
+							id='user-edit-form'
+							type='text'
+							name='billingAddress'
+							onChange={handleChange}
+							value={billingAddress}
+						/>
+					</div>
 
-        <label htmlFor="lastName">Last Name:</label>
-				<input name="lastName" onChange={handleChange} value={lastName} />
+					{adminSelect}
 
-        <label htmlFor="username">Username:</label>
-				<input name="username" onChange={handleChange} value={username} />
-
-				<label htmlFor="email"> Email:</label>
-				<input name="email" onChange={handleChange} value={email} />
-
-				<label htmlFor="password"> Password:</label>
-				<input name="password" onChange={handleChange} value={password} />
-
-        <label htmlFor="cc"> Credit Card #:</label>
-				<input name="cc" onChange={handleChange} value={cc} />
-
-        <label htmlFor="shippingAddress"> Shipping Address:</label>
-				<input name="shippingAddress" onChange={handleChange} value={shippingAddress} />
-
-        <label htmlFor="billingAddress"> Billing Address:</label>
-				<input name="billingAddress" onChange={handleChange} value={billingAddress} />
-
-        {adminSelect}
-
-					<button type="submit">Submit</button>
+					<button id='edit-user' type='submit'>
+						Submit
+					</button>
 				</form>
 				<form onSubmit={(ev) => ev.preventDefault()} />
 			</div>
@@ -114,7 +199,7 @@ class EditUser extends Component {
 
 const mapStateToProps = (state) => ({
 	user: state.singleUser,
-	currentUser: state.auth
+	currentUser: state.auth,
 });
 
 const mapDispatchToProps = (dispatch, { history }) => ({
