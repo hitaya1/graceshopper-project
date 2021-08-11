@@ -59,14 +59,16 @@ export class Checkout extends React.Component {
 								}
 							})}
 							<div>
-								<h5>(+ Cat Tax)</h5>
-								Grand Total: $
-								{Math.floor(
-									localCart.reduce((total, product) => {
-										total += product.price * product.quantity;
-										return total;
-									}, 0) * 1.08
-								) / 100}
+								<div id='cat-tax'>(+ Cat Tax)</div>
+								<div id='grand-total'>
+									Grand Total: $
+									{Math.floor(
+										localCart.reduce((total, product) => {
+											total += product.price * product.quantity;
+											return total;
+										}, 0) * 1.08
+									) / 100}
+								</div>
 							</div>
 							{currentUser && currentUser.id ? (
 								<Link to='/placeOrder'>
