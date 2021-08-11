@@ -18,7 +18,7 @@ const requireAdmin = (req, res, next) =>{
 }
 
 const userIsUser = (req, res, next) =>{
-  if (req.user.id !== req.params.id && !req.user.isAdmin){ return res.status(403).send('CATastrophy! Wrong litter!');}
+  if (parseInt(req.user.id) !== parseInt(req.params.id) && !req.user.isAdmin){ return res.status(403).send('CATastrophy! Wrong litter!');}
   else{ next(); }
 }
 

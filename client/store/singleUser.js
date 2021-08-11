@@ -15,24 +15,6 @@ const _editUser = (user) => ({ type: EDIT_USER, user });
 /**
  * THUNK CREATORS
  */
-// export const fetchSingleUser = (userId, user, history) => {
-// 	return async (dispatch) => {
-// 		try {
-// 			if (user.isAdmin || parseInt(user.id) === parseInt(userId)) {
-// 				const response = await axios.get(`/api/users/` + userId);
-
-// 				dispatch(setUser(response.data));
-// 			} else {
-// 				history.push('/error');
-// 				console.error('get user failed. admin required.');
-// 			}
-// 		} catch (e) {
-// 			//dispatch(errorRobot());
-// 			console.error("You don't exist. Sorry.");
-// 			console.error(e);
-// 		}
-// 	};
-// };
 export const fetchSingleUser = (userId, history) => {
 	return async (dispatch) => {
 		try {
@@ -45,34 +27,17 @@ export const fetchSingleUser = (userId, history) => {
 
 			dispatch(setUser(response.data));
 		} catch (e) {
-			history.push('/error');
+			window.location.replace('/error');
 			console.error(e);
 		}
 	};
 };
 
-// export const editUser = (editting, user, history) => {
-// 	return async (dispatch) => {
-// 		if (user.isAdmin || parseInt(user.id) === parseInt(editting.id)) {
-// 			const { data: edited } = await axios.put(
-// 				`/api/users/${editting.id}`,
-// 				editting
-// 			);
-// 			dispatch(_editUser(edited));
-// 			history.push(`/users/${editting.id}`);
-// 		} else {
-// 			history.push('/error');
-// 			console.error('edit user failed. admin required.');
-// 		}
-// 	};
-// };
-
 export const editUser = (editting, history) => {
 	return async (dispatch) => {
 		try{
 			const token = window.localStorage.getItem('token');
-			const { data: edited } = await axios.put(
-				`/api/users/${editting.id}`, editting, {
+			const { data: edited } = await axios.put( `/api/users/${editting.id}`, editting, {
 					headers: {
 						authorization: token
 					}
@@ -80,7 +45,7 @@ export const editUser = (editting, history) => {
 			dispatch(_editUser(edited));
 			history.push(`/users/${editting.id}`);
 		} catch(e) {
-			history.push('/error');
+			window.location.replace('/error');
 			console.error(e);
 		}
 	};
