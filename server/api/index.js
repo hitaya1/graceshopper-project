@@ -6,6 +6,7 @@ const User = require('../db/models/User');
 const Product = require('../db/models/Product')
 const ProdOrder = require('../db/models/ProductOrder')
 
+
 router.use('/users', require('./users'));
 router.use('/products', require('./products'));
 
@@ -14,6 +15,7 @@ router.post('/checkout', async (req, res, next) => {
 		const user = await User.findByPk(req.body.userId);
 		const order = await Order.create();
 		order.setUser(user)
+
 		const newProdOrder = req.body.cart.map(product => {
 			ProdOrder.create({
 				productId: product.id,
@@ -27,7 +29,6 @@ router.post('/checkout', async (req, res, next) => {
 		next(error);
 	}
 });
-
 
 router.use((req, res, next) => {
 	const error = new Error('Not Found');

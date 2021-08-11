@@ -51,18 +51,17 @@ export const editProduct = (product, history) => {
 	};
 };
 
-export const updateProduct = (product, history) => {
+export const updateProduct = (product) => {
 	return async (dispatch) => {
 		try{
 			const token = window.localStorage.getItem('token');
-			const { data: edited } = await axios.put( `/api/products/${product.id}`, product, {
+			const { data: edited } = await axios.put( `/api/products/${product.id}/checkout`, product, {
 					headers: {
 						authorization: token
 					}
 				});
 			dispatch(_editProduct(edited));
 		} catch(e) {
-			history.push('/error');
 			console.error(e);
 		}
 	};
