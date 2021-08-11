@@ -23,7 +23,7 @@ export const createUser = (adding, history) => {
 			dispatch(makeUser(created));
 			history.push('/users');
 		} catch(e){
-			history.push('/error');
+			window.location.replace('/error');
 			console.error('create user failed. admin required.');
 		}
 	};
@@ -42,7 +42,7 @@ export const deleteUser = (id, history) => {
 				dispatch(_deleteUser(deleted));
 			}
 		}catch(e){
-			history.push('/error');
+			window.location.replace('/error');
 			console.error(e)
 		}
 	};
@@ -61,7 +61,7 @@ export const getAllUsers = (history) =>{
 				dispatch(fetchAllUsers(users));
 			}
 		}catch(e){
-			history.push('/error');
+			window.location.replace('/error');
 			console.error(e)
 		}
 

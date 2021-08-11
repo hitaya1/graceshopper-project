@@ -27,7 +27,7 @@ export const fetchSingleProduct = (productId) => {
 			});
 			dispatch(setSingleProduct(response.data));
 		} catch (e) {
-			history.push('/error');
+			window.location.replace('/error');
 			console.error(e);
 		}
 	};
@@ -45,7 +45,7 @@ export const editProduct = (product, history) => {
 			dispatch(_editProduct(edited));
 			history.push(`/products/${product.id}`);
 		} catch(e) {
-			history.push('/error');
+			window.location.replace('/error');
 			console.error(e);
 		}
 	};
@@ -62,6 +62,7 @@ export const updateProduct = (product) => {
 				});
 			dispatch(_editProduct(edited));
 		} catch(e) {
+			window.location.replace('/error');
 			console.error(e);
 		}
 	};

@@ -31,7 +31,7 @@ export const fetchProducts = (history) => {
 
 			dispatch(setProducts(response.data));
 		} catch (e) {
-			history.push('/error');
+			window.location.replace('/error');
 			console.error(e);
 		}
 	};
@@ -49,7 +49,7 @@ export const createProduct = (product, history) => {
 			dispatch(makeProduct(created));
 			history.push('/products');
 		} catch(e){
-			history.push('/error');
+			window.location.replace('/error');
 			console.error(e);
 		}
 	};
@@ -65,7 +65,7 @@ export const deleteProduct = (id, history) => {
 			});
 			dispatch(_deleteProduct(data));
 		} catch(e){
-			history.push('/error');
+			window.location.replace('/error');
 			console.error(e);
 		}
 	};
