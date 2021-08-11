@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { fetchProducts } from '../store/products';
 import { updateProduct } from '../store/singleProduct';
 import UserCheckout from './userCheckoutInfo';
+import { createCart } from '../store/cart';
 
 export class Checkout extends React.Component {
 	constructor() {
@@ -12,6 +13,10 @@ export class Checkout extends React.Component {
 	}
 	componentDidMount() {
 		this.props.getProducts();
+
+		this.props.currentUser && this.props.currentUser.id
+				? this.props.createCart(this.props.currentUser.id, JSON.parse(localStorage.getItem('cart')))
+				: null;
 	}
 	async checkoutHandler() {
 		let localCart = JSON.parse(localStorage.getItem('cart'));
@@ -26,21 +31,14 @@ export class Checkout extends React.Component {
 		localStorage.setItem('cart', '[]');
 	}
 
-	// let cartString = JSON.stringify(newCart);
-
-	//subtract each items quantity from each items inventory
-	//history.push to a page that says everything about ur order (name,email,order)
 	render() {
-		console.log(this.props);
-		//update our orders db with status completed=false
 		const { products, currentUser } = this.props;
 		const { checkoutHandler } = this;
 		let localCart = JSON.parse(localStorage.getItem('cart'));
 		let idOfCart = localCart.map((product) => {
 			return product.id;
 		});
-		// console.log(localCart);
-		// console.log('trying to grab', localCart);
+
 		return (
 			<div id='user-checkout'>
 				{currentUser && currentUser.id ? <UserCheckout /> : null}
@@ -90,10 +88,6 @@ export class Checkout extends React.Component {
 				</div>
 			</div>
 		);
-		//(compare localStorage cart with our products)  --- maybe array.filter +
-		//only display items inside of cart +
-		//button - 'finalize' type='submit' &&
-		//update inventory, cc, address
 	}
 }
 
@@ -104,6 +98,7 @@ const mapState = (state) => ({
 
 const mapDispatch = (dispatch) => {
 	return {
+		createCart: (userId, cart) => dispatch(createCart(userId, cart)),
 		getProducts: () => dispatch(fetchProducts()),
 		updateProduct: (product, user) => dispatch(updateProduct(product, user)),
 	};

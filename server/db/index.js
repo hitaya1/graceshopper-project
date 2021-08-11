@@ -13,8 +13,10 @@ User.hasMany(Order)
 Order.belongsTo(User)
 Product.belongsToMany(Order, {through: ProdOrder})
 Order.belongsToMany(Product, {through: ProdOrder})
-
-// console.log(Object.keys(Order.prototype))
+Product.hasMany(ProdOrder)
+Order.hasMany(ProdOrder)
+ProdOrder.belongsTo(Product)
+ProdOrder.belongsTo(Order)
 
 module.exports = {
 	db,

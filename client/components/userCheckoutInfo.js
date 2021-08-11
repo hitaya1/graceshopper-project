@@ -27,11 +27,9 @@ export class UserCheckout extends React.Component {
 
 	handleSubmit(evt) {
 		evt.preventDefault();
-		// console.log('hi submit');
 		// this.props.createProduct({ ...this.state }, this.props.currentUser);
 	}
 	render() {
-    // console.log(this.props)
 		const { cardholdersName, ccNumber, shippingAddress, billingAddress } =
 			this.state;
 		const { handleSubmit, handleChange } = this;
