@@ -36,6 +36,7 @@ export class UserCheckout extends React.Component {
 		const { handleSubmit, handleChange } = this;
 
 		return (
+			<div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
 			<div className='container'>
 				<form id='place-order-form' onSubmit={handleSubmit}>
 					<div className='column'>
@@ -50,10 +51,10 @@ export class UserCheckout extends React.Component {
 							value={cardholdersName}
 						/>
 					</div>
-					<div className='column'>
+					<div className='column' style={{marginTop: '20px'}}>
 						<label htmlFor='ccNumber'> Card Number:</label>
 					</div>
-					<div className='column-2'>
+					<div className='column-2' style={{marginTop: '10px'}}>
 						<input
 							id='checkout-form'
 							type='text'
@@ -62,10 +63,10 @@ export class UserCheckout extends React.Component {
 							value={ccNumber}
 						/>
 					</div>
-					<div className='column'>
+					<div className='column' style={{marginTop: '20px'}}>
 						<label htmlFor='shippingAddress'> Shipping Address:</label>
 					</div>
-					<div className='column-2'>
+					<div className='column-2' style={{marginTop: '10px'}}>
 						<input
 							id='checkout-form'
 							type='text'
@@ -74,10 +75,10 @@ export class UserCheckout extends React.Component {
 							value={shippingAddress}
 						/>
 					</div>
-					<div className='column'>
-						<label htmlFor='billingAddress'> Billing Address:</label>
+					<div className='column' style={{marginTop: '20px'}}>
+						<label htmlFor='billingAddress' > Billing Address:</label>
 					</div>
-					<div className='column-2'>
+					<div className='column-2' style={{marginTop: '10px'}}>
 						<input
 							id='checkout-form'
 							type='text'
@@ -87,11 +88,11 @@ export class UserCheckout extends React.Component {
 						/>
 					</div>
 
-					<button type='submit' id='user-checkout-cart'>
+					<button type='submit' id='user-checkout-cart' style={{marginTop: '10px'}}>
 						Submit
 					</button>
 				</form>
-			</div>
+			</div></div>
 		);
 	}
 }

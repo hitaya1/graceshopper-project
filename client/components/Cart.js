@@ -57,7 +57,7 @@ export const Cart = (props) => {
 					{cart.map((product) => {
 						index++;
 						return (
-							<div id='cart-info'>
+							<div id='cart-info' style={{display: 'flex', flexDirection: 'column'}}>
 								<div key={index} id='cartProducts'>
 									<img src={product.image} />
 									<div id='name'>{product.name}</div>
@@ -86,7 +86,7 @@ export const Cart = (props) => {
 											}}>
 											remove
 										</button>
-										<div id='item-total'>
+										<div id='item-total' style={{marginBottom: '30px'}}>
 											Item Total: ${(product.quantity * product.price) / 100}
 										</div>
 									</div>
@@ -94,20 +94,20 @@ export const Cart = (props) => {
 							</div>
 						);
 					})}
-					<h1>
+					<h3>
 						Cart Total: $
 						{cart.reduce((total, curr) => {
 							total += curr.price * curr.quantity;
 							return total;
 						}, 0) / 100}
-					</h1>
+					</h3>
 				</div>
 			) : (
 				<div id='empty'>Your cart is empty!</div>
 			)}
 			{cart && cart.length ? (
-				<Link to='/checkout'>
-					<button id='check-out'>Checkout</button>
+				<Link to='/checkout' style={{display: 'flex', justifyContent: 'flex-end', marginRight: '140px'}}>
+					<button id='check-out' >Checkout</button>
 				</Link>
 			) : (
 				<div></div>

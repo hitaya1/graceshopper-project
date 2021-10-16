@@ -71,7 +71,7 @@ export class Checkout extends React.Component {
 								</div>
 							</div>
 							{currentUser && currentUser.id ? (
-								<Link to='/placeOrder'>
+								<Link to='/placeOrder' style={{display: 'flex', 	justifyContent: 'flex-end', marginRight: '30px'}}>
 									<button
 										id='checkout'
 										type='submit'

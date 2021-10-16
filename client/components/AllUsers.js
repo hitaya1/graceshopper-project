@@ -54,7 +54,7 @@ class AllUsers extends React.Component {
 		return (
 			<div>
 				<div>
-					<div style={{display: 'flex', justifyContent:'center'}}>
+					<div style={{display: 'flex', justifyContent:'center', margin: '20px'}}>
 {createUserButton}</div>
 
 					{/* <div className="search"> */}
@@ -77,8 +77,8 @@ class AllUsers extends React.Component {
 									<div style={{ display: 'flex', justifyContent: 'center' }}>
 										{' '}
 										<div key={element.id} id="user">
-											<Link to={`/users/${element.id}`}>
-												<p>{element.username}</p>
+											<Link to={`/users/${element.id}`} style={{display: 'flex', justifyContent: 'flex-start'}}>
+											{element.username}
 											</Link>
 											<button
 												type="button"

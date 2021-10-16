@@ -37,7 +37,7 @@ nav a:hover {
 }
 
 #banner img {
-	position:relative;
+	position: relative;
 	top: -17px;
 	display: flex;
 	justify-content: flex-end;
@@ -119,7 +119,6 @@ input[id='search-bar'] {
 	float: inline-start;
 	/* width: 33.33%; */
 	padding: 15px;
-
 }
 
 /*edit-user*/
@@ -171,7 +170,7 @@ form {
 
 form,
 label {
-	text-align:start;
+	text-align: start;
 	font-weight: bold;
 }
 
@@ -185,10 +184,13 @@ input[id='logging-in'] {
 }
 /* create new user (admin)*/
 #create-user-form {
+	/* justify-content: 'center'; */
+	/* margin-top: '50px'; */
 	display: flex;
-	flex-wrap: wrap;
+	/* flex-wrap: wrap; */
 	flex-direction: column;
-	align-content: center;
+	/* align-content: center; */
+	width: 300px;
 }
 
 /*all products*/
@@ -224,7 +226,7 @@ a,
 	display: table-cell;
 	font-weight: bold;
 	border-radius: 25px;
-	margin: 15px;
+	/* margin: 15px; */
 	/* color: #ffce8d; */
 	height: 20px;
 	padding: 5px;
@@ -440,7 +442,7 @@ button[id='delete-user'] {
 	/* font-size: 13px; */
 	margin: 4px 4px;
 	height: 30px;
-	width: 80px
+	width: 80px;
 }
 
 button[id='create'] {
@@ -487,28 +489,32 @@ button[id='edit'] {
 }
 
 button[id='user-checkout-cart'] {
+	position: relative;
+	left: 350px;
 	background-color: #555;
 	color: #ddd;
 	padding: 12px 20px;
-	border: none;
+	/* border: none; */
 	border-radius: 4px;
 	cursor: pointer;
-	float: right;
+	/* float:inline-end; */
 }
 
 button[id='checkout'] {
+	/* display: flex; */
+	/* justify-content: flex-end; */
 	background-color: #555;
 	color: #ddd;
 	border-radius: 4px;
-	border: none;
+	/* border: none;
 	padding: 15px px;
 	text-align: initial;
 	text-decoration: none;
 	display: inline-block;
-	font-size: 13px;
+	font-size: 13px; */
 	margin: 4px 4px;
 	height: 30px;
-	align-items: flex-end;
+	/* align-items: flex-end; */
 }
 
 button[id='check-out'] {
@@ -532,7 +538,7 @@ button[id='check-out'] {
 }
 
 button[id='add-to'] {
-	margin-top: 24px;
+	margin-top: 9px;
 	background-color: #555;
 	color: #ddd;
 	border-radius: 4px;
@@ -563,7 +569,8 @@ button[id='quantity'] {
 /*cart*/
 
 .cartProducts {
-	border-bottom: 1px solid #d8d8d8;
+	justify-content: center;
+	/* border-bottom: 1px solid #d8d8d8; */
 	display: grid;
 	grid-template: 1fr auto auto auto;
 	padding: 20px 0;
@@ -586,22 +593,24 @@ button[id='quantity'] {
 #user-checkout {
 	display: flex;
 	justify-content: flex-end;
+	margin-right: 30px;
 }
 
 #user-checkout-2 {
 	display: flex;
 	justify-content: flex-end;
+
 }
 
 #place-order-form,
 input[id='checkout-form'],
 select,
 textarea {
-	width: 100%;
+	width: 700px;
 	padding: 12px;
-	border: 1px solid #ccc;
+	/* border: 1px solid #ccc; */
 	border-radius: 4px;
-	resize: vertical;
+	/* resize: vertical; */
 }
 
 #place-order-form,
@@ -629,11 +638,13 @@ input[id='checkout-form'] {
 #cat-tax {
 	display: flex;
 	justify-content: flex-end;
+	margin-right: 30px;
 }
 
 #grand-total {
 	display: flex;
 	justify-content: flex-end;
+	margin-right: 30px;
 }
 /*error handler*/
 
@@ -645,7 +656,6 @@ input[id='checkout-form'] {
 .error {
 	display: flex;
 }
-
 
 #formSub {
 	display: flex;
@@ -699,8 +709,8 @@ button[id='error-return'] {
 }
 
 #hi_cat {
-	position:relative;
-	left: 27px
+	position: relative;
+	left: 27px;
 }
 
 /* #navig {
@@ -716,3 +726,8 @@ button[id='error-return'] {
 } */
 
 /*https://apluspetsitting.com/wp-content/uploads/2016/03/cats-150x150.jpg*/
+
+.newUser {
+	margin-top: 10px;
+	margin-bottom: 3px;
+}

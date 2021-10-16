@@ -51,41 +51,42 @@ class CreateUser extends Component {
 		const { handleSubmit, handleChange } = this;
 
 		return (
+			<div style={{display: 'flex', justifyContent: 'center'}}>
 			<form className='user-form' id='create-user-form' onSubmit={handleSubmit}>
-				<label htmlFor='username'>Username:</label>
+				<label htmlFor='username' className='newUser'>Username:</label>
 				<input name='username' onChange={handleChange} value={username} />
 
-				<label htmlFor='email'> Email:</label>
+				<label htmlFor='email' className='newUser'> Email:</label>
 				<input name='email' onChange={handleChange} value={email} />
 
-				<label htmlFor='password'> Password:</label>
+				<label htmlFor='password' className='newUser'> Password:</label>
 				<input name='password' onChange={handleChange} value={password} />
 
-				<label htmlFor='cc'> Credit Card #:</label>
+				<label htmlFor='cc' className='newUser'>  Credit Card #:</label>
 				<input name='cc' onChange={handleChange} value={cc} />
 
-				<label htmlFor='shippingAddress'> Shipping Address:</label>
+				<label htmlFor='shippingAddress' className='newUser'> Shipping Address:</label>
 				<input
 					name='shippingAddress'
 					onChange={handleChange}
 					value={shippingAddress}
 				/>
 
-				<label htmlFor='billingAddress'> Billing Address:</label>
+				<label htmlFor='billingAddress' className='newUser'> Billing Address:</label>
 				<input
 					name='billingAddress'
 					onChange={handleChange}
 					value={billingAddress}
 				/>
 
-				<label htmlFor='isAdmin'>isAdmin:</label>
+				<label htmlFor='isAdmin' className='newUser'>isAdmin:</label>
 				<select name='isAdmin' onChange={handleChange}>
 					<option value={false}>False</option>
 					<option value={true}>True</option>
 				</select>
 
-				<button type='submit'>Submit</button>
-			</form>
+				<button type='submit' className='newUser'>Submit</button>
+			</form></div>
 		);
 	}
 }

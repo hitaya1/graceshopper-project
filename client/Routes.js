@@ -11,7 +11,7 @@ import SingleProduct from './components/SingleProduct';
 import CreateProduct from './components/CreateProduct';
 import EditUser from './components/EditUser';
 import ErrorHandler from './components/ErrorHandler';
-import { me } from './store';
+import { fetchProducts, me } from './store';
 import EditProduct from './components/EditProduct';
 import Cart from './components/Cart';
 import Checkout from './components/Checkout'
@@ -49,6 +49,7 @@ class Routes extends Component {
 					<Route exact path="/products" component={AllProducts} />
 					<Route path="/cart" component={Cart} />
 					<Route path="/checkout" component={Checkout} />
+					<Route path="/placeOrder" component={placeOrder} />
 					<Route exact path="/users/create" component={CreateUser} />
 					<Route exact path="/users/edit/:userId" component={EditUser} />
 					<Route exact path="/users/:userId" component={SingleUser} />
@@ -61,6 +62,16 @@ class Routes extends Component {
 		);
 	}
 }
+
+
+export function placeOrder() {
+	return (
+		<div style={{display: 'flex', margin: '20px', justifyContent: 'center'}}>
+			Thank you for placing your order!
+		</div>
+	)
+}
+
 
 /**
  * CONTAINER
