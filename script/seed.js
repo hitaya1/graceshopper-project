@@ -160,7 +160,7 @@ const products = [
 			'Whether you need to jot down some thoughts on what your servant has been up to for the past hour while you sat and stared or you need to catalogue a dream you just had during the 18 hours you sleep in a day, pen and paper is a must-have for any cat who fancies himself a scholar. Each set comes with a 500 page binder and 3 pens.',
 	},
 	{
-		name: 'Cat Basketball Court',
+		name: 'Cat Court',
 		price: 24999,
 		image: '/pics/basketball.jpg',
 		inventory: 50,
@@ -264,8 +264,8 @@ for (let i = 0; i < 101; i++) {
 const madlibs1 = [
 	'Big',
 	'Small',
-	'Crooked',
-	'Twisted',
+	'Huge',
+	'Cute',
 	'Rigid',
 	'Long',
 	'Short',
@@ -284,7 +284,7 @@ const madlibs3 = [
 	'brownie',
 	'pretzel',
 	'pizza',
-	'drumstick',
+	'rum',
 	'noodle',
 	'pie',
 ];

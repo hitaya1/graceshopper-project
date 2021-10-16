@@ -300,7 +300,7 @@ class AllProducts extends React.Component {
 								Price
 							</button>
 							<div className="filter">
-								<h2>
+								<h2 style={{display: 'flex',justifyContent: 'center'}}>
 									Sorted by:{' '}
 									{this.state.arrange ? this.state.arrange : 'Cuteness'}{' '}
 								</h2>
@@ -319,8 +319,8 @@ class AllProducts extends React.Component {
 										<option value={5}>5: Ludicrous</option>
 									</select>
 								</form>
-
-								<form id="filter-price-min-form">
+<div style={{display: 'flex', margin: '10px'}}>
+								<form id="filter-price-min-form" style={{marginRight: '10px'}}>
 									<label
 										htmlFor="priceFilterMin"
 										className="filter-input-label"
@@ -349,9 +349,9 @@ class AllProducts extends React.Component {
 										name="priceFilterMax"
 										className="filter-input-box"
 										onChange={this.handlePriceMaxChange}
-										value={this.state.priceFilterMax || 0}
+										value={this.state.priceFilterMax || 1000}
 									/>
-								</form>
+								</form></div>
 							</div>{' '}
 						</div>
 					</div>

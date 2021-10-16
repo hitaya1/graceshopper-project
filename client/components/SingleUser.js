@@ -38,7 +38,7 @@ class User extends React.Component {
 		if (user.id === currentUser.id || currentUser.isAdmin) {
 			ifUser = (
 				<div className='single-user-entry'>
-					<div key={user.id}>
+					<div key={user.id} style={{fontSize: '17px'}}>
 						<h2 className='single-user'>
 							Welcome, {user.username}! What a purrfect day!
 						</h2>
