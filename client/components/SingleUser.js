@@ -17,7 +17,7 @@ class User extends React.Component {
 			editUserButton = (
 				<Link to={`/users/edit/${user.id}`}>
 					<button type='button' id='edit-button' name={user.id}>
-						Edit Cat...
+						Edit Cat
 					</button>
 				</Link>
 			);
@@ -52,7 +52,7 @@ class User extends React.Component {
 							{user.billingAddress || 'No billing address on file'}
 						</h4>
 						<h4>Credit Card: {cardStars}</h4>
-						{editUserButton}
+					<div style={{display: 'flex', justifyContent: 'center'}}>{editUserButton}</div>
 					</div>
 				</div>
 			);

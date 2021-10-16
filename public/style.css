@@ -109,12 +109,15 @@ input[id='search-bar'] {
 	background-position: 10px;
 	background-repeat: no-repeat;
 	padding: 12px;
+	padding-left: 50px;
 }
 
 /*single-user*/
 .single-user-entry {
+	display: flex;
+	justify-content: center;
 	float: inline-start;
-	width: 33.33%;
+	/* width: 33.33%; */
 	padding: 15px;
 }
 
@@ -123,22 +126,29 @@ input[id='search-bar'] {
 #edit-user-form,
 input[id='user-edit-form'],
 textarea {
-	width: 100%;
+	display: flex;
+	/* width: 100%; */
 	padding: 12px;
 	border: 1px solid #ccc;
 	border-radius: 4px;
-	resize: vertical;
+	/* resize: vertical; */
 }
 
 #edit-user-form,
 label {
 	display: inline-block;
 }
-.editUser {
+
+#edit-user {
+	margin: 10px;
+	height: 30px;
+	width: 70px;
+}
+/* .editUser {
 	border-radius: 5px;
 
 	padding: 20px;
-}
+} */
 .dit-column {
 	float: left;
 	width: 25%;
@@ -636,18 +646,20 @@ input[id='checkout-form'] {
 }
 
 button[id='error-return'] {
+	position: relative;
 	background-color: #555;
 	color: #ddd;
 	border-radius: 4px;
-	border: none;
-	padding: 15px px;
-	text-align: initial;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 13px;
+	left: 35px;
+	/* border: none; */
+	/* padding: 15px px; */
+	/* text-align: initial; */
+	/* text-decoration: none; */
+	/* display: inline-block; */
+	/* font-size: 13px; */
 	margin: 4px 4px;
 	height: 30px;
-	align-items: flex-end;
+	/* align-items: flex-end; */
 }
 
 /* Designing for scroll-bar */

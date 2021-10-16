@@ -58,7 +58,7 @@ class SingleProduct extends React.Component {
 			editButton = (
 				<Link to={`/products/edit/${product.id}`}>
 					<button type='submit' id='edit'>
-						Make ModifiCATion...
+						Make ModifiCATion
 					</button>
 				</Link>
 			);
@@ -79,8 +79,8 @@ class SingleProduct extends React.Component {
 		}
 
 		return (
-			<div>
-				<h5>A {ridiculousScale} product</h5>
+			<div style={{display: 'flex', flexDirection: 'column'}}>
+				<h5 >A {ridiculousScale} product</h5>
 				<div id='singlecat'>
 					<img
 						// src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScsJAUX7QSaaVUy8NMJh-HmxKHF-bmsJnLZg&usqp=CAU'}

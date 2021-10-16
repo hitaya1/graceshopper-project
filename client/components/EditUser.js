@@ -37,8 +37,8 @@ class EditUser extends Component {
 				id: this.props.user.id,
 				username: this.props.user.username || '',
 				email: this.props.user.email || '',
-				password: this.props.user.password || '',
-				cc: this.props.user.cc || 0,
+				// password: this.props.user.password || '',
+				// cc: this.props.user.cc || 0,
 				shippingAdress: this.props.user.shippingAdress || '',
 				billingAdress: this.props.user.billingAdress || '',
 				isAdmin: this.props.user.isAdmin || false,
@@ -75,7 +75,7 @@ class EditUser extends Component {
 
 		if (this.props.currentUser.isAdmin) {
 			adminSelect = (
-				<div>
+				<div style={{width: '276px'}}>
 					<label htmlFor='isAdmin'>isAdmin:</label>
 					<select id='admin-select' name='isAdmin' onChange={handleChange}>
 						<option value={false}>False</option>
@@ -86,6 +86,7 @@ class EditUser extends Component {
 		}
 
 		return (
+			<div style={{display: 'flex', justifyContent: 'center', marginTop: '50px'}}>
 			<div className='editUser'>
 				<form id='edit-user-form' onSubmit={handleSubmit}>
 					<div className='edit-column'>
@@ -136,7 +137,7 @@ class EditUser extends Component {
 							value={email}
 						/>
 					</div>
-					<div className='edit-column'>
+					{/* <div className='edit-column'>
 						<label htmlFor='password'> Password:</label>
 					</div>
 					<div className='edit-column-2'>
@@ -147,8 +148,8 @@ class EditUser extends Component {
 							onChange={handleChange}
 							value={password}
 						/>
-					</div>
-					<div className='edit-column'>
+					</div> */}
+					{/* <div className='edit-column'>
 						<label htmlFor='cc'> Credit Card #:</label>
 					</div>
 					<div className='edit-column-2'>
@@ -158,8 +159,8 @@ class EditUser extends Component {
 							name='cc'
 							onChange={handleChange}
 							value={cc}
-						/>
-					</div>
+						/> */}
+					{/* </div> */}
 					<div className='edit-column'>
 						<label htmlFor='shippingAddress'> Shipping Address:</label>
 					</div>
@@ -187,12 +188,12 @@ class EditUser extends Component {
 
 					{adminSelect}
 
-					<button id='edit-user' type='submit'>
+					<div style={{display: 'flex', justifyContent: 'center'}}><button id='edit-user' type='submit'>
 						Submit
-					</button>
+					</button></div>
 				</form>
 				<form onSubmit={(ev) => ev.preventDefault()} />
-			</div>
+			</div></div>
 		);
 	}
 }
