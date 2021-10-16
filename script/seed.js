@@ -54,6 +54,7 @@ const users = [
 		username: 'taya',
 		password: '123',
 		email: 'fake6@fake.com',
+		isAdmin: true,
 		firstName: 'Taya',
 		lastName: 'Ugay',
 	},
@@ -168,7 +169,7 @@ const products = [
 			'Tired of chasing the little baby toys your servants throw for you? Challenge them to a basketball game! Set comes with 2 hoops, a cement court, 2 side benches, and a basketball. Assembly required.',
 	},
 	{
-		name: 'Cat All-In-One Power Tool Set',
+		name: 'Cat Tool Set',
 		price: 12599,
 		image: '/pics/power_tool.jpg',
 		inventory: 100,

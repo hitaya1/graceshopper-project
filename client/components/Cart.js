@@ -103,7 +103,7 @@ export const Cart = (props) => {
 					</h1>
 				</div>
 			) : (
-				<div>Your cart is empty!</div>
+				<div id='empty'>Your cart is empty!</div>
 			)}
 			{cart && cart.length ? (
 				<Link to='/checkout'>

@@ -23,6 +23,7 @@ class AuthForm extends React.Component {
 		}
 
 		return (
+			<div id='formSub'>
 			<div id='log-in-form'>
 				<form onSubmit={handleSubmit} name={name}>
 					<div>
@@ -38,14 +39,14 @@ class AuthForm extends React.Component {
 						</label>
 						<input id='logging-in' name='password' type='password' />
 					</div>
-					<div>
+					<div style={{display: 'flex', justifyContent: 'center'}}>
 						<button type='submit' id='log-in'>
 							{displayName}
 						</button>
 					</div>
 					{error && error.response && <div> {error.response.data} </div>}
 				</form>
-			</div>
+			</div></div>
 		);
 	}
 }
