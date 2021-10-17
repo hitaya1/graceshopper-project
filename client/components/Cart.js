@@ -58,10 +58,10 @@ export const Cart = (props) => {
 						index++;
 						return (
 							<div id='cart-info' style={{display: 'flex', flexDirection: 'column'}}>
-								<div key={index} id='cartProducts'>
-									<img src={product.image} />
-									<div id='name'>{product.name}</div>
-									<div className='price'>Price: ${product.price / 100}</div>
+								<div key={index} id='cart-product'>
+									<img id='cart-image' src={product.image} />
+									<div id='cart-product-name'>{product.name}</div>
+									<div id='cart-product-price'>Price: ${product.price / 100}</div>
 									<div id='quantity'>
 										Quantity:
 										<button
@@ -71,7 +71,7 @@ export const Cart = (props) => {
 											}}>
 											-
 										</button>
-										{product.quantity}
+									<span style={{position: 'relative', left: '8px'}}>{product.quantity}</span>
 										<button
 											id='quantity'
 											onClick={() => {
