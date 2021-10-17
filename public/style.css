@@ -49,8 +49,11 @@ nav a:hover {
 
 nav #nav-items {
 	display: flex;
+	/* justify-content: space-around; */
 	position: relative;
 	top: 20px;
+	margin: 10px;
+	/* par-right: 20px; */
 }
 
 /*home page*/
@@ -219,6 +222,81 @@ input[id='logging-in'] {
 	margin-inline: auto;
 	width: 150px;
 	height: 122px;
+}
+
+#cat-product {
+	height: 210px;
+	width: 445px;
+	/* margin: 20px auto; */
+	margin: 50px 10px;
+	border-radius: 7px 7px 7px 7px;
+	/* VIA CSS MATIC https://goo.gl/cIbnS */
+	-webkit-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+	-moz-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+	box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+}
+
+#cat-image {
+	float: left;
+	height: 210px;
+	width: 164px;
+	border-radius: 7px 0 0 7px;
+}
+
+#cat-product-info {
+	float: left;
+	height: 210px;
+  width: 280px;
+  border-radius: 0 7px 10px 7px;
+  background-color: #ffffff;
+}
+
+#cat-product-name {
+	position: relative;
+	left: 20px;
+	/* height: 300px; */
+  /* width: 327px; */
+	margin: 0 0 0 38px;
+  padding-top: 29px;
+  font-size: 23px;
+  color: #474747;
+}
+
+#cat-product-description {
+	/* height: 210px; */
+  width: 245px;
+	height: 125px;
+  /* margin: 0 0 0 3px; */
+  font-family: 'Playfair Display', serif;
+  color: #8d8d8d;
+  line-height: 1.7em;
+  font-size: 13px;
+  font-weight: lighter;
+  overflow: hidden;
+	position: relative;
+	left: 180px;
+	top: -455px
+}
+
+#cat-product-price {
+	/* height: 103px; */
+  width: 327px;
+  margin-top: 13px;
+  position: relative;
+	font-family: 'Playfair Display', serif;
+	top: -200px;
+	font-size: 12px;
+	left: 20px;
+	/* display: inline-block;
+  position: absolute;
+  top: -13px;
+  height: 50px;
+  font-family: 'Trocchi', serif;
+  margin: 0 0 0 38px;
+  font-size: 28px;
+  font-weight: lighter;
+  color: #474747; */
+
 }
 
 a,
@@ -414,8 +492,8 @@ button[id='page-button'] {
 
 button[id='delete-button'] {
 	position: relative;
-	left: 122px;
-	top: -153px;
+	left: 399px;
+	top: -353px;
 	background-color: red;
 	color: #ddd;
 	border-radius: 4px;
@@ -431,14 +509,16 @@ button[id='delete-button'] {
 }
 
 button[id='delete-user'] {
-	background-color: #555;
+	background-color: rgb(52, 46, 89);
 	color: #ddd;
 	border-radius: 4px;
+	/* display: flex; */
+	/* justify-content: center; */
 	/* border: none; */
 	/* padding: 15px px; */
 	/* text-align: initial; */
 	/* text-decoration: none; */
-	display: inline-block;
+	/* display: inline-block; */
 	/* font-size: 13px; */
 	margin: 4px 4px;
 	height: 30px;
@@ -599,7 +679,6 @@ button[id='quantity'] {
 #user-checkout-2 {
 	display: flex;
 	justify-content: flex-end;
-
 }
 
 #place-order-form,

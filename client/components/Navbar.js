@@ -19,16 +19,16 @@ class Navbar extends React.Component {
 		return (
 			// <div>
 			<nav>
-				<div id="banner">
+				<div id="banner" style={{paddingTop: '17px'}}>
 					<Link to="/home">
 						<img src="pics/catsco_2x.png" />
 					</Link>
 				</div>
 				<div id="nav-items">
-					<Link to="/products">Products</Link>
-					<div>{allUsersButton}</div>
+					<Link to="/products" style={{paddingRight: '30px'}}>Products</Link>
+					<div style={{paddingRight: '30px'}}>{allUsersButton}</div>
 					{isLoggedIn ? (
-						<div>
+						<div style={{paddingRight: '30px'}}>
 							{/* The navbar will show these links after you log in */}
 							<a href="#" onClick={handleClick}>
 								Logout
@@ -37,12 +37,12 @@ class Navbar extends React.Component {
 					) : (
 						<div>
 							{/* The navbar will show these links before you log in */}
-							<Link to="/login">Login</Link>
-							<Link to="/signup">Sign Up</Link>
+							<Link to="/login" style={{paddingRight: '30px'}}>Login</Link>
+							<Link to="/signup" style={{paddingRight: '30px'}}>Sign Up</Link>
 						</div>
 					)}
 
-					<Link to="/cart">
+					<Link to="/cart" style={{paddingRight: '30px'}}>
 						<img src="/pics/catcart.png" id="catCart"></img>
 					</Link>
 				</div>

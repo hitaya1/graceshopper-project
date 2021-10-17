@@ -279,10 +279,12 @@ class AllProducts extends React.Component {
 
 		return (
 			<div>
-
-
 				<div>
-					<div className="sort-and-filter">	<div style={{display: 'flex', justifyContent: 'flex-start'}}>{createButton}</div>
+					<div className="sort-and-filter">
+						{' '}
+						<div style={{ display: 'flex', justifyContent: 'flex-start' }}>
+							{createButton}
+						</div>
 						<div className="sort">
 							<div id="sort"></div>
 							<button
@@ -300,7 +302,7 @@ class AllProducts extends React.Component {
 								Price
 							</button>
 							<div className="filter">
-								<h2 style={{display: 'flex',justifyContent: 'center'}}>
+								<h2 style={{ display: 'flex', justifyContent: 'center' }}>
 									Sorted by:{' '}
 									{this.state.arrange ? this.state.arrange : 'Cuteness'}{' '}
 								</h2>
@@ -319,39 +321,43 @@ class AllProducts extends React.Component {
 										<option value={5}>5: Ludicrous</option>
 									</select>
 								</form>
-<div style={{display: 'flex', margin: '10px'}}>
-								<form id="filter-price-min-form" style={{marginRight: '10px'}}>
-									<label
-										htmlFor="priceFilterMin"
-										className="filter-input-label"
+								<div style={{ display: 'flex', margin: '10px' }}>
+									<form
+										id="filter-price-min-form"
+										style={{ marginRight: '10px' }}
 									>
-										Price min:
-									</label>
-									<input
-										id="product-filter"
-										type="text"
-										name="priceFilterMin"
-										className="filter-input-box"
-										onChange={this.handlePriceMinChange}
-										value={this.state.priceFilterMin || 0}
-									/>
-								</form>
-								<form id="filter-price-max-form">
-									<label
-										htmlFor="priceFilterMax"
-										className="filter-input-label"
-									>
-										Price max:
-									</label>
-									<input
-										id="product-filter"
-										type="text"
-										name="priceFilterMax"
-										className="filter-input-box"
-										onChange={this.handlePriceMaxChange}
-										value={this.state.priceFilterMax || 1000}
-									/>
-								</form></div>
+										<label
+											htmlFor="priceFilterMin"
+											className="filter-input-label"
+										>
+											Price min:
+										</label>
+										<input
+											id="product-filter"
+											type="text"
+											name="priceFilterMin"
+											className="filter-input-box"
+											onChange={this.handlePriceMinChange}
+											value={this.state.priceFilterMin || 0}
+										/>
+									</form>
+									<form id="filter-price-max-form">
+										<label
+											htmlFor="priceFilterMax"
+											className="filter-input-label"
+										>
+											Price max:
+										</label>
+										<input
+											id="product-filter"
+											type="text"
+											name="priceFilterMax"
+											className="filter-input-box"
+											onChange={this.handlePriceMaxChange}
+											value={this.state.priceFilterMax || 1000}
+										/>
+									</form>
+								</div>
 							</div>{' '}
 						</div>
 					</div>
@@ -384,11 +390,17 @@ class AllProducts extends React.Component {
 						<div className="products">
 							{this.filter(products).map((product) => {
 								return (
-									<div key={product.id} id="product">
-										<img className="product-image" src={product.image} />
-										<Link to={`/products/${product.id}`}>
-											<div id="productName">{product.name}</div>
-										</Link>
+									<div key={product.id} id="cat-product">
+										{/* <div id='cats-image'> */}
+										<img id="cat-image" src={product.image}/>
+										{/* </div> */}
+										<div id="cat-product-info">
+											<Link to={`/products/${product.id}`} id="cat-product-name">
+												<div >{product.name}</div>
+											</Link>
+											<div id="cat-product-price">${product.price / 100}</div>
+										</div>
+										<div id='cat-product-description'>{product.description}</div>/
 										{currentUser.isAdmin && (
 											<div>
 												{' '}
@@ -402,7 +414,7 @@ class AllProducts extends React.Component {
 												</button>
 											</div>
 										)}
-										<div id="product-price">${product.price / 100}</div>
+
 										<div id="praticatily-rating">
 											Praticatily Rating: {product.category}
 										</div>

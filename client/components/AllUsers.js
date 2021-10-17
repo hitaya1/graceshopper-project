@@ -80,6 +80,7 @@ class AllUsers extends React.Component {
 											<Link to={`/users/${element.id}`} style={{display: 'flex', justifyContent: 'flex-start'}}>
 											{element.username}
 											</Link>
+											<div style={{display: 'flex', justifyContent: 'center'}}>
 											<button
 												type="button"
 												id="delete-user"
@@ -87,7 +88,7 @@ class AllUsers extends React.Component {
 												onClick={this.clickDelete}
 											>
 												Curtail Cat
-											</button>
+											</button></div>
 										</div>
 									</div>
 								)

@@ -103,7 +103,7 @@ const products = [
 		inventory: 1000,
 		category: 1,
 		description:
-			"-100% NATURAL: pure, potent, and without chemicals, pesticides or fillers\n-PREMIUM: Planted, grown, and harvested at the highest peak of season\n-SAFE: Non-toxic, healthy way to play\n\n Bat and claw at your servants' toes until they give you some today!",
+			"-100% NATURAL: pure, potent, and without chemicals, pesticides or fillers\n-PREMIUM: Planted, grown, and harvested at the highest peak of season",
 	},
 	{
 		name: 'Cat Condo',
@@ -121,7 +121,7 @@ const products = [
 		inventory: 1500,
 		category: 2,
 		description:
-			'Tired of your servants grabbing you and ruthlessly hacking away at your extremities only to make them feel better about serving you treats afterward? Paw at your servants until they see and order you this life-altering product allowing YOU to clip your own claws! No more will your obvious power hierarchy be shamelessly disregarded.',
+			'Tired of your servants grabbing you and ruthlessly hacking away at your extremities only to make them feel better about serving you treats afterward?',
 	},
 	{
 		name: 'Cat Can Opener',
@@ -157,7 +157,7 @@ const products = [
 		inventory: 200,
 		category: 3,
 		description:
-			'Whether you need to jot down some thoughts on what your servant has been up to for the past hour while you sat and stared or you need to catalogue a dream you just had during the 18 hours you sleep in a day, pen and paper is a must-have for any cat who fancies himself a scholar. Each set comes with a 500 page binder and 3 pens.',
+			'Whether you need to jot down some thoughts on what your servant has been up to for the past hour while you sat and stared or you need to catalogue a dream',
 	},
 	{
 		name: 'Cat Court',
@@ -184,7 +184,7 @@ const products = [
 		inventory: 70,
 		category: 4,
 		description:
-			'-Innovative Power Core Technology\n-Rechargeable 12V sealed lead-acid battery provides an extended ride time of up to 80 minutes of continuous use\n-Rear-wheel drive delivers balance control and traction\n-Features a lightweight, all-steel frame and fork and flat-free, airless rear tire\n-Additional features include hand-operated, front brake and retractable kickstand',
+			'-Innovative Power Core Technology\n-Rechargeable 12V sealed lead-acid battery provides an extended ride time of up to 80 minutes of continuous use\n-Rear-wheel drive delivers balance control and traction',
 	},
 	{
 		name: 'Cat Wok',
@@ -193,7 +193,7 @@ const products = [
 		inventory: 100,
 		category: 4,
 		description:
-			'Hand-hammered by Siamese professionals, this wok is specially balanced for meats rather than vegetables. Insulated handle will not burn when you stir fry over high heat. Blast your beef and salmon to a delicious sear while maintaining a healthy medium-rare inside.',
+			'Hand-hammered by Siamese professionals, this wok is specially balanced for meats rather than vegetables.',
 	},
 	{
 		name: 'Cat Car',
@@ -212,7 +212,7 @@ const products = [
 		category: 5,
 		//does anyone care if I site my source or not? Adapted from https://go-solutions.com/en-us/7-reasons-to-adopt-a-cat
 		description:
-			"Adopting a baby is one of the most rewarding things you can do for yourself and your household – and, of course, the baby! There's plenty to decide when rehoming a baby, such as whether your pet will be an outdoor or indoor baby and the best baby food to feed it. While you're making these decisions, here are 6 reasons why baby adoption is such a great idea: 1. Babies are good for you. Becoming a baby owner could be good for your mental health. Psychological reports suggest that babies can reduce loneliness in those who live on their own, plus having to feed and groom a baby can lend routine to your day and help you restructure your life.\n\n<b>2. Babies are low maintenance. Babies enjoy your company, but they also love a little \"me time\" and like their own space. That makes them a low-maintenance pet that's ideal for busy people lovers. Just feed them the best baby food and fresh water, keep a clean diaper, get them some stimulating toys, and show them plenty of love and affection. 3. Babies and kittens go together. Babies can help kittens learn about caring for people, social skills, and routines – especially if they help out at baby's feeding time. Studies show that younger babies, in particular, become affectionate with the kittens in the family. 4. Babies can keep you active</b>\nMany babies enjoy charging around the home and climbing up their teething posts or trees and fences if you have the outdoor space for them. They encourage you to get up and about yourself, which has a range of health benefits, both physical and mental. 5. Babies keep you young</b>\nAccording to Harvard, mental stimulation keeps your mind fit and helps stave off cognitive decline – keeping you young for longer. Babies love to play and will enjoy chasing a toy, looking for something you hide, and gently \"wrestling\" with your hand- all great mentally stimulating acts for pet and owner. 6.Babies adoption saves lives. Every baby that gets adopted is a baby's life that you've saved. Plus, taking your new baby home frees up more space for other babies in need.\n\nWhat could be more worthwhile than that?",
+			"Adopting a baby is one of the most rewarding things you can do for yourself and your household – and, of course, the baby!",
 	},
 ];
 
