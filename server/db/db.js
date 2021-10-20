@@ -20,28 +20,6 @@ if(process.env.DATABASE_URL){
   };
 }
 
-let sequelize;
-if (process.env.NODE_ENV === "production") {
-  sequelize = new Sequelize(process.env.DATABASE_URL);
-} else {
-  sequelize = new Sequelize(
-    process.env.POSTGRES_DB || "elitypescript",
-    process.env.POSTGRES_USER || "eli",
-    "",
-    {
-      host: process.env.PSQL_HOST || "localhost",
-      dialect: "postgres",
-      pool: {
-        max: 100,
-        min: 0,
-        idle: 200000,
-        // @note https://github.com/sequelize/sequelize/issues/8133#issuecomment-359993057
-        acquire: 1000000,
-      },
-    }
-  );
-}
-
-// const db = new Sequelize(
-//   process.env.DATABASE_URL || `postgres://localhost:5432/${databaseName}`, config)
+const db = new Sequelize(
+  process.env.DATABASE_URL || `postgres://localhost:5432/${databaseName}`, config)
 module.exports = db
