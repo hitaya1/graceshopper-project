@@ -21,7 +21,7 @@ class Navbar extends React.Component {
 			<nav>
 				<div id="banner" style={{ paddingTop: '17px' }}>
 					<Link to="/home">
-						<img src="pics/catsco_2x.png" />
+						<img src="pics/catsco.png" />
 					</Link>
 				</div>
 
