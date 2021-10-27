@@ -7,6 +7,7 @@ import {
 	rearrangeProducts,
 } from '../store/products'
 import axios from 'axios'
+import {AddToCart} from './SingleProduct'
 
 class AllProducts extends React.Component {
 	constructor() {
@@ -361,7 +362,7 @@ class AllProducts extends React.Component {
 							</div>{' '}
 						</div>
 					</div>
-					<div className="page-turn">
+					{/* <div className="page-turn">
 						<button
 							type="button"
 							id="page-button"
@@ -382,7 +383,7 @@ class AllProducts extends React.Component {
 						>
 							{turnUp}
 						</button>
-					</div>{' '}
+					</div>{' '} */}
 				</div>
 
 				<div>
@@ -397,10 +398,13 @@ class AllProducts extends React.Component {
 										<div id="cat-product-info">
 											<Link to={`/products/${product.id}`} id="cat-product-name">
 												<div >{product.name}</div>
+
 											</Link>
 											<div id="cat-product-price">${product.price / 100}</div>
 										</div>
-										<div id='cat-product-description'>{product.description}</div>/
+										<div id='cat-product-description'>{product.description}</div>
+<div style={{position: 'relative', top: '-170px', left: '340px'}}><AddToCart product={product} addToCart={this.props.addToCart}/></div>
+
 										{currentUser.isAdmin && (
 											<div>
 												{' '}
@@ -414,6 +418,8 @@ class AllProducts extends React.Component {
 												</button>
 											</div>
 										)}
+
+
 
 										<div id="praticatily-rating">
 											Praticatily Rating: {product.category}

@@ -31,19 +31,22 @@ class Routes extends Component {
 			<div>
 				{isLoggedIn ? (
 					<Switch>
+						{/* <Route exact path='/' component={Home}/> */}
 						<Route exact path='/profile' component={Home}/>
-						<Route exact path="/home" component={AllProducts} />
+						{/* <Route exact path="/home" component={Hello} /> */}
 						{/* <Redirect to="/home" /> */}
 					</Switch>
 				) : (
 					<Switch>
-						<Route path="/" exact component={Login} />
+						{/* <Route path="/" exact component={Login} /> */}
 						<Route path="/login" component={Login} />
 						<Route path="/signup" component={Signup} />
 					</Switch>
 				)}
 				{/* <main> */}
 				<Switch>
+					<Route exact path="/" component={Hello} />
+					<Route exact path="/home" exact component={Hello} />
 					<Route exact path="/products/create" component={CreateProduct} />
 					<Route exact path="/products/edit/:productId" component={EditProduct} />
 					<Route exact path="/products/:productId" component={SingleProduct} />
@@ -70,6 +73,18 @@ export function placeOrder() {
 		<div style={{display: 'flex', margin: '20px', justifyContent: 'center'}}>
 			Thank you for placing your order!
 		</div>
+	)
+}
+
+
+export function Hello() {
+	return (
+		<div style={{display: 'flex', justifyContent: 'center', marginTop: '50px'}}>
+			<div style={{display: 'flex', flexDirection: 'column'}}>
+			<div style={{display: 'flex', justifyContent: 'center', fontSize: '30px', fontWeight: 'bold'}}>Welcome to CATSCO!</div>
+			<div style={{display: 'flex', justifyContent: 'center', margin: '20px', color: 'black'}}>...because your fur baby deserves the best treats.</div>
+			<img width='700px' src ='https://www.lifewithcats.tv/wp-content/uploads/2017/04/maxresdefault.jpg' />
+		</div></div>
 	)
 }
 

@@ -152,7 +152,7 @@ label {
 	margin: 10px;
 	height: 30px;
 	width: 70px;
-	background-color: #555;
+	background-color: #f35a5b;
 	color: #ddd;
 	border-radius: 4px;
 	/* border: none; */
@@ -200,7 +200,7 @@ input[id='logging-in'] {
 	justify-content: flex-start;
 	margin: 5px;
 	flex-flow: row;
-	width: 200px;
+	/* width: 200px; */
 }
 /* create new user (admin)*/
 #create-user-form {
@@ -492,7 +492,7 @@ h4,
 
 /*buttons*/
 button[id='log-in'] {
-	background-color: #555;
+	background-color: #f35a5b;
 	color: #ddd;
 	border-radius: 4px;
 	border: none;
@@ -506,7 +506,7 @@ button[id='log-in'] {
 }
 
 button[id='edit-button'] {
-	background-color: #555;
+	background-color: #f35a5b;
 	color: #ddd;
 	border-radius: 4px;
 	width: 100px;
@@ -521,7 +521,7 @@ button[id='edit-button'] {
 }
 
 button[id='full-prof'] {
-	background-color: #555;
+	background-color: #f35a5b;
 	color: #ddd;
 	border-radius: 4px;
 	border: none;
@@ -554,7 +554,7 @@ button[id='all-users'] {
 
 button[id='arrange-button'] {
 	/* margin-bottom: 10px; */
-	background-color: #555;
+	background-color: #f35a5b;
 	color: #ddd;
 	border-radius: 5px;
 	/* border: none; */
@@ -568,7 +568,7 @@ button[id='arrange-button'] {
 }
 
 button[id='page-button'] {
-	background-color: #555;
+	background-color: #f35a5b;
 	color: #ddd;
 	border-radius: 4px;
 	border: none;
@@ -617,7 +617,7 @@ button[id='delete-user'] {
 }
 
 button[id='create'] {
-	background-color: #555;
+	background-color: #f35a5b;
 	color: #ddd;
 	border-radius: 4px;
 	border: none;
@@ -631,7 +631,7 @@ button[id='create'] {
 }
 
 button[id='create-button'] {
-	background-color: #555;
+	background-color: #f35a5b;
 	color: #ddd;
 	border-radius: 4px;
 	/* border: none; */
@@ -645,7 +645,7 @@ button[id='create-button'] {
 }
 
 button[id='edit'] {
-	background-color: #555;
+	background-color: #f35a5b;
 	color: #ddd;
 	border-radius: 4px;
 	/* border: none; */
@@ -662,7 +662,7 @@ button[id='edit'] {
 button[id='user-checkout-cart'] {
 	position: relative;
 	left: 350px;
-	background-color: #555;
+	background-color: #f35a5b;
 	color: #ddd;
 	padding: 12px 20px;
 	/* border: none; */
@@ -674,7 +674,7 @@ button[id='user-checkout-cart'] {
 button[id='checkout'] {
 	/* display: flex; */
 	/* justify-content: flex-end; */
-	background-color: #555;
+	background-color: #f35a5b;
 	color: #ddd;
 	border-radius: 4px;
 	/* border: none;
@@ -689,7 +689,7 @@ button[id='checkout'] {
 }
 
 button[id='check-out'] {
-	background-color: #555;
+	background-color: #f35a5b;
 	color: #ddd;
 	border-radius: 4px;
 	border: none;
@@ -710,7 +710,7 @@ button[id='check-out'] {
 
 button[id='add-to'] {
 	margin-top: 9px;
-	background-color: #555;
+	background-color: #f35a5b;
 	color: #ddd;
 	border-radius: 4px;
 	/* border: none; */
@@ -725,7 +725,7 @@ button[id='add-to'] {
 }
 
 button[id='quantity'] {
-	background-color: #555;
+	background-color: #f35a5b;
 	color: #ddd;
 	border-radius: 4px;
 	border: none;
@@ -833,7 +833,7 @@ input[id='checkout-form'] {
 
 button[id='error-return'] {
 	position: relative;
-	background-color: #555;
+	background-color: #f35a5b;
 	color: #ddd;
 	border-radius: 4px;
 	left: 35px;
@@ -867,7 +867,7 @@ button[id='error-return'] {
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-	background: #555;
+	background: #f35a5b;
 }
 
 #full_profile {

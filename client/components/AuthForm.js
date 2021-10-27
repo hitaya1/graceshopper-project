@@ -15,7 +15,7 @@ class AuthForm extends React.Component {
 		if (name === 'signup') {
 			emailField = (
 				<div>
-					<label htmlFor="email">
+					<label htmlFor="email" style={{marginRight: '35px'}}>
 						<small>Email:</small>
 					</label>
 					<input name="email" type="email" />
@@ -36,7 +36,7 @@ class AuthForm extends React.Component {
 							</div>
 							{emailField}
 							<div>
-								<label htmlFor="password">
+								<label htmlFor="password" style={{marginRight: '3px'}}>
 									<small>Password: </small>
 								</label>
 								<input id="logging-in" name="password" type="password" />
@@ -49,30 +49,57 @@ class AuthForm extends React.Component {
 							{error && error.response && <div> {error.response.data} </div>}
 						</form>
 					</div>
+					<div style={{display: 'flex', flexDirection: 'column'}}>
 					{name === 'signup' ? (
+					<div>	<div style={{display: 'flex', justifyContent: 'center', marginTop: '30px'}}>	Already have an account?</div>
 						<div>
 							{' '}
-							Already have an account?
+							<div style={{display: 'flex', justifyContent: 'center'}}>
+							<div style={{  fontSize: '17px' , backgroundColor: '#f35a5b',
+								color: '#ddd',
+								borderRadius: '4px',
+								// border: 'none',
+								justifyContent: 'center',
+								// padding: '15px px',
+								textAlign: 'center',
+								// textDecoration: 'none',
+								display: 'inline-block',
+								width: '70px',
+								height: '25px',}}>
 							<Link
+							style={{color: 'inherit', paddingLeft: '13px'}}
 								to="/login"
-								style={{ paddingRight: '30px', fontSize: '17px' }}
+
 							>
 								Log in
-							</Link>
-						</div>
+							</Link></div></div>
+						</div></div>
 					) : (
 						<div>
+							<div >	<div style={{display: 'flex', justifyContent: 'center', marginTop: '30px'}}>	Don't have an account yet?</div>
 							{' '}
-							Don't have an account yet?
+<div style={{display: 'flex', justifyContent: 'center'}}>
+							<div style={{  fontSize: '17px' , backgroundColor: '#f35a5b',
+								color: '#ddd',
+								borderRadius: '4px',
+								border: 'none',
+								// padding: '15px px',
+								justifyContent: 'center',
+								textAlign: 'center',
+								textDecoration: 'none',
+								display: 'inline-block',
+								width: '70px',
+								height: '25px',}}>
 							<Link
+							style={{color: 'inherit', paddingLeft: '8px'}}
 								to="/signup"
-								style={{ paddingRight: '30px', fontSize: '17px' }}
+
 							>
 								Sign Up
-							</Link>
-						</div>
+							</Link></div></div>
+						</div></div>
 					)}
-				</div>
+				</div></div>
 			</div>
 		)
 	}
