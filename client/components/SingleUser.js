@@ -54,6 +54,15 @@ class User extends React.Component {
 						<h4>Credit Card: {cardStars}</h4>
 					<div style={{display: 'flex', justifyContent: 'center'}}>{editUserButton}</div>
 					</div>
+
+					<div style={{ paddingRight: '30px', fontSize: '17px' }}>
+							{/* The navbar will show these links after you log in */}
+{currentUser.id === user.id && <a href="#" onClick={handleClick} style={{ paddingRight: '30px', fontSize: '17px' }}>
+								Logout
+							</a>}
+
+						</div>
+
 				</div>
 			);
 		}

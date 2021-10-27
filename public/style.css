@@ -6,7 +6,7 @@ body {
 	margin: 0;
 	padding: 0;
 	/* background-image: url('https://ih1.redbubble.net/image.778228192.6145/st,small,845x845-pad,1000x1000,f8f8f8.u1.jpg'); */
-	background-color: rgba(250, 250, 250, 0.945);
+	background-color: rgb(214, 215, 212);
 	background-repeat: no-repeat;
 	background-position: center;
 	background-attachment: fixed;
@@ -15,7 +15,7 @@ body {
 /*nav bar*/
 nav {
 	overflow: hidden;
-	background-color: #333;
+	background-color: #ddb4f1;
 	border-radius: 4px;
 	font-size: large;
 	font-weight: bold;
@@ -26,14 +26,14 @@ nav {
 nav a {
 	float: left;
 	display: block;
-	color: white;
+	color: black;
 	text-align: center;
 	padding: 10px 12px;
 	text-decoration: none;
 }
 nav a:hover {
 	/* background-color: #ddd; */
-	color: black;
+	color: #f35a5b;
 }
 
 #banner img {
@@ -42,7 +42,7 @@ nav a:hover {
 	display: flex;
 	justify-content: flex-end;
 	border-radius: 15px;
-	width: 180px;
+	width: 280px;
 	height: 90px;
 	/* margin-bottom: 5px; */
 }
@@ -146,6 +146,23 @@ label {
 	margin: 10px;
 	height: 30px;
 	width: 70px;
+}
+
+#logout-button {
+	margin: 10px;
+	height: 30px;
+	width: 70px;
+	background-color: #555;
+	color: #ddd;
+	border-radius: 4px;
+	/* border: none; */
+	/* padding: 15px px; */
+	/* text-align: initial; */
+	/* text-decoration: none; */
+	/* display: inline-block; */
+	font-size: 13px;
+	margin: 4px 4px;
+	height: 30px;
 }
 /* .editUser {
 	border-radius: 5px;
@@ -286,7 +303,9 @@ input[id='logging-in'] {
 	margin: 0 0 0 38px;
   padding-top: 29px;
   font-size: 23px;
-  color: #474747;
+  color: #f35a5b;
+	text-shadow: 0.5px 0.5px black;
+	border: '1px solid black'
 }
 #cart-product-name {
 	position: relative;
@@ -808,6 +827,7 @@ input[id='checkout-form'] {
 
 #formSub {
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 }
 
@@ -858,9 +878,11 @@ button[id='error-return'] {
 }
 
 #hi_cat {
-	position: relative;
-	left: 27px;
-	width: 150px
+	/* position: relative; */
+	/* left: 27px; */
+	width: 300px;
+	height: 300px;
+	margin-right: 20px;
 }
 
 /* #navig {

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
  * COMPONENT
  */
 export const Home = (props) => {
-	const { username, userId, user } = props
+	const { handleClick, username, userId, user, isLoggedIn } = props
 let editUserButton = (
 	<Link to={`/users/edit/${user.id}`}>
 		<button type='button' id='edit-button' name={user.id}>
@@ -18,9 +18,10 @@ let editUserButton = (
 		<div>
 			<div id="welcome">
 				{/* <div>Welcome, {username}</div> */}
-				<h3 className='single-user'>
-							Welcome, {user.username}! What a purrfect day!
+				<h3 className='single-user' style={{display: 'flex', justifyContent: 'center'}}>
+							Welcome, {user.username}!
 						</h3>
+						<h4 style={{display: 'flex', justifyContent: 'center', color: '#f35a5b'}}> What a puuurrrfect day!</h4>
 				<div>
 					{/* <button id="full_profile">
 						<Link to={`/users/${userId}`}>
@@ -29,25 +30,34 @@ let editUserButton = (
 							</button>
 						</Link>
 					</button> */}
-				</div><img id="hi_cat" src="/pics/cat-eric-the-cat.gif" />
+				</div>
 
 			</div>
-			<div className='single-user-entry'>
+			<div className='single-user-entry' style={{color: 'black', display: 'flex', justifyContent: 'center'}}><img id="hi_cat" src="/pics/cat-eric-the-cat.gif" />
 					<div key={user.id} style={{fontSize: '17px'}}>
 
-						<h4>Name: {user.fullName || 'No name on file'}</h4>
-						<h4>
+						<h5>Name: {user.fullName || 'No name on file'}</h5>
+						<h5>
 							Shipping Address:{' '}
 							{user.shippingAddress || 'No shipping address on file'}
-						</h4>
-						<h4>
+						</h5>
+						<h5>
 							Billing Address:{' '}
 							{user.billingAddress || 'No billing address on file'}
-						</h4>
-						<h4>Credit Card: {user.cardStars}</h4>
+						</h5>
+						<h5>Credit Card: {user.cardStars}</h5>
 					<div style={{display: 'flex', justifyContent: 'center'}}>{editUserButton}</div>
-					</div>
+					{	isLoggedIn &&
+						// <div style={{ paddingRight: '30px', fontSize: '17px' }}>
+						<div style={{display: 'flex', justifyContent: 'center', marginTop: '16px'}}>
+<a href="#" onClick={handleClick}><button id='logout-button'>
+
+								Logout
+						</button>	</a></div>
+
+			}	</div>
 				</div>
+
 		</div>
 	)
 }
