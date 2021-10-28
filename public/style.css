@@ -714,14 +714,14 @@ button[id='check-out'] {
 }
 
 button[id='add-to'] {
-	margin-top: 129px;
-	margin-left: -70px;
+	margin-top: -32px;
+	margin-left: 204px;
 	background-color: #f35a5b;
 	color: #ddd;
 	border-radius: 4px;
 	position: 'absolute';
-	left: -75px;
-	top: 159px;
+	/* left: -75px; */
+	/* top: 159px; */
 	/* border: none; */
 	/* padding: 15px px; */
 	/* text-align: initial; */
