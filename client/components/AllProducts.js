@@ -436,7 +436,7 @@ class AllProducts extends React.Component {
 										<div id="cat-product-info">
 											<div style={{position:'relative'}}><button
 				id="add-to"
-				// style= {{position: 'absolute', left:'-100px'}}
+				style= {{position: 'absolute', left:'-100px'}}
 				type="submit"
 				onClick={() => {
 					<AddToCart product={product}/>
