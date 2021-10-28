@@ -219,9 +219,11 @@ input[id='logging-in'] {
 	border-radius: 15px;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-evenly;
+	/* position: relative; */
+	justify-content:start;
 	/* height: 98vh; */
-	overflow-y: scroll;
+	/* overflow-y: scroll; */
+	margin: 0 30px 0 50px;
 }
 
 #product {
@@ -230,7 +232,7 @@ input[id='logging-in'] {
 	height: 150px;
 	width: 150px;
 	border: 1px solid #333;
-	margin: 10px;
+	/* margin-right: 10px; */
 }
 
 #product .product-image {
@@ -242,10 +244,11 @@ input[id='logging-in'] {
 }
 
 #cat-product {
-	height: 210px;
-	width: 445px;
+	position: relative;
+	height: 164px;
+	width: 364px;
 	/* margin: 20px auto; */
-	margin: 50px 0px;
+	margin: 25px 20px;
 	border-radius: 7px 7px 7px 7px;
 	/* VIA CSS MATIC https://goo.gl/cIbnS */
 	-webkit-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
@@ -267,7 +270,7 @@ input[id='logging-in'] {
 
 #cat-image {
 	float: left;
-	height: 210px;
+	height: 164px;
 	width: 164px;
 	border-radius: 7px 0 0 7px;
 }
@@ -280,9 +283,10 @@ input[id='logging-in'] {
 }
 
 #cat-product-info {
+
 	float: left;
-	height: 210px;
-  width: 280px;
+	height: 164px;
+  width: 200px;
   border-radius: 0 7px 10px 7px;
   background-color: #ffffff;
 }
@@ -297,12 +301,12 @@ input[id='logging-in'] {
 
 #cat-product-name {
 	position: relative;
-	left: 20px;
+	left: 6px;
 	/* height: 300px; */
   /* width: 327px; */
 	margin: 0 0 0 38px;
   padding-top: 29px;
-  font-size: 23px;
+  font-size: 18px;
   color: #f35a5b;
 	text-shadow: 0.5px 0.5px black;
 	border: '1px solid black'
@@ -320,7 +324,7 @@ input[id='logging-in'] {
 
 #cat-product-description {
 	/* height: 210px; */
-  width: 245px;
+  width: 0px;
 	height: 125px;
   /* margin: 0 0 0 3px; */
   font-family: 'Playfair Display', serif;
@@ -329,20 +333,21 @@ input[id='logging-in'] {
   font-size: 13px;
   font-weight: lighter;
   overflow: hidden;
-	position: relative;
-	left: 180px;
-	top: -455px
+	/* position: relative; */
+	/* left: 180px; */
+	/* top: -455px */
 }
 
 #cat-product-price {
 	/* height: 103px; */
-  width: 327px;
+	position: absolute;
+  width: 37px;
   margin-top: 13px;
-  position: relative;
-	font-family: 'Playfair Display', serif;
-	top: -200px;
+  /* position: relative; */
+	/* font-family: 'Playfair Display', serif; */
+	top: 120px;
 	font-size: 12px;
-	left: 20px;
+	left: 170px;
 	/* display: inline-block;
   position: absolute;
   top: -13px;
@@ -709,10 +714,14 @@ button[id='check-out'] {
 }
 
 button[id='add-to'] {
-	margin-top: 9px;
+	margin-top: 129px;
+	margin-left: -70px;
 	background-color: #f35a5b;
 	color: #ddd;
 	border-radius: 4px;
+	position: 'absolute';
+	left: -75px;
+	top: 159px;
 	/* border: none; */
 	/* padding: 15px px; */
 	/* text-align: initial; */
@@ -721,7 +730,8 @@ button[id='add-to'] {
 	/* font-size: 13px; */
 	/* margin: 4px 4px; */
 	height: 30px;
-	/* align-items: flex-end; */
+	/* align-items: flex-
+	end; */
 }
 
 button[id='quantity'] {

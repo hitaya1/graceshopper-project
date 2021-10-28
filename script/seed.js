@@ -99,7 +99,7 @@ const products = [
 	{
 		name: 'Catnip - 3oz',
 		price: 637,
-		image: '/pics/catnip.jpg',
+		image: '/pics/pic10.jpg',
 		inventory: 1000,
 		category: 1,
 		description:
@@ -114,24 +114,24 @@ const products = [
 		description:
 			'COMFORTABLE & FUN\n\nThis multi-level unit is perfect for both sleep and play. Require your servants to place one in every room!',
 	},
-	{
-		name: 'Cat Claw Clippers',
-		price: 700,
-		image: '/pics/clippers.jpg',
-		inventory: 1500,
-		category: 2,
-		description:
-			'Tired of your servants grabbing you and ruthlessly hacking away at your extremities only to make them feel better about serving you treats afterward?',
-	},
-	{
-		name: 'Cat Can Opener',
-		price: 2399,
-		image: '/pics/Can_opener.jpg',
-		inventory: 500,
-		category: 2,
-		description:
-			'Open your cans of food by yourself and no longer be at the whims of your slothful servants. There is no need to sit at your food dish and look adorable while you wait to be fed when you can just do it yourself!',
-	},
+	// {
+	// 	name: 'Cat Claw Clippers',
+	// 	price: 700,
+	// 	image: '/pics/clippers.jpg',
+	// 	inventory: 1500,
+	// 	category: 2,
+	// 	description:
+	// 		'Tired of your servants grabbing you and ruthlessly hacking away at your extremities only to make them feel better about serving you treats afterward?',
+	// },
+	// {
+	// 	name: 'Cat Can Opener',
+	// 	price: 2399,
+	// 	image: '/pics/Can_opener.jpg',
+	// 	inventory: 500,
+	// 	category: 2,
+	// 	description:
+	// 		'Open your cans of food by yourself and no longer be at the whims of your slothful servants. There is no need to sit at your food dish and look adorable while you wait to be fed when you can just do it yourself!',
+	// },
 	{
 		name: 'Cat Nail Polish',
 		price: 599,
@@ -144,30 +144,30 @@ const products = [
 	{
 		name: 'Cat Hat',
 		price: 999,
-		image: '/pics/cathat.jpg',
+		image: '/pics/pic11.jpg',
 		inventory: 1000,
 		category: 2,
 		description:
 			'This 100% wool cap will keep you warm during those cold winter nights patrolling your land. Show pride in your territory by donning this Cat Hat for Cats!',
 	},
-	{
-		name: 'Cat Pen & Paper set',
-		price: 1199,
-		image: '/pics/pen_paper.jpg',
-		inventory: 200,
-		category: 3,
-		description:
-			'Whether you need to jot down some thoughts on what your servant has been up to for the past hour while you sat and stared or you need to catalogue a dream',
-	},
-	{
-		name: 'Cat Court',
-		price: 24999,
-		image: '/pics/basketball.jpg',
-		inventory: 50,
-		category: 3,
-		description:
-			'Tired of chasing the little baby toys your servants throw for you? Challenge them to a basketball game! Set comes with 2 hoops, a cement court, 2 side benches, and a basketball. Assembly required.',
-	},
+	// {
+	// 	name: 'Cat Pen & Paper set',
+	// 	price: 1199,
+	// 	image: '/pics/pen_paper.jpg',
+	// 	inventory: 200,
+	// 	category: 3,
+	// 	description:
+	// 		'Whether you need to jot down some thoughts on what your servant has been up to for the past hour while you sat and stared or you need to catalogue a dream',
+	// },
+	// {
+	// 	name: 'Cat Court',
+	// 	price: 24999,
+	// 	image: '/pics/basketball.jpg',
+	// 	inventory: 50,
+	// 	category: 3,
+	// 	description:
+	// 		'Tired of chasing the little baby toys your servants throw for you? Challenge them to a basketball game! Set comes with 2 hoops, a cement court, 2 side benches, and a basketball. Assembly required.',
+	// },
 	{
 		name: 'Cat Tool Set',
 		price: 12599,
@@ -195,72 +195,62 @@ const products = [
 		description:
 			'Hand-hammered by Siamese professionals, this wok is specially balanced for meats rather than vegetables.',
 	},
-	{
-		name: 'Cat Car',
-		price: 2999598,
-		image: '/pics/car.jpg',
-		inventory: 20,
-		category: 4,
-		description:
-			"Once you've claimed territory beyond your means to travel, it may be time to stop -- or is it? Hop into your cat car and get to where you need to be in a fraction of the time.",
-	},
-	{
-		name: 'Adopt-a-Baby',
-		price: 89999,
-		image: '/pics/baby.jpg',
-		inventory: 3,
-		category: 5,
-		//does anyone care if I site my source or not? Adapted from https://go-solutions.com/en-us/7-reasons-to-adopt-a-cat
-		description:
-			"Adopting a baby is one of the most rewarding things you can do for yourself and your household – and, of course, the baby!",
-	},
+	// {
+	// 	name: 'Cat Car',
+	// 	price: 2999598,
+	// 	image: '/pics/car.jpg',
+	// 	inventory: 20,
+	// 	category: 4,
+	// 	description:
+	// 		"Once you've claimed territory beyond your means to travel, it may be time to stop -- or is it? Hop into your cat car and get to where you need to be in a fraction of the time.",
+	// },
 ];
 
 //nameless user generator
-for (let i = 0; i < 101; i++) {
-	const sequentialUsername = 'Anonymous_Cat' + i;
+// for (let i = 0; i < 101; i++) {
+// 	const sequentialUsername = 'Anonymous_Cat' + i;
 
-	let randoLastName = '';
-	let randoRoll = Math.ceil(Math.random() * 30);
+// 	let randoLastName = '';
+// 	let randoRoll = Math.ceil(Math.random() * 30);
 
-	while (randoRoll >= 10) {
-		randoLastName += 'X';
-		randoRoll -= 10;
-	}
-	if (randoRoll === 9) {
-		randoLastName += 'IX';
-		randoRoll -= 9;
-	}
-	if (randoRoll === 4) {
-		randoLastName += 'IV';
-		randoRoll -= 4;
-	}
-	if (randoRoll >= 5) {
-		randoLastName += 'V';
-		randoRoll -= 5;
-	}
-	while (randoRoll > 0) {
-		randoLastName += 'I';
-		randoRoll--;
-	}
-	randoLastName = ' the ' + randoLastName;
+// 	while (randoRoll >= 10) {
+// 		randoLastName += 'X';
+// 		randoRoll -= 10;
+// 	}
+// 	if (randoRoll === 9) {
+// 		randoLastName += 'IX';
+// 		randoRoll -= 9;
+// 	}
+// 	if (randoRoll === 4) {
+// 		randoLastName += 'IV';
+// 		randoRoll -= 4;
+// 	}
+// 	if (randoRoll >= 5) {
+// 		randoLastName += 'V';
+// 		randoRoll -= 5;
+// 	}
+// 	while (randoRoll > 0) {
+// 		randoLastName += 'I';
+// 		randoRoll--;
+// 	}
+// 	randoLastName = ' the ' + randoLastName;
 
-	const randoAddress = Math.ceil(Math.random() * 100) + ' Fake St.';
-	const staticAdmin = false;
-	const randoMail = 'fake' + (i + 12) + '@fake.com';
+// 	const randoAddress = Math.ceil(Math.random() * 100) + ' Fake St.';
+// 	const staticAdmin = false;
+// 	const randoMail = 'fake' + (i + 12) + '@fake.com';
 
-	users.push({
-		username: sequentialUsername,
-		password: '123',
-		shippingAddress: randoAddress,
-		isAdmin: staticAdmin,
-		email: randoMail,
-		firstName: 'Wilson',
-		lastName: randoLastName,
-	});
-}
+// 	users.push({
+// 		username: sequentialUsername,
+// 		password: '123',
+// 		shippingAddress: randoAddress,
+// 		isAdmin: staticAdmin,
+// 		email: randoMail,
+// 		firstName: 'Wilson',
+// 		lastName: randoLastName,
+// 	});
+// }
 
-//nameless product generator
+// nameless product generator
 const madlibs1 = [
 	'Big',
 	'Small',
@@ -269,6 +259,16 @@ const madlibs1 = [
 	'Rigid',
 	'Long',
 	'Short',
+	'Fantastic',
+	'Elegant',
+	'Shiny',
+	'Silly',
+	'Funny',
+	'Adorable',
+	'Amazing',
+	'Lucky',
+	'Fancy',
+	'Flat'
 ];
 const madlibs2 = [
 	'red',
@@ -278,6 +278,13 @@ const madlibs2 = [
 	'blue',
 	'indigo',
 	'violet',
+	'silver',
+	'pink',
+	'golden',
+	'salmon',
+	'chocolate',
+	'azure',
+	'gray'
 ];
 const madlibs3 = [
 	'cookie',
@@ -287,15 +294,22 @@ const madlibs3 = [
 	'rum',
 	'noodle',
 	'pie',
+	'coat',
+	'car',
+	'movie',
+	'coach',
+	'garden',
+	'book',
+	'coffee'
 ];
 
-for (let i = 0; i < 101; i++) {
+for (let i = 0; i < 50; i++) {
 	let randoProductName =
-		madlibs1[Math.floor(Math.random() * 6.99)] +
+		madlibs1[Math.floor(Math.random() * 18)] +
 		' ' +
-		madlibs2[Math.floor(Math.random() * 6.99)] +
+		madlibs2[Math.floor(Math.random() * 14)] +
 		' ' +
-		madlibs3[Math.floor(Math.random() * 6.99)];
+		madlibs3[Math.floor(Math.random() * 14)];
 
 	for (let j = 0; j < products.length; j++) {
 		if (products[j].name === randoProductName) {
@@ -306,6 +320,7 @@ for (let i = 0; i < 101; i++) {
 	const randoPrice = Math.floor(Math.random() * 100000) + 1;
 	const randoInventory = (Math.ceil(Math.random() * 9) + 1) * 10;
 	const randoCategory = Math.ceil(Math.random() * 4) + 1;
+	const randomPic = 	['pics/pic1.jpeg', 'pics/pic2.jpeg','pics/pic3.jpg','pics/pic4.png','pics/pic5.jpeg','pics/pic6.jpeg','pics/pic7.jpeg','pics/pic8.jpg','pics/pic9.jpg', 'pics/pic10.jpg'][Math.ceil(Math.random() * 9)]
 	const giygDescription = 'You cannot grasp the true form of this product!';
 
 	products.push({
@@ -313,6 +328,7 @@ for (let i = 0; i < 101; i++) {
 		price: randoPrice,
 		inventory: randoInventory,
 		category: randoCategory,
+		image: randomPic,
 		description: giygDescription,
 	});
 }

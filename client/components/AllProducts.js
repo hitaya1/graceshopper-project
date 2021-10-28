@@ -7,7 +7,45 @@ import {
 	rearrangeProducts,
 } from '../store/products'
 import axios from 'axios'
-import {AddToCart} from './SingleProduct'
+
+export const AddToCart = (props) => {
+	const [cart, setCart] = useState([])
+	let localCart = localStorage.getItem('cart')
+addProduct(props.product)
+	const addProduct = (product) => {
+		let carts = [...cart]
+		let { id } = product
+		let currProdInCart = carts.find((product) => product.id === id)
+		if (currProdInCart) {
+			currProdInCart.quantity++
+		} else {
+			carts.push(product)
+		}
+
+		setCart(carts)
+		let stringCart = JSON.stringify(carts)
+		localStorage.setItem('cart', stringCart)
+	}
+
+	useEffect(() => {
+		localCart = JSON.parse(localCart)
+		if (localCart) {
+			setCart(localCart)
+		}
+	}, [])
+
+	// return (
+	// 		<button
+	// 			id="add-to"
+	// 			type="submit"
+	// 			onClick={() => {
+	// 				addProduct(props.product)
+	// 			}}
+	// 		>
+	// 			Add to Cart
+	// 		</button>
+	// )
+}
 
 class AllProducts extends React.Component {
 	constructor() {
@@ -396,14 +434,25 @@ class AllProducts extends React.Component {
 										<img id="cat-image" src={product.image}/>
 										{/* </div> */}
 										<div id="cat-product-info">
+											<div style={{position:'relative'}}><button
+				// id="add-to"
+				style= {{position: 'absolute', left:'-100px'}}
+				type="submit"
+				onClick={() => {
+					<AddToCart product={product}/>
+					// addProduct(product)
+				}}
+			>
+				Add to Cart
+			</button></div>
 											<Link to={`/products/${product.id}`} id="cat-product-name">
 												<div >{product.name}</div>
 
 											</Link>
 											<div id="cat-product-price">${product.price / 100}</div>
 										</div>
-										<div id='cat-product-description'>{product.description}</div>
-<div style={{position: 'relative', top: '-170px', left: '340px'}}><AddToCart product={product} addToCart={this.props.addToCart}/></div>
+										{/* <div id='cat-product-description'>{product.description}</div> */}
+{/* <div><AddToCart product={product} addToCart={this.props.addToCart} id='add-to'/></div> */}
 
 										{currentUser.isAdmin && (
 											<div>

@@ -173,22 +173,6 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 --
 
 COPY public."ProdOrders" (quantity, price, "createdAt", "updatedAt", "productId", "orderId") FROM stdin;
-5	637	2021-10-17 16:54:14.035-05	2021-10-17 16:54:14.035-05	1	1
-11	999	2021-10-17 16:54:14.035-05	2021-10-17 16:54:14.035-05	6	1
-5	637	2021-10-17 17:20:43.903-05	2021-10-17 17:20:43.903-05	1	2
-11	999	2021-10-17 17:20:43.903-05	2021-10-17 17:20:43.903-05	6	2
-3	637	2021-10-17 17:58:08.807-05	2021-10-17 17:58:08.807-05	1	3
-3	999	2021-10-18 14:42:52.871-05	2021-10-18 14:42:52.871-05	6	4
-3	1199	2021-10-18 14:42:52.872-05	2021-10-18 14:42:52.872-05	7	4
-3	4999	2021-10-18 14:44:18.592-05	2021-10-18 14:44:18.592-05	11	5
-3	4999	2021-10-18 17:39:12.504-05	2021-10-18 17:39:12.504-05	11	6
-1	24999	2021-10-18 17:39:12.504-05	2021-10-18 17:39:12.504-05	8	6
-2	14967	2021-10-18 17:39:58.197-05	2021-10-18 17:39:58.197-05	10	7
-2	14967	2021-10-18 17:40:47.935-05	2021-10-18 17:40:47.935-05	10	8
-2	12599	2021-10-18 17:40:47.935-05	2021-10-18 17:40:47.935-05	9	8
-1	14967	2021-10-18 17:44:23.504-05	2021-10-18 17:44:23.504-05	10	9
-4	12599	2021-10-18 17:44:23.504-05	2021-10-18 17:44:23.504-05	9	9
-1	94024	2021-10-18 17:49:46.964-05	2021-10-18 17:49:46.964-05	90	10
 \.
 
 
@@ -197,16 +181,6 @@ COPY public."ProdOrders" (quantity, price, "createdAt", "updatedAt", "productId"
 --
 
 COPY public.orders (id, "isCompleted", "createdAt", "updatedAt", "userId") FROM stdin;
-1	f	2021-10-17 16:54:13.995-05	2021-10-17 16:54:14.034-05	4
-2	f	2021-10-17 17:20:43.871-05	2021-10-17 17:20:43.902-05	4
-3	f	2021-10-17 17:58:08.8-05	2021-10-17 17:58:08.807-05	4
-4	f	2021-10-18 14:42:52.854-05	2021-10-18 14:42:52.871-05	4
-5	f	2021-10-18 14:44:18.581-05	2021-10-18 14:44:18.592-05	4
-6	f	2021-10-18 17:39:12.484-05	2021-10-18 17:39:12.503-05	4
-7	f	2021-10-18 17:39:58.194-05	2021-10-18 17:39:58.197-05	4
-8	f	2021-10-18 17:40:47.926-05	2021-10-18 17:40:47.935-05	4
-9	f	2021-10-18 17:44:23.494-05	2021-10-18 17:44:23.503-05	4
-10	f	2021-10-18 17:49:46.953-05	2021-10-18 17:49:46.964-05	4
 \.
 
 
@@ -215,112 +189,63 @@ COPY public.orders (id, "isCompleted", "createdAt", "updatedAt", "userId") FROM 
 --
 
 COPY public.products (id, name, price, image, quantity, inventory, category, description, "createdAt", "updatedAt") FROM stdin;
-82	Long orange pizza	73737	/pics/evilkitty.jpg	1	30	5	You cannot grasp the true form of this product!	2021-10-17 15:31:00.513-05	2021-10-17 15:31:00.513-05
-90	Big violet cookie	94024	/pics/evilkitty.jpg	1	50	5	You cannot grasp the true form of this product!	2021-10-17 15:31:00.514-05	2021-10-17 15:31:00.514-05
-98	Cute red brownie	52635	/pics/evilkitty.jpg	1	60	5	You cannot grasp the true form of this product!	2021-10-17 15:31:00.515-05	2021-10-17 15:31:00.515-05
-106	Cute green pie	5566	/pics/evilkitty.jpg	1	20	2	You cannot grasp the true form of this product!	2021-10-17 15:31:00.516-05	2021-10-17 15:31:00.516-05
-114	Cute green cookie	54712	/pics/evilkitty.jpg	1	20	4	You cannot grasp the true form of this product!	2021-10-17 15:31:00.517-05	2021-10-17 15:31:00.517-05
-1	Catnip - 3oz	637	/pics/catnip.jpg	1	997	1	-100% NATURAL: pure, potent, and without chemicals, pesticides or fillers\n-PREMIUM: Planted, grown, and harvested at the highest peak of season	2021-10-17 15:31:00.498-05	2021-10-17 17:58:11.635-05
-6	Cat Hat	999	/pics/cathat.jpg	1	997	2	This 100% wool cap will keep you warm during those cold winter nights patrolling your land. Show pride in your territory by donning this Cat Hat for Cats!	2021-10-17 15:31:00.5-05	2021-10-18 14:42:54.857-05
-7	Cat Pen & Paper set	1199	/pics/pen_paper.jpg	1	197	3	Whether you need to jot down some thoughts on what your servant has been up to for the past hour while you sat and stared or you need to catalogue a dream	2021-10-17 15:31:00.5-05	2021-10-18 14:42:54.861-05
-8	Cat Court	24999	/pics/basketball.jpg	1	49	3	Tired of chasing the little baby toys your servants throw for you? Challenge them to a basketball game! Set comes with 2 hoops, a cement court, 2 side benches, and a basketball. Assembly required.	2021-10-17 15:31:00.5-05	2021-10-18 17:39:24.376-05
-11	Cat Wok	4999	/pics/wok.jpg	1	97	4	Hand-hammered by Siamese professionals, this wok is specially balanced for meats rather than vegetables.	2021-10-17 15:31:00.5-05	2021-10-18 17:39:24.386-05
-9	Cat Tool Set	12599	/pics/power_tool.jpg	1	96	3	A compact and effective set of tools for the cat on the go. Never be caught with your tail down when at the edge of your territory and the need arises to build a wall.	2021-10-17 15:31:00.5-05	2021-10-18 17:44:29.662-05
-10	Cat Scooter	14967	/pics/scooter.jpg	1	69	4	-Innovative Power Core Technology\n-Rechargeable 12V sealed lead-acid battery provides an extended ride time of up to 80 minutes of continuous use\n-Rear-wheel drive delivers balance control and traction	2021-10-17 15:31:00.5-05	2021-10-18 17:44:29.666-05
-3	Cat Claw Clippers	700	/pics/clippers.jpg	1	1500	2	Tired of your servants grabbing you and ruthlessly hacking away at your extremities only to make them feel better about serving you treats afterward?	2021-10-17 15:31:00.499-05	2021-10-17 15:31:00.499-05
-13	Adopt-a-Baby	89999	/pics/baby.jpg	1	3	5	Adopting a baby is one of the most rewarding things you can do for yourself and your household – and, of course, the baby!	2021-10-17 15:31:00.501-05	2021-10-17 15:31:00.501-05
-17	Rigid indigo pie	45716	/pics/evilkitty.jpg	1	90	5	You cannot grasp the true form of this product!	2021-10-17 15:31:00.505-05	2021-10-17 15:31:00.505-05
-21	Huge orange rum	6094	/pics/evilkitty.jpg	1	70	3	You cannot grasp the true form of this product!	2021-10-17 15:31:00.506-05	2021-10-17 15:31:00.506-05
-25	Long yellow pretzel	78533	/pics/evilkitty.jpg	1	20	3	You cannot grasp the true form of this product!	2021-10-17 15:31:00.506-05	2021-10-17 15:31:00.506-05
-29	Cute indigo pretzel	94971	/pics/evilkitty.jpg	1	40	5	You cannot grasp the true form of this product!	2021-10-17 15:31:00.506-05	2021-10-17 15:31:00.506-05
-33	Long yellow cookie	5964	/pics/evilkitty.jpg	1	50	3	You cannot grasp the true form of this product!	2021-10-17 15:31:00.507-05	2021-10-17 15:31:00.507-05
-38	Long red noodle24	80992	/pics/evilkitty.jpg	1	20	4	You cannot grasp the true form of this product!	2021-10-17 15:31:00.508-05	2021-10-17 15:31:00.508-05
-42	Cute orange pretzel	20012	/pics/evilkitty.jpg	1	80	4	You cannot grasp the true form of this product!	2021-10-17 15:31:00.508-05	2021-10-17 15:31:00.508-05
-46	Big green pie	26769	/pics/evilkitty.jpg	1	30	2	You cannot grasp the true form of this product!	2021-10-17 15:31:00.509-05	2021-10-17 15:31:00.509-05
-50	Cute red cookie	84627	/pics/evilkitty.jpg	1	80	2	You cannot grasp the true form of this product!	2021-10-17 15:31:00.509-05	2021-10-17 15:31:00.509-05
-55	Short green pie	50083	/pics/evilkitty.jpg	1	100	3	You cannot grasp the true form of this product!	2021-10-17 15:31:00.51-05	2021-10-17 15:31:00.51-05
-59	Rigid yellow cookie	6791	/pics/evilkitty.jpg	1	70	4	You cannot grasp the true form of this product!	2021-10-17 15:31:00.511-05	2021-10-17 15:31:00.511-05
-63	Huge blue cookie	85955	/pics/evilkitty.jpg	1	80	2	You cannot grasp the true form of this product!	2021-10-17 15:31:00.511-05	2021-10-17 15:31:00.511-05
-70	Short indigo brownie	55326	/pics/evilkitty.jpg	1	40	5	You cannot grasp the true form of this product!	2021-10-17 15:31:00.512-05	2021-10-17 15:31:00.512-05
-78	Small orange brownie	55467	/pics/evilkitty.jpg	1	30	2	You cannot grasp the true form of this product!	2021-10-17 15:31:00.513-05	2021-10-17 15:31:00.513-05
-86	Huge violet pretzel	13887	/pics/evilkitty.jpg	1	50	4	You cannot grasp the true form of this product!	2021-10-17 15:31:00.514-05	2021-10-17 15:31:00.514-05
-94	Huge orange pizza	63857	/pics/evilkitty.jpg	1	30	3	You cannot grasp the true form of this product!	2021-10-17 15:31:00.514-05	2021-10-17 15:31:00.514-05
-102	Cute indigo cookie	27538	/pics/evilkitty.jpg	1	80	4	You cannot grasp the true form of this product!	2021-10-17 15:31:00.516-05	2021-10-17 15:31:00.516-05
-110	Short red noodle96	92695	/pics/evilkitty.jpg	1	20	3	You cannot grasp the true form of this product!	2021-10-17 15:31:00.517-05	2021-10-17 15:31:00.517-05
-4	Cat Can Opener	2399	/pics/Can_opener.jpg	1	500	2	Open your cans of food by yourself and no longer be at the whims of your slothful servants. There is no need to sit at your food dish and look adorable while you wait to be fed when you can just do it yourself!	2021-10-17 15:31:00.499-05	2021-10-17 15:31:00.499-05
-14	Rigid violet pie	71532	/pics/evilkitty.jpg	1	80	2	You cannot grasp the true form of this product!	2021-10-17 15:31:00.501-05	2021-10-17 15:31:00.501-05
-18	Long red noodle	17898	/pics/evilkitty.jpg	1	70	5	You cannot grasp the true form of this product!	2021-10-17 15:31:00.505-05	2021-10-17 15:31:00.505-05
-22	Rigid green cookie	28510	/pics/evilkitty.jpg	1	100	2	You cannot grasp the true form of this product!	2021-10-17 15:31:00.506-05	2021-10-17 15:31:00.506-05
-26	Cute orange brownie	3934	/pics/evilkitty.jpg	1	30	5	You cannot grasp the true form of this product!	2021-10-17 15:31:00.506-05	2021-10-17 15:31:00.506-05
-30	Short red noodle	58668	/pics/evilkitty.jpg	1	50	3	You cannot grasp the true form of this product!	2021-10-17 15:31:00.507-05	2021-10-17 15:31:00.507-05
-34	Short indigo cookie	98631	/pics/evilkitty.jpg	1	60	2	You cannot grasp the true form of this product!	2021-10-17 15:31:00.507-05	2021-10-17 15:31:00.507-05
-39	Short red brownie	69824	/pics/evilkitty.jpg	1	30	2	You cannot grasp the true form of this product!	2021-10-17 15:31:00.508-05	2021-10-17 15:31:00.508-05
-43	Long indigo rum	75928	/pics/evilkitty.jpg	1	100	5	You cannot grasp the true form of this product!	2021-10-17 15:31:00.508-05	2021-10-17 15:31:00.508-05
-47	Short green noodle	3885	/pics/evilkitty.jpg	1	30	4	You cannot grasp the true form of this product!	2021-10-17 15:31:00.509-05	2021-10-17 15:31:00.509-05
-51	Long red brownie	63989	/pics/evilkitty.jpg	1	50	3	You cannot grasp the true form of this product!	2021-10-17 15:31:00.509-05	2021-10-17 15:31:00.509-05
-56	Short orange cookie	28644	/pics/evilkitty.jpg	1	60	3	You cannot grasp the true form of this product!	2021-10-17 15:31:00.51-05	2021-10-17 15:31:00.51-05
-60	Huge yellow pretzel	95448	/pics/evilkitty.jpg	1	50	3	You cannot grasp the true form of this product!	2021-10-17 15:31:00.511-05	2021-10-17 15:31:00.511-05
-64	Small indigo brownie	31161	/pics/evilkitty.jpg	1	60	2	You cannot grasp the true form of this product!	2021-10-17 15:31:00.511-05	2021-10-17 15:31:00.511-05
-69	Short red pretzel	14788	/pics/evilkitty.jpg	1	80	5	You cannot grasp the true form of this product!	2021-10-17 15:31:00.512-05	2021-10-17 15:31:00.512-05
-73	Big green noodle	69260	/pics/evilkitty.jpg	1	40	3	You cannot grasp the true form of this product!	2021-10-17 15:31:00.512-05	2021-10-17 15:31:00.512-05
-77	Small blue cookie	82794	/pics/evilkitty.jpg	1	70	2	You cannot grasp the true form of this product!	2021-10-17 15:31:00.513-05	2021-10-17 15:31:00.513-05
-81	Short violet pie	13512	/pics/evilkitty.jpg	1	90	4	You cannot grasp the true form of this product!	2021-10-17 15:31:00.513-05	2021-10-17 15:31:00.513-05
-85	Cute yellow noodle	23314	/pics/evilkitty.jpg	1	100	5	You cannot grasp the true form of this product!	2021-10-17 15:31:00.513-05	2021-10-17 15:31:00.513-05
-89	Huge violet brownie75	52052	/pics/evilkitty.jpg	1	100	5	You cannot grasp the true form of this product!	2021-10-17 15:31:00.514-05	2021-10-17 15:31:00.514-05
-93	Big violet pretzel	48491	/pics/evilkitty.jpg	1	100	3	You cannot grasp the true form of this product!	2021-10-17 15:31:00.514-05	2021-10-17 15:31:00.514-05
-97	Big blue noodle	45616	/pics/evilkitty.jpg	1	50	4	You cannot grasp the true form of this product!	2021-10-17 15:31:00.515-05	2021-10-17 15:31:00.515-05
-101	Cute blue rum	67481	/pics/evilkitty.jpg	1	90	3	You cannot grasp the true form of this product!	2021-10-17 15:31:00.516-05	2021-10-17 15:31:00.516-05
-105	Long indigo pretzel	99004	/pics/evilkitty.jpg	1	90	3	You cannot grasp the true form of this product!	2021-10-17 15:31:00.516-05	2021-10-17 15:31:00.516-05
-109	Huge violet pizza	78915	/pics/evilkitty.jpg	1	90	2	You cannot grasp the true form of this product!	2021-10-17 15:31:00.517-05	2021-10-17 15:31:00.517-05
-113	Small blue pie	47933	/pics/evilkitty.jpg	1	20	5	You cannot grasp the true form of this product!	2021-10-17 15:31:00.517-05	2021-10-17 15:31:00.517-05
-5	Cat Nail Polish	599	/pics/nail_polish.jpg	1	100	2	Whether you're going out for a night at the club or just want to look fancy at home, this easy claw-coloring polish will make you the center of attention -- not that you need it!	2021-10-17 15:31:00.5-05	2021-10-17 15:31:00.5-05
-15	Rigid violet noodle	44436	/pics/evilkitty.jpg	1	40	4	You cannot grasp the true form of this product!	2021-10-17 15:31:00.501-05	2021-10-17 15:31:00.501-05
-23	Short indigo pizza	30175	/pics/evilkitty.jpg	1	30	3	You cannot grasp the true form of this product!	2021-10-17 15:31:00.506-05	2021-10-17 15:31:00.506-05
-31	Rigid yellow noodle	80147	/pics/evilkitty.jpg	1	100	4	You cannot grasp the true form of this product!	2021-10-17 15:31:00.507-05	2021-10-17 15:31:00.507-05
-35	Small yellow noodle	25321	/pics/evilkitty.jpg	1	60	2	You cannot grasp the true form of this product!	2021-10-17 15:31:00.507-05	2021-10-17 15:31:00.507-05
-40	Huge red pretzel	27126	/pics/evilkitty.jpg	1	90	4	You cannot grasp the true form of this product!	2021-10-17 15:31:00.508-05	2021-10-17 15:31:00.508-05
-48	Small blue pretzel	57349	/pics/evilkitty.jpg	1	60	5	You cannot grasp the true form of this product!	2021-10-17 15:31:00.509-05	2021-10-17 15:31:00.509-05
-52	Big red brownie	67212	/pics/evilkitty.jpg	1	50	2	You cannot grasp the true form of this product!	2021-10-17 15:31:00.509-05	2021-10-17 15:31:00.509-05
-57	Big red pretzel	57285	/pics/evilkitty.jpg	1	40	2	You cannot grasp the true form of this product!	2021-10-17 15:31:00.51-05	2021-10-17 15:31:00.51-05
-65	Long indigo pie51	63695	/pics/evilkitty.jpg	1	60	3	You cannot grasp the true form of this product!	2021-10-17 15:31:00.511-05	2021-10-17 15:31:00.511-05
-67	Huge violet brownie	29943	/pics/evilkitty.jpg	1	50	5	You cannot grasp the true form of this product!	2021-10-17 15:31:00.512-05	2021-10-17 15:31:00.512-05
-71	Small orange pie	4086	/pics/evilkitty.jpg	1	70	2	You cannot grasp the true form of this product!	2021-10-17 15:31:00.512-05	2021-10-17 15:31:00.512-05
-75	Small green noodle	189	/pics/evilkitty.jpg	1	80	5	You cannot grasp the true form of this product!	2021-10-17 15:31:00.512-05	2021-10-17 15:31:00.512-05
-79	Long indigo brownie	12141	/pics/evilkitty.jpg	1	20	4	You cannot grasp the true form of this product!	2021-10-17 15:31:00.513-05	2021-10-17 15:31:00.513-05
-83	Cute blue pizza	26855	/pics/evilkitty.jpg	1	80	5	You cannot grasp the true form of this product!	2021-10-17 15:31:00.513-05	2021-10-17 15:31:00.513-05
-87	Cute red noodle	88264	/pics/evilkitty.jpg	1	20	3	You cannot grasp the true form of this product!	2021-10-17 15:31:00.514-05	2021-10-17 15:31:00.514-05
-91	Small indigo pretzel	71713	/pics/evilkitty.jpg	1	40	3	You cannot grasp the true form of this product!	2021-10-17 15:31:00.514-05	2021-10-17 15:31:00.514-05
-95	Short indigo brownie81	69840	/pics/evilkitty.jpg	1	50	3	You cannot grasp the true form of this product!	2021-10-17 15:31:00.514-05	2021-10-17 15:31:00.514-05
-99	Short red pizza	62634	/pics/evilkitty.jpg	1	100	4	You cannot grasp the true form of this product!	2021-10-17 15:31:00.515-05	2021-10-17 15:31:00.515-05
-103	Huge orange pizza89	62776	/pics/evilkitty.jpg	1	60	3	You cannot grasp the true form of this product!	2021-10-17 15:31:00.516-05	2021-10-17 15:31:00.516-05
-107	Big green rum	32239	/pics/evilkitty.jpg	1	30	4	You cannot grasp the true form of this product!	2021-10-17 15:31:00.517-05	2021-10-17 15:31:00.517-05
-111	Big violet cookie97	10439	/pics/evilkitty.jpg	1	90	2	You cannot grasp the true form of this product!	2021-10-17 15:31:00.517-05	2021-10-17 15:31:00.517-05
-2	Cat Condo	2499	/pics/condo.jpg	1	100	1	COMFORTABLE & FUN\n\nThis multi-level unit is perfect for both sleep and play. Require your servants to place one in every room!	2021-10-17 15:31:00.499-05	2021-10-17 15:31:00.499-05
-12	Cat Car	2999598	/pics/car.jpg	1	20	4	Once you've claimed territory beyond your means to travel, it may be time to stop -- or is it? Hop into your cat car and get to where you need to be in a fraction of the time.	2021-10-17 15:31:00.501-05	2021-10-17 15:31:00.501-05
-16	Rigid yellow pretzel	71451	/pics/evilkitty.jpg	1	20	2	You cannot grasp the true form of this product!	2021-10-17 15:31:00.501-05	2021-10-17 15:31:00.501-05
-20	Long violet pizza	13602	/pics/evilkitty.jpg	1	30	2	You cannot grasp the true form of this product!	2021-10-17 15:31:00.506-05	2021-10-17 15:31:00.506-05
-24	Short violet pretzel	58854	/pics/evilkitty.jpg	1	60	4	You cannot grasp the true form of this product!	2021-10-17 15:31:00.506-05	2021-10-17 15:31:00.506-05
-28	Long indigo pie	16969	/pics/evilkitty.jpg	1	20	2	You cannot grasp the true form of this product!	2021-10-17 15:31:00.506-05	2021-10-17 15:31:00.506-05
-32	Big orange cookie	4599	/pics/evilkitty.jpg	1	70	5	You cannot grasp the true form of this product!	2021-10-17 15:31:00.507-05	2021-10-17 15:31:00.507-05
-37	Short green brownie	75550	/pics/evilkitty.jpg	1	80	4	You cannot grasp the true form of this product!	2021-10-17 15:31:00.508-05	2021-10-17 15:31:00.508-05
-41	Big orange pie	80951	/pics/evilkitty.jpg	1	30	3	You cannot grasp the true form of this product!	2021-10-17 15:31:00.508-05	2021-10-17 15:31:00.508-05
-45	Big orange pie31	24478	/pics/evilkitty.jpg	1	90	3	You cannot grasp the true form of this product!	2021-10-17 15:31:00.509-05	2021-10-17 15:31:00.509-05
-49	Cute yellow pie	39299	/pics/evilkitty.jpg	1	20	4	You cannot grasp the true form of this product!	2021-10-17 15:31:00.509-05	2021-10-17 15:31:00.509-05
-54	Short violet brownie	77918	/pics/evilkitty.jpg	1	20	5	You cannot grasp the true form of this product!	2021-10-17 15:31:00.509-05	2021-10-17 15:31:00.509-05
-58	Rigid indigo pretzel	79245	/pics/evilkitty.jpg	1	100	5	You cannot grasp the true form of this product!	2021-10-17 15:31:00.511-05	2021-10-17 15:31:00.511-05
-62	Huge blue noodle	82399	/pics/evilkitty.jpg	1	40	5	You cannot grasp the true form of this product!	2021-10-17 15:31:00.511-05	2021-10-17 15:31:00.511-05
-68	Long red noodle54	63348	/pics/evilkitty.jpg	1	80	3	You cannot grasp the true form of this product!	2021-10-17 15:31:00.512-05	2021-10-17 15:31:00.512-05
-72	Rigid green cookie58	62458	/pics/evilkitty.jpg	1	100	2	You cannot grasp the true form of this product!	2021-10-17 15:31:00.512-05	2021-10-17 15:31:00.512-05
-76	Big indigo noodle	75460	/pics/evilkitty.jpg	1	20	5	You cannot grasp the true form of this product!	2021-10-17 15:31:00.512-05	2021-10-17 15:31:00.512-05
-80	Rigid violet noodle66	72879	/pics/evilkitty.jpg	1	30	2	You cannot grasp the true form of this product!	2021-10-17 15:31:00.513-05	2021-10-17 15:31:00.513-05
-84	Short indigo pizza70	23807	/pics/evilkitty.jpg	1	60	2	You cannot grasp the true form of this product!	2021-10-17 15:31:00.513-05	2021-10-17 15:31:00.513-05
-88	Big yellow brownie	64992	/pics/evilkitty.jpg	1	60	5	You cannot grasp the true form of this product!	2021-10-17 15:31:00.514-05	2021-10-17 15:31:00.514-05
-92	Long yellow rum	93821	/pics/evilkitty.jpg	1	50	5	You cannot grasp the true form of this product!	2021-10-17 15:31:00.514-05	2021-10-17 15:31:00.514-05
-96	Small yellow rum	18514	/pics/evilkitty.jpg	1	90	4	You cannot grasp the true form of this product!	2021-10-17 15:31:00.514-05	2021-10-17 15:31:00.514-05
-100	Small orange pizza	18390	/pics/evilkitty.jpg	1	80	3	You cannot grasp the true form of this product!	2021-10-17 15:31:00.516-05	2021-10-17 15:31:00.516-05
-104	Short blue pretzel	80110	/pics/evilkitty.jpg	1	30	3	You cannot grasp the true form of this product!	2021-10-17 15:31:00.516-05	2021-10-17 15:31:00.516-05
-108	Rigid orange cookie	55049	/pics/evilkitty.jpg	1	40	3	You cannot grasp the true form of this product!	2021-10-17 15:31:00.517-05	2021-10-17 15:31:00.517-05
-112	Long violet pizza98	55235	/pics/evilkitty.jpg	1	50	2	You cannot grasp the true form of this product!	2021-10-17 15:31:00.517-05	2021-10-17 15:31:00.517-05
+1	Catnip - 3oz	637	/pics/pic10.jpg	1	1000	1	-100% NATURAL: pure, potent, and without chemicals, pesticides or fillers\n-PREMIUM: Planted, grown, and harvested at the highest peak of season	2021-10-28 06:45:12.466-05	2021-10-28 06:45:12.466-05
+2	Cat Condo	2499	/pics/condo.jpg	1	100	1	COMFORTABLE & FUN\n\nThis multi-level unit is perfect for both sleep and play. Require your servants to place one in every room!	2021-10-28 06:45:12.466-05	2021-10-28 06:45:12.466-05
+3	Cat Nail Polish	599	/pics/nail_polish.jpg	1	100	2	Whether you're going out for a night at the club or just want to look fancy at home, this easy claw-coloring polish will make you the center of attention -- not that you need it!	2021-10-28 06:45:12.466-05	2021-10-28 06:45:12.466-05
+4	Cat Hat	999	/pics/pic11.jpg	1	1000	2	This 100% wool cap will keep you warm during those cold winter nights patrolling your land. Show pride in your territory by donning this Cat Hat for Cats!	2021-10-28 06:45:12.466-05	2021-10-28 06:45:12.466-05
+5	Cat Scooter	14967	/pics/scooter.jpg	1	70	4	-Innovative Power Core Technology\n-Rechargeable 12V sealed lead-acid battery provides an extended ride time of up to 80 minutes of continuous use\n-Rear-wheel drive delivers balance control and traction	2021-10-28 06:45:12.466-05	2021-10-28 06:45:12.466-05
+6	Cat Tool Set	12599	/pics/power_tool.jpg	1	100	3	A compact and effective set of tools for the cat on the go. Never be caught with your tail down when at the edge of your territory and the need arises to build a wall.	2021-10-28 06:45:12.466-05	2021-10-28 06:45:12.466-05
+7	Cat Wok	4999	/pics/wok.jpg	1	100	4	Hand-hammered by Siamese professionals, this wok is specially balanced for meats rather than vegetables.	2021-10-28 06:45:12.466-05	2021-10-28 06:45:12.466-05
+8	Flat silver book	63093	pics/pic4.png	1	100	3	You cannot grasp the true form of this product!	2021-10-28 06:45:12.466-05	2021-10-28 06:45:12.466-05
+9	Huge green noodle	59800	pics/pic8.jpg	1	100	3	You cannot grasp the true form of this product!	2021-10-28 06:45:12.466-05	2021-10-28 06:45:12.466-05
+10	Shiny yellow book	21542	pics/pic9.jpg	1	20	2	You cannot grasp the true form of this product!	2021-10-28 06:45:12.467-05	2021-10-28 06:45:12.467-05
+11	Funny red cookie	58796	pics/pic3.jpg	1	80	4	You cannot grasp the true form of this product!	2021-10-28 06:45:12.467-05	2021-10-28 06:45:12.467-05
+12	Short orange pretzel	86444	pics/pic9.jpg	1	30	3	You cannot grasp the true form of this product!	2021-10-28 06:45:12.467-05	2021-10-28 06:45:12.467-05
+13	Huge azure book	64763	pics/pic2.jpeg	1	100	5	You cannot grasp the true form of this product!	2021-10-28 06:45:12.467-05	2021-10-28 06:45:12.467-05
+14	Fantastic chocolate pie	31338	pics/pic4.png	1	20	5	You cannot grasp the true form of this product!	2021-10-28 06:45:12.467-05	2021-10-28 06:45:12.467-05
+15	Small red coffee	98910	pics/pic5.jpeg	1	30	4	You cannot grasp the true form of this product!	2021-10-28 06:45:12.467-05	2021-10-28 06:45:12.467-05
+16	Fantastic gray coat	53403	pics/pic9.jpg	1	40	4	You cannot grasp the true form of this product!	2021-10-28 06:45:12.467-05	2021-10-28 06:45:12.467-05
+17	Adorable silver coach	49785	pics/pic7.jpeg	1	20	3	You cannot grasp the true form of this product!	2021-10-28 06:45:12.467-05	2021-10-28 06:45:12.467-05
+18	Rigid pink pie	60256	pics/pic10.jpg	1	20	2	You cannot grasp the true form of this product!	2021-10-28 06:45:12.467-05	2021-10-28 06:45:12.467-05
+19	Shiny orange book	78246	pics/pic4.png	1	60	3	You cannot grasp the true form of this product!	2021-10-28 06:45:12.467-05	2021-10-28 06:45:12.467-05
+20	Lucky yellow book	51093	pics/pic2.jpeg	1	100	3	You cannot grasp the true form of this product!	2021-10-28 06:45:12.467-05	2021-10-28 06:45:12.467-05
+21	Big red pie	80551	pics/pic8.jpg	1	70	4	You cannot grasp the true form of this product!	2021-10-28 06:45:12.467-05	2021-10-28 06:45:12.467-05
+22	Amazing chocolate car	30929	pics/pic5.jpeg	1	20	2	You cannot grasp the true form of this product!	2021-10-28 06:45:12.467-05	2021-10-28 06:45:12.467-05
+23	Long pink car	67040	pics/pic10.jpg	1	80	5	You cannot grasp the true form of this product!	2021-10-28 06:45:12.467-05	2021-10-28 06:45:12.467-05
+24	Fancy golden coat	23613	pics/pic8.jpg	1	30	3	You cannot grasp the true form of this product!	2021-10-28 06:45:12.467-05	2021-10-28 06:45:12.467-05
+25	Adorable orange coach	24255	pics/pic8.jpg	1	60	5	You cannot grasp the true form of this product!	2021-10-28 06:45:12.467-05	2021-10-28 06:45:12.467-05
+26	Shiny green movie	43718	pics/pic10.jpg	1	90	2	You cannot grasp the true form of this product!	2021-10-28 06:45:12.467-05	2021-10-28 06:45:12.467-05
+27	Rigid chocolate cookie	6982	pics/pic4.png	1	60	4	You cannot grasp the true form of this product!	2021-10-28 06:45:12.467-05	2021-10-28 06:45:12.467-05
+28	Funny green brownie	66937	pics/pic8.jpg	1	30	2	You cannot grasp the true form of this product!	2021-10-28 06:45:12.468-05	2021-10-28 06:45:12.468-05
+29	Long orange coat	23273	pics/pic9.jpg	1	80	4	You cannot grasp the true form of this product!	2021-10-28 06:45:12.468-05	2021-10-28 06:45:12.468-05
+30	Silly yellow car	84047	pics/pic7.jpeg	1	40	4	You cannot grasp the true form of this product!	2021-10-28 06:45:12.468-05	2021-10-28 06:45:12.468-05
+31	Silly red car	25350	pics/pic5.jpeg	1	50	4	You cannot grasp the true form of this product!	2021-10-28 06:45:12.468-05	2021-10-28 06:45:12.468-05
+32	Cute red brownie	87502	pics/pic10.jpg	1	50	2	You cannot grasp the true form of this product!	2021-10-28 06:45:12.468-05	2021-10-28 06:45:12.468-05
+33	Silly indigo book	15538	pics/pic6.jpeg	1	70	3	You cannot grasp the true form of this product!	2021-10-28 06:45:12.468-05	2021-10-28 06:45:12.468-05
+34	Fancy chocolate car	70266	pics/pic8.jpg	1	50	3	You cannot grasp the true form of this product!	2021-10-28 06:45:12.468-05	2021-10-28 06:45:12.468-05
+35	Fancy chocolate garden	30719	pics/pic4.png	1	90	3	You cannot grasp the true form of this product!	2021-10-28 06:45:12.468-05	2021-10-28 06:45:12.468-05
+36	Funny azure movie	34088	pics/pic6.jpeg	1	70	2	You cannot grasp the true form of this product!	2021-10-28 06:45:12.468-05	2021-10-28 06:45:12.468-05
+37	Elegant salmon rum	23322	pics/pic3.jpg	1	50	4	You cannot grasp the true form of this product!	2021-10-28 06:45:12.468-05	2021-10-28 06:45:12.468-05
+38	Fancy indigo rum	69586	pics/pic10.jpg	1	40	5	You cannot grasp the true form of this product!	2021-10-28 06:45:12.468-05	2021-10-28 06:45:12.468-05
+39	Fancy orange book	33073	pics/pic8.jpg	1	80	4	You cannot grasp the true form of this product!	2021-10-28 06:45:12.468-05	2021-10-28 06:45:12.468-05
+40	Funny pink car	86420	pics/pic6.jpeg	1	100	3	You cannot grasp the true form of this product!	2021-10-28 06:45:12.468-05	2021-10-28 06:45:12.468-05
+41	Cute chocolate brownie	47893	pics/pic9.jpg	1	70	3	You cannot grasp the true form of this product!	2021-10-28 06:45:12.468-05	2021-10-28 06:45:12.468-05
+42	Small violet coffee	27807	pics/pic9.jpg	1	80	4	You cannot grasp the true form of this product!	2021-10-28 06:45:12.468-05	2021-10-28 06:45:12.468-05
+43	Huge orange coach	66415	pics/pic8.jpg	1	40	4	You cannot grasp the true form of this product!	2021-10-28 06:45:12.468-05	2021-10-28 06:45:12.468-05
+44	Huge blue garden	71382	pics/pic2.jpeg	1	40	3	You cannot grasp the true form of this product!	2021-10-28 06:45:12.468-05	2021-10-28 06:45:12.468-05
+45	Small green garden	99026	pics/pic8.jpg	1	30	5	You cannot grasp the true form of this product!	2021-10-28 06:45:12.468-05	2021-10-28 06:45:12.468-05
+46	Elegant yellow coach	38919	pics/pic4.png	1	40	5	You cannot grasp the true form of this product!	2021-10-28 06:45:12.469-05	2021-10-28 06:45:12.469-05
+47	Silly pink pizza	94230	pics/pic7.jpeg	1	100	4	You cannot grasp the true form of this product!	2021-10-28 06:45:12.469-05	2021-10-28 06:45:12.469-05
+48	Elegant silver pizza	89450	pics/pic9.jpg	1	90	5	You cannot grasp the true form of this product!	2021-10-28 06:45:12.469-05	2021-10-28 06:45:12.469-05
+49	Flat blue cookie	51643	pics/pic4.png	1	30	5	You cannot grasp the true form of this product!	2021-10-28 06:45:12.469-05	2021-10-28 06:45:12.469-05
+50	Long azure coffee	40673	pics/pic5.jpeg	1	20	4	You cannot grasp the true form of this product!	2021-10-28 06:45:12.469-05	2021-10-28 06:45:12.469-05
+54	Rigid orange pretzel	59731	pics/pic7.jpeg	1	80	4	You cannot grasp the true form of this product!	2021-10-28 06:45:12.469-05	2021-10-28 06:45:12.469-05
+51	Huge salmon brownie	77461	pics/pic4.png	1	60	2	You cannot grasp the true form of this product!	2021-10-28 06:45:12.469-05	2021-10-28 06:45:12.469-05
+55	Fancy orange noodle	73903	pics/pic6.jpeg	1	30	5	You cannot grasp the true form of this product!	2021-10-28 06:45:12.469-05	2021-10-28 06:45:12.469-05
+52	Fancy yellow pizza	92963	pics/pic6.jpeg	1	60	3	You cannot grasp the true form of this product!	2021-10-28 06:45:12.469-05	2021-10-28 06:45:12.469-05
+56	Big golden book	65200	pics/pic8.jpg	1	30	5	You cannot grasp the true form of this product!	2021-10-28 06:45:12.469-05	2021-10-28 06:45:12.469-05
+53	Amazing yellow rum	8634	pics/pic10.jpg	1	70	2	You cannot grasp the true form of this product!	2021-10-28 06:45:12.469-05	2021-10-28 06:45:12.469-05
+57	Shiny golden rum	52446	pics/pic10.jpg	1	20	5	You cannot grasp the true form of this product!	2021-10-28 06:45:12.469-05	2021-10-28 06:45:12.469-05
 \.
 
 
@@ -329,115 +254,17 @@ COPY public.products (id, name, price, image, quantity, inventory, category, des
 --
 
 COPY public.users (id, username, "firstName", "lastName", email, password, cc, "shippingAddress", "billingAddress", "prevOrders", "favProducts", "isAdmin", "createdAt", "updatedAt") FROM stdin;
-1	steph	Steph	Durino	fake4@fake.com	$2b$05$q3XCYu/6sHzs5HEbITRdgOQJXFxtilKp18IoS8qr0IQxNQnUNcRqC	\N	\N	\N	{}	{}	f	2021-10-17 15:31:00.292-05	2021-10-17 15:31:00.292-05
-2	andrew	Andrew	Kerr	fake5@fake.com	$2b$05$lgjok54qvmQEY.imxHguk.PNGi25S.x23cKtyNVmhC9v9t21oGk1y	\N	\N	\N	{}	{}	f	2021-10-17 15:31:00.292-05	2021-10-17 15:31:00.292-05
-3	cody	Cody	The Pup	fake1@fake.com	$2b$05$nYijOjwZ4.GHwlU0gqb7AunIy5xfAWEn6misNmczl90gyO3PWrDoa	\N	456 fake st	\N	{}	{}	t	2021-10-17 15:31:00.291-05	2021-10-17 15:31:00.291-05
-5	tenzing	Tenzing	O	fake7@fake.com	$2b$05$tqFjDRkxGiLH/V33CliFhePReHDEJu2eqWYG80./WGlCvBMJ6UhgK	\N	\N	\N	{}	{}	f	2021-10-17 15:31:00.292-05	2021-10-17 15:31:00.292-05
-7	mike	Mike	Alessi	fake9@fake.com	$2b$05$W/VxJhCyaojwjm5rsVBW3OdtnJt3bONHpGG2EcZC07/5VoAmLANdW	\N	\N	\N	{}	{}	f	2021-10-17 15:31:00.293-05	2021-10-17 15:31:00.293-05
-8	jason	Jason	N	fake10@fake.com	$2b$05$jtwfJOBWQ972u4DyBi5yv.2OtQKMLUJicqdaChTXHyxrcmoqlh93e	\N	\N	\N	{}	{}	f	2021-10-17 15:31:00.293-05	2021-10-17 15:31:00.293-05
-9	jae	Jae	Jung	fake3@fake.com	$2b$05$48inroxLq.95c5eKxndyh.w0LL7o8NMxB55iJftHWaepTIJctpLZ2	\N	\N	\N	{}	{}	f	2021-10-17 15:31:00.292-05	2021-10-17 15:31:00.292-05
-10	Anonymous_Cat0	Wilson	 the VII	fake12@fake.com	$2b$05$3JYmdqObK0oK7Dm7TEVhLuA8hpmtzE9mb6G5qEvkrKMq1/ImTgC8q	\N	76 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.293-05	2021-10-17 15:31:00.293-05
-11	sung	Sung	Paik	fake11@fake.com	$2b$05$cbyV3rSEeFZlT68EfjoDseVWEpGZxlqW/ubGj4br1vFOplDnaxPce	\N	\N	\N	{}	{}	f	2021-10-17 15:31:00.293-05	2021-10-17 15:31:00.293-05
-12	murphy	Murphy	H	fake2@fake.com	$2b$05$u/foYjJHJzed6F.Jsq/L3Obdsw0FUB7Nle0drByAmt0NSpwnkwAL2	\N	\N	\N	{}	{}	f	2021-10-17 15:31:00.292-05	2021-10-17 15:31:00.292-05
-13	Anonymous_Cat1	Wilson	 the XXVII	fake13@fake.com	$2b$05$u4ki.Yz/4Y6Zjnaop5aMD.Drop1uBdYqUSAKHGJnIjJr6RvBsyN.i	\N	84 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.293-05	2021-10-17 15:31:00.293-05
-15	Anonymous_Cat3	Wilson	 the XVI	fake15@fake.com	$2b$05$TqiIm.S/WpRIhxMef3XM4.LLg9CbmvsrDNrNWz2JGuQn5IBPYqoYK	\N	18 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.293-05	2021-10-17 15:31:00.293-05
-16	Anonymous_Cat4	Wilson	 the XXII	fake16@fake.com	$2b$05$N0PLrvF3L0LZtGrjh/SntuWEEMzxcin2mcVdj.UO37P2CEEL9gQk6	\N	36 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.293-05	2021-10-17 15:31:00.293-05
-17	Anonymous_Cat5	Wilson	 the III	fake17@fake.com	$2b$05$pHpobvnaCdZm6cWlhV/jb.VFcA1NoLLXwhRG4nKSbIQAutnOFSafC	\N	43 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.293-05	2021-10-17 15:31:00.293-05
-18	Anonymous_Cat6	Wilson	 the XXIX	fake18@fake.com	$2b$05$kcKZwsasek8iiXMc10BC2.tGVoj5vODYSZ8VlFHcHL9jHcfYiDqYe	\N	12 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.293-05	2021-10-17 15:31:00.293-05
-19	Anonymous_Cat7	Wilson	 the IV	fake19@fake.com	$2b$05$EQpUyqwR.pSHMRjHLsoaOeXY8hJmKhventFu2xjFUwZpw81p3Fqz2	\N	18 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.294-05	2021-10-17 15:31:00.294-05
-20	Anonymous_Cat8	Wilson	 the XXVIII	fake20@fake.com	$2b$05$VxsdGSJqHS709KWo./jfCOVlACInt4C06XAEPzwlRIGzacVMQuOfS	\N	27 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.294-05	2021-10-17 15:31:00.294-05
-21	Anonymous_Cat9	Wilson	 the XXVII	fake21@fake.com	$2b$05$lLSI3XCrdBSxEhiQ2JOeNe2Txdx95A2vMuONdkPcLSiiHzcfS6nXu	\N	12 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.294-05	2021-10-17 15:31:00.294-05
-22	Anonymous_Cat10	Wilson	 the XII	fake22@fake.com	$2b$05$8B42tNqTAyHR8NSdB3Gw5eEfZnjLze.Rc7/DbYPV7UJR9MBu/2XCS	\N	75 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.294-05	2021-10-17 15:31:00.294-05
-23	Anonymous_Cat11	Wilson	 the XXIII	fake23@fake.com	$2b$05$Pm0QL5/UyG5nFUDP1fPr3uW3e4TiyPSjReZi9tZtbSt2Av2qXOefe	\N	93 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.294-05	2021-10-17 15:31:00.294-05
-24	Anonymous_Cat12	Wilson	 the XXIV	fake24@fake.com	$2b$05$gSV9RkMcLOYkSb5YTjE6u.Yz7qy.XjzRzcEF228uKV7qCmPIkCoIu	\N	69 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.294-05	2021-10-17 15:31:00.294-05
-25	Anonymous_Cat16	Wilson	 the IV	fake28@fake.com	$2b$05$x/O29lQ3ClOdsmDMEtWV5.moCj2R.TIXjSHIZBkBxp4R5ayD1eIUS	\N	23 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.294-05	2021-10-17 15:31:00.294-05
-26	Anonymous_Cat13	Wilson	 the IV	fake25@fake.com	$2b$05$eD4anJrMUaFWIv4NVKo/BOhxD1ioo8Pt3667vFvA.OkB8Wcs2dAA6	\N	84 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.294-05	2021-10-17 15:31:00.294-05
-27	Anonymous_Cat14	Wilson	 the XXIII	fake26@fake.com	$2b$05$mTcT4ssAPmn9RJrvHQDQjesA1EakLWNAcc3/sZZvjEXO0TrwSXGkq	\N	37 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.294-05	2021-10-17 15:31:00.294-05
-28	Anonymous_Cat15	Wilson	 the IV	fake27@fake.com	$2b$05$rtvC1seWPY5Y2wy9lE54BuOYnaE.3JC.tC7/TZit764wN6QKy05IS	\N	55 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.294-05	2021-10-17 15:31:00.294-05
-29	Anonymous_Cat18	Wilson	 the VIII	fake30@fake.com	$2b$05$oayXvsyIWgk6cNIKA34QpeduiHog0DGQ8W21fTgySWvzc5Ch//g0K	\N	46 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.294-05	2021-10-17 15:31:00.294-05
-30	Anonymous_Cat17	Wilson	 the IX	fake29@fake.com	$2b$05$guCaXafgcVd/CKGYIF4FneqzaM9cS7DcQEC0aQ6mne551lY2tafnq	\N	84 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.294-05	2021-10-17 15:31:00.294-05
-32	Anonymous_Cat20	Wilson	 the XXIV	fake32@fake.com	$2b$05$Ff461trZ/UzDfXeJ7xLGHesHI.nOvpUbCRu6dja/1L96oANOhwUOK	\N	6 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.295-05	2021-10-17 15:31:00.295-05
-33	Anonymous_Cat21	Wilson	 the XXII	fake33@fake.com	$2b$05$q8SMNfT7ebA0NpaeG1IWC.4YR4bEthg4u0emq678ZpOe983.vT0bq	\N	67 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.295-05	2021-10-17 15:31:00.295-05
-34	Anonymous_Cat22	Wilson	 the XI	fake34@fake.com	$2b$05$1EG9DkIkVgfBm1uV.1TSlupTjKaUWtg2b/qp8YxkCBHTzAHZyuf1a	\N	89 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.295-05	2021-10-17 15:31:00.295-05
-35	Anonymous_Cat23	Wilson	 the IV	fake35@fake.com	$2b$05$GBqS6FHiSfCOB5iBqL3e8uS4cQSt4XvtJRmxseYZJBlXKLPaW8gMK	\N	93 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.295-05	2021-10-17 15:31:00.295-05
-36	Anonymous_Cat24	Wilson	 the XI	fake36@fake.com	$2b$05$W325wFR3yYtWZOPeVZ9zNepO8/trZAxH2qN0fp4YraL22AKXOiu3y	\N	21 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.295-05	2021-10-17 15:31:00.295-05
-37	Anonymous_Cat25	Wilson	 the XI	fake37@fake.com	$2b$05$cIfzrT5mPdXNzDP84mIuyuZM4zenkbOfxkb51WKkcXQA1HBv7VqK6	\N	59 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.295-05	2021-10-17 15:31:00.295-05
-38	Anonymous_Cat26	Wilson	 the VIII	fake38@fake.com	$2b$05$qVVQ.A33PaEBWNMNM.TGlumvDyfpeGXjGg7Lew3z3KlyQopgfGXxW	\N	41 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.295-05	2021-10-17 15:31:00.295-05
-39	Anonymous_Cat27	Wilson	 the VIII	fake39@fake.com	$2b$05$QY3VkeCeETCM2x1.usxmnuXLFPkp/RUp/6VFbqfSvI3qapERDrfh.	\N	14 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.295-05	2021-10-17 15:31:00.295-05
-40	Anonymous_Cat28	Wilson	 the XXI	fake40@fake.com	$2b$05$gi7uzQEtqGiCRutEVO6qbuWhg15XsmcESIQYLquDrtvogKnx0/MzC	\N	13 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.295-05	2021-10-17 15:31:00.295-05
-41	Anonymous_Cat29	Wilson	 the II	fake41@fake.com	$2b$05$Aj2rUDKfdEYXpeQ19Yh1leldNAc4gMnb.kafdkLRoqkWYUED/YCzq	\N	15 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.295-05	2021-10-17 15:31:00.295-05
-45	Anonymous_Cat33	Wilson	 the XII	fake45@fake.com	$2b$05$ID3Ydmw8PPyP.miAjTCyOusqhB/3odoyZVQoPwPbtj0A8qXxYCzP.	\N	62 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.296-05	2021-10-17 15:31:00.296-05
-49	Anonymous_Cat37	Wilson	 the XIX	fake49@fake.com	$2b$05$VwyIqVcZrlEbJnPf2GZIK./5IRUaa6smp8A6IvQAT41vPGMcS8z7C	\N	29 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.296-05	2021-10-17 15:31:00.296-05
-53	Anonymous_Cat41	Wilson	 the XI	fake53@fake.com	$2b$05$ccjeqxkNo9CNBxVjj4pIs./WRxWDRegzJWvUvreYILeGpy09ExMxe	\N	56 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.296-05	2021-10-17 15:31:00.296-05
-57	Anonymous_Cat45	Wilson	 the XXII	fake57@fake.com	$2b$05$SvFP65vcgg4LtqMhCn37/.sPg7AW9y578uRNAJf0gh0BHWocZpdTS	\N	29 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.297-05	2021-10-17 15:31:00.297-05
-61	Anonymous_Cat49	Wilson	 the II	fake61@fake.com	$2b$05$qzRjXGiDjN9pRxXs39vYl.xQMZ4WlJr591qYUwlSHolY/BS6l16n.	\N	38 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.297-05	2021-10-17 15:31:00.297-05
-65	Anonymous_Cat53	Wilson	 the XIV	fake65@fake.com	$2b$05$Pi2wnQcAQtD8rMGfpEDDWeYSW546TVqTIKDELzlK0bivIHipGnniu	\N	91 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.297-05	2021-10-17 15:31:00.297-05
-69	Anonymous_Cat57	Wilson	 the XXX	fake69@fake.com	$2b$05$dzfAchW1Rjw/uFGoNFL2nOrfU/H07skHzK3.7EPGeSAqUJH6GZCjq	\N	33 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.298-05	2021-10-17 15:31:00.298-05
-73	Anonymous_Cat61	Wilson	 the XVI	fake73@fake.com	$2b$05$42KCHc/T3m6kkiMJynKOgeJMupt0FWsbVo5fiMwhtCSmXSwjLH5aq	\N	6 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.298-05	2021-10-17 15:31:00.298-05
-78	Anonymous_Cat66	Wilson	 the IV	fake78@fake.com	$2b$05$WmEGAncWcffcpoAHr5dRCeILRpxfxttElPf2T0.hwfphRAwKBIy.i	\N	49 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.298-05	2021-10-17 15:31:00.298-05
-82	Anonymous_Cat70	Wilson	 the XIV	fake82@fake.com	$2b$05$speDnsISYYD81fzGhoT9a..16OEimh.02OemPYMrNcDdSmkketHmm	\N	62 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.299-05	2021-10-17 15:31:00.299-05
-86	Anonymous_Cat74	Wilson	 the XXIII	fake86@fake.com	$2b$05$lXXXXFoyJ6.MyEz45xCMuejPS69GTuN3vNgaAX1EAVqtH3BxBLDKy	\N	66 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.299-05	2021-10-17 15:31:00.299-05
-90	Anonymous_Cat78	Wilson	 the X	fake90@fake.com	$2b$05$ydvWTPMxt7ZM97nNA1vX5.FD6puBaZ56dgyCIi6EriF9bPREi6abi	\N	84 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.299-05	2021-10-17 15:31:00.299-05
-96	Anonymous_Cat84	Wilson	 the XXII	fake96@fake.com	$2b$05$H3Uq4cToJbZ4Xqqj97q7UeAZ2JBlTAJtb8dQWP3oIuCL9EX4MILNG	\N	63 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.3-05	2021-10-17 15:31:00.3-05
-101	Anonymous_Cat89	Wilson	 the II	fake101@fake.com	$2b$05$cF44mSjEaIH5bmM3DktJFeo2yfFvpAfyFmfvpecmmwLxogTge5xVi	\N	65 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.3-05	2021-10-17 15:31:00.3-05
-105	Anonymous_Cat93	Wilson	 the XXII	fake105@fake.com	$2b$05$q6YO7dsbT.0bHvBOztk4vOYv0VLrf34hB75DB7OMsBsbBG2WoCCOK	\N	99 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.301-05	2021-10-17 15:31:00.301-05
-109	Anonymous_Cat97	Wilson	 the XXIX	fake109@fake.com	$2b$05$zguvw9ZLiv2LxqA5Cumlxuk5pdsldY2767qhebpwrXsTwy0mj6Y/i	\N	1 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.302-05	2021-10-17 15:31:00.302-05
-42	Anonymous_Cat30	Wilson	 the XV	fake42@fake.com	$2b$05$CNEZ3gRyKZrIWeqj.TCAe.xdPv88XX5OERLP4Of72askST8pQCJU2	\N	72 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.295-05	2021-10-17 15:31:00.295-05
-50	Anonymous_Cat38	Wilson	 the XVII	fake50@fake.com	$2b$05$OmHODd9ipyArsZrwi0pLQeo.xAqqWvBT1sy07WBHU0crcYUyuQEAu	\N	94 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.296-05	2021-10-17 15:31:00.296-05
-58	Anonymous_Cat46	Wilson	 the XIX	fake58@fake.com	$2b$05$n/1fzVL7TDT6JLB8yAyieesiiZwXaXpmVfLt1PycJ26wBCnbulgYm	\N	75 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.297-05	2021-10-17 15:31:00.297-05
-66	Anonymous_Cat54	Wilson	 the XVII	fake66@fake.com	$2b$05$/5Hmt4PEKmUDLMP6JAEseeExt6AjtGJOSjcaDDHSI86E6yIRFlEb6	\N	69 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.297-05	2021-10-17 15:31:00.297-05
-75	Anonymous_Cat63	Wilson	 the XVIII	fake75@fake.com	$2b$05$UsuM86WAN8jN9BkXlPRBUephCH49AgbNDofyDBVG026QxEYYsGZBC	\N	53 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.298-05	2021-10-17 15:31:00.298-05
-83	Anonymous_Cat71	Wilson	 the IX	fake83@fake.com	$2b$05$576pcpN9wFD31nMpWCm0eOARmhMd0b2dKghvOJcHQ8QrsBTykpyiG	\N	71 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.299-05	2021-10-17 15:31:00.299-05
-91	Anonymous_Cat79	Wilson	 the XXVI	fake91@fake.com	$2b$05$YzLtXI3NAQHu7Zg3hMmlCeVlHbAIYM62HgBt.b8dsnZXSIJocIBtu	\N	68 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.3-05	2021-10-17 15:31:00.3-05
-98	Anonymous_Cat86	Wilson	 the IX	fake98@fake.com	$2b$05$exF3WO5sDaxHTphEmoWBl.jYnDyak7GqcW0/kwmpLzTCXzDGwCjBG	\N	59 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.3-05	2021-10-17 15:31:00.3-05
-100	Anonymous_Cat88	Wilson	 the XVIII	fake100@fake.com	$2b$05$l2yb168MeH.cE5qo5242h.hXaopavbfpqFrsIQEgcFtaVW.3GrsWe	\N	9 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.3-05	2021-10-17 15:31:00.3-05
-104	Anonymous_Cat92	Wilson	 the XXVI	fake104@fake.com	$2b$05$H2fZHaDZpLfumHuXOgUSoO5UZ3HBEMa9/K6M20VvTL.aheR66GRTa	\N	84 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.301-05	2021-10-17 15:31:00.301-05
-108	Anonymous_Cat96	Wilson	 the XIII	fake108@fake.com	$2b$05$fwV4MyFCC2WAdcOD7ymHneQqWYllqzbvLCDhcLA523Zp9mZvUnMhu	\N	23 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.301-05	2021-10-17 15:31:00.301-05
-112	Anonymous_Cat100	Wilson	 the XXV	fake112@fake.com	$2b$05$ntTa.0YATvrx2xsU0F2O9.E/HvyY00WF5j6FXAa2WvDO/1BcQKmD.	\N	56 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.302-05	2021-10-17 15:31:00.302-05
-43	Anonymous_Cat32	Wilson	 the XXIX	fake44@fake.com	$2b$05$cRbb6ohcnG2Kd.fk3OMvYu9iMQy.pkgZte1jZEBhIgwlG9us9.k4K	\N	94 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.296-05	2021-10-17 15:31:00.296-05
-47	Anonymous_Cat35	Wilson	 the I	fake47@fake.com	$2b$05$ZGMSojoePZJ3uP7/L2DVW.FEwzxkT6qgQa7TkoQJCZc0FgSkJvDnW	\N	12 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.296-05	2021-10-17 15:31:00.296-05
-51	Anonymous_Cat39	Wilson	 the XXI	fake51@fake.com	$2b$05$5uZ399gsRAmfIuQSHB8z9OPHQSb4bwfaHAHE4B4cE43x5Mwmcydpe	\N	25 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.296-05	2021-10-17 15:31:00.296-05
-55	Anonymous_Cat43	Wilson	 the XII	fake55@fake.com	$2b$05$qhd1JLfdlAYuYdDf2u3hBOuItHBmZL1W279CBeXqBM3aLEUdXqs9C	\N	60 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.297-05	2021-10-17 15:31:00.297-05
-59	Anonymous_Cat47	Wilson	 the II	fake59@fake.com	$2b$05$35Nj3zPHDkhcYeLJNx82a.iu6zI5SMzp7SAnFED4Foges7X7r7XS2	\N	31 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.297-05	2021-10-17 15:31:00.297-05
-63	Anonymous_Cat51	Wilson	 the V	fake63@fake.com	$2b$05$Eo/H7IQN.eFr.ur3p9nlh.vqNAVdSOM9pfEcaS03DDbcDJkFr63Pe	\N	60 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.297-05	2021-10-17 15:31:00.297-05
-67	Anonymous_Cat55	Wilson	 the XIII	fake67@fake.com	$2b$05$by/Ir5jzjh0XTRHH7l05r.8OAL8FnjWIczWT6NAqeEQwKNIP29FoK	\N	46 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.298-05	2021-10-17 15:31:00.298-05
-71	Anonymous_Cat59	Wilson	 the VII	fake71@fake.com	$2b$05$BaBplM.4hD5vuHqXJn/.2u8D1SvKB0oApLzYyjssPYCcYmi5CnnxC	\N	29 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.298-05	2021-10-17 15:31:00.298-05
-76	Anonymous_Cat64	Wilson	 the III	fake76@fake.com	$2b$05$tT3C7XuFBxEB8O7J7B9TRuORpeuA/gdfXsLwNEx5B/r50fGIfZvNO	\N	24 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.298-05	2021-10-17 15:31:00.298-05
-80	Anonymous_Cat68	Wilson	 the XXVI	fake80@fake.com	$2b$05$ASqoJ68Ik1EMwueTr27Wh.i6bGSXJR4TiC7hpc9d7EXZfNF.QxyfO	\N	88 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.299-05	2021-10-17 15:31:00.299-05
-84	Anonymous_Cat72	Wilson	 the XXIII	fake84@fake.com	$2b$05$cmxhfbG95qTPkftdBqj6m.x7EptSGXkOBIwzRpKIjDr17FsvgfdtC	\N	41 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.299-05	2021-10-17 15:31:00.299-05
-88	Anonymous_Cat76	Wilson	 the XX	fake88@fake.com	$2b$05$nC5MLaxUOW9kOHNlCl11juBU0PmEc9NfJUn/ZCz8SXCYGtidRQ.dC	\N	32 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.299-05	2021-10-17 15:31:00.299-05
-92	Anonymous_Cat80	Wilson	 the XXIII	fake92@fake.com	$2b$05$ZDP7Pa8da585xhcS2WJe2.RF3LdFPw6pe7hsDYvmENl/JSHUUOlpi	\N	100 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.3-05	2021-10-17 15:31:00.3-05
-95	Anonymous_Cat83	Wilson	 the XV	fake95@fake.com	$2b$05$JsTYo8Kads4yj/sGPhLcgeUkyFm67HGU6oIzZhzWyrKzz/czmNY52	\N	83 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.3-05	2021-10-17 15:31:00.3-05
-102	Anonymous_Cat90	Wilson	 the XXII	fake102@fake.com	$2b$05$wTLXL.rfs3.NazHgLETMqeABXDGQLRkdTYJInAnCYM83j504eCU2O	\N	79 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.3-05	2021-10-17 15:31:00.3-05
-106	Anonymous_Cat94	Wilson	 the VII	fake106@fake.com	$2b$05$QzYn/4bBb3smmwHHEFczju.mqvrenqM4jiSCYZWL4icncwiXergdq	\N	66 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.301-05	2021-10-17 15:31:00.301-05
-110	Anonymous_Cat98	Wilson	 the XIII	fake110@fake.com	$2b$05$q8iHO6PX89EYACOD5cfA1eN3ur1Ll.j/0upgyNpmomTqlPLskJEoC	\N	70 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.302-05	2021-10-17 15:31:00.302-05
-44	Anonymous_Cat31	Wilson	 the XXV	fake43@fake.com	$2b$05$Iybg5zyBCB0M20CiFICf9u0h8dgBnT9AXVeImohFgr58dU8ahvBv.	\N	63 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.296-05	2021-10-17 15:31:00.296-05
-48	Anonymous_Cat36	Wilson	 the XXVI	fake48@fake.com	$2b$05$Leyot1SNsp5N97tYo7oOTup8ygPS1obDvXgnSUydHthAZ6GXO9Bw2	\N	62 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.296-05	2021-10-17 15:31:00.296-05
-52	Anonymous_Cat40	Wilson	 the VIII	fake52@fake.com	$2b$05$Tz4UB9OaVkTZDMSUU2W3SeGUWhYrnoR0ZedXAe2EsXnkh0JN56roe	\N	62 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.296-05	2021-10-17 15:31:00.296-05
-56	Anonymous_Cat44	Wilson	 the XIX	fake56@fake.com	$2b$05$4JZrTb7QaV8ZfNbrf.XLguBVTnsqDzPRwmbev8L0i7JE1o5CGOgD.	\N	24 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.297-05	2021-10-17 15:31:00.297-05
-60	Anonymous_Cat48	Wilson	 the XVI	fake60@fake.com	$2b$05$.tsis3Qs8wt1Mhgpxd6R3eq2h9z6Cx.LbQtICeV6ohYdku25SI9Wa	\N	23 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.297-05	2021-10-17 15:31:00.297-05
-64	Anonymous_Cat52	Wilson	 the I	fake64@fake.com	$2b$05$foiDoYd.LWJjgXolze/a4O1TqLU09KgQmqvdi7fus2xjxX32p89Xy	\N	83 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.297-05	2021-10-17 15:31:00.297-05
-68	Anonymous_Cat56	Wilson	 the XXVII	fake68@fake.com	$2b$05$7IblejhIyU7SkvDeCQjkIuNVOZFwGBcstNtmjgUK72YijjsI1aScu	\N	96 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.298-05	2021-10-17 15:31:00.298-05
-72	Anonymous_Cat60	Wilson	 the XX	fake72@fake.com	$2b$05$LcpZmyrCPuMOiIiHirf49eqntympfpD6kSw3znuS6klUp1c0.sCL.	\N	46 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.298-05	2021-10-17 15:31:00.298-05
-77	Anonymous_Cat65	Wilson	 the VIII	fake77@fake.com	$2b$05$fZas0/tb/a.vmmpHXuAjGeni2tB2kdTNqBPHj80ISUDc8dzRDJ44.	\N	60 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.298-05	2021-10-17 15:31:00.298-05
-81	Anonymous_Cat69	Wilson	 the VII	fake81@fake.com	$2b$05$L9grV3mRjj8nz0uHAxJBxeVizDz0FrTUtjxNyN/vAp46vENtqYs1i	\N	21 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.299-05	2021-10-17 15:31:00.299-05
-85	Anonymous_Cat73	Wilson	 the XII	fake85@fake.com	$2b$05$sXvr6rCobmbEnwUd5e9N5OmItCByX.zuGh.8HGvq/NQUjRe4Uu0OK	\N	86 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.299-05	2021-10-17 15:31:00.299-05
-89	Anonymous_Cat77	Wilson	 the XVIII	fake89@fake.com	$2b$05$OdO2K7dNQXActuKqCd9j6OaVyM5HoSclql0J9ebC8GaGB5QZ94CUe	\N	15 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.299-05	2021-10-17 15:31:00.299-05
-94	Anonymous_Cat82	Wilson	 the III	fake94@fake.com	$2b$05$FWypqciY9GZZ27ZkeGkDf.ddpWmYE4WDNz/jgX9vwFsh3S/l3X776	\N	89 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.3-05	2021-10-17 15:31:00.3-05
-99	Anonymous_Cat87	Wilson	 the V	fake99@fake.com	$2b$05$a0FyrP.1bOCwBr4zFD7Tx.Oilx/.HgN6GQgGkhNhQCaEQC8/UJbM.	\N	63 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.3-05	2021-10-17 15:31:00.3-05
-107	Anonymous_Cat95	Wilson	 the III	fake107@fake.com	$2b$05$26/wkElVUoMNLkuSQ/v16O8S7fHzZzcgtkJwlEqDg0z11ZR3CMbMK	\N	14 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.301-05	2021-10-17 15:31:00.301-05
-46	Anonymous_Cat34	Wilson	 the III	fake46@fake.com	$2b$05$Vll/7L.nz00XIQjda7Mc4uG4uV7JzGO2vcVGMcVnfEVRDI15Dzsbi	\N	49 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.296-05	2021-10-17 15:31:00.296-05
-54	Anonymous_Cat42	Wilson	 the XIII	fake54@fake.com	$2b$05$AP.f7xflqM0cTWTbTKYQye6z4it4hNIBJE8JH/aITUHQ70y/SdsXy	\N	23 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.296-05	2021-10-17 15:31:00.296-05
-62	Anonymous_Cat50	Wilson	 the III	fake62@fake.com	$2b$05$XZi9a5BqtwmdqsrQ529I0OSt3HnvrX./gCbjjDOjN2/WNCBXwe0Su	\N	76 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.297-05	2021-10-17 15:31:00.297-05
-70	Anonymous_Cat58	Wilson	 the VIII	fake70@fake.com	$2b$05$2aA37eIeczMO90x3oiuuaumj25Yo.KlO950UuMUyWjJAf4h3vNVD6	\N	37 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.298-05	2021-10-17 15:31:00.298-05
-74	Anonymous_Cat62	Wilson	 the XVI	fake74@fake.com	$2b$05$ZnmWvHlQ5IyPQyItslOs/OsKVW7cstbOuVii7BWgunAJMBVRsnE/u	\N	49 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.298-05	2021-10-17 15:31:00.298-05
-79	Anonymous_Cat67	Wilson	 the VIII	fake79@fake.com	$2b$05$CnN0TmhQ.8oX4fDB.A1Uh.wmw7yeWi8psGsWyOgSHx1ORrFhP9vpW	\N	31 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.299-05	2021-10-17 15:31:00.299-05
-87	Anonymous_Cat75	Wilson	 the XVII	fake87@fake.com	$2b$05$4jkPEpoUNdvE9sPuevCZ6.in6w0SVZVqgT7JB2s1VtC0CH.lLFPS2	\N	8 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.299-05	2021-10-17 15:31:00.299-05
-93	Anonymous_Cat81	Wilson	 the XIII	fake93@fake.com	$2b$05$mQUA/Twivqosz9SFaPtbK.WBenzTd7BEcBz9uoQe50GbvwAPMKFc.	\N	53 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.3-05	2021-10-17 15:31:00.3-05
-97	Anonymous_Cat85	Wilson	 the XIX	fake97@fake.com	$2b$05$ZVe46cRF/Nhm1EU9N4Sc4uB5L0xyKMYxEAX6euvTEm5TPO8xhTZ6K	\N	80 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.3-05	2021-10-17 15:31:00.3-05
-103	Anonymous_Cat91	Wilson	 the XV	fake103@fake.com	$2b$05$NOXaDTeRP9VvVx2.8Ln7TuUwqK5N8izaCwMLt8VUgAUTa/qIaERji	\N	21 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.301-05	2021-10-17 15:31:00.301-05
-111	Anonymous_Cat99	Wilson	 the XXIV	fake111@fake.com	$2b$05$mD65NgHK87hopZ505LvNxOUIcmLDACsXvqCRT1ICM93LFCfNODzzC	\N	61 Fake St.	\N	{}	{}	f	2021-10-17 15:31:00.302-05	2021-10-17 15:31:00.302-05
-4	taya	Taya	Ugay	fake6@fake.com	$2b$05$VbybSjXvUkzm7vDOqCV44OVrTQyB82siH0SNW0KhzcSxrRucs5.Ry	0	\N	\N	{}	{}	t	2021-10-17 15:31:00.292-05	2021-10-18 14:44:52.037-05
+1	cody	Cody	The Pup	fake1@fake.com	$2b$05$EAVK.riJ5ybZZ1fSoRL2Mu.09OsS2Z8YuujUV3kjjqoUM/B7OMOWy	\N	456 fake st	\N	{}	{}	t	2021-10-28 06:45:12.436-05	2021-10-28 06:45:12.436-05
+2	andrew	Andrew	Kerr	fake5@fake.com	$2b$05$KITxfw1zykUp0u.0Mgj1P.FoTR5HyBHb6ofj0Cl8ELXgM.oBMoQRy	\N	\N	\N	{}	{}	f	2021-10-28 06:45:12.437-05	2021-10-28 06:45:12.437-05
+3	steph	Steph	Durino	fake4@fake.com	$2b$05$rKSc19GTeVzmXuB.XZOoxOozwuHSxCDhAmuH5b5VpqQ8Acu0RTJOu	\N	\N	\N	{}	{}	f	2021-10-28 06:45:12.437-05	2021-10-28 06:45:12.437-05
+4	jae	Jae	Jung	fake3@fake.com	$2b$05$K76QHg83fxnNgbM8YWgfr.HDGvsDUqUeXfLYRexFfMI5Pq9gaV4uW	\N	\N	\N	{}	{}	f	2021-10-28 06:45:12.437-05	2021-10-28 06:45:12.437-05
+5	tenzing	Tenzing	O	fake7@fake.com	$2b$05$qQJqbgOTp8XTUtTmKLTXd.JwH2g7acvduwO1snwDwpPxq2iHzeYyG	\N	\N	\N	{}	{}	f	2021-10-28 06:45:12.437-05	2021-10-28 06:45:12.437-05
+6	taya	Taya	Ugay	fake6@fake.com	$2b$05$tB3F0sqQ8GgtWvhsxXUtpOPaBZbknbQhCmsdXzuXSiBB9eOL7E/yK	\N	\N	\N	{}	{}	t	2021-10-28 06:45:12.437-05	2021-10-28 06:45:12.437-05
+7	albina	Albina	Usmanova	fake8@fake.com	$2b$05$21Ct5VYp3bM3dlnGY6q5wO.SaoWrTTzKR.A4cdJoYCQhaD6MLeGja	\N	\N	\N	{}	{}	f	2021-10-28 06:45:12.438-05	2021-10-28 06:45:12.438-05
+8	sung	Sung	Paik	fake11@fake.com	$2b$05$EE3sdguXLhHydaTIY9EvKePptysoVaXp5cmdKuoPxD/Gw2sNOdc1y	\N	\N	\N	{}	{}	f	2021-10-28 06:45:12.438-05	2021-10-28 06:45:12.438-05
+9	murphy	Murphy	H	fake2@fake.com	$2b$05$Qc.K5bkb4Ve3vNc.TLlonefxxaVFcI/kNSZHALlTX8KY1R12QCzU6	\N	\N	\N	{}	{}	f	2021-10-28 06:45:12.437-05	2021-10-28 06:45:12.437-05
+10	jason	Jason	N	fake10@fake.com	$2b$05$ADi/7jmhRVpuU6eP1KdOi.BnPdA/GShTRgB5ycb71bV8PZg7hgtk6	\N	\N	\N	{}	{}	f	2021-10-28 06:45:12.438-05	2021-10-28 06:45:12.438-05
+11	mike	Mike	Alessi	fake9@fake.com	$2b$05$itVeSeCJ6WL7c9co6neeEO06H7SxrjuOJzz1IujRoTFCTRV1YD9/i	\N	\N	\N	{}	{}	f	2021-10-28 06:45:12.438-05	2021-10-28 06:45:12.438-05
 \.
 
 
@@ -445,21 +272,21 @@ COPY public.users (id, username, "firstName", "lastName", email, password, cc, "
 -- Name: orders_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.orders_id_seq', 10, true);
+SELECT pg_catalog.setval('public.orders_id_seq', 1, false);
 
 
 --
 -- Name: products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.products_id_seq', 114, true);
+SELECT pg_catalog.setval('public.products_id_seq', 57, true);
 
 
 --
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 112, true);
+SELECT pg_catalog.setval('public.users_id_seq', 11, true);
 
 
 --
